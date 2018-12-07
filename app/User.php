@@ -8,12 +8,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Spatie\Permission\Traits\HasRoles;
 
+// Forethought-vikram added for passport   05/dec/18
+use Laravel\Passport\HasApiTokens;
+// ./Forethought-vikram added for passport   05/dec/18
+
 
 
 
 class User extends Authenticatable
 {
-    use HasRoles;
+    use HasRoles,HasApiTokens, Notifiable;
+
+    // Forethought-vikram added for passport   05/dec/18
+    // use HasApiTokens, Notifiable;
+    // ./Forethought-vikram added for passport   05/dec/18
 
 
 

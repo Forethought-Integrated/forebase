@@ -5,6 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+// Forethought-vikram added for passport   05/dec/18
+use Laravel\Passport\Passport; 
+// ./Forethought-vikram added for passport   05/dec/18
+
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        // Forethought-vikram added for passport   05/dec/18
+        Passport::routes(); 
+        // ./Forethought-vikram added for passport   05/dec/18
 
         //
     }

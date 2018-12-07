@@ -42,7 +42,11 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            // Forethought-vikram added for passport   05/dec/18
+            // 'driver' => 'token',  //default
+            'driver' => 'passport',
+            // ./Forethought-vikram added for passport   05/dec/18
+
             'provider' => 'users',
         ],
     ],

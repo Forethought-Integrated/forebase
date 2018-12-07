@@ -175,6 +175,11 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        // Forethought-vikram added for passport   05/dec/18
+        Laravel\Passport\PassportServiceProvider::class,
+        // ./Forethought-vikram added for passport   05/dec/18
+
+
     ],
 
     /*
