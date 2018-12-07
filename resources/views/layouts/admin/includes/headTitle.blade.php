@@ -1,0 +1,1 @@
+<title>AdminLTE 2 | Dashboard</title>

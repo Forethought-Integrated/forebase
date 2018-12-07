@@ -32,7 +32,7 @@ Route::get('/knowledge', function () {
 // Route::get('/socialjson/', 'Post\PostController@indexjson');
 Route::get('/socialjson', function () {
 
-	$client = new Client();;
+	$client = new Client();
         $res = $client->request('GET', 'http://localhost:8001/api/post');
 
         // return $res->getStatusCode();
@@ -55,3 +55,12 @@ Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 
 Route::resource('posts', 'PostController');
+
+Route::get('/admin', function () {
+    return view('admin/admin');
+});
+
+
+Route::get('/admin', function () {
+    return view('admin/admin');
+});
