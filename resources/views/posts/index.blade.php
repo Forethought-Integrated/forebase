@@ -9,6 +9,8 @@
                        <a href="/socialjson">Socialjson</a>
                        <br>
                        <a href="/permissions">Permissions</a>
+                       <br>
+                       <a href="/social">Social</a>
                 </div>
 
                 <div class="panel panel-default">

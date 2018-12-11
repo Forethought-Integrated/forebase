@@ -11,8 +11,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-<<<<<<< HEAD
-.env
-=======
->>>>>>> file-pass-post-integrated
 .phpunit.result.cache

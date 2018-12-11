@@ -25,12 +25,6 @@ class UserController extends Controller {
         $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
     }
 
-<<<<<<< HEAD
-=======
-
-    
-
->>>>>>> file-pass-post-integrated
     /**
     * Display a listing of the resource.
     *

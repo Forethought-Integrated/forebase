@@ -16,7 +16,10 @@
         <!-- <h2>Embed file manager</h2> -->
         <!-- <iframe src="/knowledgemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe> -->
 
-<p><b>First Post Body:-&nbsp&nbsp&nbsp</b>{{$posts['data']['0']['postBody']}}</p>
+<p>
+<b>First Post Body:-&nbsp&nbsp&nbsp</b>
+{{$posts['posts']['data']['0']['postBody']}}
+</p>
         
 
 <pre>{{print_r($posts)}}</pre>
