@@ -59,6 +59,102 @@ Route::resource('/comment', 'Comment\CommentController');
 // ./Social Blade
 
 
+// CRM---------------------------------------------------------------------------------------
+
+// Account Modul********************
+
+Route::resource('account', 'CRM\AccountController');
+Route::get('crmjson',  function () {
+
+    $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/accounts');
+        $accountJson=$res->getBody();
+        $account = json_decode($accountJson, true);
+        $accountData['dataArray']=$account;
+
+        return view('social.socialjson',['posts' => $accountData]);
+});
+
+// ./Account Module*******************
+
+
+//  Contact Module***************
+
+Route::resource('contact', 'CRM\ContactController');
+Route::get('crmjson',  function () {
+    $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/contacts');
+        $contactJson=$res->getBody();
+        $contact = json_decode($contactJson, true);
+        $contactData['dataArray']=$contact;
+
+        return view('social.socialjson',['posts' => $contactData]);
+});
+
+//  ./Contact Module******************
+
+//  Lead Module***********************
+
+Route::resource('lead', 'CRM\LeadController');
+Route::get('crmjson',  function () {
+    $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/leads');
+        $leadJson=$res->getBody();
+        $lead = json_decode($leadJson, true);
+        $leadtData['dataArray']=$lead;
+
+        return view('social.socialjson',['posts' => $leadtData]);
+});
+
+//  ./Lead Module********************
+
+//  Campaign Module****************** 
+
+Route::resource('campaign', 'CRM\CampaignController');
+Route::get('crmjson',  function () {
+    $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaigns');
+        $campaignJson=$res->getBody();
+        $campaign = json_decode($campaignJson, true);
+        $campaignData['dataArray']=$campaign;
+
+        return view('social.socialjson',['posts' => $campaignData]);
+});
+
+
+//  ./Campaign Module****************
+
+//  Opportunity******************
+
+Route::resource('opportunity', 'CRM\OpportunityController');
+Route::get('crmjson',  function () {
+    $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunities');
+        $opportunityJson=$res->getBody();
+        $opportunity = json_decode($opportunityJson, true);
+        $opportunityData['dataArray']=$opportunity;
+
+        return view('social.socialjson',['posts' => $opportunityData]);
+});
+
+
+
+
+
+Route::resource('customer', 'CRM\AccountController');
+
+
+
+
+//  ./CRM----------------------------------------------------------------------------------------------  
+
+
+
+
+
+
+
+
 // Route::get('/social', function () {
 
 

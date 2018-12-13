@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Post;
 
 // use App\Post;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -25,7 +24,6 @@ class PostController extends Controller
         $like->user_id=$request->user()->id;
         $like->like=$request->likeData['like'];
         $like->save();
-
         return response()->json(['da'=>$request->likeData['post_id'],'all'=>$request->likeData]);
     }
 
