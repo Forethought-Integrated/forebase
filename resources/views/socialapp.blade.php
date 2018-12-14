@@ -1,4 +1,5 @@
-@extends('layouts.adminApp')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', 'Dashboard')
 
@@ -9,32 +10,35 @@
 @section('ContentHeader(Page_header)')
 
 
-<div class="row mb-2" id="scorlling_social">
+{{-- <div class="row mb-2" id="scorlling_social">
   <div class="col-sm-6">
     <h2 class="m-0 text-dark">Social</h2>
-  </div><!-- /.col -->
-  <div class="col-sm-6">
+  </div> --}}
+  <!-- /.col -->
+  {{-- <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item active">Social</li>
     </ol>
-  </div><!-- /.col -->
-</div><!-- /.row -->
+  </div> --}}
+  <!-- /.col -->
+{{-- </div> --}}
+<!-- /.row -->
+
+ <h1>
+        Social
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Social</li>
+      </ol>
 
 
 @endsection
 
 @section('MainContent')
-{{-- @foreach ($posts['data'] as $user)
-    <pre><p>This is user {{ print_r($user)}}</p></pre>
-@endforeach --}}
-{{-- <br>
-{{$posts['data']['0']['postBody']}} --}}
-{{-- {{Auth::user()->id}} --}}
-<br>
-{{-- hello<br> --}}
-{{-- <pre>{{print_r($post)}}</pre> --}}
- {{-- {{$post['data']['0']['postBody']}}  --}}
+
 
 <div class="row">
   <div class="col-lg-9">
@@ -69,24 +73,69 @@
                 posted by {{ $post['userName'] }} on {{ $post['createdAt']['date'] }}
             </div>
             <div class="interaction">
-                <a href="" id="{{'like'.$post['postID']}}" class="Like">
-                  @if(Auth::user()->id == $post['userID'])
-                    <a href="#" class="editPost">Edit </a> |
-                    <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
+                  {{-- @if($post['userReactionID'] == is_null(var)) --}}
+                  @if(is_null($post['userReactionID']))
+                    <a href=""  class="Reaction">
+                      @if($post['reactionCount'])
+                      
+                      @endif
+                      <form action="/reaction" method="post" >
+                        {{csrf_field()}}
+                        <input type="hidden" name="postID" value="{{$post['postID']}}">
+                        <input type="hidden" name="reaction" value="1">
+                        <input type="submit" name="like" value="love">
+                      </form>
+                    </a>
+                    <a href=""  class="Reaction">
+                      <form action="/reaction" method="post" >
+                        {{csrf_field()}}
+                        <input type="hidden" name="postID" value="{{$post['postID']}}">
+                        <input type="hidden" name="reaction" value="2">
+                        <input type="submit" name="like" value="Wow">
+                      </form>
+                    </a>
+                    <a href=""  class="Reaction">
+                      <form action="/reaction" method="post" >
+                        {{csrf_field()}}
+                        <input type="hidden" name="postID" value="{{$post['postID']}}">
+                        <input type="hidden" name="postID" value="3">
+                        <input type="submit" name="like" value="Happy">
+                      </form>
+                    </a>
+                  @else
+                    <a href="" id="{{$post['userPostReactionID']}}" class="reacted">
+                      <b>{{$post['userReactionName']}}</b><<strong>{{$post['reactionCount']}}</strong>
+                    </a>
                   @endif
-                  {{-- {{ 
-                    Auth::user()->likes()->where('post_id', $post->post_id)->first() ? Auth::user()->likes()->where('post_id', $post->post_id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  
-                  }} --}}
-                </a>  | 
+                  | 
                 <a href="" class="comment">Comment</a>  |
                 @if(Auth::user()->id == $post['userID'])
                   <a href="#" class="editPost">Edit </a>|
                   <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
                 @endif
-                <div class="commentDiv card" style="display: block;margin-top: 10px;">
+                <div class="commentDiv card" style="margin-top: 10px;">
                   <div class="card-body">
                     @foreach($post['comment'] as $comment)
-                      {{$comment['commentBody']}}<br>
+                      
+                      <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
+                      {{ csrf_field() }}
+                       @method('PUT')
+                       <div id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}</div>
+                        <div class="form-group">
+                          <input type="text" name="commentView" value="{{$comment['commentBody']}}">
+                          <input class="editComment" type="submit" name="editComment" value="edit">
+                        </div>
+                      </form>
+                      
+                      <form action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
+                      {{ csrf_field() }}
+                       @method('DELETE')
+                        <div class="form-group">
+                          {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}"> --}}
+                          <input class="editComment" type="submit" name="editComment" value="delete">
+                        </div>
+                      </form>
+                      <br>
                     @endforeach
                     <form action="/comment" method="post" style="display:none"  id="{{'commentDiv'.$post['postID']}}">
                     {{ csrf_field() }}
@@ -117,6 +166,8 @@
       </div>
     </div>
         {{-- ./Post Body --}}
+      {{-- </article> --}}
+    </div>
 
         {{-- RightSide Content Video --}}
         <!-- /.col-md-6 -->
@@ -143,9 +194,9 @@ src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; au
         </div>
       </div>      
     </div>
-    <!-- /.col-md-6 -->
+    {{-- /.col-md-6 --}}
   </div>
-      <!-- /.row -->
+      {{-- /.row --}}
   @endsection
 
   @section('bodyScriptUpdate')
@@ -182,9 +233,9 @@ src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; au
                     
            
 <!-- CK Editor -->
-{{-- <script src="{{asset("/admin-lte/plugins/ckeditor/ckeditor.js")}}"></script> --}}
+{{-- <script src                                                                                                                                                                                                                                                                                                                                     ="{{asset("/admin-lte/plugins/ckeditor/ckeditor.js")}}"></script> --}}
 <!-- Bootstrap WYSIHTML5 -->
-<script src="{{asset("/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
+{{-- <script src="{{asset("/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script> --}}
 <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor
@@ -199,8 +250,5 @@ src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; au
 <script>
   jQuery(window).scroll(function(){  if (jQuery(this).scrollTop() >= 53) {    jQuery('#scorlling_social').addClass('sticky');   }   else {    jQuery('#scorlling_social').removeClass('sticky');   }});
 </script>
-<style>
 
-
-</style>
 @endsection

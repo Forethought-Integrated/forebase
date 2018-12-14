@@ -29,7 +29,6 @@ Route::get('/knowledge', function () {
     return view('/knowledge/knowledge');
 });
 
-// Route::get('/socialjson/', 'Post\PostController@indexjson');
 Route::get('/socialjson', function () {
 
 	$client = new Client();
@@ -54,28 +53,15 @@ Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
 //  return response()->json("hello like request");
 // });
 Route::resource('/social', 'Post\PostController');
+
+// --Comment Blade
+Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
+Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
 Route::resource('/comment', 'Comment\CommentController');
+Route::resource('/reaction', 'PostReaction\PostReactionController');
 
-// ./Social Blade
+// ./Comment Blade
 
-
-// Route::get('/social', function () {
-
-
-//     $client = new Client();
-//         $res = $client->request('GET', 'http://localhost:8001/api/post');
-
-//         // return $res->getStatusCode();
-//         // return $res->getBody();
-//         $posts=$res->getBody();
-
-//          $area = json_decode($posts, true);
-    
- 
-//    return view('socialapp')->with('post', $posts);
-//     // return view('socialapp',['post',compact($area)]);
-//     // return view('socialapp',compact($area));
-// });
 
 Route::get('/logo/{id}', 'Logo\LogoController@show');
 

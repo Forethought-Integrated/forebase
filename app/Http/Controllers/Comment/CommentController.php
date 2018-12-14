@@ -29,36 +29,43 @@ class CommentController extends Controller
                     'postID' => $request->postID
                     ]
     ]);
-        // $comments = Comments::create($request->all());
-        // $comments=new Comments();    
-        // $comments->comment_body=$request['commentBody'];
-        // $comments->user_id=$request['userID'];
-        // $comments->post_id=$request['postID'];
-        // $comments->save(); 
-        // return $request->postID;
+        
         // return response()->json($comments, 201);
        return redirect('/social');
     }
 
     public function show($id)
     {
-        $comments = Comments::findOrFail($id);
+        // $comments = Comments::findOrFail($id);
 
-        return response()->json($comments);
+        // return response()->json($comments);
     }
 
     public function update(Request $request, $id)
     {
-        $comments = Comments::findOrFail($id);
-        $comments->update($request->all());
+        return 'hi';
+         $client = new Client();
+        $response = $client->request('PUT', "http://localhost:8001/api/comment/".$id, [
+                    'form_params' => [
+                    // 'body' => [
+                    'body' => $request->commentView,
+                    ]
+    ]);
+        return response()->json(['success'=>'200']);
+        
+        // $comments = Comments::findOrFail($id);
+        // $comments->update($request->all());
 
-        return response()->json($comments, 200);
+        // return response()->json($comments, 200);
     }
 
     public function destroy($id)
     {
-        Comments::destroy($id);
+        // return 'delete';
+        $client = new Client();
+        $res = $client->request('DELETE', 'http://localhost:8001/api/comment/'.$id);
+        return redirect('/social');
 
-        return response()->json(null, 204);
+        // return response()->json(null, 204);
     }
 }
