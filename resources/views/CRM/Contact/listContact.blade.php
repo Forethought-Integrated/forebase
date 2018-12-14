@@ -32,7 +32,6 @@
         <div class="card-header">
           <h3 class="card-title">Contact List</h3>         
         </div>
-         {{ $contactdata['dataArray']['data']['0']['contact_name'] }}
         <!-- /.card-header -->
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
@@ -51,20 +50,18 @@
             </thead>
             <tbody>
               @foreach($contactdata['dataArray']['data'] as $contacts)
-              {{ $contacts['contact_name']}}<br>
               <tr>
                 <td>{{$contacts['contact_id']}}</td>
                 <td>{{$contacts['contact_type']}}</td>
-                <td>{{$contacts['contact_name']}}</td>
+                <td><a href="{{ url('contact'.'/'.$contacts['contact_id'])}}">{{$contacts['contact_name']}}</a></td>
                 <td>{{$contacts['contact_mobileNo']}}</td>
                 <td>{{$contacts['contact_landlineNo']}}</td>
                 <td>{{$contacts['contact_email']}}</td>
                   <td>
-                <a class="btn btn-small btn-primary" href="{{ $contactdata['dataArray']['data']['0']['contact_name'] }}">Edit</a>
+                <a class="btn btn-small btn-primary" href="{{ url('contact'.'/' . $contactdata['dataArray']['data']['0']['contact_id']) }}">Edit</a>
                     </td>
-
                       <td>
-                       <form action="{{ $contactdata['dataArray']['data']['0']['contact_name'] }}" method="post">
+                       <form action="{{ url('contact'.'/' .$contactdata['dataArray']['data']['0']['contact_id']) }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>

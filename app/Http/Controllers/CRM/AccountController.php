@@ -74,7 +74,7 @@ class AccountController extends Controller
 
 
     {
-        //
+        return view('CRM.Account.editAccount');
     }
 
      public function update(Request $request, $id)
