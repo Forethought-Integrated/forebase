@@ -11,7 +11,22 @@
                        <a href="/permissions">Permissions</a>
                        <br>
                        <a href="/social">Social</a>
-                </div>
+                       <br>
+                       
+
+   <div class="dropdown">
+    <b class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">CRM
+    
+  </b>
+    <ul class="dropdown-crm">
+      <li><a href="account">Account</a></li>
+      <li><a href="campaign">Campaign</a></li>
+      <li><a href="contact">Contact</a></li>
+      <li><a href="lead">Lead</a></li>
+      <li><a href="opportunity">Opportunity</a></li>
+      <li><a href="customer">Customer</a></li>
+    </ul>
+  </div>
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Posts</h3></div>
