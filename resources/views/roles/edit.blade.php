@@ -1,14 +1,23 @@
-@extends('layouts.app')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', '| Edit Role')
 
-@section('content')
+@section('headAdminScriptUpdate')
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+@endsection
 
-<div class='col-lg-4 col-lg-offset-4'>
-    <h1><i class='fa fa-key'></i> Edit Role: {{$role->name}}</h1>
-    <hr>
+@section('ContentHeader(Page_header)')
 
-    {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
+ <h1><i class='fa fa-key'></i> Edit Role: {{$role->name}}</h1>
+
+@endsection
+
+@section('MainContent')
+
+    <div class="row">
+        <div class="col-md-12">
+           {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Role Name') }}
@@ -25,7 +34,14 @@
     <br>
     {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
 
-    {{ Form::close() }}    
-</div>
+    {{ Form::close() }}   
+        </div>
+
+    </div>
 
 @endsection
+
+@section('bodyScriptUpdate')
+ 
+@endsection
+

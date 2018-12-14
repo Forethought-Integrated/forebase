@@ -1,16 +1,24 @@
-
-@extends('layouts.app')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', '| Edit User')
 
-@section('content')
+@section('headAdminScriptUpdate')
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+@endsection
 
-<div class='col-lg-4 col-lg-offset-4'>
+@section('ContentHeader(Page_header)')
 
-    <h1><i class='fa fa-user-plus'></i> Edit {{$user->name}}</h1>
-    <hr>
+ <h1><i class='fa fa-user-plus'></i> Edit {{$user->name}}</h1>
+ 
 
-    {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
+@endsection
+
+@section('MainContent')
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}
@@ -47,7 +55,14 @@
     {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 
     {{ Form::close() }}
+        </div>
 
-</div>
+    </div>
 
 @endsection
+
+@section('bodyScriptUpdate')
+ 
+@endsection
+
+

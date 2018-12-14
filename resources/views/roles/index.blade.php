@@ -1,15 +1,23 @@
-@extends('layouts.app')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', '| Roles')
 
-@section('content')
+@section('headAdminScriptUpdate')
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+@endsection
 
-<div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i> Roles
+@section('ContentHeader(Page_header)')
+
+ <h1><i class="fa fa-key"></i> Roles
 
     <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
     <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a></h1>
-    <hr>
+
+@endsection
+
+@section('MainContent')
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -44,6 +52,9 @@
 
     <a href="{{ URL::to('roles/create') }}" class="btn btn-success">Add Role</a>
 
-</div>
-
 @endsection
+
+@section('bodyScriptUpdate')
+ 
+@endsection
+

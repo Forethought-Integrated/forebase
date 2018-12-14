@@ -25,7 +25,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+
+        {{-- <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -36,8 +37,68 @@
             <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
+        </li> --}}
+
+        {{-- Social --}}
+        <li>
+          <a href="/social">
+             <img src="{{asset("/img/admin/sidebar/icon/social2.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style="width: 30px"> 
+            <i class="fa "></i> <span>Social</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
         </li>
-        
+        {{-- ./social --}}
+
+        {{-- File Manager --}}
+        <li>
+          <a href="/knowledge">
+            <i class="fa fa-th"></i> <span>File Manager</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+        {{-- ./File Manager --}}
+
+        {{-- CRM --}}
+        <li>
+          <a href="crm">
+            <img src="{{asset("/img/admin/sidebar/icon/crm3.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>CRM</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+        {{-- ./CRM --}}
+
+        {{-- HelpDesk --}}
+        <li>
+          <a href="#">
+            <i class="fa fa-th"></i> <span>HelpDesk</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+        {{-- ./HelpDesk --}}
+
+        {{-- Permission & Role --}}
+        <li>
+          <a href="permissions">
+            <i class="fa fa-th"></i> <span>Permission & Role</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+        {{-- ./Permission & Role --}}
+
+{{-- 
         <li>
           <a href="#">
             <i class="fa fa-th"></i> <span>Widgets</span>
@@ -81,7 +142,8 @@
           </ul>
         </li>
         <li><a href="#"><i class="fa fa-book"></i>
-         <span>Documentation</span></a></li>
+         <span>Documentation</span></a></li> --}}
+         
       </ul>
     </section>
     <!-- /.sidebar -->

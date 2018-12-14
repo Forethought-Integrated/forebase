@@ -1,15 +1,24 @@
-@extends('layouts.app')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', '| Add User')
 
-@section('content')
+@section('headAdminScriptUpdate')
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+@endsection
 
-<div class='col-lg-4 col-lg-offset-4'>
+@section('ContentHeader(Page_header)')
 
-    <h1><i class='fa fa-user-plus'></i> Add User</h1>
-    <hr>
+<h1><i class='fa fa-user-plus'></i> Add User</h1>
+ 
 
-    {{ Form::open(array('url' => 'users')) }}
+@endsection
+
+@section('MainContent')
+
+    <div class="row">
+        <div class="col-md-12">
+           {{ Form::open(array('url' => 'users')) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}
@@ -44,7 +53,14 @@
     {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 
     {{ Form::close() }}
+        </div>
 
-</div>
+    </div>
 
 @endsection
+
+@section('bodyScriptUpdate')
+ 
+@endsection
+
+

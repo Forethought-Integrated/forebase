@@ -15,8 +15,22 @@
 //     return view('welcome');
 // });
 
-// Auth::routes();
+Auth::routes();
 use GuzzleHttp\Client;
+
+
+// Route::middleware('auth')->group(function () {
+ Route::group(['middleware' => ['auth']], function () {
+   
+    Route::get('/', function () {
+    return view('/dashboard/dashboard');
+});
+
+    Route::get('/crm', function () {
+    return view('/CRM/crmDashboard');
+});
+
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,6 +42,8 @@ Auth::routes();
 Route::get('/knowledge', function () {
     return view('/knowledge/knowledge');
 });
+
+
 
 Route::get('/socialjson', function () {
 
@@ -95,7 +111,7 @@ Route::get('crmjson',  function () {
 //  Lead Module***********************
 
 Route::resource('lead', 'CRM\LeadController');
-Route::get('crmjson',  function () {
+Route::get('leadcrmjson',  function () {
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/leads');
         $leadJson=$res->getBody();
@@ -168,7 +184,7 @@ Route::resource('/reaction', 'PostReaction\PostReactionController');
 Route::get('/logo/{id}', 'Logo\LogoController@show');
 
 
-Route::get('/', 'PostController@index')->name('home');
+// Route::get('/', 'PostController@index')->name('home');
 
 Route::resource('users', 'UserController');
 

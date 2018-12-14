@@ -49,7 +49,7 @@ class PostController extends Controller
         // $postData['updateView']=$;
 
         // return view('socialapp')->with('posts', $area);
-        return view('socialapp')->with('posts', $postData);
+        return view('social/socialDashboard')->with('posts', $postData);
         // return view('Post.postDashboard',['posts' => $posts]);
     }
 
