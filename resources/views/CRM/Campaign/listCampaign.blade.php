@@ -31,7 +31,7 @@
         <div class="card-header">
           <h3 class="card-title">Campaign List</h3>
         </div>
-        {{ $campaigndata['dataArray']['data']['0']['campaign_name'] }}
+       
 
         <!-- /.card-header -->
         <div class="card-body">
@@ -54,21 +54,21 @@
             <tbody>
 
               @foreach($campaigndata['dataArray']['data'] as $campaigns)
-              {{ $campaigns['campaign_name']}}<br>
               <tr>
              <td>{{$campaigns['campaign_id']}}</td>
-             <td>{{$campaigns['campaign_name']}}</td>
+             <td><a href="{{ url('campaign'.'/'.$campaigns['campaign_id'])}}">{{$campaigns['campaign_name']}}</a></td>
+             <!-- <td>{{$campaigns['campaign_name']}}</td> -->
              <td>{{$campaigns['campaign_type']}}</td>
              <td>{{$campaigns['campaign_description']}}</td>
              <td>{{$campaigns['campaign_startDate']}}</td>
              <td>{{$campaigns['campaign_endDate']}}</td>
              <td>{{$campaigns['campaign_budgetCost']}}</td>
                 <td>
-                <a class="btn btn-small btn-primary" href="{{ $campaigndata['dataArray']['data']['0']['campaign_name'] }}">Edit</a>
+                <a class="btn btn-small btn-primary" href="{{ $campaigndata['dataArray']['data']['0']['campaign_id'] }}">Edit</a>
                     </td>
 
                       <td>
-                       <form action="{{ $campaigndata['dataArray']['data']['0']['campaign_name'] }}" method="post">
+                       <form action="{{ $campaigndata['dataArray']['data']['0']['campaign_id'] }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>

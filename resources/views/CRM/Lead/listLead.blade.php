@@ -36,7 +36,7 @@
                     <h3 class="card-title">Lead List</h3>
                   </div>
 
-                    {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}
+                    
                   <div class="col-sm-6">
                     <h3 class="card-title float-sm-right"><a href="{{ url('/pdf') }}">Download Pdf</a></h3>
                   </div>
@@ -68,7 +68,7 @@
                   <tr>
                    <td>{{$leads['lead_id']}}</td>
                    <td>{{$leads['lead_service_code']}}</td>
-                   <td>{{$leads['lead_name']}}</td>
+                   <td><a href="{{ url('lead'.'/'.$leads['lead_id'])}}">{{$leads['lead_name']}}</a></td>
                    <td>{{$leads['lead_designation']}}</td>
                    <td>{{$leads['lead_companyName']}}</td>
                    <td>{{$leads['lead_mobileNo']}}</td>
@@ -77,15 +77,13 @@
                     <a class="btn btn-small btn-primary" href=" {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}">Edit</a>
                     </td>
 
-                      <td>
-                       <form action=" {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}" method="post">
+                    <td>
+                    <form action=" {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                       </td>
-
-
                   </tr>
                   @endforeach
                 </tbody>

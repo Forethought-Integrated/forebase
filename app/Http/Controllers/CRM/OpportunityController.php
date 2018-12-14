@@ -36,30 +36,43 @@ class OpportunityController extends Controller
 
     }
 
+
+
+
+
+    
+   public function create()
+    {
+        
+        return view('CRM.Opportunity.createOpportunity');
+
+     }
+
+
      public function store(Request $request)
 
      { 
                      $client = new Client();
                     $response = $client->request('POST', 'http://localhost:8002/api/v1/opportunities', [
                     'form_params' => [
-                    'opportunities_deal_owner' => $request->opportunities_deal_owner,
-                    'opportunities_account_name' => $request->opportunities_account_name,
-                    'opportunities_type'=> $request->opportunities_type,
-                    'opportunities_lead_id' => $request->opportunities_lead_id,
-                    'opportunities_campaign_id' => $request->opportunities_campaign_id,
-                    'opportunities_contact_id' => $request->opportunities_contact_id,
-                    'opportunities_amount' => $request->opportunities_amount,
-                    'opportunities_closing_date' => $request->opportunities_closing_date,
-                    'opportunities_stage' => $request->opportunities_stage,
-                    'opportunities_probability' => $request->opportunities_probability,
-                    'opportunities_expected_revenue' => $request->opportunities_expected_revenue,
-                    'opportunities_description' => $request->opportunities_description
+                    'opportunity_deal_owner' => $request->opportunity_deal_owner,
+                    'opportunity_deal_namer' => $request->opportunity_deal_name,
+                    'opportunity_account_name' => $request->opportunity_account_name,
+                    'opportunity_type'=> $request->opportunity_type,
+                    'opportunity_lead_id' => $request->opportunity_lead_id,
+                    'opportunity_campaign_id' => $request->opportunity_campaign_id,
+                    'opportunity_contact_id' => $request->opportunity_contact_id,
+                    'opportunity_amount' => $request->opportunity_amount,
+                    'opportunity_closing_date' => $request->opportunity_closing_date,
+                    'opportunity_stage' => $request->opportunity_stage,
+                    'opportunity_probability' => $request->opportunity_probability,
+                    'opportunity_expected_revenue' => $request->opportunity_expected_revenue,
+                    'opportunity_description' => $request->opportunity_description
                     ]
                 ]);
                     return redirect('/opportunity');
 
      }
-
 
      public function show($id)
 
@@ -68,7 +81,7 @@ class OpportunityController extends Controller
          return response()->json($opportunity);
      }
 
-     public function edit(Lead $lead)
+     public function edit(Opportunity $opportunity)
 
 
     {
@@ -81,18 +94,19 @@ class OpportunityController extends Controller
         $client = new Client();
         $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunities".$id, [
                     'form_params' => [
-                    'opportunities_deal_owner' => $request->opportunities_deal_owner,
-                    'opportunities_account_name' => $request->opportunities_account_name,
-                    'opportunities_type'=> $request->opportunities_type,
-                    'opportunities_lead_id' => $request->opportunities_lead_id,
-                    'opportunities_campaign_id' => $request->opportunities_campaign_id,
-                    'opportunities_contact_id' => $request->opportunities_contact_id,
-                    'opportunities_amount' => $request->opportunities_amount,
-                    'opportunities_closing_date' => $request->opportunities_closing_date,
-                    'opportunities_stage' => $request->opportunities_stage,
-                    'opportunities_probability' => $request->opportunities_probability,
-                    'opportunities_expected_revenue' => $request->opportunities_expected_revenue,
-                    'opportunities_description' => $request->opportunities_description
+                    'opportunity_deal_owner' => $request->opportunity_deal_owner,
+                    'opportunity_deal_namer' => $request->opportunity_deal_name,
+                    'opportunity_account_name' => $request->opportunity_account_name,
+                    'opportunity_type'=> $request->opportunity_type,
+                    'opportunity_lead_id' => $request->opportunity_lead_id,
+                    'opportunity_campaign_id' => $request->opportunity_campaign_id,
+                    'opportunity_contact_id' => $request->opportunity_contact_id,
+                    'opportunity_amount' => $request->opportunity_amount,
+                    'opportunity_closing_date' => $request->opportunity_closing_date,
+                    'opportunity_stage' => $request->opportunity_stage,
+                    'opportunity_probability' => $request->opportunity_probability,
+                    'opportunity_expected_revenue' => $request->opportunity_expected_revenue,
+                    'opportunity_description' => $request->opportunity_description
                     ]
     ]);
         return response()->json(['success'=>'200']);        

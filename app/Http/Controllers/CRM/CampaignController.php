@@ -10,6 +10,20 @@ use GuzzleHttp\Client;
 
 class CampaignController extends Controller
 {
+
+
+
+     function get_singel_data($idd)
+    {
+        $data = DB::table('campaigns')->where('campaign_id',$idd )->first();
+               
+        return $data;
+    }
+
+
+
+
+
     
         public function index()
 
@@ -67,12 +81,14 @@ class CampaignController extends Controller
 
 
 
-     public function edit(Campaign $campaign)
-
+     public function edit($idd)
 
     {
-        //
+       $campaign = $this->get_singel_data($idd);
+            
+        return view('CRM.Campaign.editCampaign',['campaign'=>$campaign]);
     }
+    
 
      public function update(Request $request, $id)
 
