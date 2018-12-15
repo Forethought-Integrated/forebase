@@ -1,30 +1,27 @@
 @extends('layouts.adminApp')
 
-@section('title', 'Dashboard')
+@section('title', '|  Create Opportunity')
 
 @section('headAdminScriptUpdate')
-
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
 @endsection
 
 @section('ContentHeader(Page_header)')
 
-<div class="row mb-2">
-    <div class="col-sm-6">
-      <h1>Opportunity Form</h1>
-    </div>
-    <div class="col-sm-6">
-      <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active">Opportunityt Form</li>
-      </ol>
-    </div>
-  </div>
+ <h1>
+    <i class="fa"></i>Opportunity Form
+  </h1>
+  
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Create Opportunity</li>
+  </ol>
 
 @endsection
 
 @section('MainContent')
 
-<div class="row">
+    <div class="row">
     <!--  column -->
     <div class="col-md-12">
       <!-- Horizontal Form -->
@@ -171,3 +168,5 @@
 @section('bodyScriptUpdate')
  
 @endsection
+
+

@@ -1,30 +1,30 @@
 @extends('layouts.adminApp')
 
-@section('title', 'ListLead')
+@section('title', '| Lead')
 
 @section('headAdminScriptUpdate')
-
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
 @endsection
 
 @section('ContentHeader(Page_header)')
 
-<div class="row mb-2">
-        <div class="col-sm-6">
-          <!-- <h1>Lead</h1>
- -->        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Lead List</li>
-          </ol>
-        </div>
-      </div>
+ <h1>
+    <i class="fa"></i>Lead 
+    <a href="/lead/create" title="">
+          <i class="fa fa-edit"> create</i>
+  </a>
+  </h1>
+  
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Lead List</li>
+  </ol>
 
 @endsection
 
 @section('MainContent')
 
-<div class="row">
+    <div class="row">
         <div class="col-sm-12">
   
           <div class="card">
@@ -96,26 +96,13 @@
         </div>
         <!-- /.col -->
         
-{{--  {{print_r($pdf)  }}  --}}
-        {{--  <form  method="get" action="{{ url('lead',['download'=>'pdf']) }}">  --}}
-            {{--  <form  method="get" action="{{ route('lead/pdf',['download'=>'pdf']) }}">
-            <button type="download" class="btn btn-success float-right">Download PDF</button>
-        </form>
-      </div>
-      <!-- /.row -->    --}}
 
-      {{--  <a href="{{ url('lead'.'/'.'download')}}">Download PDF</a>
-
-      <a href="{{ url('lead/report/download') }}">Download report PDF</a>
-
-      <a href="{{ url('lead/pdf') }}">Download PDF PDF</a>  --}}
-            {{--  <a href="{{ url('lead/report/view') }}">view PDF</a>  --}}
-
-           
-
+    </div>
 
 @endsection
 
 @section('bodyScriptUpdate')
  
 @endsection
+
+

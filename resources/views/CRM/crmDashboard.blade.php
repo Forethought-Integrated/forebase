@@ -77,13 +77,7 @@
       </div>
     </div>
 
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/social" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-      </div>
-    </div>
+    
 
        
 
