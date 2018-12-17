@@ -76,14 +76,14 @@ class ContactController extends Controller
      {
          $contact = Contact::find($id);
          return response()->json($contact);
+         
      }
 
 
       public function edit(Contact $contact)
 
-
     {
-        //
+         return view('CRM.Contact.editContact');
     }
 
      public function update(Request $request, $id)

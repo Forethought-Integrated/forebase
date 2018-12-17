@@ -32,8 +32,6 @@
         <div class="card-header">
           <h3 class="card-title">Opportunity List</h3>
         </div>
-       
-
         <!-- /.card-header -->
         <div class="card-body">
         <div  class="table-responsive">
@@ -66,13 +64,12 @@
              <td>{{$opportunities['opportunity_contact_id']}}</td>
              <td>{{$opportunities['opportunity_amount']}}</td>
              <td>{{$opportunities['opportunity_stage']}}</td>
-
                 <td>
-                <a class="btn btn-small btn-primary" href="{{ $opportunitydata['dataArray']['data']['0']['opportunity_id'] }}">Edit</a>
+                <a class="btn btn-small btn-primary" href="{{ url('opportunity'.'/'.$opportunitydata['dataArray']['data']['0']['opportunity_id']) }}">Edit</a>
                     </td>
 
                       <td>
-                       <form action="{{ $opportunitydata['dataArray']['data']['0']['opportunity_id'] }}" method="post">
+                       <form action="{{url('opportunity'.'/'.$opportunitydata['dataArray']['data']['0']['opportunity_id']) }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>
