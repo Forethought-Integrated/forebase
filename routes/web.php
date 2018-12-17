@@ -15,8 +15,22 @@
 //     return view('welcome');
 // });
 
-// Auth::routes();
+Auth::routes();
 use GuzzleHttp\Client;
+
+
+// Route::middleware('auth')->group(function () {
+ Route::group(['middleware' => ['auth']], function () {
+   
+    Route::get('/', function () {
+    return view('/dashboard/dashboard');
+});
+
+    Route::get('/crm', function () {
+    return view('/CRM/crmDashboard');
+});
+
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -29,7 +43,8 @@ Route::get('/knowledge', function () {
     return view('/knowledge/knowledge');
 });
 
-// Route::get('/socialjson/', 'Post\PostController@indexjson');
+
+
 Route::get('/socialjson', function () {
 
 	$client = new Client();
@@ -96,7 +111,7 @@ Route::get('crmjson',  function () {
 //  Lead Module***********************
 
 Route::resource('lead', 'CRM\LeadController');
-Route::get('crmjson',  function () {
+Route::get('leadcrmjson',  function () {
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/leads');
         $leadJson=$res->getBody();
@@ -157,26 +172,19 @@ Route::resource('customer', 'CRM\AccountController');
 
 // Route::get('/social', function () {
 
+// --Comment Blade
+Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
+Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
+Route::resource('/comment', 'Comment\CommentController');
+Route::resource('/reaction', 'PostReaction\PostReactionController');
 
-//     $client = new Client();
-//         $res = $client->request('GET', 'http://localhost:8001/api/post');
+// ./Comment Blade
 
-//         // return $res->getStatusCode();
-//         // return $res->getBody();
-//         $posts=$res->getBody();
-
-//          $area = json_decode($posts, true);
-    
- 
-//    return view('socialapp')->with('post', $posts);
-//     // return view('socialapp',['post',compact($area)]);
-//     // return view('socialapp',compact($area));
-// });
 
 Route::get('/logo/{id}', 'Logo\LogoController@show');
 
 
-Route::get('/', 'PostController@index')->name('home');
+// Route::get('/', 'PostController@index')->name('home');
 
 Route::resource('users', 'UserController');
 

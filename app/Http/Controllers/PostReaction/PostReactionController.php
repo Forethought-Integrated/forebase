@@ -6,6 +6,8 @@ namespace App\Http\Controllers\PostReaction;
 use App\Model\PostReaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+
 
 
 class PostReactionController extends Controller
@@ -19,12 +21,22 @@ class PostReactionController extends Controller
 
     public function store(Request $request)
     {
-        // $postreaction = PostReaction::create($request->all());
-        $postreaction=new PostReaction();    
-        $postreaction->reaction_name=$request['reaction'];
-        $postreaction->save(); 
 
-        return response()->json($postreaction, 201);
+        $client = new Client();
+        $response = $client->request('POST', 'http://localhost:8001/api/reaction', [
+                    'form_params' => [
+                    'postID' => $request->postID,
+                    'userID' => $request->user()->id,
+                    'reactionID' => $request->reaction
+                    ]
+    ]);
+       return redirect('/social');
+        // $postreaction = PostReaction::create($request->all());
+        // $postreaction=new PostReaction();    
+        // $postreaction->reaction_name=$request['reaction'];
+        // $postreaction->save(); 
+
+        // return response()->json($postreaction, 201);
     }
 
     public function show($id)
@@ -36,11 +48,22 @@ class PostReactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $postsreaction = PostReaction::findOrFail($id);
-        $postsreaction->update(['reaction_name' => $request->reaction]);
-        // $postreaction->update($request->all());
 
-        return response()->json($postreaction, 200);
+        $client = new Client();
+        $response = $client->request('POST', 'http://localhost:8001/api/reaction', [
+                    'form_params' => [
+                    'postID' => $request->postID,
+                    'userID' => $request->user()->id,
+                    'reactionID' => $request->reactionID
+                    ]
+    ]);
+       return redirect('/social');
+
+        // $postsreaction = PostReaction::findOrFail($id);
+        // $postsreaction->update(['reaction_name' => $request->reaction]);
+        // // $postreaction->update($request->all());
+
+        // return response()->json($postreaction, 200);
     }
 
     public function destroy($id)

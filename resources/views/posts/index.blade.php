@@ -10,7 +10,7 @@
                        <br>
                        <a href="/permissions">Permissions</a>
                        <br>
-                       <a href="/social">Social</a>
+                       <a href="/socialapp">Social</a>
                        <br>
                        
 

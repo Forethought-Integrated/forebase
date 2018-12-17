@@ -1,15 +1,25 @@
-@extends('layouts.app')
+{{-- @extends('layouts.vkadminApp') --}}
+@extends('layouts.newAdminApp')
 
 @section('title', '| Permissions')
 
-@section('content')
+@section('headAdminScriptUpdate')
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+@endsection
 
-<div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i>Available Permissions
+@section('ContentHeader(Page_header)')
 
-    <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
+ <h1>Available Permissions
+        <small>Control panel</small>
+      </h1>
+      <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
     <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a></h1>
-    <hr>
+
+
+@endsection
+
+@section('MainContent')
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
 
@@ -38,7 +48,11 @@
     </div>
 
     <a href="{{ URL::to('permissions/create') }}" class="btn btn-success">Add Permission</a>
-
-</div>
+    
 
 @endsection
+
+@section('bodyScriptUpdate')
+ 
+@endsection
+

@@ -131,4 +131,31 @@ $('#'+commentDivID).css("display","block");
 });
 
 
-// Comment Funtionlty
+// ./Comment Funtionlty
+
+// Reaction Funtionlty
+$('.post').find('.interaction').find('.reacted').on('click',function(event){
+	event.preventDefault();
+console.log("hello reacted");
+// var URL='/social/reaction/'+post_id;
+	
+	
+// 	$.ajax({
+//     url: URL,
+//     type: "POST",
+//     // data: {_token: CSRF_TOKEN, postid:post_id, like:'1'},
+//     data: {_token: CSRF_TOKEN, likeData:{post_id:post_id,like:'1'}},
+//     cache: 'false',
+//     success: function (data) {
+// 	console.log(data);
+// 	 $('#'+likeId).text('1');
+
+//     },
+//     error: function(err){
+//         console.log("ajaxPosterror"+this.url);
+//     }
+// });
+
+});
+
+// ./Reaction Funtionlty
