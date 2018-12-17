@@ -20,15 +20,9 @@ class CampaignController extends Controller
         return $data;
     }
 
-
-
-
-
-    
         public function index()
 
     { 
-
         $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/campaigns');
         $campaignJson=$res->getBody();

@@ -74,11 +74,10 @@
                    <td>{{$leads['lead_mobileNo']}}</td>
                    <td>{{$leads['lead_email']}}</td>
                    <td>
-                    <a class="btn btn-small btn-primary" href=" {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}">Edit</a>
+                    <a class="btn btn-small btn-primary" href=" {{ url('lead'.'/'.$leaddata['dataArray']['data']['0']['lead_service_code'] )}}">Edit</a>
                     </td>
-
                     <td>
-                    <form action=" {{ $leaddata['dataArray']['data']['0']['lead_service_code'] }}" method="post">
+                    <form action=" {{url('lead'.'/'.$leaddata['dataArray']['data']['0']['lead_service_code']) }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>

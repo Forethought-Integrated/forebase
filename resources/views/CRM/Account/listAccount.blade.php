@@ -58,11 +58,11 @@
                <td>{{$accounts['account_email']}}</td>
                <td>{{$accounts['account_website']}}</td>
                <td>
-                <a class="btn btn-small btn-primary" href="{{$accountdata['dataArray']['data']['0']['account_id']}}">Edit</a>
+                <a class="btn btn-small btn-primary" href="{{url('account'. '/'.$accountdata['dataArray']['data']['0']['account_id'])}}">Edit</a>
                     </td>
 
                       <td>
-                       <form action="{{$accountdata['dataArray']['data']['0']['account_id']}}" method="post">
+                       <form action="{{url('account'.'/'.$accountdata['dataArray']['data']['0']['account_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>

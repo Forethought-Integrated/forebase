@@ -64,11 +64,11 @@
              <td>{{$campaigns['campaign_endDate']}}</td>
              <td>{{$campaigns['campaign_budgetCost']}}</td>
                 <td>
-                <a class="btn btn-small btn-primary" href="{{ $campaigndata['dataArray']['data']['0']['campaign_id'] }}">Edit</a>
+                <a class="btn btn-small btn-primary" href="{{url('campaign'.'/'.$campaigndata['dataArray']['data']['0']['campaign_id'])}}">Edit</a>
                     </td>
-
                       <td>
-                       <form action="{{ $campaigndata['dataArray']['data']['0']['campaign_id'] }}" method="post">
+                       <form action="{{url('campaign'.'/'.$campaigndata['dataArray']['data']['0']['campaign_id'])
+                     }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>
