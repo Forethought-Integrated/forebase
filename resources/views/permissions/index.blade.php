@@ -1,5 +1,5 @@
 {{-- @extends('layouts.vkadminApp') --}}
-@extends('layouts.newAdminApp')
+@extends('layouts.adminApp')
 
 @section('title', '| Permissions')
 
