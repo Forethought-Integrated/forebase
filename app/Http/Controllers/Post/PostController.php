@@ -9,41 +9,32 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use GuzzleHttp\Client;
 
-// use App\Like;
 
 class PostController extends Controller
 {
-    // protected URL='http://denterp.com/socialapi/api/';
 
-    public function reaction(Request $request, $id)
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
     {
-       // $post = Post::where('post_id',$id)->update(['post_body' => $request->postBodyData]);
-        
-        $like=new Like();
-        $like->post_id=$request->likeData['post_id'];
-        $like->user_id=$request->user()->id;
-        $like->like=$request->likeData['like'];
-        $like->save();
-        return response()->json(['da'=>$request->likeData['post_id'],'all'=>$request->likeData]);
+        $this->ENV_URL = env('API_SOCIAL');
+        $this->URL=$this->ENV_URL.'post/';    
+                // $this->middleware('auth');
     }
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8001/api/post');
+        $res = $client->request('GET', $this->URL);
         // return $res->getStatusCode();
         // return $res->getBody();
         $posts=$res->getBody();
         $area = json_decode($posts, true);
         // return view('socialapp')->with('post', $posts);
         // if(Auth::user()->id==)
-
 
         $postData['post']=$area;
         // $postData['updateView']=$;
@@ -72,7 +63,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $client = new Client();
-        $response = $client->request('POST', 'http://localhost:8001/api/post', [
+        $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'body' => $request->body,
                     'user_id' => $request->user()->id,
@@ -116,7 +107,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
        $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8001/api/post/".$id, [
+        $response = $client->request('PUT', $this->URL.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->postBodyData,
@@ -141,7 +132,7 @@ class PostController extends Controller
 
 
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8001/api/post/'.$id);
+        $res = $client->request('DELETE', $this->URL.$id);
         return redirect('/social');
     }
 }

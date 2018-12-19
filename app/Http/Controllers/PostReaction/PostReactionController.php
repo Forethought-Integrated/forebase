@@ -12,6 +12,22 @@ use GuzzleHttp\Client;
 
 class PostReactionController extends Controller
 {
+
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_SOCIAL');
+        $this->URL=$this->ENV_URL.'reaction/';    
+                // $this->middleware('auth');
+    }
+
+
+
+
     public function index()
     {
         $postreactions = PostReaction::latest()->get();
@@ -23,7 +39,7 @@ class PostReactionController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', 'http://localhost:8001/api/reaction', [
+        $response = $client->request('POST', $URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -50,7 +66,7 @@ class PostReactionController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', 'http://localhost:8001/api/reaction', [
+        $response = $client->request('POST', $URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -58,18 +74,16 @@ class PostReactionController extends Controller
                     ]
     ]);
        return redirect('/social');
-
-        // $postsreaction = PostReaction::findOrFail($id);
-        // $postsreaction->update(['reaction_name' => $request->reaction]);
-        // // $postreaction->update($request->all());
-
         // return response()->json($postreaction, 200);
     }
 
     public function destroy($id)
     {
-        PostReaction::destroy($id);
+        // PostReaction::destroy($id);
+        $client = new Client();
+        $res = $client->request('DELETE', $URL.$id);
+        return redirect('/social');
 
-        return response()->json(null, 204);
+        // return response()->json(null, 204);
     }
 }

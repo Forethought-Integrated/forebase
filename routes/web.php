@@ -16,7 +16,7 @@
 // });
 
 Auth::routes();
-// use GuzzleHttp\Client;
+use GuzzleHttp\Client;
 
 
 // Route::middleware('auth')->group(function () {
@@ -40,11 +40,11 @@ Route::get('/knowledge', function () {
 Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');
 Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
 Route::resource('/social', 'Post\PostController');
-Route::resource('/comment', 'Comment\CommentController');
-// --Comment Blade
-// Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
-// Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
 // Route::resource('/comment', 'Comment\CommentController');
+// --Comment Blade
+Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
+Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
+Route::resource('/comment', 'Comment\CommentController');
 Route::resource('/reaction', 'PostReaction\PostReactionController');
 // ./Social Blade
 
@@ -82,3 +82,19 @@ Route::get('/admin', function () {
     return view('admin/admin');
 });
 // ./Permission Module
+
+
+Route::get('/socialjson', function () {
+
+	$client = new Client();
+        $res = $client->request('GET', 'http://localhost:8001/api/post');
+
+        // return $res->getStatusCode();
+        // return $res->getBody();
+        $posts=$res->getBody();
+
+         $area = json_decode($posts, true);
+         $postData['posts']=$area;
+
+        return view('social.socialjson',['posts' => $postData]);
+});

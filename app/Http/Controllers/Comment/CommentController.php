@@ -11,6 +11,21 @@ use GuzzleHttp\Client;
 
 class CommentController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_SOCIAL');
+        $this->URL=$this->ENV_URL.'comment/';    
+                // $this->middleware('auth');
+    }
+
+
+
+ 
     public function index()
     {
         $comments = Comments::latest()->get();
@@ -22,7 +37,7 @@ class CommentController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', 'http://localhost:8001/api/comment', [
+        $response = $client->request('POST', $URL, [
                     'form_params' => [
                     'commentBody' => $request->body,
                     'userID' => $request->user()->id,
@@ -43,27 +58,29 @@ class CommentController extends Controller
 
     public function update(Request $request, $id)
     {
-        return 'hi';
+        
          $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8001/api/comment/".$id, [
+        $response = $client->request('PUT', $URL.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->commentView,
                     ]
     ]);
-        return response()->json(['success'=>'200']);
+        // return response()->json(['success'=>'200']);
         
         // $comments = Comments::findOrFail($id);
         // $comments->update($request->all());
 
         // return response()->json($comments, 200);
+       return redirect('/social');
+
     }
 
     public function destroy($id)
     {
         // return 'delete';
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8001/api/comment/'.$id);
+        $res = $client->request('DELETE', $URL.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);
