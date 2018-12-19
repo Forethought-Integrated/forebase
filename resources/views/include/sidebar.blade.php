@@ -3,10 +3,9 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        
         <div class="pull-left image">
-           <!-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> -->
-           <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image">
+           <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image">
+           {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
         </div>
         <div class="pull-left info">
           <a href="{{ url('users'.'/'.Auth::user()->id)}}">
