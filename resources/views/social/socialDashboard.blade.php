@@ -1,5 +1,4 @@
-{{-- @extends('layouts.vkadminApp') --}}
-@extends('layouts.newAdminApp')
+@extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
 

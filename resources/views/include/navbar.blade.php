@@ -33,6 +33,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
+                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         Support Team
@@ -46,6 +47,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user3-128x128.jpg")}}" class="img-circle" alt="User Image">
+                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -58,6 +60,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user4-128x128.jpg")}}" class="img-circle" alt="User Image">
+                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         Developers
@@ -249,11 +252,22 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ url('users'.'/'.Auth::user()->id)}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                  </form>
                 </div>
+                <!-- <p>
+                   <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                Logout   
+              </a>
+                </p> -->
               </li>
             </ul>
           </li>
@@ -267,3 +281,4 @@
   {{-- ./Menu --}}
 
 </header>
+

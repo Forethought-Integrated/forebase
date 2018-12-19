@@ -4,11 +4,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image">
+           <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image">
+           {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
         </div>
         <div class="pull-left info">
-          <p>{{Auth::user()->name}}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="{{ url('users'.'/'.Auth::user()->id)}}">
+            <p>{{Auth::user()->name}}</p>
+          </a>
+          <a href="{{ url('users'.'/'.Auth::user()->id)}}  "><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -65,7 +68,7 @@
 
         {{-- CRM --}}
         <li>
-          <a href="crm">
+          <a href="/crm">
             <img src="{{asset("/img/admin/sidebar/icon/crm3.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>CRM</span>
@@ -89,7 +92,7 @@
 
         {{-- Permission & Role --}}
         <li>
-          <a href="permissions">
+          <a href="/permissions">
             <i class="fa fa-th"></i> <span>Permission & Role</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>

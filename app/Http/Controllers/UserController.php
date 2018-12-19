@@ -84,8 +84,34 @@ class UserController extends Controller {
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function show($id) {
-        return redirect('users'); 
+    public function show($idd) {
+        // Old In permission Module Modified By Vikram On 17 Dec 2018
+        // To get specific user Profile
+            // return redirect('users'); 
+        // ./Old In permission Module Modified By Vikram On 17 Dec 2018
+        //  New Code For Fetching Specific User Detail
+
+            $iddd=Auth::user()->id;
+
+            if($idd == $iddd)
+            {
+                // $user = DB::table('users')->where('id',$idd )->first();
+                $user = User::findOrFail($idd);
+
+            // working show user profile
+                return view('userProfile.showUser', ['users' => $user]);            
+                // return view('userProfle.editShowUser', ['users' => $user]);
+            }
+            else
+            {
+
+                $user = DB::table('users')->where('id',$idd )->first();
+
+            // working show user profile
+                return view('userProfile.showUser', ['users' => $user]);            
+            }
+        //  ./New Code For Fetching Specific User Detail
+
     }
 
     /**
