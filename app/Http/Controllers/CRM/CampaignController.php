@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\CRM;
+
 // use App\Campaign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,7 +45,7 @@ class CampaignController extends Controller
 
      {
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/campaigns', [
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/campaign', [
                     'form_params' => [
                     'campaign_name' => $request->campaign_name,
                     'campaign_type' => $request->campaign_type,
@@ -88,7 +89,7 @@ class CampaignController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/campaigns".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/campaign/{id}".$id, [
                     'form_params' => [
                     'campaign_name' => $request->campaign_name,
                     'campaign_type' => $request->campaign_type,
@@ -114,7 +115,7 @@ class CampaignController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/campaigns'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/campaign/{id}'.$id);
         return redirect('/campaign');
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\CRM;
+
 // use App\Lead;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,8 +29,7 @@ class LeadController extends Controller
     }
 
 
-
-   public function create()
+      public function create()
     {
         
         return view('CRM.Lead.createLead');
@@ -42,7 +42,7 @@ class LeadController extends Controller
      { 
 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/leads', [
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/lead', [
                     'form_params' => [
                     'lead_service_code' => $request->lead_service_code,
                     'lead_name' => $request->lead_name,
@@ -72,12 +72,11 @@ class LeadController extends Controller
                     'lead_total' => $request->lead_total,
                     'lead_Currency' => $request->lead_Currency,
                     'lead_Location' => $request->lead_Location
-                                ]
+                    ]
                 ]);
                 return redirect('/lead');
 
      }
-
 
      public function show($id)
 
@@ -92,7 +91,7 @@ class LeadController extends Controller
 
 
     {
-        //
+       return view('CRM.Lead.editLead');
     }
 
 
@@ -101,7 +100,7 @@ class LeadController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/leads".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/lead/{id}".$id, [
                     'form_params' => [
                     'lead_service_code' => $request->lead_service_code,
                     'lead_name' => $request->lead_name,
@@ -142,7 +141,7 @@ class LeadController extends Controller
 
      {  
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/leads'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/lead/{id}'.$id);
         return redirect('/lead');
      }
 

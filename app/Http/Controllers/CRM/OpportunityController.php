@@ -35,11 +35,6 @@ class OpportunityController extends Controller
         return view('CRM.Opportunity.listOpportunity')->with('opportunitydata', $opportunityData);
 
     }
-
-
-
-
-
     
    public function create()
     {
@@ -52,8 +47,8 @@ class OpportunityController extends Controller
      public function store(Request $request)
 
      { 
-                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/opportunities', [
+                    $client = new Client();
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/opportunity', [
                     'form_params' => [
                     'opportunity_deal_owner' => $request->opportunity_deal_owner,
                     'opportunity_deal_namer' => $request->opportunity_deal_name,
@@ -85,14 +80,14 @@ class OpportunityController extends Controller
 
 
     {
-        //
+         return view('CRM.Opportunity.editOpportunity');
     }
 
         public function update(Request $request, $id)
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunities".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunity/{id}".$id, [
                     'form_params' => [
                     'opportunity_deal_owner' => $request->opportunity_deal_owner,
                     'opportunity_deal_namer' => $request->opportunity_deal_name,
@@ -117,7 +112,7 @@ class OpportunityController extends Controller
      {  
 
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/opportunities'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/opportunity/{id}'.$id);
         return redirect('/opportunity');
      }
 

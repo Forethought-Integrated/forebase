@@ -59,8 +59,12 @@
                <td>{{$accounts['account_mobileNo']}}</td>
                <td>{{$accounts['account_email']}}</td>
                <td>{{$accounts['account_website']}}</td>
-               <td>
+               <!-- <td>
                 <a class="btn btn-small btn-primary" href="{{url('account'. '/'.$accountdata['dataArray']['data']['0']['account_id'])}}">Edit</a>
+                    </td> -->
+
+                    <td>
+                <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$accounts['account_id'])}}">Edit</a>
                     </td>
 
                       <td>

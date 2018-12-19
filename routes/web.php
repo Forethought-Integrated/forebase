@@ -79,7 +79,7 @@ Route::resource('/comment', 'Comment\CommentController');
 // Account Modul********************
 
 Route::resource('account', 'CRM\AccountController');
-Route::get('crmjson',  function () {
+Route::get('accountcrmjson',  function () {
 
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/accounts');
@@ -96,7 +96,7 @@ Route::get('crmjson',  function () {
 //  Contact Module***************
 
 Route::resource('contact', 'CRM\ContactController');
-Route::get('crmjson',  function () {
+Route::get('contactcrmjson',  function () {
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/contacts');
         $contactJson=$res->getBody();
@@ -126,7 +126,7 @@ Route::get('leadcrmjson',  function () {
 //  Campaign Module****************** 
 
 Route::resource('campaign', 'CRM\CampaignController');
-Route::get('crmjson',  function () {
+Route::get('campaigncrmjson',  function () {
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/campaigns');
         $campaignJson=$res->getBody();
@@ -142,7 +142,7 @@ Route::get('crmjson',  function () {
 //  Opportunity******************
 
 Route::resource('opportunity', 'CRM\OpportunityController');
-Route::get('crmjson',  function () {
+Route::get('opportunitycrmjson',  function () {
     $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunities');
         $opportunityJson=$res->getBody();

@@ -56,7 +56,7 @@
              <tr>
              <td>{{$opportunities['opportunity_id']}}</td>
              <td>{{$opportunities['opportunity_deal_owner']}}</td>
-             <td><a href="{{ url('opportunity'.'/'.$opportunities['opportunity_deal_name'])}}">{{$opportunities['opportunity_deal_name']}}</a></td>
+             <td><a href="{{ url('opportunity'.'/'.$opportunities['opportunity_id'])}}">{{$opportunities['opportunity_deal_name']}}</a></td>
              
              <td>{{$opportunities['opportunity_account_name']}}</td>
              <td>{{$opportunities['opportunity_lead_id']}}</td>

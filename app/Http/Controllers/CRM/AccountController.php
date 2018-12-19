@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\CRM;
+
 // use App\Account;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,7 @@ class AccountController extends Controller
 
      { 
                     $client = new Client();
-                     $response = $client->request('POST', 'http://localhost:8002/api/v1/accounts', [
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/account', [
                     'form_params' => [
                     'account_name' => $request->account_name,
                     'account_email' => $request->account_email,
@@ -63,25 +64,28 @@ class AccountController extends Controller
      public function show($id)
 
      {
-        $account = Account::find($id);
-        return response()->json($account, 200);
+        $account = Account::where('id',$id);
+        // return response()->json($account, 200);
+
+        return view('CRM.Account.showAccount',['account'=>$account]);
      }
-
-
 
 
      public function edit(Account $account)
 
 
     {
-        return view('CRM.Account.editAccount');
+        $account = Account::find($id);
+        return view('CRM.Account.editAccount',['account'=>$account]);
     }
+
+
 
      public function update(Request $request, $id)
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/accounts".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/account/{id}".$id, [
                     'form_params' => [
                     'account_name' => $request->account_name,
                     'account_email' => $request->account_email,
@@ -97,14 +101,15 @@ class AccountController extends Controller
                     'account_GSTNo' => $request->account_GSTNo
                     ]
     ]);
-        return response()->json(['success'=>'200']);        
+        // return response()->json(['success'=>'200']); 
+         return redirect('/account');       
      }
 
       public function destroy($id)
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/accounts'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/account/{id}'.$id);
         return redirect('/account');
     }
 

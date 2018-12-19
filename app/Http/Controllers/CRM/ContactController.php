@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\CRM;
+
 // use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactResources;
+use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 
 
@@ -43,7 +45,7 @@ class ContactController extends Controller
      {  
 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/contacts', [
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/contact', [
                     'form_params' => [
                     'contact_type' => $request->contact_type,
                     'contact_name' => $request->contact_name,
@@ -90,7 +92,7 @@ class ContactController extends Controller
 
      {  
          $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/contacts".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/contact/{id}".$id, [
                     'form_params' => [
                     'contact_type' => $request->contact_type,
                     'contact_name' => $request->contact_name,
@@ -111,7 +113,7 @@ class ContactController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/contacts'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1//contact/{id}'.$id);
         return redirect('/contact');
     }
 
