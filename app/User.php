@@ -23,7 +23,7 @@ class User extends Authenticatable
     // use HasApiTokens, Notifiable;
     // ./Forethought-vikram added for passport   05/dec/18
 
-
+    protected $guarded = [];
 
     /**
      * The attributes that are mass assignable.
@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','avatar','lastName','gender','mobileNo','address','locationCode','salutationCode','designationCode'
     ];
 
     /**

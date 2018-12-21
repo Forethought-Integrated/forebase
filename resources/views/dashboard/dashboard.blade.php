@@ -1,4 +1,4 @@
-@extends('layouts.newAdminApp')
+@extends('layouts.adminApp')
 
 @section('title', 'AppsStore')
 

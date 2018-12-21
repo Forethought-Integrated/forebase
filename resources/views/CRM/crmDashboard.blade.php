@@ -1,5 +1,4 @@
-{{-- @extends('layouts.vkadminApp') --}}
-@extends('layouts.newAdminApp')
+@extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
 
@@ -28,9 +27,7 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/account" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-          <br>
-          <b>Accounts</b>
+          <img src="{{asset("/img/crm_dashboard/Accounts.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
@@ -39,9 +36,7 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/campaign" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-          <br>
-          <b>Campaigns</b>
+          <img src="{{asset("/img/crm_dashboard/Campaigns.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
@@ -50,9 +45,7 @@
      <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/contact" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-           <br>
-          <b>Contacts</b>
+          <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
@@ -60,9 +53,7 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/lead" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-           <br>
-          <b>Leads</b>
+          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
@@ -71,8 +62,7 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/opportunity" title="">
-          <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
-           <b>Opportunities</b>
+          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>

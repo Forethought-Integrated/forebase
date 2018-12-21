@@ -87,14 +87,27 @@ Route::get('/admin', function () {
 Route::get('/socialjson', function () {
 
 	$client = new Client();
-        $res = $client->request('GET', 'http://localhost:8001/api/post');
+    // http://localhost:8002/api/v1/account
+        // $res = $client->request('GET', 'http://localhost:8002/api/v1/account/');
+        // // $res = $client->request('GET', 'http://localhost:8001/api/post');
 
-        // return $res->getStatusCode();
-        // return $res->getBody();
-        $posts=$res->getBody();
+        // // return $res->getStatusCode();
+        // // return $res->getBody();
+        // $posts=$res->getBody();
 
-         $area = json_decode($posts, true);
-         $postData['posts']=$area;
+        //  $area = json_decode($posts, true);
+        //  $postData['posts']=$area;
 
-        return view('social.socialjson',['posts' => $postData]);
+        // return view('social.socialjson',['posts' => $postData]);
+
+
+
+     $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
+        $accountJson=$res->getBody();
+        $account = json_decode($accountJson, true);
+        // $accountData['dataArray']=$account;
+        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
+        $data['account']=$account;
+        return view('social.socialjson',['data' => $data]);
+
 });

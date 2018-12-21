@@ -159,3 +159,16 @@ console.log("hello reacted");
 });
 
 // ./Reaction Funtionlty
+
+
+// CRM
+// --Enabel Form Field of CRM
+// $('.editFormField').on('click',function(event){
+// 	event.preventDefault();
+// console.log("hello editFormField");
+// });
+	// editFormField
+// --Enabel Form Field of CRM
+
+
+// ./CRM

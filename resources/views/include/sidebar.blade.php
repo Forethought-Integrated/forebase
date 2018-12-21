@@ -4,8 +4,8 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-           <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image">
-           {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
+           {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}
+           <img src="{{url("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <a href="{{ url('users'.'/'.Auth::user()->id)}}">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      {{-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -23,7 +23,7 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> --}}
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -45,11 +45,11 @@
         {{-- Social --}}
         <li>
           <a href="/social">
-             <img src="{{asset("/img/admin/sidebar/icon/social2.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+             <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px"> 
             <i class="fa "></i> <span>Social</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
@@ -58,9 +58,11 @@
         {{-- File Manager --}}
         <li>
           <a href="/knowledge">
-            <i class="fa fa-th"></i> <span>File Manager</span>
+            <img src="{{asset("/img/sidebar/File_Manager.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style="width: 30px">
+            <i class="fa "></i> <span>File Manager</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
@@ -69,11 +71,11 @@
         {{-- CRM --}}
         <li>
           <a href="/crm">
-            <img src="{{asset("/img/admin/sidebar/icon/crm3.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+            <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>CRM</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
@@ -82,9 +84,11 @@
         {{-- HelpDesk --}}
         <li>
           <a href="#">
-            <i class="fa fa-th"></i> <span>HelpDesk</span>
+            <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>HelpDesk</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
@@ -93,9 +97,11 @@
         {{-- Permission & Role --}}
         <li>
           <a href="/permissions">
-            <i class="fa fa-th"></i> <span>Permission & Role</span>
+            <img src="{{asset("/img/sidebar/Permission_&_role.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Permission & Role</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>

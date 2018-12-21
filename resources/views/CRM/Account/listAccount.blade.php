@@ -1,103 +1,118 @@
 @extends('layouts.adminApp')
 
-@section('title', '|  List Account')
+@section('title', 'ListAccount')
 
 @section('headAdminScriptUpdate')
-<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+
+<!-- DataTables -->
+  <link rel="stylesheet" href="{{asset("/admin_lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
+
 @endsection
 
 @section('ContentHeader(Page_header)')
 
-  
   <h1>
-    <i class="fa"></i>Account 
+    Account List
     <a href="/account/create" title="">
-          <i class="fa fa-edit"> create</i>
-  </a>
+      <i class="fa fa-edit"> create</i>
+    </a>
   </h1>
-  
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Account List</li>
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Account LIst</li>
   </ol>
 
 
 @endsection
 
 @section('MainContent')
-
-    
 <div class="row">
-    <div class="col-12">
-
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Account List</h3>
-        </div>
-       
-        <!-- /.card-header -->
-        <div class="card-body">
-          <table id="example1" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <td>Account ID</td>
-                <td>Account Name</td>
-                <td>Mobile No</td>
-                <td>Email</td>
-                <td>Website</td>
-                <td>Edit</td>
-                <td>Delete</td>
-              </tr>
-            </thead>
-            <tbody>
-
-             @foreach($accountdata['dataArray']['data'] as $accounts)
-             <tr>
-                <td>{{$accounts['account_id']}}</td>
-                <td><a href="{{ url('account'.'/'.$accounts['account_id'])}}">{{$accounts['account_name']}}</a></td>
-              <!--  <td>{{$accounts['account_name']}}</td> -->
-               <td>{{$accounts['account_mobileNo']}}</td>
-               <td>{{$accounts['account_email']}}</td>
-               <td>{{$accounts['account_website']}}</td>
-               <!-- <td>
-                <a class="btn btn-small btn-primary" href="{{url('account'. '/'.$accountdata['dataArray']['data']['0']['account_id'])}}">Edit</a>
-                    </td> -->
-
-                    <td>
-                <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$accounts['account_id'])}}">Edit</a>
-                    </td>
-
-                      <td>
-                       <form action="{{url('account'.'/'.$accountdata['dataArray']['data']['0']['account_id'])}}" method="post">
+   {{-- column --}}
+  <div class="col-md-12">
+    {{-- Box --}}
+    <div class="box">
+            <div class="box-header">
+              {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Account ID</th>
+                  <th>Account Name</th>
+                  <th>Mobile No</th>
+                  <th>Email</th>
+                  <th>Website</th>
+                  {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                  @foreach($data['account']['data'] as $accounts)
+                    <tr>
+                      <td>{{$accounts['account_id']}}</td>
+                      <td><a href="{{ url('account'.'/'.$accounts['account_id'])}}">{{$accounts['account_name']}}</a></td>
+                      {{-- <td>{{$accounts['account_name']}}</td> --}}
+                      <td>{{$accounts['account_mobileNo']}}</td>
+                      <td>{{$accounts['account_email']}}</td>
+                      <td>{{$accounts['account_website']}}</td>
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$accounts['account_id'])}}">Edit</a>
+                      </td>
+       --}}                <td>
+                       <form action="{{url('account'.'/'.$accounts['account_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn btn-danger" type="submit">Delete</button>
+                          <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
                       </td>
-
-
-               
-             </tr>
-          
-
-                @endforeach
-            
-              
-              </tbody>
-            </table>
+                    </tr>
+                  @endforeach
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Account ID</th>
+                  <th>Account Name</th>
+                  <th>Mobile No</th>
+                  <th>Email</th>
+                  <th>Website</th>
+                  {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
           </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-      </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row -->
+          <!-- /.box -->
+    {{-- ./BOx --}}
+  </div>
+  {{--  ./Col  --}}
+</div>
+<!-- /.row -->
 
 @endsection
 
 @section('bodyScriptUpdate')
+
+<!-- DataTables -->
+<script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("/admin_lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+{{-- Page Script--}}
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+{{-- ./Page Script--}}
  
 @endsection
-
-

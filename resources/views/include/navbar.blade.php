@@ -33,7 +33,6 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
-                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         Support Team
@@ -47,7 +46,6 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user3-128x128.jpg")}}" class="img-circle" alt="User Image">
-                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -221,13 +219,18 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="user-image" alt="User Image">
+                <img src="{{asset("/storage/uploads/avatar/Auth::user()->avatar")}}" class="img-circle" alt="User Image">
+                {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}  
+
+                {{-- <img src="{{asset("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle" alt="User Image"> --}}
+
               <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image">
+                <img src="{{asset("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle" alt="User Image">
+                {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}
 
                 <p>
                   {{Auth::user()->name}} - Full Stack Developer
@@ -235,7 +238,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              {{-- <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
@@ -249,7 +252,8 @@
                 </div>
                 <!-- /.row -->
               </li>
-              <!-- Menu Footer-->
+               --}}
+               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="{{ url('users'.'/'.Auth::user()->id)}}" class="btn btn-default btn-flat">Profile</a>

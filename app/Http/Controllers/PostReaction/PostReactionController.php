@@ -39,7 +39,7 @@ class PostReactionController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', $URL, [
+        $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -66,7 +66,7 @@ class PostReactionController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', $URL, [
+        $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -81,7 +81,7 @@ class PostReactionController extends Controller
     {
         // PostReaction::destroy($id);
         $client = new Client();
-        $res = $client->request('DELETE', $URL.$id);
+        $res = $client->request('DELETE', $this->URL.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

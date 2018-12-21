@@ -21,8 +21,9 @@
 {{--$posts['posts']['data']['0']['postBody']--}}
 </p>
         
-
-<pre>{{print_r($posts)}}</pre>
+{{-- {{$data['account']}} --}}
+<pre>{{print_r($data['account']['data'])}}</pre>
+<pre>{{print_r($data)}}</pre>
 
       </div>
     </div>

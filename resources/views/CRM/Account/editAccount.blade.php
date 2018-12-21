@@ -8,17 +8,14 @@
 
 @section('ContentHeader(Page_header)')
 
-<div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Account Form</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active">Account Form</li>
-          </ol>
-        </div>
-      </div>
+  <h1>
+    Account Detail
+    
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Account Detail</li>
+  </ol>
 
 @endsection
 
@@ -27,141 +24,112 @@
   <!--  column -->
   <div class="col-md-12">
     <!-- Horizontal Form -->
-    <div class="card card-info">
-      <div class="card-header">
-        <center><h3 class="card-title">Enter Detail</h3></center>
-      </div>
+    <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Detail</h3>
+            </div>
       <!-- /.card-header -->
 
-      <!-- form start -->
-      <form class="form-horizontal" action="/account" method="POST">
-        {{ csrf_field() }}
-        <div class="card-body">
-         <div class="container-fluid">
-          <div class="row">
-          <div class="col-md-6">
-          <div class="form-group">
-          <label for="inputName" class="col-sm-8 control-label">Account Name</label>
+      {{-- form--}}
+      <form role="form" action="/account/{{$data['account']['id']}}" method="POST">
+        {{csrf_field()}}
+        @method('PUT')
+        <div class="row">
+            {{-- Left Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
+                <div class="form-group">
+                  <label for="accountName" >Account Name</label>
+                  <input type="text" class="form-control enabelInputField" id="accountName" name="accountName" value="{{$data['account']['account_name']}}" >
+                </div>
+                
 
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="Name" name="Name" value="{{ $account->account_name }}" disabled />
+                <div class="form-group">
+                  <label for="accountAddress" >Account Address</label>
+                      <input type="text" class="form-control enabelInputField" id="accountAddress" name="accountAddress" value="{{$data['account']['account_address']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountWebsite" >Website</label>
+                  <input type="text" class="form-control enabelInputField" id="accountWebsite" name="accountWebsite" value="{{$data['account']['account_website']}}" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="accountEmail" >Email Id</label>
+                  <input type="email" class="form-control enabelInputField" id="accountEmail" name="accountEmail" value="{{$data['account']['account_email']}}" >
+                </div>
+                
+                <div class="form-group">
+                  <label for="accountMobileNo" >Mobile No.</label>
+                  <input type="Tell" class="form-control enabelInputField" id="accountMobileNo" name="accountMobileNo" value="{{$data['account']['account_mobileNo']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountLandlineNo" >Landline No.</label>
+                  <input type="Tell" class="form-control enabelInputField" id="accountLandlineNo" name="accountLandlineNo" value="{{$data['account']['account_landlineNo']}}" >
+                </div>
+
+              </div>
+              {{-- ./FormBOXBody --}}
             </div>
-          </div>
+            {{-- ./Left Form Field --}}
 
-             <div class="form-group">
-            <label for="inputAddress" class="col-sm-8 control-label">Account Address</label>
+            {{-- RIght Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
 
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="Address" name="Address" value="{{ $account->account_address }}" disabled />
+                <div class="form-group">
+                  <label for="accountCity" >City</label>
+                  <input type="text" class="form-control enabelInputField" id="accountCity" name="accountCity" value="{{$data['account']['account_city']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountState" >State</label>
+                  <input type="text" class="form-control enabelInputField" id="accountState" name="accountState" value="{{$data['account']['account_state']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountCountry" >Country</label>
+                  <input type="text" class="form-control enabelInputField" id="accountCountry" name="accountCountry" value="{{$data['account']['account_country']}}" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="accountPinCode" >Pin Code</label>
+                  <input type="text" class="form-control enabelInputField" id="accountPinCode" name="accountPinCode" value="{{$data['account']['account_pincode']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountPanNo" >Pan No.</label>
+                  <input type="text" class="form-control enabelInputField" id="accountPanNo" name="accountPanNo" value="{{$data['account']['account_panNo']}}" >
+                </div>
+
+                <div class="form-group">
+                  <label for="accountGSTNo" >GST No.</label>
+                  <input type="text" class="form-control enabelInputField" id="accountGSTNo" name="accountGSTNo" value="{{$data['account']['account_GSTNo']}}" >
+                </div>
+
+
+              </div>
+              {{-- ./FormBOXBody --}} 
+
+
             </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="inputWebsite" class="col-sm-8 control-label">Website</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="Website" name="Website" value="{{ $account->account_website }}" disabled />
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="inputEmail" class="col-sm-8 control-label">Email Id</label>
-
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="Email" name="Email" value="{{ $account->account_email }}" disabled />
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="inputMobileNo" class="col-sm-8 control-label">Mobile No.</label>
-
-            <div class="col-sm-10">
-              <input type="Tell" class="form-control" id="MobileNo" name="MobileNo" value="{{ $account->account_mobileNo }}" disabled />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputLandlineNo" class="col-sm-8 control-label">Landline No.</label>
-
-            <div class="col-sm-10">
-              <input type="Tell" class="form-control" id="LandlineNo" name="LandlineNo" value="{{ $account->account_landlineNo }}" disabled />
-            </div>
-          </div>
-</div>
-       <div class="col-md-6">
-
-
-          <div class="form-group">
-            <label for="inputCity" class="col-sm-8 control-label">City</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="City" name="City" value="{{ $account->account_city }}" disabled />
-            </div>
-          </div>
-
-           <div class="form-group">
-            <label for="inputState" class="col-sm-8 control-label">State</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="State" name="State" value="{{ $account->account_state }}"
-              disabled />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputCountry" class="col-sm-8 control-label">Country</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="Country" name="Country" value="{{ $account->account_country }}" disabled />
-            </div>
-          </div>
-
-
-           <div class="form-group">
-            <label for="inputPincode" class="col-sm-8 control-label">Pin Code.</label>
-
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="Pincode" name="Pincode" value="{{ $account->account_pincode }}" disabled />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputPanNo" class="col-sm-8 control-label">Pan No.</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="PanNo" name="PanNo" value="{{ $account->account_panNo }}"
-              disabled />
-            </div>
-          </div>
-
-           <div class="form-group">
-            <label for="inputGstNo" class="col-sm-8 control-label">GST No.</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="GstNo" name="GstNo" value="{{ $account->account_GSTNo }}"
-              disabled />
-            </div>
-          </div>
-
-
-      </div>  
-
-      </div>
-      </div>
-         
-                        
+            {{-- ./RIght Form Field --}}
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          <button type="submit" class="btn btn-info float-right">Update</button>
-        </div>
-        <!-- /.card-footer -->
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div> 
       </form>
-      
+      {{-- ./Form --}}
     </div>
-{{--  ./Horizonantal Form  --}}
+    {{--  ./Horizonantal Form  --}}
   </div>
   {{--  ./Col  --}}
 </div>

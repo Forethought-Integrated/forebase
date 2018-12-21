@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers\UserProfile;
 
-use App\Http\Requests\UserProfileRequest;
+// use App\Http\Requests\UserProfileRequest;
 use App\Model\UserProfile;
-use App\Model\User;
+use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Image;
+
+
+//Importing laravel-permission models
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 
 class UserProfileController extends Controller
@@ -73,23 +81,43 @@ class UserProfileController extends Controller
      public function edit($idd)
     {
 
-            $user = $this->get_singel_data($idd);
+            // $user = $this->get_singel_data($idd);
+
+        $user = User::findOrFail($idd); //Get user with specified id
+        $roles = Role::get(); //Get all roles
+        $userData['user']=$user;
+        $userData['role']=$roles;
             
         // show the view and pass the lead to it
-        return view('User.editShowUser',['user'=>$user]);
+        // return view('User.editShowUser',['userData'=>$userData]);
+        return view('userProfile.editShowUser',['users'=>$user]);
 
     }
 
-    public function update(UserProfileRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        // $userprofile = UserProfile::findOrFail($id);
-        // $userprofile->update($request->all());
+        // return $request->all();
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        if($request->hasFile('avatarFile')){
+            // return 'hi';
+        $avatar=$request->file('avatarFile');
+        $filename = time().'.'.$avatar->getClientOriginalExtension();
+        // Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatar/'.$filename));
+        Image::make($avatar)->resize(300,300)->save(public_path('/storage/uploads/avatar/'.$filename));
+
+        // $user = Auth::user();
+        $user->avatar = $filename;
+        $user->save();
+    }
+
+            // $this->uploadImage($request);
+
+        // return $user;
 
         // return response()->json($userprofile, 200);
-
-                 DB::table('users')->where('id', $id)->update(['name' => $request->name]);
-
-              return redirect('/user');
+        return redirect("/users/$id");
 
 
     }
@@ -118,8 +146,8 @@ class UserProfileController extends Controller
     {
         //$name = $request->name;
 
-    if($request->hasFile('avatar')){
-        $avatar=$request->file('avatar');
+    if($request->hasFile('avatarFile')){
+        $avatar=$request->file('avatarFile');
         $filename = time().'.'.$avatar->getClientOriginalExtention();
         // Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatar/'.$filename));
         Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatar/'.$filename));
@@ -132,6 +160,7 @@ class UserProfileController extends Controller
 
     //return view('showUserProfile', ['users' => $user]);
     return redirect()->back();
+    // return '1';
     }
 
 
