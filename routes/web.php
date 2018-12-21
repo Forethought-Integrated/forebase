@@ -64,6 +64,12 @@ Route::resource('customer', 'CRM\AccountController');
 //  ./CRM----------------------------------------------------------------------------------------------  
 // Route::get('/social', function () {
 
+//  HelpDesk
+
+Route::resource('helpdesk', 'Helpdesk\BoardController');
+
+// ./ HelpDesk
+
 
 // Permission Module
 Route::get('/logo/{id}', 'Logo\LogoController@show');
