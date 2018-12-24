@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\CRM;
+namespace App\Http\Controllers\Helpdesk;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 
-class AccountController extends Controller
+class BoardController extends Controller
 {
     /**
      * Create a new controller instance.

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\CRM;
+namespace App\Http\Controllers\Helpdesk;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 
-class AccountController extends Controller
+class BoardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +17,6 @@ class AccountController extends Controller
     public function index()
 
     { 
-
         $client = new Client();
         $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
         $accountJson=$res->getBody();
