@@ -12,14 +12,14 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Contect List
+    Card
     <a href="/contact/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Contact LIst</li>
+    <li class="active">Card</li>
   </ol>
 
 
@@ -39,30 +39,24 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <td>Contact ID</td>
-                <td>Contact Type</td>
-                <td>Name</td>
-                <td>Mobile No</td>
-                <td>Landline No</td>
-                <td>Email</td>
+                <th>Card ID</th>
+                <th>Card Name</th>
+                <th>Card Description</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['contact']['data'] as $data)
+                  @foreach($data['card']['cards'] as $data)
                     <tr>
-                      <td>{{$data['contact_id']}}</td>
-                      <td>{{$data['contact_type']}}</td>
-                      <td><a href="{{ url('contact'.'/'.$data['contact_id'])}}">{{$data['contact_name']}}</a></td> 
-                      <td>{{$data['contact_mobileNo']}}</td>
-                      <td>{{$data['contact_landlineNo']}}</td>
-                      <td>{{$data['contact_email']}}</td>
+                      <td>{{$data['id']}}</td>
+                      <td><a href="{{ url('card'.'/'.$data['id'])}}">{{$data['name']}}</a></td> 
+                      <td>{{$data['description']}}</td>
       {{--            <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('contact'.'/'.$data['contact_id'])}}">Edit</a>
+                        <a class="btn btn-small btn-primary" href="{{ url('card'.'/'.$data['id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('contact'.'/'.$data['contact_id'])}}" method="post">
+                       <form action="{{ url('card'.'/'.$data['id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn" type="submit">Delete</button>
@@ -74,12 +68,9 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <td>Contact ID</td>
-                <td>Contact Type</td>
-                <td>Name</td>
-                <td>Mobile No</td>
-                <td>Landline No</td>
-                <td>Email</td>
+                <th>Card ID</th>
+                <th>Card Name</th>
+                <th>Card Description</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

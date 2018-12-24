@@ -49,7 +49,7 @@
                   @foreach($data['board'] as $data)
                     <tr>
                       <td>{{$data['id']}}</td>
-                      <td><a href="{{ url('board'.'/'.$data['id'])}}">{{$data['name']}}</a></td> 
+                      <td><a href="{{ url('board'.'/'.$data['id'].'/'.Auth::user()->id.'/'.'list')}}">{{$data['name']}}</a></td> 
       {{--            <td>
                         <a class="btn btn-small btn-primary" href="{{ url('board'.'/'.$data['board_id'])}}">Edit</a>
                       </td>

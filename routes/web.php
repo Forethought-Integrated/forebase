@@ -77,22 +77,19 @@ Route::delete('/board/{boardID}/{userID}','Helpdesk\BoardController@destroy');
 
 
 
-// Route::get('/boards/{boardID}/{userID}/list','ListController@index');
-// Route::post('/boards/{boardID}/{userID}/list','ListController@store');
-// Route::get('/boards/{boardID}/{userID}/list/{listID}','ListController@show');
-// Route::put('/boards/{boardID}/list/{listID}','ListController@update');
-// Route::delete('/boards/{boardID}/{userID}/list/{listID}','ListController@destroy');
+Route::get('/board/{boardID}/{userID}/list','Helpdesk\ListController@index');
+Route::post('/board/{boardID}/{userID}/list','Helpdesk\ListController@store');
+Route::get('/board/{boardID}/{userID}/list/{listID}','Helpdesk\ListController@show');
+Route::put('/board/{boardID}/list/{listID}','Helpdesk\ListController@update');
+Route::delete('/board/{boardID}/{userID}/list/{listID}','Helpdesk\ListController@destroy');
 
 
 
-// Route::get('/boards/{boardID}/{userID}/list/{listID}/card','CardController@index');
-
-// Route::post('/boards/{boardID}/{userID}/list/{listID}/card','CardController@store');
-
-// Route::get('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@show');
-
-// Route::put('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@update');
-// Route::delete('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@destroy');
+Route::get('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@index');
+Route::post('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@store');
+Route::get('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@show');
+Route::put('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@update');
+Route::delete('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@destroy');
 
 
 
@@ -121,25 +118,11 @@ Route::get('/admin', function () {
 Route::get('/socialjson', function () {
 
 	$client = new Client();
-    // http://localhost:8002/api/v1/account
-        // $res = $client->request('GET', 'http://localhost:8002/api/v1/account/');
-        // // $res = $client->request('GET', 'http://localhost:8001/api/post');
-
-        // // return $res->getStatusCode();
-        // // return $res->getBody();
-        // $posts=$res->getBody();
-
-        //  $area = json_decode($posts, true);
-        //  $postData['posts']=$area;
-
-        // return view('social.socialjson',['posts' => $postData]);
-
-
-
-     $res = $client->request('GET', 'http://localhost:8003/boards/'.'1');
-       $boardJson=$res->getBody();
-        $board = json_decode($boardJson, true);
-        $data['board']=$board;
-        return view('social.socialjson',['data' => $data]);
+    // $res = $client->request('GET', 'http://localhost:8003/board/'.'1'.'/'.'1'.'/'.'list');
+    $res = $client->request('GET', 'http://localhost:8003/boards/'.'1'.'/'.'1'.'/'.'list'.'/'.'1'.'/'.'card');
+    $cardJson=$res->getBody();
+    $card = json_decode($cardJson, true);
+    $data['card']=$card;
+    return view('social.socialjson',['data' => $data]);
 
 });
