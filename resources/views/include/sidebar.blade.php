@@ -83,7 +83,7 @@
 
         {{-- HelpDesk --}}
         <li>
-          <a href="#">
+          <a href="/board/{{Auth::user()->id}}">
             <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>HelpDesk</span>

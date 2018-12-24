@@ -8,23 +8,32 @@ use GuzzleHttp\Client;
 
 class BoardController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_HELPDESKURL');
+        $this->URL=$this->ENV_URL.'boards/';    
+                // $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function index()
+    public function index($userID)
 
     { 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
-        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
-        $data['account']=$account;
-        return view('CRM.Account.listAccount')->with('data', $data);
+        $res = $client->request('GET',  $this->URL.$userID);
+        $boardJson=$res->getBody();
+        $board = json_decode($boardJson, true);
+        $data['board']=$board;
+        return view('helpdesk.board.listBoard')->with('data', $data);
 
     }
 
@@ -32,7 +41,7 @@ class BoardController extends Controller
       public function create()
     {
         
-        return view('CRM.Account.createAccount');
+        return view('helpdesk.board.createBoard');
 
      }
 
@@ -56,7 +65,7 @@ class BoardController extends Controller
                     'account_GSTNo' => $request->accountGSTNo
                     ]
                 ]);
-                    return redirect('/account');
+                    return redirect('/board');
      }
 
      public function show($id)
@@ -74,13 +83,13 @@ class BoardController extends Controller
 
         // return view('social.socialjson',['posts' => $accountData]);
         
-        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
+        // return view('helpdesk.board.listAccount')->with('accountdata', $accountData);
 
 
         // $account = Account::where('id',$id);
         // return response()->json($account, 200);
 
-        return view('CRM.Account.showAccount',['data'=>$data]);
+        return view('helpdesk.board.showAccount',['data'=>$data]);
      }
 
 
@@ -94,7 +103,7 @@ class BoardController extends Controller
         $data['account']=$account;
 
         // $account = Account::find($id);
-        return view('CRM.Account.editAccount',['data'=>$data]);
+        return view('helpdesk.board.editAccount',['data'=>$data]);
     }
 
 

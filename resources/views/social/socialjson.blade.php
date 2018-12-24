@@ -22,7 +22,7 @@
 </p>
         
 {{-- {{$data['account']}} --}}
-<pre>{{print_r($data['account']['data'])}}</pre>
+<pre>{{print_r($data['board'])}}</pre>
 <pre>{{print_r($data)}}</pre>
 
       </div>

@@ -68,6 +68,34 @@ Route::resource('customer', 'CRM\AccountController');
 
 Route::resource('helpdesk', 'Helpdesk\BoardController');
 
+
+Route::get('/board/{userID}','Helpdesk\BoardController@index');
+Route::get('/board/{boardID}/{userID}','Helpdesk\BoardController@show');
+Route::post('/board/{userID}','Helpdesk\BoardController@store');
+Route::put('/board/{boardID}/{userID}','Helpdesk\BoardController@update');
+Route::delete('/board/{boardID}/{userID}','Helpdesk\BoardController@destroy');
+
+
+
+// Route::get('/boards/{boardID}/{userID}/list','ListController@index');
+// Route::post('/boards/{boardID}/{userID}/list','ListController@store');
+// Route::get('/boards/{boardID}/{userID}/list/{listID}','ListController@show');
+// Route::put('/boards/{boardID}/list/{listID}','ListController@update');
+// Route::delete('/boards/{boardID}/{userID}/list/{listID}','ListController@destroy');
+
+
+
+// Route::get('/boards/{boardID}/{userID}/list/{listID}/card','CardController@index');
+
+// Route::post('/boards/{boardID}/{userID}/list/{listID}/card','CardController@store');
+
+// Route::get('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@show');
+
+// Route::put('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@update');
+// Route::delete('/boards/{boardID}/{userID}/list/{listID}/card/{cardID}','CardController@destroy');
+
+
+
 // ./ HelpDesk
 
 
@@ -108,12 +136,10 @@ Route::get('/socialjson', function () {
 
 
 
-     $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
-        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
-        $data['account']=$account;
+     $res = $client->request('GET', 'http://localhost:8003/boards/'.'1');
+       $boardJson=$res->getBody();
+        $board = json_decode($boardJson, true);
+        $data['board']=$board;
         return view('social.socialjson',['data' => $data]);
 
 });
