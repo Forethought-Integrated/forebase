@@ -70,6 +70,7 @@ Route::resource('helpdesk', 'Helpdesk\BoardController');
 
 
 Route::get('/board/{userID}','Helpdesk\BoardController@index');
+Route::get('/board/{userID}/create','Helpdesk\BoardController@create');
 Route::get('/board/{boardID}/{userID}','Helpdesk\BoardController@show');
 Route::post('/board/{userID}','Helpdesk\BoardController@store');
 Route::put('/board/{boardID}/{userID}','Helpdesk\BoardController@update');

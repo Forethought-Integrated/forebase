@@ -38,37 +38,26 @@ class BoardController extends Controller
     }
 
 
-      public function create()
+      public function create($userID)
     {
         
         return view('helpdesk.board.createBoard');
 
      }
 
-     public function store(Request $request)
+     public function store(Request $request,$userID)
 
      { 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/account', [
+                    $response = $client->request('POST',  $this->URL.$userID, [
                     'form_params' => [
-                    'account_name' => $request->accountName,
-                    'account_email' => $request->accountEmail,
-                    'account_mobileNo'=> $request->accountMobileNo,
-                    'account_landlineNo' => $request->accountLandlineNo,
-                    'account_address' => $request->accountAddress,
-                    'account_website' => $request->accountWebsite,
-                    'account_city' => $request->accountCity,
-                    'account_state' => $request->accountState,
-                    'account_country' => $request->accountCountry,
-                    'account_pincode' => $request->accountPinCode,
-                    'account_panNo' => $request->accountPanNo,
-                    'account_GSTNo' => $request->accountGSTNo
+                    'name' => $request->BoardName
                     ]
                 ]);
-                    return redirect('/board');
+                    return redirect('/board/'.$userID);
      }
 
-     public function show($id)
+     public function show($userID)
 
      {
 

@@ -13,7 +13,7 @@
 
   <h1>
     Board List
-    <a href="/contact/create" title="">
+    <a href="/board/{{Auth::user()->id}}/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
