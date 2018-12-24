@@ -13,25 +13,19 @@ class CampaignController extends Controller
 {
 
 
-
-     function get_singel_data($idd)
-    {
-        $data = DB::table('campaigns')->where('campaign_id',$idd )->first();
-               
-        return $data;
-    }
-
         public function index()
 
     { 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaigns');
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign');
         $campaignJson=$res->getBody();
         $campaign = json_decode($campaignJson, true);
-        $campaignData['dataArray']=$campaign;
-        return view('CRM.Campaign.listCampaign')->with('campaigndata', $campaignData);
+        // $campaignData['dataArray']=$campaign;
+        $data['campaign']=$campaign;
+        return view('CRM.Campaign.listCampaign')->with('data', $data);
 
     }
+
 
 
       public function create()
@@ -47,67 +41,78 @@ class CampaignController extends Controller
                     $client = new Client();
                     $response = $client->request('POST', 'http://localhost:8002/api/v1/campaign', [
                     'form_params' => [
-                    'campaign_name' => $request->campaign_name,
-                    'campaign_type' => $request->campaign_type,
-                    'campaign_description '=> $request->campaign_description,
-                    'campaign_startDate' => $request->campaign_startDate,
-                    'campaign_endDate' => $request->campaign_endDate,
-                    'campaign_description' => $request->campaign_description,
-                    'campaign_budgetCost' => $request->campaign_budgetCost,
-                    'utm_website_url' => $request->utm_website_url,
-                    'utm_campaign_source' => $request->utm_campaign_source,
-                    'utm_Campaign_Medium' => $request->utm_Campaign_Medium,
-                    'utm_campaign_name' => $request->utm_campaign_name,
-                    'utm_campaign_term' => $request->utm_campaign_term,
-                    'utm_campaign_term' => $request->utm_campaign_term,
-                    'utm_campaign_content' => $request->utm_campaign_content
+                    'campaign_name' => $request->Name,
+                    'campaign_type' => $request->Type,
+                    'campaign_description '=> $request->description,
+                    'campaign_startDate' => $request->startDate,
+                    'campaign_endDate' => $request->endDate,
+                    'campaign_budgetCost' => $request->budgetCost,
+                    'utm_website_url' => $request->utmWebsiteUrl,
+                    'utm_campaign_source' => $request->utmCampaignSource,
+                    'utm_Campaign_Medium' => $request->utmCampaignMedium,
+                    'utm_campaign_name' => $request->utmCampaignName,
+                    'utm_campaign_term' => $request->utmCampaignTerm,
+                    'utm_campaign_content' => $request->utmCampaignContent
                     ]
                 ]);
                 return redirect('/campaign');
      }
 
+
      public function show($id)
 
      {
-         $campaign = Campaign::find($id);
-         return response()->json($campaign, 200);
+
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign/'.$id);
+        $campaignJson=$res->getBody();
+        $campaign = json_decode($campaignJson, true);
+        
+         $data['campaign']=$campaign;
+
+        return view('CRM.Campaign.showCampaign',['data'=>$data]);
 
      }
 
 
 
-     public function edit($idd)
+
+     public function edit($id)
 
     {
-       $campaign = $this->get_singel_data($idd);
-            
-        return view('CRM.Campaign.editCampaign',['campaign'=>$campaign]);
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign/'.$id);
+        $campaignJson=$res->getBody();
+        $campaign = json_decode($campaignJson, true);
+        
+         $data['campaign']=$campaign;
+
+        return view('CRM.Campaign.editCampaign',['data'=>$data]);
     }
-    
+
 
      public function update(Request $request, $id)
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/campaign/{id}".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/campaign/".$id, [
                     'form_params' => [
-                    'campaign_name' => $request->campaign_name,
-                    'campaign_type' => $request->campaign_type,
-                    'campaign_description '=> $request->campaign_description,
-                    'campaign_startDate' => $request->campaign_startDate,
-                    'campaign_endDate' => $request->campaign_endDate,
-                    'campaign_description' => $request->campaign_description,
-                    'campaign_budgetCost' => $request->campaign_budgetCost,
-                    'utm_website_url' => $request->utm_website_url,
-                    'utm_campaign_source' => $request->utm_campaign_source,
-                    'utm_Campaign_Medium' => $request->utm_Campaign_Medium,
-                    'utm_campaign_name' => $request->utm_campaign_name,
-                    'utm_campaign_term' => $request->utm_campaign_term,
-                    'utm_campaign_term' => $request->utm_campaign_term,
-                    'utm_campaign_content' => $request->utm_campaign_content
+                    'campaign_name' => $request->campaignName,
+                    'campaign_type' => $request->campaignType,
+                    'campaign_description '=> $request->description,
+                    'campaign_startDate' => $request->startDate,
+                    'campaign_endDate' => $request->endDate,
+                    'campaign_budgetCost' => $request->budgetCost,
+                    'utm_website_url' => $request->utmWebsiteUrl,
+                    'utm_campaign_source' => $request->utmCampaignSource,
+                    'utm_Campaign_Medium' => $request->utmCampaignMedium,
+                    'utm_campaign_name' => $request->utmCampaignName,
+                    'utm_campaign_term' => $request->utmCampaignTerm,
+                    'utm_campaign_content' => $request->utmCampaignContent
                     ]
     ]);
-        return response()->json(['success'=>'200']);        
+        // return response()->json(['success'=>'200']); 
+        return redirect('/campaign');       
      }
 
 
@@ -115,7 +120,7 @@ class CampaignController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/campaign/{id}'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/campaign/'.$id);
         return redirect('/campaign');
     }
 

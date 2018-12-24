@@ -22,19 +22,15 @@ class OpportunityController extends Controller
 
     {
      
-      // $opportunities =Opportunity::all();
-      // // return response()->json($opportunities);
-      // return OpportunityResources::collection(Opportunity::paginate('2'));
-
-
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunities');
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity');
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
-        $opportunityData['dataArray']=$opportunity;
-        return view('CRM.Opportunity.listOpportunity')->with('opportunitydata', $opportunityData);
+        $data['opportunity']=$opportunity;
+        return view('CRM.Opportunity.listOpportunity')->with('data', $data);
 
     }
+
     
    public function create()
     {
@@ -50,19 +46,19 @@ class OpportunityController extends Controller
                     $client = new Client();
                     $response = $client->request('POST', 'http://localhost:8002/api/v1/opportunity', [
                     'form_params' => [
-                    'opportunity_deal_owner' => $request->opportunity_deal_owner,
-                    'opportunity_deal_namer' => $request->opportunity_deal_name,
-                    'opportunity_account_name' => $request->opportunity_account_name,
-                    'opportunity_type'=> $request->opportunity_type,
-                    'opportunity_lead_id' => $request->opportunity_lead_id,
-                    'opportunity_campaign_id' => $request->opportunity_campaign_id,
-                    'opportunity_contact_id' => $request->opportunity_contact_id,
-                    'opportunity_amount' => $request->opportunity_amount,
-                    'opportunity_closing_date' => $request->opportunity_closing_date,
-                    'opportunity_stage' => $request->opportunity_stage,
-                    'opportunity_probability' => $request->opportunity_probability,
-                    'opportunity_expected_revenue' => $request->opportunity_expected_revenue,
-                    'opportunity_description' => $request->opportunity_description
+                    'opportunity_deal_owner' => $request->dealOwner,
+                    'opportunity_deal_name' => $request->dealName,
+                    'opportunity_account_name' => $request->AccountName,
+                    'opportunity_type'=> $request->Type,
+                    'opportunity_lead_id' => $request->leadID,
+                    'opportunity_campaign_id' => $request->campaignID,
+                    'opportunity_contact_id' => $request->contactID,
+                    'opportunity_amount' => $request->amount,
+                    'opportunity_closing_date' => $request->closingDate,
+                    'opportunity_stage' => $request->Satge,
+                    'opportunity_probability' => $request->Probability,
+                    'opportunity_expected_revenue' => $request->expectedRevenue,
+                    'opportunity_description' => $request->expectedRevenue
                     ]
                 ]);
                     return redirect('/opportunity');
@@ -72,39 +68,51 @@ class OpportunityController extends Controller
      public function show($id)
 
      {
-         $opportunity = Opportunity::find($id);
-         return response()->json($opportunity);
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity/' .$id);
+        $opportunityJson=$res->getBody();
+        $opportunity = json_decode($opportunityJson, true);
+        $data['opportunity']=$opportunity;
+        return view('CRM.Opportunity.showOpportunity',['data'=>$data]);
      }
 
-     public function edit(Opportunity $opportunity)
+
+     public function edit($id)
 
 
     {
-         return view('CRM.Opportunity.editOpportunity');
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity/' .$id);
+        $opportunityJson=$res->getBody();
+        $opportunity = json_decode($opportunityJson, true);
+        $data['opportunity']=$opportunity;
+        return view('CRM.Opportunity.editOpportunity',['data'=>$data]);
+         
     }
 
         public function update(Request $request, $id)
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunity/{id}".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunity/".$id, [
                     'form_params' => [
-                    'opportunity_deal_owner' => $request->opportunity_deal_owner,
-                    'opportunity_deal_namer' => $request->opportunity_deal_name,
-                    'opportunity_account_name' => $request->opportunity_account_name,
-                    'opportunity_type'=> $request->opportunity_type,
-                    'opportunity_lead_id' => $request->opportunity_lead_id,
-                    'opportunity_campaign_id' => $request->opportunity_campaign_id,
-                    'opportunity_contact_id' => $request->opportunity_contact_id,
-                    'opportunity_amount' => $request->opportunity_amount,
-                    'opportunity_closing_date' => $request->opportunity_closing_date,
-                    'opportunity_stage' => $request->opportunity_stage,
-                    'opportunity_probability' => $request->opportunity_probability,
-                    'opportunity_expected_revenue' => $request->opportunity_expected_revenue,
-                    'opportunity_description' => $request->opportunity_description
+                    'opportunity_deal_owner' => $request->dealOwner,
+                    'opportunity_deal_name' => $request->dealName,
+                    'opportunity_account_name' => $request->AccountName,
+                    'opportunity_type'=> $request->Type,
+                    'opportunity_lead_id' => $request->leadID,
+                    'opportunity_campaign_id' => $request->campaignID,
+                    'opportunity_contact_id' => $request->contactID,
+                    'opportunity_amount' => $request->amount,
+                    'opportunity_closing_date' => $request->closingDate,
+                    'opportunity_stage' => $request->Satge,
+                    'opportunity_probability' => $request->Probability,
+                    'opportunity_expected_revenue' => $request->expectedRevenue,
+                    'opportunity_description' => $request->expectedRevenue
                     ]
     ]);
-        return response()->json(['success'=>'200']);        
+        // return response()->json(['success'=>'200']);   
+        return redirect('/opportunity');     
      }
 
      public function destroy($id)
@@ -112,7 +120,7 @@ class OpportunityController extends Controller
      {  
 
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/opportunity/{id}'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/opportunity/'.$id);
         return redirect('/opportunity');
      }
 

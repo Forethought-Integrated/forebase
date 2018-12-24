@@ -1,56 +1,44 @@
 @extends('layouts.adminApp')
 
-@section('title', '| Lead')
+@section('title', 'ListAccount')
 
 @section('headAdminScriptUpdate')
-<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+
+<!-- DataTables -->
+  <link rel="stylesheet" href="{{asset("/admin_lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
+
 @endsection
 
 @section('ContentHeader(Page_header)')
 
- <h1>
-    <i class="fa"></i>Lead 
+  <h1>
+   Lead List
     <a href="/lead/create" title="">
-          <i class="fa fa-edit"> create</i>
-  </a>
+      <i class="fa fa-edit"> create</i>
+    </a>
   </h1>
-  
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Lead List</li>
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Lead LIst</li>
   </ol>
+
 
 @endsection
 
 @section('MainContent')
-
-    <div class="row">
-        <div class="col-sm-12">
-  
-          <div class="card">
-            <div class="card-header">
-                          
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <h3 class="card-title">Lead List</h3>
-                  </div>
-
-                    
-                  <div class="col-sm-6">
-                    <h3 class="card-title float-sm-right"><a href="{{ url('/pdf') }}">Download Pdf</a></h3>
-                  </div>
-                </div>
-              </div>
+<div class="row">
+   {{-- column --}}
+  <div class="col-md-12">
+    {{-- Box --}}
+    <div class="box">
+            <div class="box-header">
+              {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
             </div>
-            
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div  class="table-responsive">
-                  
-              <table id="example1" class="table table-bordered table-striped table-hover  ">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                  <tr>
+                <tr>
                     <td>Lead ID</td>
                     <td>Service Code</td>
                     <td>Name</td>
@@ -58,50 +46,78 @@
                     <td>Comapany Name</td>
                     <td>Mobile No.</td>
                     <td>Email</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
-                  </tr>
+                  {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
+                </tr>
                 </thead>
                 <tbody>
-                  
-                  @foreach($leaddata['dataArray']['data'] as $leads)
-                  <tr>
-                   <td>{{$leads['lead_id']}}</td>
-                   <td>{{$leads['lead_service_code']}}</td>
-                   <td><a href="{{ url('lead'.'/'.$leads['lead_id'])}}">{{$leads['lead_name']}}</a></td>
-                   <td>{{$leads['lead_designation']}}</td>
-                   <td>{{$leads['lead_companyName']}}</td>
-                   <td>{{$leads['lead_mobileNo']}}</td>
-                   <td>{{$leads['lead_email']}}</td>
-                   <td>
-                    <a class="btn btn-small btn-primary" href=" {{ url('lead'.'/'.$leaddata['dataArray']['data']['0']['lead_id'] )}}">Edit</a>
-                    </td>
-                    <td>
-                    <form action=" {{url('lead'.'/'.$leaddata['dataArray']['data']['0']['lead_id']) }}" method="post">
+                  @foreach($data['lead']['data'] as $data)
+                    <tr>
+                      <td>{{$data['lead_id']}}</td>
+                      <td>{{$data['lead_service_code']}}</td>
+                      <td><a href="{{ url('lead'.'/'.$data['lead_id'])}}">{{$data['lead_name']}}</a></td>
+                      <td>{{$data['lead_designation']}}</td> 
+                      <td>{{$data['lead_companyName']}}</td>
+                      <td>{{$data['lead_mobileNo']}}</td>
+                      <td>{{$data['lead_email']}}</td>
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('lead'.'/'.$data['lead_id'])}}">Edit</a>
+                      </td>
+       --}}                <td>
+                       <form action="{{url('lead'.'/'.$data['lead_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn btn-danger" type="submit">Delete</button>
+                          <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
                       </td>
-                  </tr>
+                    </tr>
                   @endforeach
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td>Lead ID</td>
+                    <td>Service Code</td>
+                    <td>Name</td>
+                    <td>Designation</td>
+                    <td>Comapany Name</td>
+                    <td>Mobile No.</td>
+                    <td>Email</td>
+                  {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
+                </tr>
+                </tfoot>
               </table>
-              </div>
             </div>
-            <!-- /.card-body -->
+            <!-- /.box-body -->
           </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        
-
-    </div>
+          <!-- /.box -->
+    {{-- ./BOx --}}
+  </div>
+  {{--  ./Col  --}}
+</div>
+<!-- /.row -->
 
 @endsection
 
 @section('bodyScriptUpdate')
+
+<!-- DataTables -->
+<script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("/admin_lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
+{{-- Page Script--}}
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+{{-- ./Page Script--}}
  
 @endsection
-
-

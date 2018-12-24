@@ -49,19 +49,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['account']['data'] as $accounts)
+                  @foreach($data['account']['data'] as $data)
                     <tr>
-                      <td>{{$accounts['account_id']}}</td>
-                      <td><a href="{{ url('account'.'/'.$accounts['account_id'])}}">{{$accounts['account_name']}}</a></td>
-                      {{-- <td>{{$accounts['account_name']}}</td> --}}
-                      <td>{{$accounts['account_mobileNo']}}</td>
-                      <td>{{$accounts['account_email']}}</td>
-                      <td>{{$accounts['account_website']}}</td>
+                      <td>{{$data['account_id']}}</td>
+                      <td><a href="{{ url('account'.'/'.$data['account_id'])}}">{{$data['account_name']}}</a></td>
+                      {{-- <td>{{$data['account_name']}}</td> --}}
+                      <td>{{$data['account_mobileNo']}}</td>
+                      <td>{{$data['account_email']}}</td>
+                      <td>{{$data['account_website']}}</td>
       {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$accounts['account_id'])}}">Edit</a>
+                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['account_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{url('account'.'/'.$accounts['account_id'])}}" method="post">
+                       <form action="{{url('account'.'/'.$data['account_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn " type="submit">Delete</button>

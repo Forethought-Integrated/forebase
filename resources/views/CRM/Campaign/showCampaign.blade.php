@@ -9,8 +9,10 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Campaign Form
-    <small>Control panel</small>
+    Campaignt Form
+        <a id="editFormField" href="/campaign/{{$data['campaign']['campaign_id']}}/edit/" title="">
+      <i class="fa fa-edit">Edit</i>
+    </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -32,9 +34,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/campaign/{{$data['campaign']['campaign_id']}}" method="POST">
-        {{ csrf_field() }}
-        @method('PUT')
+      <form role="form" >
         <div class="row">
             {{-- Left Form Field --}}
             <div class="col-md-6">
@@ -43,34 +43,34 @@
                 
                 <div class="form-group">
                   <label for="campaignName" >Campaign Name</label>
-                  <input type="text" class="form-control enabelInputField" id="campaignName" name="campaignName" value="{{$data['campaign']['campaign_name']}}">
+                  <input type="text" class="form-control enabelInputField" id="campaignName" name="campaignName" value="{{$data['campaign']['campaign_name']}}" disabled>
                 </div>
                 
 
                 <div class="form-group">
                   <label for="campaignType" >Campaign Type</label>
-                      <input type="text" class="form-control enabelInputField" id="campaignType" name="campaignType" value="{{$data['campaign']['campaign_type']}}">
+                      <input type="text" class="form-control enabelInputField" id="campaignType" name="campaignType" value="{{$data['campaign']['campaign_type']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="description" >Description</label>
-                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['campaign']['campaign_description']}}">
+                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['campaign']['campaign_description']}}" disabled>
                 </div>
 
 
                 <div class="form-group">
                   <label for="startDate" >Start Date</label>
-                  <input type="date" class="form-control enabelInputField" id="startDate" name="startDate" value="{{$data['campaign']['campaign_startDate']}}">
+                  <input type="date" class="form-control enabelInputField" id="startDate" name="startDate" value="{{$data['campaign']['campaign_startDate']}}" disabled>
                 </div>
                 
                 <div class="form-group">
                   <label for="endDate" >End Date</label>
-                  <input type="date" class="form-control enabelInputField" id="endDate" name="endDate" value="{{$data['campaign']['campaign_endDate']}}">
+                  <input type="date" class="form-control enabelInputField" id="endDate" name="endDate" value="{{$data['campaign']['campaign_endDate']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="budgetCost" >Budget Cost.</label>
-                  <input type="text" class="form-control enabelInputField" id="budgetCost" name="budgetCost" value="{{$data['campaign']['campaign_budgetCost']}}">
+                  <input type="text" class="form-control enabelInputField" id="budgetCost" name="budgetCost" value="{{$data['campaign']['campaign_budgetCost']}}" disabled>
                   
                 </div>
 
@@ -88,33 +88,33 @@
 
                 <div class="form-group">
                   <label for="utmWebsiteUrl" >UTM Website URL</label>
-                  <input type="text" class="form-control enabelInputField" id="utmWebsiteUrl" name="utmWebsiteUrl" value="{{$data['campaign']['utm_website_url']}}">
+                  <input type="text" class="form-control enabelInputField" id="utmWebsiteUrl" name="utmWebsiteUrl" value="{{$data['campaign']['utm_website_url']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignSource" >UTM Campaign Source</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignSource" name="utmCampaignSource" value="{{$data['campaign']['utm_campaign_source']}}" >
+                  <input type="text" class="form-control enabelInputField" id="utmCampaignSource" name="utmCampaignSource" value="{{$data['campaign']['utm_campaign_source']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignMedium" >UTM Campaign Medium</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignMedium" name="utmCampaignMedium" value="{{$data['campaign']['utm_Campaign_Medium']}}">
+                  <input type="text" class="form-control enabelInputField" id="utmCampaignMedium" name="utmCampaignMedium" value="{{$data['campaign']['utm_Campaign_Medium']}}" disabled>
                 </div>
 
 
                 <div class="form-group">
                   <label for="utmCampaignName" >UTM Campaign Name</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignName" name="utmCampaignName" value="{{$data['campaign']['utm_campaign_name']}}">
+                  <input type="text" class="form-control enabelInputField" id="utmCampaignName" name="utmCampaignName" value="{{$data['campaign']['utm_campaign_name']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignTerm" >UTM Campaign Term</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignTerm" name="utmCampaignTerm" value="{{$data['campaign']['utm_campaign_term']}}">
+                  <input type="text" class="form-control enabelInputField" id="utmCampaignTerm" name="utmCampaignTerm" value="{{$data['campaign']['utm_campaign_term']}}" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignContent" >UTM Campaign Content</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignContent" name="utmCampaignContent" value="{{$data['campaign']['utm_campaign_content']}}">
+                  <input type="text" class="form-control enabelInputField" id="utmCampaignContent" name="utmCampaignContent" value="{{$data['campaign']['utm_campaign_content']}}" disabled>
                 </div>
 
 
@@ -129,7 +129,7 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          <!-- <button type="submit" class="btn btn-primary">Update</butto -->
         </div> 
       </form>
       {{-- ./Form --}}

@@ -20,14 +20,13 @@ class LeadController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/leads');
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead');
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
-        $leadData['dataArray']=$lead;
-        return view('CRM.Lead.listLead')->with('leaddata', $leadData);
+        $data['lead']=$lead;
+        return view('CRM.Lead.listLead')->with('data', $data);
 
     }
-
 
       public function create()
     {
@@ -44,34 +43,34 @@ class LeadController extends Controller
                     $client = new Client();
                     $response = $client->request('POST', 'http://localhost:8002/api/v1/lead', [
                     'form_params' => [
-                    'lead_service_code' => $request->lead_service_code,
-                    'lead_name' => $request->lead_name,
-                    'lead_designation' => $request->lead_designation,
-                    'lead_companyName' => $request->lead_companyName,
-                    'lead_email' => $request->lead_email,
-                    'lead_mobileNo' => $request->lead_mobileNo,
-                    'lead_landlineNo' => $request->lead_landlineNo,
-                    'lead_address '=> $request->lead_address,
-                    'lead_city' => $request->lead_city,
-                    'lead_state' => $request->lead_state,
-                    'lead_country' => $request->lead_country,
-                    'lead_pincode' => $request->lead_pincode,
-                    'lead_utm_website_url' => $request->lead_utm_website_url,
-                    'lead_utm_campaign_source' => $request->lead_utm_campaign_source,
-                    'lead_utm_campaign_medium' => $request->lead_utm_campaign_medium,
-                    'lead_utm_campaign_name' => $request->lead_utm_campaign_name,
-                    'lead_utm_campaign_term' => $request->lead_utm_campaign_term,
-                    'lead_utm_campaign_content' => $request->lead_utm_campaign_content,
-                    'lead_activity' => $request->lead_activity,
-                    'lead_Status' => $request->lead_Status,
-                    'lead_Status_Inormation' => $request->lead_Status_Inormation,
-                    'lead_Source' => $request->lead_Source,
-                    'lead_Source_Inormation' => $request->lead_Source_Inormation,
-                    'lead_Created_By_Code' => $request->lead_Created_By_Code,
-                    'lead_Amount_Currrency' => $request->lead_Amount_Currrency,
-                    'lead_total' => $request->lead_total,
-                    'lead_Currency' => $request->lead_Currency,
-                    'lead_Location' => $request->lead_Location
+                    'lead_service_code' => $request->serviceCode,
+                    'lead_name' => $request->Name,
+                    'lead_designation' => $request->designation,
+                    'lead_companyName' => $request->companyName,
+                    'lead_email' => $request->Email,
+                    'lead_mobileNo' => $request->mobileNo,
+                    'lead_landlineNo' => $request->landLineNo,
+                    'lead_address '=> $request->Address,
+                    'lead_city' => $request->City,
+                    'lead_state' => $request->State,
+                    'lead_country' => $request->Country,
+                    'lead_pincode' => $request->PinCode,
+                    'lead_utm_website_url' => $request->UTMWebsiteURL,
+                    'lead_utm_campaign_source' => $request->UTMCampaignSource,
+                    'lead_utm_campaign_medium' => $request->UTMCampaignMedium,
+                    'lead_utm_campaign_name' => $request->UTMCampaignName,
+                    'lead_utm_campaign_term' => $request->UTMCampaignTerm,
+                    'lead_utm_campaign_content' => $request->UTMCampaignContent,
+                    'lead_activity' => $request->Activity,
+                    'lead_Status' => $request->LeadStatus,
+                    'lead_Status_Inormation' => $request->StatusInformation,
+                    'lead_Source' => $request->Source,
+                    'lead_Source_Inormation' => $request->SourceInformation,
+                    'lead_Created_By_Code' => $request->CreatedByCode,
+                    'lead_Amount_Currrency' => $request->amountCurrency,
+                    'lead_total' => $request->Total,
+                    'lead_Currency' => $request->Currency,
+                    'lead_Location' => $request->Location
                     ]
                 ]);
                 return redirect('/lead');
@@ -81,58 +80,67 @@ class LeadController extends Controller
      public function show($id)
 
      {
-         $lead = Lead::find($id);
-         return response()->json($lead, 200);
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead/' .$id);
+        $leadJson=$res->getBody();
+        $lead = json_decode($leadJson, true);
+        $data['lead']=$lead;
+        return view('CRM.Lead.showLead',['data'=>$data]);
 
     
      }
 
-     public function edit(Lead $lead)
+     public function edit($id)
 
 
     {
-       return view('CRM.Lead.editLead');
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead/' .$id);
+        $leadJson=$res->getBody();
+        $lead = json_decode($leadJson, true);
+        $data['lead']=$lead;
+        return view('CRM.Lead.editLead',['data'=>$data]);
     }
-
 
 
         public function update(Request $request, $id)
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/lead/{id}".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/lead/" .$id, [
                     'form_params' => [
-                    'lead_service_code' => $request->lead_service_code,
-                    'lead_name' => $request->lead_name,
-                    'lead_designation' => $request->lead_designation,
-                    'lead_companyName' => $request->lead_companyNam,
-                    'lead_email' => $request->lead_email,
-                    'lead_mobileNo' => $request->lead_mobileNo,
-                    'lead_landlineNo' => $request->lead_landlineNo,
-                    'lead_address '=> $request->lead_address,
-                    'lead_city' => $request->lead_city,
-                    'lead_state' => $request->lead_state,
-                    'lead_country' => $request->lead_country,
-                    'lead_pincode' => $request->lead_pincode,
-                    'lead_utm_website_url' => $request->lead_utm_website_url,
-                    'lead_utm_campaign_source' => $request->lead_utm_campaign_source,
-                    'lead_utm_campaign_medium' => $request->lead_utm_campaign_medium,
-                    'lead_utm_campaign_name' => $request->lead_utm_campaign_name,
-                    'lead_utm_campaign_term' => $request->lead_utm_campaign_term,
-                    'lead_utm_campaign_content' => $request->lead_utm_campaign_content,
-                    'lead_activity' => $request->lead_activity,
-                    'lead_Status' => $request->lead_Status,
-                    'lead_Status_Inormation' => $request->lead_Status_Inormation,
-                    'lead_Source' => $request->lead_Source,
-                    'lead_Source_Inormation' => $request->lead_Source_Inormation,
-                    'lead_Created_By_Code' => $request->lead_Created_By_Code,
-                    'lead_Amount_Currrency' => $request->lead_Amount_Currrency,
-                    'lead_total' => $request->lead_total,
-                    'lead_Currency' => $request->lead_Currency,
-                    'lead_Location' => $request->lead_Location
+                    'lead_service_code' => $request->serviceCode,
+                    'lead_name' => $request->Name,
+                    'lead_designation' => $request->designation,
+                    'lead_companyName' => $request->companyName,
+                    'lead_email' => $request->Email,
+                    'lead_mobileNo' => $request->mobileNo,
+                    'lead_landlineNo' => $request->landLineNo,
+                    'lead_address'=> $request->Address,
+                    'lead_city' => $request->City,
+                    'lead_state' => $request->State,
+                    'lead_country' => $request->Country,
+                    'lead_pincode' => $request->PinCode,
+                    'lead_utm_website_url' => $request->UTMWebsiteURL,
+                    'lead_utm_campaign_source' => $request->UTMCampaignSource,
+                    'lead_utm_campaign_medium' => $request->UTMCampaignMedium,
+                    'lead_utm_campaign_name' => $request->UTMCampaignName,
+                    'lead_utm_campaign_term' => $request->UTMCampaignTerm,
+                    'lead_utm_campaign_content' => $request->UTMCampaignContent,
+                    'lead_activity' => $request->Activity,
+                    'lead_Status' => $request->LeadStatus,
+                    'lead_Status_Inormation' => $request->StatusInformation,
+                    'lead_Source' => $request->Source,
+                    'lead_Source_Inormation' => $request->SourceInformation,
+                    'lead_Created_By_Code' => $request->CreatedByCode,
+                    'lead_Amount_Currrency' => $request->amountCurrency,
+                    'lead_total' => $request->Total,
+                    'lead_Currency' => $request->Currency,
+                    'lead_Location' => $request->Location
                     ]
     ]);
-        return response()->json(['success'=>'200']);        
+        // return response()->json(['success'=>'200']);  
+        return redirect('/lead');        
      }
 
      
@@ -141,7 +149,7 @@ class LeadController extends Controller
 
      {  
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/lead/{id}'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/lead/'.$id);
         return redirect('/lead');
      }
 

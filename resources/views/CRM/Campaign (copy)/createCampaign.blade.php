@@ -56,21 +56,20 @@
                   <div class="form-group">
                     <label for="inputName" class="col-sm-8 control-label">Campaign Name</label>
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Name" name="Name" value="{{ $campaign->campaign_name }}"
-                      >
+                      <input type="text" class="form-control" id="Name" name="Name" placeholder="Campaign Name">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputType" class="col-sm-8 control-label">Campaign Type</label>
 
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Type" name="Type" value="{{ $campaign->campaign_type }}" >
+                      <input type="text" class="form-control" id="Type" name="Type" placeholder="Campaign Type">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputDescriptin" class="col-sm-8 control-label">Description</label>
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Description" name="Description" value="{{ $campaign->campaign_description }}" >
+                      <input type="text" class="form-control" id="Description" name="Description" placeholder="Description">
                     </div>
                   </div>
                   
@@ -80,21 +79,21 @@
                     <label for="inputStartDate" class="col-sm-8 control-label">Start Date</label>
 
                     <div class="col-sm-12">
-                      <input type="date" class="form-control" id="StartDate" name="StartDate" value="{{ $campaign->campaign_startDate }}" >
+                      <input type="date" class="form-control" id="StartDate" name="StartDate">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputEndDate" class="col-sm-8 control-label">End Date</label>
 
                     <div class="col-sm-12">
-                      <input type="date" class="form-control" id="EndDate" name="EndDate" value="{{ $campaign->campaign_endDate }}" >
+                      <input type="date" class="form-control" id="EndDate" name="EndDate">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="inputBudget" class="col-sm-8 control-label">Budget Cost</label>
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Budget" name="Budget" value="{{ $campaign->campaign_budgetCost }}" >
+                      <input type="text" class="form-control" id="Budget" name="Budget" placeholder="Budget Cost">
                     </div>
                   </div>
 
@@ -140,7 +139,7 @@
                 <label for="inpututmWebsiteurl" class="col-sm-8 control-label">UTM Website URL</label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_website_url" name="utm_website_url" value="{{ $campaign->utm_website_url }}">
+                  <input type="text" class="form-control" id="utm_website_url" name="utm_website_url" placeholder="UTM Website URL">
                 </div>
               </div>
 
@@ -148,7 +147,7 @@
                 <label for="inpututmCampaignSource" class="col-sm-8 control-label">UTM Campaign Source</label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_source" name="utm_campaign_source" value="{{ $campaign->utm_campaign_source }}">
+                  <input type="text" class="form-control" id="utm_campaign_source" name="utm_campaign_source" placeholder="UTM Campaign Source">
                 </div>
               </div>
 
@@ -156,7 +155,7 @@
                 <label for="inpututmCampaignMedium" class="col-sm-8 control-label">UTM Campaign Medium</label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_medium" name="utm_Campaign_Medium" value="{{ $campaign->utm_Campaign_Medium}}">
+                  <input type="text" class="form-control" id="utm_campaign_medium" name="utm_Campaign_Medium" placeholder="UTM Campaign Medium">
                 </div>
               </div>
 
@@ -164,7 +163,7 @@
                 <label for="inputCampaignName" class="col-sm-8 control-label">UTM Campaign Name</label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_name" name="utm_campaign_name" value="{{ $campaign->utm_campaign_name}}">
+                  <input type="text" class="form-control" id="utm_campaign_name" name="utm_campaign_name" placeholder="UTM Campaign Name">
                 </div>
               </div>
 
@@ -172,7 +171,7 @@
                 <label for="inpututmCampaignTerm" class="col-sm-8 control-label">UTM Campaign Term</label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_term" name="utm_campaign_term" value="{{ $campaign->utm_campaign_term }}">
+                  <input type="text" class="form-control" id="utm_campaign_term" name="utm_campaign_term" placeholder="UTM Campaign Term">
                 </div>
               </div>
 
@@ -181,7 +180,7 @@
                 </label>
 
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_content" name="utm_campaign_content" value="{{ $campaign->utm_campaign_content}}">
+                  <input type="text" class="form-control" id="utm_campaign_content" name="utm_campaign_content" placeholder="UTM Campaign Content">
                 </div>
               </div>
 
@@ -204,7 +203,7 @@
         <div class="col-md-12">
 
           <div class="card-footer">
-            <button type="submit" class="btn btn-info float-right">Update</button>
+            <button type="submit" class="btn btn-info float-right">Submit</button>
           </div>  
 
         </div>

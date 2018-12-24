@@ -8,163 +8,140 @@
 
 @section('ContentHeader(Page_header)')
 
-<div class="row mb-2">
-    <div class="col-sm-6">
-      <h1>Opportunity Form</h1>
-    </div>
-    <div class="col-sm-6">
-      <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active">Opportunityt Form</li>
-      </ol>
-    </div>
-  </div>
+  <h1>
+    Opportunity Form
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Opportunity Form</li>
+  </ol>
 
 @endsection
 
 @section('MainContent')
-
 <div class="row">
-    <!--  column -->
-    <div class="col-md-12">
-      <!-- Horizontal Form -->
-      <div class="card card-info">
-        <div class="card-header">
-          <center><h3 class="card-title">Enter Detail</h3></center>
-        </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form class="form-horizontal" action="/opportunity" method="POST">
-          {{ csrf_field() }}
-            <div class="card-body">                
-            <div class="container-fluid">
-            <div class="row">
+  <!--  column -->
+  <div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Detail</h3>
+            </div>
+      <!-- /.card-header -->
+
+      {{-- form--}}
+      <form role="form" action="/opportunity/{{$data['opportunity']['opportunity_id']}}" method="POST">
+        {{ csrf_field() }}
+         @method('PUT')
+        <div class="row">
+            {{-- Left Form Field --}}
             <div class="col-md-6">
-            <div class="form-group">
-              <label for="inputdealowner" class="col-sm-8 control-label">Deal Owner</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="dealowner" name="dealowner" placeholder="Deal Owner">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputdealname" class="col-sm-8 control-label">Deal Name</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="dealname" name="dealname" placeholder="Deal Name">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputaccountname" class="col-sm-8 control-label">Account Name</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="accountname" name="accountname" placeholder="Account Name">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="inputtype" class="col-sm-8 control-label">Type</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="type" name="type" placeholder="Type" >
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputleadid" class="col-sm-8 control-label">Lead ID</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="leadid" name="leadid" placeholder="Lead ID" >
-              </div>
-            </div>
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
+                <div class="form-group">
+                  <label for="dealOwner" >Deal Owner</label>
+                  <input type="text" class="form-control enabelInputField" id="dealOwner" name="dealOwner" value="{{$data['opportunity']['opportunity_deal_owner']}}">
+                </div>
+                
 
                 <div class="form-group">
-              <label for="inputcampaignid" class="col-sm-8 control-label">Campaign ID</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="campaignid" name="campaignid" placeholder="Campaign ID" >
-              </div>
-            </div>
-            
-</div>
-<div class="col-md-6">
-
-<div class="form-group">
-              <label for="inputcontactid" class="col-sm-8 control-label">Contact ID</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="contactid" name="contactid" placeholder="Contact ID">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputamount" class="col-sm-8 control-label">Amount</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputclosingdate" class="col-sm-8 control-label">Closing date</label>
-
-              <div class="col-sm-10">
-                <input type="date" class="form-control" id="closingdate" name="closingdate" placeholder="Closing date">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputstage" class="col-sm-8 control-label">Satge</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="stage" name="stage" placeholder="Satge">
-              </div>
-            </div>      
+                  <label for="dealName" >Deal Name</label>
+                      <input type="text" class="form-control enabelInputField" id="dealName" name="dealName" value="{{$data['opportunity']['opportunity_deal_name']}}">
+                </div>
 
                 <div class="form-group">
-              <label for="inputprobability" class="col-sm-8 control-label">Probability</label>
+                  <label for="AccountName" >Account Name</label>
+                  <input type="text" class="form-control enabelInputField" id="AccountName" name="AccountName" value="{{$data['opportunity']['opportunity_account_name']}}">
+                </div>
 
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="probability" name="probability" placeholder="Probability">
+
+                <div class="form-group">
+                  <label for="Type" >Type</label>
+                  <input type="text" class="form-control enabelInputField" id="Type" name="Type" value="{{$data['opportunity']['opportunity_type']}}">
+                </div>
+                
+                <div class="form-group">
+                  <label for="leadID" >Lead ID</label>
+                  <input type="text" class="form-control enabelInputField" id="leadID" name="leadID" value="{{$data['opportunity']['opportunity_lead_id']}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="campaignID" >Campaign ID</label>
+                  <input type="Tell" class="form-control enabelInputField" id="campaignID" name="campaignID" value="{{$data['opportunity']['opportunity_campaign_id']}}">
+                  
+                </div>
+
               </div>
-            </div>  
+              {{-- ./FormBOXBody --}}
+            </div>
+            {{-- ./Left Form Field --}}
 
-              <div class="form-group">
-              <label for="inputexpectedrevenue" class="col-sm-8 control-label">Expected Revenue</label>
+            {{-- RIght Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
+                {{-- ........ --}}
 
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="expectedrevenue" name="expectedrevenue" placeholder="Expected Revenue">
+                <div class="form-group">
+                  <label for="contactID" >Contact ID</label>
+                  <input type="text" class="form-control enabelInputField" id="contactID" name="contactID" value="{{$data['opportunity']['opportunity_contact_id']}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="amount" >Amount</label>
+                  <input type="text" class="form-control enabelInputField" id="amount" name="amount" value="{{$data['opportunity']['opportunity_amount']}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="closingDate" >Closing date</label>
+                  <input type="date" class="form-control enabelInputField" id="closingDate" name="closingDate" value="{{$data['opportunity']['opportunity_closing_date']}}">
+                </div>
+
+
+                <div class="form-group">
+                  <label for="Satge" >Stage</label>
+                  <input type="text" class="form-control enabelInputField" id="Satge" name="Satge" value="{{$data['opportunity']['opportunity_stage']}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="Probability" >Probability</label>
+                  <input type="text" class="form-control enabelInputField" id="Probability" name="Probability" value="{{$data['opportunity']['opportunity_probability']}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="expectedRevenue" >Expected Revenue</label>
+                  <input type="text" class="form-control enabelInputField" id="expectedRevenue" name="expectedRevenue" value="{{$data['opportunity']['opportunity_expected_revenue']}}">
+                </div>
+
+                  <div class="form-group">
+                  <label for="description" >Description</label>
+                  <input type="text" class="form-control enabelInputField" id="expectedRevenue" name="expectedRevenue" value="{{$data['opportunity']['opportunity_description']}}">
+                </div>
+
+                {{-- ........ --}}
+
               </div>
-            </div>  
+              {{-- ./FormBOXBody --}} 
 
-              <div class="form-group">
-              <label for="inputdescription" class="col-sm-8 control-label">Description</label>
 
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="description" name="description" placeholder="Description">
-              </div>
-            </div>  
-</div>  
+            </div>
+            {{-- ./RIght Form Field --}}
+        </div>
 
-</div>
-</div>
-
-                          
-          </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            <button type="submit" class="btn btn-info float-right">Update</button>
-          </div>
-          <!-- /.card-footer -->
-        </form>
-        
-      </div>
-
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div> 
+      </form>
+      {{-- ./Form --}}
     </div>
+{{--  ./Horizonantal Form  --}}
   </div>
-  <!-- /.row -->
+  {{--  ./Col  --}}
+</div>
+<!-- /.row -->
 
 @endsection
 

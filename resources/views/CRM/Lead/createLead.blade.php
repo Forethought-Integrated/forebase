@@ -1,6 +1,6 @@
 @extends('layouts.adminApp')
 
-@section('title', 'CreateLead')
+@section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
 
@@ -8,478 +8,240 @@
 
 @section('ContentHeader(Page_header)')
 
-<!-- <div class="row">
-  {{-- <div class="col-sm-4"><h5>Folder</h5></div> --}}
-  <div class="col-sm-8" style="padding-left: 800px"> -->
-    <!-- Button to Open  Create Folder Modal -->
-    <!-- <div >
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Upload Sheet
-      </button>
-    </div> -->
-    <!-- ./Button to Open the Modal -->
- <!--  </div>
-</div> -->
+  <h1>
+    Lead Form
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Lead Form</li>
+  </ol>
 
-<div class="row mb-2">
-  <div class="col-sm-6">
-    <h1>Lead Form</h1>
-  </div>
-  <div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active">Lead Form</li>
-    </ol>
-  </div>
-</div>
 
 @endsection
 
 @section('MainContent')
-{{-- Main Row For Form Submission --}}
 <div class="row">
+  <!--  column -->
   <div class="col-md-12">
-    <form class="form-horizontal" action="/lead" method="POST">
-      {{ csrf_field() }}
-      
-      <div class="container-fluid">
-        {{-- First-Child-Row For Form Submission --}}
-        {{-- Row-1 --}}
+    <!-- Horizontal Form -->
+    <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Detail</h3>
+            </div>
+      <!-- /.card-header -->
+
+      {{-- form--}}
+      <form role="form" action="/lead" method="POST">
+        {{ csrf_field() }}
         <div class="row">
-          {{-- Col-1 --}}
-         {{--  *****ROw-1-Col-1*********** --}}
-          <div class="col-md-6">
-           {{--  *****ROw-1-Col-1-General****
- --}}
-            {{-- Nested Container *****ROw-1-Col-1-General****--}}
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card card-info  card-outline">
-              <div class="card-header">
-                <h3 class="card-title">General Info</h3>
+            {{-- Left Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
                 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
+                <div class="form-group">
+                  <label for="serviceCode" >Service Code</label>
+                  <input type="text" class="form-control" id="serviceCode" name="serviceCode" placeholder="Service Code">
                 </div>
-                <!-- /.card-tools -->
+                
+
+                <div class="form-group">
+                  <label for="Name" >Name</label>
+                      <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
+                </div>
+
+                <div class="form-group">
+                  <label for="designation" >Designation</label>
+                  <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="companyName">Company Name</label>
+                  <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Enter Your Company Name" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="mobileNo">Mobile No.</label>
+                  <input type="Tell" class="form-control" id="mobileNo" name="mobileNo" placeholder="Mobile No." >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="landLineNo">Landline No.</label>
+                  <input type="Tell" class="form-control" id="landLineNo" name="landLineNo" placeholder="Landline No." >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMWebsiteURL">UTM Website URL</label>
+                  <input type="text" class="form-control" id="UTMWebsiteURL" name="UTMWebsiteURL" placeholder="UTM Website URL" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMCampaignSource">UTM Campaign Source</label>
+                  <input type="text" class="form-control" id="UTMCampaignSource" name="UTMCampaignSource" placeholder="UTM Campaign Source" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMCampaignMedium">UTM Campaign Medium</label>
+                  <input type="text" class="form-control" id="UTMCampaignMedium" name="UTMCampaignMedium" placeholder="UTM Campaign Medium" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMCampaignName">UTM Campaign Name</label>
+                  <input type="text" class="form-control" id="UTMCampaignName" name="UTMCampaignName" placeholder="UTM Campaign Name" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMCampaignTerm">UTM Campaign Term</label>
+                  <input type="text" class="form-control" id="UTMCampaignTerm" name="UTMCampaignTerm" placeholder="UTM Campaign Term" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="UTMCampaignContent">UTM Campaign Content</label>
+                  <input type="text" class="form-control" id="UTMCampaignContent" name="UTMCampaignContent" placeholder="UTM Campaign Content" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter your Email" >
+                </div>
+
+
+                <div class="form-group">
+                  <label for="Address">Address</label>
+                  <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter your Address" >
+                </div>
+
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                {{-- The body of the card Row-1.1 --}}
-                
-                <div class="form-group">
-                  <label for="inputServiceCode" class="col-sm-8 control-label">Service Code</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ServiceCode" name="ServiceCode" placeholder="Service Code">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputName" class="col-sm-8 control-label">Name</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter your name">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputDesignation" class="col-sm-8 control-label">Designation</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Designation" name="Designation" placeholder="designation">
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label for="inputCompanyName" class="col-sm-8 control-label">Company Name</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="CompanyName" name="CompanyName" placeholder="Company name" >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputMobileNo" class="col-sm-8 control-label">Mobile No.</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="MobileNo" name="MobileNo" placeholder="mobile no">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputLandlineNo" class="col-sm-8 control-label">Landline No.</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="LandlineNo" name="LandlineNo" placeholder="landline no">
-                  </div>
-                </div>
-                
-                {{-- ./The body of the card Row-1.1 --}}
-                
-              </div>
-              <!-- /.card-body -->
+              {{-- ./FormBOXBody --}}
             </div>
-            <!-- /.card -->
-                </div>
-              </div>
-            </div>
-            {{-- ./Nested Container *****ROw-1-Col-1-General****--}}
+            {{-- ./Left Form Field --}}
 
-            {{-- Nested Container *****Row-1-Col-1-Campaign**** --}}
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  
-                     <div class="card card-info collapsed-card card-outline">
-                <div class="card-header">
-                  <h3 class="card-title">Campign UTM Source</h3>
-                  
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                  <!-- /.card-tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  {{-- The body of the card Row-2.1 --}}
-                  
-                  <div class="form-group">
-                    <label for="inpututmWebsiteurl" class="col-sm-8 control-label">UTM Website URL</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_website_url" name="utm_website_url" placeholder="UTM Website URL">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inpututmCampaignSource" class="col-sm-8 control-label">UTM Campaign Source</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_campaign_source" name="utm_campaign_source" placeholder="UTM Campaign Source">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inpututmCampaignMedium" class="col-sm-8 control-label">UTM Campaign Medium</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_campaign_medium" name="utm_Campaign_Medium" placeholder="UTM Campaign Medium">
-                    </div>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="inputCampaignName" class="col-sm-8 control-label">UTM Campaign Name</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_campaign_name" name="utm_campaign_name" placeholder="UTM Campaign Name">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inpututmCampaignTerm" class="col-sm-8 control-label">UTM Campaign Term</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_campaign_term" name="utm_campaign_term" placeholder="UTM Campaign Term">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inpututmCampaignContent" class="col-sm-8 control-label">UTM Campaign Content
-                    </label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="utm_campaign_content" name="utm_campaign_content" placeholder="UTM Campaign Content">
-                    </div>
-                  </div>
-                  
-                  {{-- ./The body of the card Row-2.1 --}}
-                  
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-                  
-                </div>
-              </div>
-            </div>
-            {{-- ./Nested Container *****Row-1-Col-1-Campaign****--}}
-
-
-            {{-- Old TO Move  Genral Info--}}
-            
-            {{-- ./Old TO Move  Genral Info--}}
-
-          </div>
-          <!-- /.col -->
-          {{-- ./Col-1 --}}
-
-          {{-- Col-2 --}}
-          <div class="col-md-6">
-            {{-- *****ROw-1-Col-2-Address**** --}}
-
-            {{-- Nested Container *****ROw-1-Col-2-Address****--}}
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card card-info card-outline">
-              <div class="card-header">
-                <h3 class="card-title">Address</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                {{-- The body of the card Row-1.2 --}}
+            {{-- RIght Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
                 
-                <div class="form-group">
-                  <label for="inputEmail" class="col-sm-8 control-label">Email</label>
+                {{-- ........ --}}
 
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="Email" name="Email" placeholder="email">
-                  </div>
+                <div class="form-group">
+                  <label for="City" >City</label>
+                  <input type="text" class="form-control" id="City" name="City" placeholder="City">
                 </div>
 
                 <div class="form-group">
-                  <label for="inputAddress" class="col-sm-8 control-label">Address</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Address" name="Address" placeholder="address">
-                  </div>
+                  <label for="State" >State</label>
+                  <input type="text" class="form-control" id="State" name="State" placeholder="State">
                 </div>
 
                 <div class="form-group">
-                  <label for="inputCity" class="col-sm-8 control-label">City</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="City" name="City" placeholder="city">
-                  </div>
+                  <label for="Country" >Country</label>
+                  <input type="text" class="form-control" id="Country" name="Country" placeholder="Country">
                 </div>
+
 
                 <div class="form-group">
-                  <label for="inputState" class="col-sm-8 control-label">State</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="State" name="State" placeholder="state">
-                  </div>
+                  <label for="PinCode" >Pin Code</label>
+                  <input type="text" class="form-control" id="PinCode" name="PinCode" placeholder="Pin Code">
                 </div>
 
-                <div class="form-group">
-                  <label for="inputCountry" class="col-sm-8 control-label">Country</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Country" name="Country" placeholder="country">
-                  </div>
+                  <div class="form-group">
+                  <label for="Activity" >Activity</label>
+                  <input type="text" class="form-control" id="Activity" name="Activity" placeholder="Activity">
                 </div>
 
-                <div class="form-group">
-                  <label for="inputPincode" class="col-sm-8 control-label">Pin Code</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Pincode" name="Pincode" placeholder="pin code">
-                  </div>
+                  <div class="form-group">
+                  <label for="LeadStatus" >Lead Status</label>
+                  <input type="text" class="form-control" id="LeadStatus" name="LeadStatus" placeholder="LeadStatus">
                 </div>
-                
-                {{-- ./The body of the card Row-1.2 --}}
+
+                  <div class="form-group">
+                  <label for="StatusInformation" >Status Information</label>
+                  <input type="text" class="form-control" id="StatusInformation" name="StatusInformation" placeholder="Status Information">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="Source" >Source</label>
+                  <input type="text" class="form-control" id="Source" name="Source" placeholder="Source">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="SourceInformation" >Source Information</label>
+                  <input type="text" class="form-control" id="SourceInformation" name="SourceInformation" placeholder="Source Information">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="CreatedByCode" >Created By Code</label>
+                  <input type="text" class="form-control" id="CreatedByCode" name="CreatedByCode" placeholder="Created By Code">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="amountCurrency" >Amount/Currency</label>
+                  <input type="text" class="form-control" id="amountCurrency" name="amountCurrency" placeholder="Amount/Currency">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="Total" >Total</label>
+                  <input type="text" class="form-control" id="Total" name="Total" placeholder="Total">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="Currency" >Currency</label>
+                  <input type="text" class="form-control" id="Currency" name="Currency" placeholder="Currency">
+                </div>
+
+
+                  <div class="form-group">
+                  <label for="Location" >Location</label>
+                  <input type="text" class="form-control" id="Location" name="Location" placeholder="Location">
+                </div>
+
+
+
+
+
+
+                {{-- ........ --}}
 
               </div>
-              <!-- /.card-body -->
+              {{-- ./FormBOXBody --}} 
+
+
             </div>
-            <!-- /.card -->
-                </div>
-              </div>
-            </div>
-            {{-- ./Nested Container *****ROw-1-Col-2-Address****--}}
-
-            {{-- Nested Container *****Row-1-Col-2-Lead Info**** --}}
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                   <div class="card card-info collapsed-card card-outline">
-                <div class="card-header">
-                  <h3 class="card-title">Lead Info</h3>
-  
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                  <!-- /.card-tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  {{-- The body of the card Row-2.2 --}}
-                  
-                  <div class="form-group">
-                    <label for="inputactivity" class="col-sm-8 control-label">Activity</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="activity" name="activity" placeholder="Activity">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inputleadStatus" class="col-sm-8 control-label">Lead Status</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Lead_Status" name="Lead_Status" placeholder="Enter Status">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inputStatusInformation" class="col-sm-8 control-label">Status Information</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Status_Inormation" name="Status_Inormation" placeholder="Status Information">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inputSource" class="col-sm-8 control-label">Source</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Source" name="Source" placeholder="source">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inputSourceInformation" class="col-sm-8 control-label">Source Information</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Source_Inormation" name="Source_Inormation" placeholder="Source Information">
-                    </div>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="inputCreatedByCode" class="col-sm-8 control-label">Created By Code</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Created_By_Code" name="Created_By_Code" placeholder="Created By Code">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputAmountCurrency" class="col-sm-8 control-label">Amount/Currency</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Amount_Currrency" name="Amount_Currrency" placeholder="Amount_Currency">
-                    </div>
-                  </div>
-                  
-
-                  <div class="form-group">
-                    <label for="inputtotal" class="col-sm-8 control-label">Total</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="total" name="total" placeholder="Total">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputCirrency" class="col-sm-8 control-label">Currency</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Currency" name="Currency"
-                      placeholder="Currency">
-                    </div>
-                  </div>
-
-                   <div class="form-group">
-                    <label for="inputLocation" class="col-sm-8 control-label">Location</label>
-  
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Location" name="Location" placeholder="Location">
-                    </div>
-                  </div>
-                  {{-- ./The body of the card Row-2.2 --}}
-  
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-                </div>
-              </div>
-            </div>
-            {{-- ./Nested Container *****Row-1-Col-2-Lead Info****--}}
-
-            {{-- ./Nested Container *****Row-1-Col-2-Submit Button****--}}
-            {{-- Submit Button --}}
-      <div >
-        <button type="submit" class="btn btn-info float-right">
-          Submit
-        </button>
-      </div>
-      <!-- /.card-footer -->
-      {{-- ./Submit Button --}}
-
-      {{-- ./Nested Container *****Row-1-Col-2-Submit Button****--}}
-            {{-- Old TO Move  Address Info--}}
-            
-            {{-- ./Old TO Move  Address Info--}}
-
-          </div>
-          <!-- /.col -->
-          {{-- ./Col-2 --}}
-          
-          
+            {{-- ./RIght Form Field --}}
         </div>
-        {{-- ./Row-1 --}}
 
-
-          
-
-       
-
-        
-      </div>
-
-      
-
-      
-    </form>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div> 
+      </form>
+      {{-- ./Form --}}
+    </div>
+{{--  ./Horizonantal Form  --}}
   </div>
+  {{--  ./Col  --}}
 </div>
-{{-- ./Main Row For Form Submission --}}
-
-
+<!-- /.row -->
 
 @endsection
 
 @section('bodyScriptUpdate')
-<!-- Create Folder/Directory  Model -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <form  id="model-post-form" method="post" action="{{url('/knowledgeCenter/createFolder')}}">
-
-        {{ csrf_field() }}
-        <div class="modal-header">
-          <h4 class="modal-title">Upload Sheet</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <!--<form>-->
-              <div class="form-group">
-                {{-- <label for="post-body">file Name</label> --}}
-                <input type="file"  name="filename" id="filename">
-              </div>
-              <!--</form>-->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-              <button type="submit" id="post-save-model" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- ./Create Folder/Directory  Model -->
-    @endsection 
+ 
+@endsection

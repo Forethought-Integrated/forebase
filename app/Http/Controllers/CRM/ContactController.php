@@ -22,14 +22,13 @@ class ContactController extends Controller
     {
      
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/contacts');
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact');
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
-        $contactData['dataArray']=$contact;
-        return view('CRM.Contact.listContact')->with('contactdata', $contactData);
+        $data['contact']=$contact;
+        return view('CRM.Contact.listContact')->with('data', $data);
 
     }
-
 
 
        public function create()
@@ -47,64 +46,66 @@ class ContactController extends Controller
                     $client = new Client();
                     $response = $client->request('POST', 'http://localhost:8002/api/v1/contact', [
                     'form_params' => [
-                    'contact_type' => $request->contact_type,
-                    'contact_name' => $request->contact_name,
-                    'contact_email '=> $request->contact_email,
-                    'contact_mobileNo' => $request->contact_mobileNo,
-                    'contact_landlineNo' => $request->contact_landlineNo,
-                    'contact_companyID' => $request->contact_companyID,
-                    'contact_companyName' => $request->contact_companyName,
-                    'contact_designation' => $request->contact_designation
+                    'contact_type' => $request->contactType,
+                    'contact_name' => $request->Name,
+                    'contact_email '=> $request->emailId,
+                    'contact_mobileNo' => $request->MobileNo,
+                    'contact_landlineNo' => $request->LandlineNo,
+                    'contact_companyID' => $request->CompanyID,
+                    'contact_companyName' => $request->companyName,
+                    'contact_designation' => $request->designation
                     ]
                 ]);
                 return redirect('/contact');
-                
-        // $contact = new Contact;
-        // $contact->contact_type = $request->contact_type;
-        // $contact->contact_name = $request->contact_name;
-        // $contact->contact_email = $request->contact_email;
-        // $contact->contact_mobileNo = $request->contact_mobileNo;
-        // $contact->contact_landlineNo = $request->contact_landlineNo;
-        // $contact->contact_companyID = $request->contact_companyID;
-        // $contact->contact_companyName = $request->contact_companyName;
-        // $contact->contact_designation = $request->contact_designation;
-        // $contact->save();
-        // return response()->json($contact);
  
      }
      
      public function show($id)
 
      {
-         $contact = Contact::find($id);
-         return response()->json($contact);
+ 
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact/'.$id);
+        $contactJson=$res->getBody();
+        $contact = json_decode($contactJson, true);
+        $data['contact']=$contact;
+        return view('CRM.Contact.showContact',['data'=>$data]);
          
      }
 
 
-      public function edit(Contact $contact)
+      public function edit($id)
 
     {
-         return view('CRM.Contact.editContact');
+
+        $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact/'.$id);
+        $contactJson=$res->getBody();
+        $contact = json_decode($contactJson, true);
+        $data['contact']=$contact;
+        return view('CRM.Contact.editContact',['data'=>$data]);
     }
+
+
 
      public function update(Request $request, $id)
 
      {  
          $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/contact/{id}".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/contact/".$id, [
                     'form_params' => [
-                    'contact_type' => $request->contact_type,
-                    'contact_name' => $request->contact_name,
-                    'contact_email '=> $request->contact_email,
-                    'contact_mobileNo' => $request->contact_mobileNo,
-                    'contact_landlineNo' => $request->contact_landlineNo,
-                    'contact_companyID' => $request->contact_companyID,
-                    'contact_companyName' => $request->contact_companyName,
-                    'contact_designation' => $request->contact_designation
+                    'contact_type' => $request->contactType,
+                    'contact_name' => $request->Name,
+                    'contact_email '=> $request->emailId,
+                    'contact_mobileNo' => $request->MobileNo,
+                    'contact_landlineNo' => $request->LandlineNo,
+                    'contact_companyID' => $request->CompanyID,
+                    'contact_companyName' => $request->companyName,
+                    'contact_designation' => $request->designation
                     ]
     ]);
-        return response()->json(['success'=>'200']);
+        // return response()->json(['success'=>'200']);
+         return redirect('/contact');
        
      }
 
@@ -113,11 +114,9 @@ class ContactController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1//contact/{id}'.$id);
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/contact/'.$id);
         return redirect('/contact');
     }
 
-
-
-     
+   
     }

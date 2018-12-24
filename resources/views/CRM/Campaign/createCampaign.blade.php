@@ -8,220 +8,139 @@
 
 @section('ContentHeader(Page_header)')
 
-<div class="row mb-2">
-  <div class="col-sm-6">
-    <h1>Campaign Form</h1>
-  </div>
-  <div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active">Campaign Form</li>
-    </ol>
-  </div>
-</div>
+  <h1>
+   Campaign Form
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Campaign Form</li>
+  </ol>
+
 
 @endsection
 
 @section('MainContent')
-<!-- form start -->
-<form class="form-horizontal" action="/campaign" method="POST">
-  {{ csrf_field() }}
-  {{--  ./Row-1  --}}
-  <div class="row">
+<div class="row">
+  <!--  column -->
+  <div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Campaign Info</h3>
+            </div>
+      <!-- /.card-header -->
 
-
-    {{--  ./Col-1-1  --}}
-    <div class="col-md-6">
-      {{-- Nested Container *****Row-1-Col-1-Campaign Info****--}}
-
-      <div class="container-fluid">
+      {{-- form--}}
+      <form role="form" action="/campaign" method="POST">
+        {{ csrf_field() }}
         <div class="row">
-          <div class="col-md-12">
-            <div class="card card-info  card-outline">
-              <!-- Horizontal Form -->
-                <div class="card-header">
-                  <center><h3 class="card-title">Campaign Info</h3></center>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                  <!-- /.card-tools -->
+            {{-- Left Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
+                <div class="form-group">
+                  <label for="Name" >Campaign Name</label>
+                  <input type="text" class="form-control" id="Name" name="Name" placeholder="Campaign Name">
                 </div>
-                <!-- /.card-header -->
+                
 
-
-                <div class="card-body">
-
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-8 control-label">Campaign Name</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Name" name="Name" placeholder="Campaign Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputType" class="col-sm-8 control-label">Campaign Type</label>
-
-                    <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="Type" >Campaign Type</label>
                       <input type="text" class="form-control" id="Type" name="Type" placeholder="Campaign Type">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputDescriptin" class="col-sm-8 control-label">Description</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Description" name="Description" placeholder="Description">
-                    </div>
-                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="description" >Description</label>
+                  <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+                </div>
+
+
+                <div class="form-group">
+                  <label for="startDate" >Start Date</label>
+                  <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+                </div>
+                
+                <div class="form-group">
+                  <label for="endDate" >End Date</label>
+                  <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date">
+                </div>
+
+                <div class="form-group">
+                  <label for="budgetCost" >Budget Cost.</label>
+                  <input type="text" class="form-control" id="budgetCost" name="budgetCost"  placeholder="Budget Cost">
                   
-
-                  
-                  <div class="form-group">
-                    <label for="inputStartDate" class="col-sm-8 control-label">Start Date</label>
-
-                    <div class="col-sm-12">
-                      <input type="date" class="form-control" id="StartDate" name="StartDate">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEndDate" class="col-sm-8 control-label">End Date</label>
-
-                    <div class="col-sm-12">
-                      <input type="date" class="form-control" id="EndDate" name="EndDate">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputBudget" class="col-sm-8 control-label">Budget Cost</label>
-                    <div class="col-sm-12">
-                      <input type="text" class="form-control" id="Budget" name="Budget" placeholder="Budget Cost">
-                    </div>
-                  </div>
-
                 </div>
 
-           
-              {{--  ./Horizonantal Form  --}}
+              </div>
+              {{-- ./FormBOXBody --}}
             </div>
+            {{-- ./Left Form Field --}}
 
-          </div>
-        </div>
-      </div>
+            {{-- RIght Form Field --}}
+            <div class="col-md-6">
+              {{-- FormBOXBody --}}
+              <div class="box-body">
+                
+                {{-- ........ --}}
 
-      {{-- ./Nested Container *****Row-1-Col-1-Campaign Info****--}}
-
-
-    </div>
-    {{--  ./Col-1-1  --}}
-
-
-    {{--  ./Col-1-2  --}}
-    <div class="col-md-6">
-      {{-- Nested Container *****Row-1-Col-2-Capmaign UTM Generator****--}}
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-
-            <div class="card card-info  card-outline">
-            <div class="card-header">
-              <h3 class="card-title">Campign UTM Generator</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <!-- /.card-tools -->
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              {{-- The body of the card Row-2.1 --}}
-
-              <div class="form-group">
-                <label for="inpututmWebsiteurl" class="col-sm-8 control-label">UTM Website URL</label>
-
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_website_url" name="utm_website_url" placeholder="UTM Website URL">
+                <div class="form-group">
+                  <label for="utmWebsiteUrl" >UTM Website URL</label>
+                  <input type="text" class="form-control" id="utmWebsiteUrl" name="utmWebsiteUrl" placeholder="UTM Website URL">
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="inpututmCampaignSource" class="col-sm-8 control-label">UTM Campaign Source</label>
-
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_source" name="utm_campaign_source" placeholder="UTM Campaign Source">
+                <div class="form-group">
+                  <label for="utmCampaignSource" >UTM Campaign Source</label>
+                  <input type="text" class="form-control" id="utmCampaignSource" name="utmCampaignSource" placeholder="UTM Campaign Source">
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="inpututmCampaignMedium" class="col-sm-8 control-label">UTM Campaign Medium</label>
-
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_medium" name="utm_Campaign_Medium" placeholder="UTM Campaign Medium">
+                <div class="form-group">
+                  <label for="utmCampaignMedium" >UTM Campaign Medium</label>
+                  <input type="text" class="form-control" id="utmCampaignMedium" name="utmCampaignMedium" placeholder="UTM campaign Medium">
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="inputCampaignName" class="col-sm-8 control-label">UTM Campaign Name</label>
 
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_name" name="utm_campaign_name" placeholder="UTM Campaign Name">
+                <div class="form-group">
+                  <label for="utmCampaignName" >UTM Campaign Name</label>
+                  <input type="text" class="form-control" id="utmCampaignName" name="utmCampaignName" placeholder="UTM Campaign Name">
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="inpututmCampaignTerm" class="col-sm-8 control-label">UTM Campaign Term</label>
-
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_term" name="utm_campaign_term" placeholder="UTM Campaign Term">
+                <div class="form-group">
+                  <label for="utmCampaignTerm" >UTM Campaign Term</label>
+                  <input type="text" class="form-control" id="utmCampaignTerm" name="utmCampaignTerm" placeholder="UTM Campaign Term">
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="inpututmCampaignContent" class="col-sm-8 control-label">UTM Campaign Content
-                </label>
-
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="utm_campaign_content" name="utm_campaign_content" placeholder="UTM Campaign Content">
+                <div class="form-group">
+                  <label for="utmCampaignContent" >UTM Campaign Content</label>
+                  <input type="text" class="form-control" id="utmCampaignContent" name="utmCampaignContent" placeholder="UTM campaign Content">
                 </div>
-              </div>
 
-              {{-- ./The body of the card Row-2.1 --}}
+
+                {{-- ........ --}}
+
+              </div>
+              {{-- ./FormBOXBody --}} 
+
 
             </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-
+            {{-- ./RIght Form Field --}}
         </div>
-      </div>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div> 
+      </form>
+      {{-- ./Form --}}
     </div>
-    {{-- ./Nested Container *****Row-1-Col-2-Capmaign UTM Generator**--}}
-
-    {{-- Nested Container *****Row-1-Col-2-Submit Button****--}}
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-
-          <div class="card-footer">
-            <button type="submit" class="btn btn-info float-right">Submit</button>
-          </div>  
-
-        </div>
-      </div>
-    </div>
-
-    {{-- ./Nested Container *****Row-1-Col-2-Submit Button****--}}
-
+{{--  ./Horizonantal Form  --}}
   </div>
-  {{--  ./Col-1-2  --}}
-
-
+  {{--  ./Col  --}}
 </div>
-{{--  ./Row-1  --}}
-</form>
-{{--  ./Form END  --}}
+<!-- /.row -->
+
 @endsection
 
 @section('bodyScriptUpdate')
-
+ 
 @endsection
