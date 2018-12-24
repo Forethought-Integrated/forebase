@@ -6,26 +6,35 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 
-class BoardController extends Controller
+class CardController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_HELPDESKURL');
+        $this->URL=$this->ENV_URL.'boards/';    
+                // $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function index()
+    public function index($boardID,$userID,$listID)
 
     { 
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
-        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
-        $data['account']=$account;
-        return view('CRM.Account.listAccount')->with('data', $data);
+        $res = $client->request('GET', $this->URL.$boardID.'/'.$userID.'/'.'list'.'/'.$listID.'/'.'card');
+        $cardJson=$res->getBody();
+        $card = json_decode($cardJson, true);
+        $data['card']=$card;
+        return view('helpdesk.card.listCard')->with('data', $data);
 
     }
 
@@ -33,7 +42,7 @@ class BoardController extends Controller
       public function create()
     {
         
-        return view('CRM.Account.createAccount');
+        return view('helpdesk.card.createcard');
 
      }
 
@@ -41,23 +50,23 @@ class BoardController extends Controller
 
      { 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/account', [
+                    $response = $client->request('POST', 'http://localhost:8002/api/v1/card', [
                     'form_params' => [
-                    'account_name' => $request->accountName,
-                    'account_email' => $request->accountEmail,
-                    'account_mobileNo'=> $request->accountMobileNo,
-                    'account_landlineNo' => $request->accountLandlineNo,
-                    'account_address' => $request->accountAddress,
-                    'account_website' => $request->accountWebsite,
-                    'account_city' => $request->accountCity,
-                    'account_state' => $request->accountState,
-                    'account_country' => $request->accountCountry,
-                    'account_pincode' => $request->accountPinCode,
-                    'account_panNo' => $request->accountPanNo,
-                    'account_GSTNo' => $request->accountGSTNo
+                    'card_name' => $request->cardName,
+                    'card_email' => $request->cardEmail,
+                    'card_mobileNo'=> $request->cardMobileNo,
+                    'card_landlineNo' => $request->cardLandlineNo,
+                    'card_address' => $request->cardAddress,
+                    'card_website' => $request->cardWebsite,
+                    'card_city' => $request->cardCity,
+                    'card_state' => $request->cardState,
+                    'card_country' => $request->cardCountry,
+                    'card_pincode' => $request->cardPinCode,
+                    'card_panNo' => $request->cardPanNo,
+                    'card_GSTNo' => $request->cardGSTNo
                     ]
                 ]);
-                    return redirect('/account');
+                    return redirect('/card');
      }
 
      public function show($id)
@@ -66,36 +75,36 @@ class BoardController extends Controller
 
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account/'.$id);
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
-        $data['account']=$account;
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/card/'.$id);
+        $cardJson=$res->getBody();
+        $card = json_decode($cardJson, true);
+        // $cardData['dataArray']=$card;
+        $data['card']=$card;
 
 
-        // return view('social.socialjson',['posts' => $accountData]);
+        // return view('social.socialjson',['posts' => $cardData]);
         
-        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
+        // return view('helpdesk.card.listcard')->with('carddata', $cardData);
 
 
-        // $account = Account::where('id',$id);
-        // return response()->json($account, 200);
+        // $card = card::where('id',$id);
+        // return response()->json($card, 200);
 
-        return view('CRM.Account.showAccount',['data'=>$data]);
+        return view('helpdesk.card.showcard',['data'=>$data]);
      }
 
 
      public function edit($id)
     {     
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account/'.$id);
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
-        $data['account']=$account;
+        $res = $client->request('GET', 'http://localhost:8002/api/v1/card/'.$id);
+        $cardJson=$res->getBody();
+        $card = json_decode($cardJson, true);
+        // $cardData['dataArray']=$card;
+        $data['card']=$card;
 
-        // $account = Account::find($id);
-        return view('CRM.Account.editAccount',['data'=>$data]);
+        // $card = card::find($id);
+        return view('helpdesk.card.editcard',['data'=>$data]);
     }
 
 
@@ -104,32 +113,32 @@ class BoardController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/account/".$id, [
+        $response = $client->request('PUT', "http://localhost:8002/api/v1/card/".$id, [
                     'form_params' => [
-                    'account_name' => $request->accountName,
-                    'account_email' => $request->accountEmail,
-                    'account_mobileNo '=> $request->accountMobileNo,
-                    'account_landlineNo' => $request->accountLandlineNo,
-                    'account_address' => $request->accountAddress,
-                    'account_website' => $request->accountWebsite,
-                    'account_city' => $request->accountCity,
-                    'account_state' => $request->accountState,
-                    'account_country' => $request->accountCountry,
-                    'account_pincode' => $request->accountPincode,
-                    'account_panNo' => $request->accountPanNo,
-                    'account_GSTNo' => $request->accountGSTNo
+                    'card_name' => $request->cardName,
+                    'card_email' => $request->cardEmail,
+                    'card_mobileNo '=> $request->cardMobileNo,
+                    'card_landlineNo' => $request->cardLandlineNo,
+                    'card_address' => $request->cardAddress,
+                    'card_website' => $request->cardWebsite,
+                    'card_city' => $request->cardCity,
+                    'card_state' => $request->cardState,
+                    'card_country' => $request->cardCountry,
+                    'card_pincode' => $request->cardPincode,
+                    'card_panNo' => $request->cardPanNo,
+                    'card_GSTNo' => $request->cardGSTNo
                     ]
         ]);
         // return response()->json(['success'=>'200']); 
-         return redirect('/account');       
+         return redirect('/card');       
      }
 
       public function destroy($id)
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/account/'.$id);
-        return redirect('/account');
+        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/card/'.$id);
+        return redirect('/card');
     }
 
 
