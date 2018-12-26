@@ -38,34 +38,24 @@ class ListController extends Controller
     }
 
 
-      public function create()
+      public function create($boardID,$userID)
     {
-        
-        return view('helpdesk.list.createlist');
+
+        return view('helpdesk.list.createList')->with('data',$boardID);
 
      }
 
-     public function store(Request $request)
+     public function store(Request $request,$boardID,$userID)
 
      { 
-                //     $client = new Client();
-                //     $response = $client->request('POST', 'http://localhost:8002/api/v1/list', [
-                //     'form_params' => [
-                //     'list_name' => $request->listName,
-                //     'list_email' => $request->listEmail,
-                //     'list_mobileNo'=> $request->listMobileNo,
-                //     'list_landlineNo' => $request->listLandlineNo,
-                //     'list_address' => $request->listAddress,
-                //     'list_website' => $request->listWebsite,
-                //     'list_city' => $request->listCity,
-                //     'list_state' => $request->listState,
-                //     'list_country' => $request->listCountry,
-                //     'list_pincode' => $request->listPinCode,
-                //     'list_panNo' => $request->listPanNo,
-                //     'list_GSTNo' => $request->listGSTNo
-                //     ]
-                // ]);
-                //     return redirect('/list');
+                    $client = new Client();
+                    $response = $client->request('POST', $this->URL.$boardID.'/'.$userID.'/'.'list/', [
+                    'form_params' => [
+                    'listName' => $request->listName,
+                    'boardID' => $boardID,
+                    ]
+                ]);
+                    return redirect('/board/'.$boardID.'/'.$userID.'/'.'list/');
      }
 
      public function show($id)

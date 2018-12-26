@@ -78,7 +78,11 @@ Route::delete('/board/{boardID}/{userID}','Helpdesk\BoardController@destroy');
 
 
 
-Route::get('/board/{boardID}/{userID}/list','Helpdesk\ListController@index');
+Route::get('/board/{boardID}/{userID}/list/','Helpdesk\ListController@index');
+Route::get('/board/{boardID}/{userID}/list/create/','Helpdesk\ListController@create');
+// Route::get('/board/{userID}/list/create/',function () {
+//     return 'hehe';
+// });
 Route::post('/board/{boardID}/{userID}/list','Helpdesk\ListController@store');
 Route::get('/board/{boardID}/{userID}/list/{listID}','Helpdesk\ListController@show');
 Route::put('/board/{boardID}/list/{listID}','Helpdesk\ListController@update');
@@ -87,6 +91,8 @@ Route::delete('/board/{boardID}/{userID}/list/{listID}','Helpdesk\ListController
 
 
 Route::get('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@index');
+Route::get('/board/{boardID}/{userID}/list/{listID}/create/','Helpdesk\CardController@create');
+
 Route::post('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@store');
 Route::get('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@show');
 Route::put('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@update');
@@ -119,11 +125,13 @@ Route::get('/admin', function () {
 Route::get('/socialjson', function () {
 
 	$client = new Client();
-    // $res = $client->request('GET', 'http://localhost:8003/board/'.'1'.'/'.'1'.'/'.'list');
+    // $res = $client->request('GET', 'http://localhost:8003/boards/'.'1'.'/'.'1'.'/'.'list');
     $res = $client->request('GET', 'http://localhost:8003/boards/'.'1'.'/'.'1'.'/'.'list'.'/'.'1'.'/'.'card');
-    $cardJson=$res->getBody();
-    $card = json_decode($cardJson, true);
-    $data['card']=$card;
+     $cardJson=$res->getBody();
+        $card = json_decode($cardJson, true);
+        $data['card']=$card;
+        $data['boardID']='1';
+
     return view('social.socialjson',['data' => $data]);
 
 });

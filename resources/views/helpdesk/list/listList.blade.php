@@ -13,7 +13,7 @@
 
   <h1>
     List List
-    <a href="/contact/create" title="">
+    <a href="/board/{{$data['list']['lists']['0']['id']}}/{{Auth::user()->id}}/list/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>

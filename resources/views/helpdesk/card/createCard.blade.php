@@ -9,12 +9,11 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Contact Form
-    <small>Control panel</small>
+    Create Card
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Contact Form</li>
+    <li class="active">Create Card</li>
   </ol>
 
 
@@ -30,37 +29,27 @@
               <h3 class="box-title">Enter Detail</h3>
             </div>
       <!-- /.card-header -->
+{{-- Route::post('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@store'); --}}
 
       {{-- form--}}
-      <form role="form" action="/contact" method="POST">
+      <form role="form" action="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['listID']}}/card/" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
-                
-                <div class="form-group">
-                  <label for="contactType" >Contact Type</label>
-                  <input type="text" class="form-control" id="contactType" name="contactType" placeholder="Contact Type">
-                </div>
-                
 
                 <div class="form-group">
-                  <label for="Name" >Name</label>
-                      <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
+                  <label for="CardName" >Card Name</label>
+                      <input type="text" class="form-control" id="CardName" name="CardName" placeholder="Card Name">
                 </div>
 
                 <div class="form-group">
-                  <label for="emailId" >Email Id</label>
-                  <input type="email" class="form-control" id="emailId" name="emailId" placeholder="Email Id">
+                  <label for="CardDescription" >Card Description</label>
+                  <input type="text" class="form-control" id="CardDescription" name="CardDescription" placeholder="Card Description">
                 </div>
 
-                
-                <div class="form-group">
-                  <label for="MobileNo" >Mobile No.</label>
-                  <input type="Tell" class="form-control" id="MobileNo" name="MobileNo" placeholder="Enter your number" >
-                </div>
 
               </div>
               {{-- ./FormBOXBody --}}
@@ -68,33 +57,13 @@
             {{-- ./Left Form Field --}}
 
             {{-- RIght Form Field --}}
-            <div class="col-md-6">
+          <!--   <div class="col-md-6">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
                 {{-- ........ --}}
 
-                <div class="form-group">
-                  <label for="LandlineNo" >Landline No.</label>
-                  <input type="text" class="form-control" id="LandlineNo" name="LandlineNo" placeholder="Landline No.">
-                </div>
-
-                <div class="form-group">
-                  <label for="CompanyID" >Company ID</label>
-                  <input type="text" class="form-control" id="CompanyID" name="CompanyID" placeholder="Company ID">
-                </div>
-
-                <div class="form-group">
-                  <label for="companyName" >Company Name</label>
-                  <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name">
-                </div>
-
-
-                <div class="form-group">
-                  <label for="designation" >Designation</label>
-                  <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
-                </div>
-
+            
 
 
                 {{-- ........ --}}
@@ -103,12 +72,12 @@
               {{-- ./FormBOXBody --}} 
 
 
-            </div>
+            </div> -->
             {{-- ./RIght Form Field --}}
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Add Card</button>
         </div> 
       </form>
       {{-- ./Form --}}

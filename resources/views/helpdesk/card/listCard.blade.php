@@ -12,8 +12,11 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Card
-    <a href="/contact/create" title="">
+    Card List
+    {{-- /board/{boardID}/{userID}/list/{listID}/create/ --}}
+    {{-- /board/{boardID}/{userID}/list/{listID}/create/ --}}
+    {{-- <a href="/contact/create" title=""> --}}
+    <a href="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['card']['cards']['0']['lists_id']}}/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -50,7 +53,8 @@
                   @foreach($data['card']['cards'] as $data)
                     <tr>
                       <td>{{$data['id']}}</td>
-                      <td><a href="{{ url('card'.'/'.$data['id'])}}">{{$data['name']}}</a></td> 
+                      {{-- <td><a href="{{ url('card'.'/'.$data['id'])}}">{{$data['name']}}</a></td>  --}}
+                      <td>{{$data['name']}}</td> 
                       <td>{{$data['description']}}</td>
       {{--            <td>
                         <a class="btn btn-small btn-primary" href="{{ url('card'.'/'.$data['id'])}}">Edit</a>

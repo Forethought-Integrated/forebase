@@ -34,39 +34,30 @@ class CardController extends Controller
         $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
         $data['card']=$card;
+        $data['boardID']=$boardID;
         return view('helpdesk.card.listCard')->with('data', $data);
 
     }
 
 
-      public function create()
-    {
-        
-        return view('helpdesk.card.createcard');
-
+      public function create($boardID,$userID,$listID)
+     {
+        $data['boardID']=$boardID;
+        $data['listID']=$listID;
+        return view('helpdesk.card.createCard')->with('data',$data);
      }
 
-     public function store(Request $request)
+     public function store(Request $request,$boardID,$userID,$listID)
 
      { 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/card', [
+                    $response = $client->request('POST', $this->URL.$boardID.'/'.$userID.'/'.'list'.'/'.$listID.'/'.'card', [
                     'form_params' => [
-                    'card_name' => $request->cardName,
-                    'card_email' => $request->cardEmail,
-                    'card_mobileNo'=> $request->cardMobileNo,
-                    'card_landlineNo' => $request->cardLandlineNo,
-                    'card_address' => $request->cardAddress,
-                    'card_website' => $request->cardWebsite,
-                    'card_city' => $request->cardCity,
-                    'card_state' => $request->cardState,
-                    'card_country' => $request->cardCountry,
-                    'card_pincode' => $request->cardPinCode,
-                    'card_panNo' => $request->cardPanNo,
-                    'card_GSTNo' => $request->cardGSTNo
+                    'card_name' => $request->CardName,
+                    'card_description' => $request->CardDescription,
                     ]
                 ]);
-                    return redirect('/card');
+                    return redirect('/board/'.$boardID.'/'.$userID.'/list/'.$listID.'/card/');
      }
 
      public function show($id)
@@ -78,18 +69,7 @@ class CardController extends Controller
         $res = $client->request('GET', 'http://localhost:8002/api/v1/card/'.$id);
         $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
-        // $cardData['dataArray']=$card;
         $data['card']=$card;
-
-
-        // return view('social.socialjson',['posts' => $cardData]);
-        
-        // return view('helpdesk.card.listcard')->with('carddata', $cardData);
-
-
-        // $card = card::where('id',$id);
-        // return response()->json($card, 200);
-
         return view('helpdesk.card.showcard',['data'=>$data]);
      }
 
