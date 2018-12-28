@@ -21,7 +21,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
-        $this->URL=$this->ENV_URL.'post/';    
+        $this->URL=$this->ENV_URL.'post';    
                 // $this->middleware('auth');
     }
 
@@ -29,19 +29,12 @@ class PostController extends Controller
     {
         $client = new Client();
         $res = $client->request('GET', $this->URL);
-        // return $res->getStatusCode();
-        // return $res->getBody();
         $posts=$res->getBody();
-        $area = json_decode($posts, true);
-        // return view('socialapp')->with('post', $posts);
-        // if(Auth::user()->id==)
+        $data = json_decode($posts, true);
 
-        $postData['post']=$area;
-        // $postData['updateView']=$;
+        $postData['post']=$data;
 
-        // return view('socialapp')->with('posts', $area);
         return view('social/socialDashboard')->with('posts', $postData);
-        // return view('Post.postDashboard',['posts' => $posts]);
     }
 
     /**
@@ -107,7 +100,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
        $client = new Client();
-        $response = $client->request('PUT', $this->URL.$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->postBodyData,
@@ -132,7 +125,7 @@ class PostController extends Controller
 
 
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
     }
 }

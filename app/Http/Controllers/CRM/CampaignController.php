@@ -13,11 +13,23 @@ class CampaignController extends Controller
 {
 
 
-        public function index()
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_CRMURL');
+        $this->URL=$this->ENV_URL.'campaign';    
+    }
+    
+
+    public function index()
 
     { 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign');
+        $res = $client->request('GET', $this->URL);
         $campaignJson=$res->getBody();
         $campaign = json_decode($campaignJson, true);
         // $campaignData['dataArray']=$campaign;
@@ -39,7 +51,7 @@ class CampaignController extends Controller
 
      {
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/campaign', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'campaign_name' => $request->Name,
                     'campaign_type' => $request->Type,
@@ -64,7 +76,7 @@ class CampaignController extends Controller
      {
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $campaignJson=$res->getBody();
         $campaign = json_decode($campaignJson, true);
         
@@ -81,7 +93,7 @@ class CampaignController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/campaign/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $campaignJson=$res->getBody();
         $campaign = json_decode($campaignJson, true);
         
@@ -95,7 +107,7 @@ class CampaignController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/campaign/".$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'campaign_name' => $request->campaignName,
                     'campaign_type' => $request->campaignType,
@@ -120,7 +132,7 @@ class CampaignController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/campaign/'.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/campaign');
     }
 

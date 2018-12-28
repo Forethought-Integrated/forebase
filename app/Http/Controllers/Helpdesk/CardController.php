@@ -33,8 +33,18 @@ class CardController extends Controller
         $res = $client->request('GET', $this->URL.$boardID.'/'.$userID.'/'.'list'.'/'.$listID.'/'.'card');
         $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
-        $data['card']=$card;
-        $data['boardID']=$boardID;
+         if(is_null($card))
+        {
+            $data['card']='null';
+        }
+        else
+        {
+            $data['card']=$card;
+            
+            // $data['card']=null;
+        }
+        $data['boardID']='1';
+        $data['listID']='1';
         return view('helpdesk.card.listCard')->with('data', $data);
 
     }
@@ -113,12 +123,12 @@ class CardController extends Controller
          return redirect('/card');       
      }
 
-      public function destroy($id)
-
+      public function destroy($boardID,$userID,$listID,$cardID)
     {
+
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/card/'.$id);
-        return redirect('/card');
+        $res = $client->request('DELETE', $this->URL.$boardID.'/'.$userID.'/list/'.$listID.'/card/'.$cardID);
+        return redirect()->back();
     }
 
 

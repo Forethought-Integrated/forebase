@@ -7,15 +7,7 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 
 	post_id= event.target.parentNode.parentNode.dataset['postid'];
 	var postBodyId='postBody'+post_id;
-	// console.log(postBodyId);
 	var postBody=$('#'+postBodyId).data('postbody');
-	// console.log("postBodyOr =");
-	// console.log(postBodyOr);
-	// console.log("Next Line");
-
-	// var postBody=$('#'+postBodyId).text();
-	// console.log(postBody);
-	// console.log($('#postModalTextArea').text());
 	$('#postModalTextArea').text(postBody);
 	// console.log($('#postModalTextArea').text());
 	
@@ -38,9 +30,6 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 	console.log("URL = "+URL);
 
 
-	// var postBody= $(event.target).parent().parent().children().eq('0').text();
-	// var postBody=$('#'+postBodyId).text();
-	// console.log("beforeSave postBody ="+postBody);
 	console.log("beforeSave ModelBody="+$('#postModalTextArea').val());
 
 $.ajax({
@@ -49,21 +38,8 @@ $.ajax({
     data: {_token: CSRF_TOKEN, postBodyData:$('#postModalTextArea').val(),},
     cache: 'false',
     success: function (data) {
- //        console.log("ajaxPost"+this.url);
- //        console.log("response data=");
         console.log(data);
- //        console.log("afterSave postBody ="+postBody);
-	// console.log("afterSave ModelBody="+$('#postModalTextArea').text());
-	 // postBody=$('#'+postBodyId).text();
 	 $('#'+postBodyId).text($('#postModalTextArea').val());
-	// console.log("Get change body text at console");
-	// console.log($('#'+postBodyId).text());
-	//Hie Modal
-
-	  // $('#postModalTextArea').wysihtml5({
-   //    toolbar: { fa: true }
-   //  });
-
 	$('#edit_modal').modal("hide");
     },
     error: function(err){
@@ -80,37 +56,37 @@ $.ajax({
 // Like Dislike Funtionlty
 // $('.Like').on('click', function(event){
 // 	event.preventDefault();
-$('.post').find('.interaction').find('.Like').on('click',function(event){
-	event.preventDefault();
-console.log("hello edit");
-var URL1='/social/reaction/12';
+// $('.post').find('.interaction').find('.Like').on('click',function(event){
+// 	event.preventDefault();
+// console.log("hello edit");
+// var URL1='/social/reaction/12';
 
-post_id= event.target.parentNode.parentNode.dataset['postid'];
-var likeId='like'+post_id;
-var URL='/social/reaction/'+post_id;
+// post_id= event.target.parentNode.parentNode.dataset['postid'];
+// var likeId='like'+post_id;
+// var URL='/social/reaction/'+post_id;
 
-// var postBodyId='postBody'+post_id;
+// // var postBodyId='postBody'+post_id;
 
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-console.log(URL);
-console.log(likeId);
-$.ajax({
-    url: URL,
-    type: "POST",
-    // data: {_token: CSRF_TOKEN, postid:post_id, like:'1'},
-    data: {_token: CSRF_TOKEN, likeData:{post_id:post_id,like:'1'}},
-    cache: 'false',
-    success: function (data) {
-	console.log(data);
-	 $('#'+likeId).text('1');
+// var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+// console.log(URL);
+// console.log(likeId);
+// $.ajax({
+//     url: URL,
+//     type: "POST",
+//     // data: {_token: CSRF_TOKEN, postid:post_id, like:'1'},
+//     data: {_token: CSRF_TOKEN, likeData:{post_id:post_id,like:'1'}},
+//     cache: 'false',
+//     success: function (data) {
+// 	console.log(data);
+// 	 $('#'+likeId).text('1');
 
-    },
-    error: function(err){
-        console.log("ajaxPosterror"+this.url);
-    }
-});
+//     },
+//     error: function(err){
+//         console.log("ajaxPosterror"+this.url);
+//     }
+// });
 
-});
+// });
 
 
 // Like Dislike Funtionlty
@@ -133,42 +109,3 @@ $('#'+commentDivID).css("display","block");
 
 // ./Comment Funtionlty
 
-// Reaction Funtionlty
-$('.post').find('.interaction').find('.reacted').on('click',function(event){
-	event.preventDefault();
-console.log("hello reacted");
-// var URL='/social/reaction/'+post_id;
-	
-	
-// 	$.ajax({
-//     url: URL,
-//     type: "POST",
-//     // data: {_token: CSRF_TOKEN, postid:post_id, like:'1'},
-//     data: {_token: CSRF_TOKEN, likeData:{post_id:post_id,like:'1'}},
-//     cache: 'false',
-//     success: function (data) {
-// 	console.log(data);
-// 	 $('#'+likeId).text('1');
-
-//     },
-//     error: function(err){
-//         console.log("ajaxPosterror"+this.url);
-//     }
-// });
-
-});
-
-// ./Reaction Funtionlty
-
-
-// CRM
-// --Enabel Form Field of CRM
-// $('.editFormField').on('click',function(event){
-// 	event.preventDefault();
-// console.log("hello editFormField");
-// });
-	// editFormField
-// --Enabel Form Field of CRM
-
-
-// ./CRM

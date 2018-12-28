@@ -8,22 +8,6 @@
 
 @section('ContentHeader(Page_header)')
 
-
-{{-- <div class="row mb-2" id="scorlling_social">
-  <div class="col-sm-6">
-    <h2 class="m-0 text-dark">Social</h2>
-  </div> --}}
-  <!-- /.col -->
-  {{-- <div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active">Social</li>
-    </ol>
-  </div> --}}
-  <!-- /.col -->
-{{-- </div> --}}
-<!-- /.row -->
-
  <h1>
         Social
         <small>Control panel</small>
@@ -97,13 +81,14 @@
                       <form action="/reaction" method="post" >
                         {{csrf_field()}}
                         <input type="hidden" name="postID" value="{{$post['postID']}}">
-                        <input type="hidden" name="postID" value="3">
+                        <input type="hidden" name="reaction" value="3">
                         <input type="submit" name="like" value="Happy">
                       </form>
                     </a>
+                    
                   @else
                     <a href="" id="{{$post['userPostReactionID']}}" class="reacted">
-                      <b>{{$post['userReactionName']}}</b><<strong>{{$post['reactionCount']}}</strong>
+                      <b>{{$post['userReactionName']}}</b>&nbsp; &nbsp; <strong>{{$post['reactionCount']}}</strong>
                     </a>
                   @endif
                   | 
@@ -230,12 +215,7 @@ src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; au
               </div>
             </div>
                     
-           
-<!-- CK Editor -->
-{{-- <script src                                                                                                                                                                                                                                                                                                                                     ="{{asset("/admin-lte/plugins/ckeditor/ckeditor.js")}}"></script> --}}
-<!-- Bootstrap WYSIHTML5 -->
-{{-- <script src="{{asset("/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script> --}}
-<script>
+  <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor
 

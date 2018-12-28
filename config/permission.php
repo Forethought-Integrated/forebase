@@ -88,7 +88,8 @@ return [
      * role is updated. Then the cache will be flushed immediately.
      */
 
-    'cache_expiration_time' => 60 * 24,
+    // 'cache_expiration_time' => 60 * 24,  //default
+    'cache_expiration_time' => 0,
 
     /*
      * When set to true, the required permission/role names are added to the exception

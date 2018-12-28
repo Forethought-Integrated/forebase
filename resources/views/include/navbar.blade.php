@@ -18,8 +18,9 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          {{-- Email Message --}}
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
+         {{--  <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
@@ -58,7 +59,6 @@
                     <a href="#">
                       <div class="pull-left">
                         <img src="{{asset("/img/default_images/user4-128x128.jpg")}}" class="img-circle" alt="User Image">
-                        {{-- <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" class="img-circle" alt="User Image"> --}}
                       </div>
                       <h4>
                         Developers
@@ -95,7 +95,9 @@
               </li>
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
-          </li>
+          </li> --}}
+          {{-- ./Email Message --}}
+
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -138,8 +140,51 @@
               <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
+
           <!-- Tasks: style can be found in dropdown.less -->
+
           <li class="dropdown tasks-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">{{Session::get('taskCount')}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{Session::get('taskCount')}} tasks</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                  {{-- {{$taskData->task_percentage}}<br> --}}
+
+                <ul class="menu">
+                  @if(Session::has('taskData'))
+                  @foreach(Session::get('taskData') as $taskData)
+                   <li><!-- Task item -->
+                    <a href="/crm/task/{{$taskData->task_id}}">
+                      <h3>
+                        {{$taskData->task_subject}}
+                        <small class="pull-right">{{$taskData->task_percentage}}%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-aqua" style="width: {{$taskData->task_percentage}}%" role="progressbar"
+                             aria-valuenow="{{$taskData->task_percentage}}" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">{{$taskData->task_percentage}}% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                  @endforeach 
+                  @else
+                    <li class="header">You Have No Task </li>
+                  @endif
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="/crm/task/">View all tasks</a>
+              </li>
+            </ul>
+          </li>
+
+         {{--  <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">9</span>
@@ -212,17 +257,18 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="#">View all tasks</a>
+                <a href="/crm/task/">View all tasks</a>
               </li>
             </ul>
-          </li>
+          </li> --}}
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{asset("/storage/uploads/avatar/Auth::user()->avatar")}}" class="img-circle" alt="User Image">
+                {{-- <img src="{{asset("/storage/uploads/avatar/Auth::user()->avatar")}}" class="img-circle" alt="User Image"> --}}
                 {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}  
 
-                {{-- <img src="{{asset("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle" alt="User Image"> --}}
+                <img src="{{asset("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle user-image" alt="User Image">
 
               <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
@@ -233,7 +279,7 @@
                 {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}
 
                 <p>
-                  {{Auth::user()->name}} - Full Stack Developer
+                  {{Auth::user()->name}} - {{Auth::user()->designationCode}}
                   <small>Member since Jan. 2018</small>
                 </p>
               </li>

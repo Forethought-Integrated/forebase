@@ -21,7 +21,7 @@ class PostReactionController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
-        $this->URL=$this->ENV_URL.'reaction/';    
+        $this->URL=$this->ENV_URL.'reaction';    
                 // $this->middleware('auth');
     }
 
@@ -66,7 +66,7 @@ class PostReactionController extends Controller
     {
 
         $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $client->request('POST', $this->URL.'/'.$id, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -81,7 +81,7 @@ class PostReactionController extends Controller
     {
         // PostReaction::destroy($id);
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

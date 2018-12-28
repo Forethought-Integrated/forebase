@@ -16,7 +16,16 @@
     {{-- /board/{boardID}/{userID}/list/{listID}/create/ --}}
     {{-- /board/{boardID}/{userID}/list/{listID}/create/ --}}
     {{-- <a href="/contact/create" title=""> --}}
-    <a href="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['card']['cards']['0']['lists_id']}}/create" title="">
+     {{--  @if(is_null($data['card']))
+      null --}}
+        <a href="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['listID']}}/create" title="">
+
+
+     {{--  @else
+      not no=ull --}}
+        {{-- <a href="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['card']['cards']['0']['lists_id']}}/create" title=""> --}}
+       {{--  <a href="/contact/create" title="">
+      @endif --}}
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -50,25 +59,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['card']['cards'] as $data)
-                    <tr>
-                      <td>{{$data['id']}}</td>
-                      {{-- <td><a href="{{ url('card'.'/'.$data['id'])}}">{{$data['name']}}</a></td>  --}}
-                      <td>{{$data['name']}}</td> 
-                      <td>{{$data['description']}}</td>
-      {{--            <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('card'.'/'.$data['id'])}}">Edit</a>
-                      </td>
-       --}}                <td>
-                       <form action="{{ url('card'.'/'.$data['id'])}}" method="post">
-                          {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn" type="submit">Delete</button>
-                        </form>
-                        
-                      </td>
-                    </tr>
-                  @endforeach
+                  @if(is_null($data['card']))
+                    
+                    @foreach($data['card']['cards'] as $dataCard)
+                      <tr>
+                        <td>{{$dataCard['id']}}</td>
+                        {{-- <td><a href="{{ url('card'.'/'.$data['id'])}}">{{$data['name']}}</a></td>  --}}
+                        <td>{{$dataCard['name']}}</td> 
+                        <td>{{$dataCard['description']}}</td>
+        {{--            <td>
+                          <a class="btn btn-small btn-primary" href="{{ url('card'.'/'.$data['id'])}}">Edit</a>
+                        </td>
+         --}}           <td>
+                         <form action="{{ url('/board/'.$data['boardID'].'/'.Auth::user()->id.'/list/'.$dataCard['lists_id'].'/card'.'/'.$dataCard['id'])}}" method="post">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn remove_btn" type="submit.">Delete</button>
+                          </form>
+                          
+                        </td>
+                      </tr>
+                    @endforeach
+
+                  @else
+                  @endif 
                 </tbody>
                 <tfoot>
                 <tr>

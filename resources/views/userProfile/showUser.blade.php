@@ -95,13 +95,13 @@
 
                 <div class="form-group">
                   <label for="salutaionCode" >Salutaion Code</label>
-                  <input type="text" class="form-control enabelInputField" id="salutaionCode" name="salutaionCode" value="{{$users->salutaionCode}}" disabled>
+                  <input type="text" class="form-control enabelInputField" id="salutaionCode" name="salutaionCode" value="{{$users->salutationCode}}" disabled>
                 </div>
 
 
                 <div class="form-group">
                   <label for="designationCode" >Designation Code</label>
-                  <input type="text" class="form-control enabelInputField" id="designationCode" name="designationCode" value="{{$users->desgnationCode}}" disabled>
+                  <input type="text" class="form-control enabelInputField" id="designationCode" name="designationCode" value="{{$users->designationCode}}" disabled>
                 </div>
 
 

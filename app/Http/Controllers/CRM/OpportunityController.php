@@ -11,6 +11,18 @@ use GuzzleHttp\Client;
 
 class OpportunityController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_CRMURL');
+        $this->URL=$this->ENV_URL.'opportunity';    
+    }
+    
+
     /**
      * Create a new controller instance.
      *
@@ -23,7 +35,7 @@ class OpportunityController extends Controller
     {
      
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity');
+        $res = $client->request('GET', $this->URL);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
@@ -44,7 +56,7 @@ class OpportunityController extends Controller
 
      { 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/opportunity', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'opportunity_deal_owner' => $request->dealOwner,
                     'opportunity_deal_name' => $request->dealName,
@@ -69,7 +81,7 @@ class OpportunityController extends Controller
 
      {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity/' .$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
@@ -82,7 +94,7 @@ class OpportunityController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/opportunity/' .$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
@@ -94,7 +106,7 @@ class OpportunityController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/opportunity/".$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'opportunity_deal_owner' => $request->dealOwner,
                     'opportunity_deal_name' => $request->dealName,
@@ -120,7 +132,7 @@ class OpportunityController extends Controller
      {  
 
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/opportunity/'.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/opportunity');
      }
 

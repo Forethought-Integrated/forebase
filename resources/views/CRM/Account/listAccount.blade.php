@@ -63,7 +63,7 @@
        --}}                <td>
                        <form action="{{url('account'.'/'.$data['account_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
+                            @method('DELETE')
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
                       </td>

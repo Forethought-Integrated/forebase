@@ -1,10 +1,13 @@
 <?php
 
+// use DB;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Model\MenuDetail;
 use App\Model\Menu;
+use Illuminate\Database\Eloquent\Model;
 
+use Faker\Factory as Faker;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+
         // $this->call(UsersTableSeeder::class);
+        // $faker = Faker::create();
+        // foreach (range(1,10) as $index) {
+        //     DB::table('users')->insert([
+        //         'name' => $faker->name,
+        //         'email' => $faker->email,
+        //         'password' => bcrypt('secret'),
+        //     ]);
+        // }
+
+        
         //  User::create([
         //     'name' => 'Administrator',
         //     'email' => 'admin@telesales.test',

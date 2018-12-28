@@ -1,1 +1,70 @@
 button.btn.remove_btn{padding: 0px 15px;}
+
+.interaction {
+    position: relative;
+}
+.interaction .Reaction {
+    display: inline-block;
+    /*padding-right: 10px;*/
+}
+img{max-width: 100%;height:auto;}
+.reaction_action{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.social_sidebar{background:#ffffff;}
+.social_sidebar .card-header {
+    padding: 8px 8px 0px;
+}
+.m-0 {
+    margin: 0px;
+}
+.social_sidebar .card-header h5{
+    margin: 0px;
+    font-weight: bold;
+}
+.social_sidebar .card-body iframe{border:0px;}
+.card.card-info.logo_inner {
+    background: transparent;
+}
+.logo_inner{background: #f4f6f9;}
+.col_logo{padding-bottom: 30px;}
+.file_img img {
+    width: 75px;
+}
+.post .info {padding-bottom: 15px;}
+.interaction_d .reaction_change img{width:25px;}
+.react_link_data .link_cl img,.submit_image{
+    width: 35px;
+    display: inherit;
+}
+a.reaction {
+    font-size: 16px;
+    color: #606770;
+}
+.react_link_data .link_cl li{
+display: inline-block;
+padding-right:5px;
+}
+.react_link_data .link_cl li:last-child{padding-right:0px;}
+.reaction_l:hover .react_link_data {
+    display: block !important;
+}
+.react_link_data .link_cl {
+    background-color: #fff;
+    padding: 5px 5px 0px;
+    display: inline-block;
+    border-radius: 30px;
+    position: absolute;
+    top: -45px;
+    left:0px;
+    box-shadow:0px 2px 5px 1px #d3d3d3; 
+}
+.reaction_l {
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 5px;
+}
+.interaction_d {
+    display: inline-block;
+}
