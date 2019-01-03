@@ -15,12 +15,12 @@ class CreateColorPalettesTable extends Migration
     {
         Schema::create('color_palettes', function (Blueprint $table) {
             $table->increments('color_palette_id');
-            $table->string('color_type');
-            $table->text('color_description');
-            $table->string('color_cmyk_code');
-            $table->string('color_rgb_code');
-            $table->string('color_hex_code');
-            $table->string('color_pantone_code');
+            $table->string('color_type')->nullable();
+            $table->text('color_description')->nullable();
+            $table->string('color_cmyk_code')->nullable();
+            $table->string('color_rgb_code')->nullable();
+            $table->string('color_hex_code')->nullable();
+            $table->string('color_pantone_code')->nullable();
             $table->timestamps();
         });
     }

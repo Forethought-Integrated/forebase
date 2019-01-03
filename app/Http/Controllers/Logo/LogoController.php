@@ -2,54 +2,91 @@
 
 namespace App\Http\Controllers\Logo;
 
-// use App\Http\Requests\LogoRequest;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
+// use App\Http\Requests;
+
+//use App\Http\Requests\Request;
 use App\Model\Logo;
+use App\Http\Requests\LogoRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-
+ 
 
 class LogoController extends Controller
 {
+
+     function get_singel_data($id)
+    {
+        $data = DB::table('logos')->where('logo_id',$id)->first();
+               
+        return $data;
+    }
     public function index()
     {
-        $logos = Logo::latest()->get();
+        
+       $logo=DB::table('logos')->get();
 
-        return response()->json($logos);
+       return view('CRM.Logos.listLogo',['logo'=>$logo]); 
+    } 
+
+     public function create()
+    { 
+         return view('CRM.Logos.createLogo');
+
     }
 
-    public function store(LogoRequest $request)
+    public function store(Request $request)
     {
-        $logo = Logo::create($request->all());
 
-        return response()->json($logo, 201);
+
+         Logo::create([
+                    
+                    'primary_logo_url'=>$request->primary_logo_url,
+                    'secondary_logo_url'=>$request->secondary_logo_url,
+                    'mnemonic_url'=>$request->mnemonic_url,
+                    'logo_usage'=>$request->logo_usage,
+
+                 ]);
+
+                  return redirect('/logos'); 
     }
 
     public function show($id)
     {
-        // $logo = Logo::findOrFail('1');
-                // $data = DB::table('logos')->where('logo_id','1' )->first();
-$logo = DB::table('logos')->get();
-// $logo = DB::table('logos')->where('logo_id', '1')->first();
-        // $logo=Logo::where('logo_id',$id)->pluck('primary_logo_url')->all();
-        // $logo=Logo::where('logo_id',$id)->pluck('post_body','user_name')->all();
-        return response()->json($logo);
-        // return $logo;
+       
+        $logo = $this->get_singel_data($id);
+            
+       
+        return view('CRM.Logos.showLogo',['logos'=>$logo]);
     }
 
-    public function update(LogoRequest $request, $id)
+     public function edit($id)
+    {
+       $logo = $this->get_singel_data($id);
+            
+        
+         return view('CRM.Logos.editLogo',['logos'=>$logo]);
+
+
+    }
+
+    public function update(Request $request, $id)
     {
         $logo = Logo::findOrFail($id);
         $logo->update($request->all());
+        $logo->save();
+        return redirect('/logos');
 
-        return response()->json($logo, 200);
+        
     }
 
     public function destroy($id)
     {
-        Logo::destroy($id);
+       
+       DB::table('logos')->where('logo_id','=',$id)->delete();
 
-        return response()->json(null, 204);
+       
+            return redirect('/logos');
     }
 }

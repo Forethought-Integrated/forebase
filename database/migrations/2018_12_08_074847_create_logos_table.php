@@ -15,10 +15,10 @@ class CreateLogosTable extends Migration
     {
         Schema::create('logos', function (Blueprint $table) {
             $table->increments('logo_id');
-            $table->string('primary_logo_url');
-            $table->string('secondary_logo_url');
-            $table->string('mnemonic_url');
-            $table->text('logo_usage');
+            $table->string('primary_logo_url')->nullable();
+            $table->string('secondary_logo_url')->nullable();
+            $table->string('mnemonic_url')->nullable();
+            $table->text('logo_usage')->nullable();
             $table->timestamps();
         });
     }

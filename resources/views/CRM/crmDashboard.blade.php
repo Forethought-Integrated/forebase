@@ -67,6 +67,47 @@
       </div>
     </div>
 
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/menus" title="Menu">
+          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/menudetails" title="">
+          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+     
+     <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/colorpalettes" title="">
+          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+     <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/logos" title="">
+          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+     <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/companies" title="">
+          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+  
     
 
        

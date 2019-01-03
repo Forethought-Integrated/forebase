@@ -15,10 +15,10 @@ class CreateMenuDetailsTable extends Migration
     {
         Schema::create('menu_details', function (Blueprint $table) {
             $table->increments('menu_detail_id');
-            $table->integer('menu_id');
-            $table->string('menu_field_name');
-            $table->string('menu_url');
-            $table->integer('menu_sort');
+            $table->integer('menu_id')->nullable();
+            $table->string('menu_field_name')->nullable();
+            $table->string('menu_url')->nullable();
+            $table->integer('menu_sort')->nullable();
             $table->timestamps();
         });
     }

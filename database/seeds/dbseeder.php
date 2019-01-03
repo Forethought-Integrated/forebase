@@ -15,7 +15,7 @@ class dbseeder extends Seeder
         // //$menu ->model='menu-1';
         // $menu->user_id='20';
         // $menu->menu_type='admin';
-        // $menu->save();
+        // $menu->save(); 
 
         // $menu = new \App\Menu();        
         // $menu->user_id='76';

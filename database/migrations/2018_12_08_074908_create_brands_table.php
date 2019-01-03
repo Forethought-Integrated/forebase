@@ -15,12 +15,12 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->increments('brand_id');
-            $table->text('brand_persona');
-            $table->text('brand_guidelines');
-            $table->text('brand_color_palette');
-            $table->text('brand_typography');
-            $table->text('brand_email_signature');
-            $table->text('brand_disclaimer');
+            $table->text('brand_persona')->nullable();
+            $table->text('brand_guidelines')->nullable();
+            $table->text('brand_color_palette')->nullable();
+            $table->text('brand_typography')->nullable();
+            $table->text('brand_email_signature')->nullable();
+            $table->text('brand_disclaimer')->nullable();
             $table->timestamps();
         });
     }

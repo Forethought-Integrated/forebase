@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanysTable extends Migration
+class CreateCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateCompanysTable extends Migration
      */
     public function up()
     {
-        Schema::create('companys', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id');
-            $table->string('company_name');
-            $table->text('company_registered_address');
-            $table->string('company_state');
-            $table->string('company_country');
-            $table->string('company_pincode');
-            $table->string('company_email');
-            $table->string('company_phone_no');
-            $table->string('company_primary_contact');
-            $table->string('company_secondary_contact');
-            $table->string('company_pan_no');
-            $table->string('company_registeration_no');
-            $table->text('company_overview');
-            $table->string('company_industry');
-            $table->string('company_website');
+            $table->string('company_name')->nullable();
+            $table->text('company_registered_address')->nullable();
+            $table->string('company_state')->nullable();
+            $table->string('company_country')->nullable();
+            $table->string('company_pincode')->nullable();
+            $table->string('company_email')->nullable();
+            $table->string('company_phone_no')->nullable();
+            $table->string('company_primary_contact')->nullable();
+            $table->string('company_secondary_contact')->nullable();
+            $table->string('company_pan_no')->nullable();
+            $table->string('company_registeration_no')->nullable();
+            $table->text('company_overview')->nullable();
+            $table->string('company_industry')->nullable();
+            $table->string('company_website')->nullable();
             $table->timestamps();
         });
     }
@@ -40,6 +40,6 @@ class CreateCompanysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companys');
+        Schema::dropIfExists('companies');
     }
 }

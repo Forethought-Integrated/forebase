@@ -1,48 +1,85 @@
-<?php
+<?php 
+
 
 namespace App\Http\Controllers\Menu;
 
 // use App\Http\Requests\MenuRequest;
-use App\Model\Menu;
+use App\Menu;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\BrandResources;
+use Illuminate\Support\Facades\DB; 
 
 
 class MenuController extends Controller
 {
+    
+     function get_singel_data($id)
+    {
+        $data = DB::table('menus')->where('menu_id',$id)->first();
+               
+        return $data;
+    }
+
+
     public function index()
     {
-        $menus = Menu::latest()->get();
+       $menus=DB::table('Menus')->get();
+       return view('CRM.Menu.listMenu',['menus'=>$menus]); 
+    }
+      
+    
+    public function create()
+    {
+         return view('CRM.Menu.createMenu');
 
-        return response()->json($menus);
     }
 
     public function store(Request $request)
     {
-        $menu = Menu::create($request->all());
+       Menu::create([
+                    
+                    'user_id' => $request->user_id,
+                    'menu_type' => $request->menu_type,
 
-        return response()->json($menu, 201);
+
+                     ]);
+                    return redirect('/menus');
     }
 
     public function show($id)
     {
-        $menu = Menu::findOrFail($id);
-
-        return response()->json($menu);
+      $menus = $this->get_singel_data($id);
+            
+       
+        return view('CRM.Menu.showMenu',['menu'=>$menus]);
     }
+    
+    public function edit($id)
+    {
+       $menus = $this->get_singel_data($id);
+            
+        
+         return view('CRM.Menu.editMenu',['menu'=>$menus]);
 
+
+    }
     public function update(Request $request, $id)
     {
-        $menu = Menu::findOrFail($id);
+        
+        $menu=Menu::findOrFail($id);
         $menu->update($request->all());
+        $menu->save();
 
-        return response()->json($menu, 200);
+         return redirect('/menus');
     }
 
-    public function destroy($id)
+    public function destroy($id) 
     {
-        Menu::destroy($id);
+       DB::table('menus')->where('menu_id','=',$id)->delete();
 
-        return response()->json(null, 204);
+       
+            return redirect('/menus');
     }
 }

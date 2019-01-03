@@ -105,7 +105,20 @@
             </span>
           </a>
         </li>
-        {{-- ./Permission & Role --}}
+        {{-- ./Brand --}}
+
+        <li>
+          <a href="/brands">
+            <img src="{{asset("/img/sidebar/Permission_&_role.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Brand</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+
+
 
 {{-- 
         <li>

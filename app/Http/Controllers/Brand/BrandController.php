@@ -1,47 +1,127 @@
 <?php
 
+
 namespace App\Http\Controllers\Brand;
 
-use App\Http\Requests\BrandRequest;
 use App\Brand;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Resources\BrandResources;
+use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Facade;
+
+//use App\Http\Controllers\BrandController;
 
 
-class BrandController extends Controller
+class  BrandController extends Controller
 {
+    
+     function get_singel_data($id)
+    {
+        $data = DB::table('brands')->where('brand_id',$id)->first();
+               
+        return $data;
+    }
+     
     public function index()
-    {
-        $brands = Brand::latest()->get();
-
-        return response()->json($brands);
+    { 
+        
+       $brands=DB::table('Brands')->get();
+       return view('CRM.Brand.listBrand',['brands'=>$brands]);
     }
 
-    public function store(BrandRequest $request)
-    {
-        $brand = Brand::create($request->all());
 
-        return response()->json($brand, 201);
+    public function create()
+    {
+         return view('CRM.Brand.createBrand');
+
     }
 
-    public function show($id)
-    {
-        $brand = Brand::findOrFail($id);
 
-        return response()->json($brand);
+    public function store(Request $request)
+    {
+        
+                   Brand::create([
+                    
+                    'brand_persona' => $request->brandPerson,
+                    'brand_guidelines' => $request->brandGuidelines,
+                    'brand_color_palette'=> $request->brandColorpalate,
+                    'brand_typography' => $request->brandTypography,
+                    'brand_email_signature' => $request->brandEmail,
+                    'brand_disclaimer' => $request->brandDisc,
+                   
+                    
+                ]);
+                    return redirect('/brands');
     }
 
-    public function update(BrandRequest $request, $id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) 
     {
-        $brand = Brand::findOrFail($id);
+
+        $brands = $this->get_singel_data($id);
+            
+       
+        return view('CRM.Brand.showBrand',['brand'=>$brands]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+         $brands = $this->get_singel_data($id);
+            
+        
+         return view('CRM.Brand.editBrand',['brand'=>$brands]);
+    }
+
+         public function update(Request $request, $id)
+
+     {  
+        $brand=Brand::findOrFail($id);
         $brand->update($request->all());
+        //return $brand;
+        $brand->save();
+            
+                // DB::table('brands')->where('brand_id', $id)->update(['brand_persona' => $request->brand_persona]);
 
-        return response()->json($brand, 200);
-    }
+                // return redirect('/brands');
 
+
+
+
+    
+       
+                //    Brand::create([
+                    
+                //     'brand_persona' => $request->brandPerson,
+                //     'brand_guidelines' => $request->brandGuidelines,
+                //     'brand_color_palette'=> $request->brandColorpalate,
+                //     'brand_typography' => $request->brandTypography,
+                //     'brand_email_signature' => $request->brandEmail,
+                //     'brand_disclaimer' => $request->brandDisc,
+                   
+                    
+                // ]);
+                    return redirect('/brands');
+     }
+
+   
+     
     public function destroy($id)
     {
-        Brand::destroy($id);
+         DB::table('brands')->where('brand_id','=',$id)->delete();
 
-        return response()->json(null, 204);
+       
+            return redirect('/brands');
     }
 }

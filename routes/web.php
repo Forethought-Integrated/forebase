@@ -97,7 +97,7 @@ Route::post('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardControl
 Route::get('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@show');
 Route::put('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@update');
 Route::delete('/board/{boardID}/{userID}/list/{listID}/card/{cardID}','Helpdesk\CardController@destroy');
-
+                    //Brand
 
 
 // ./ HelpDesk
@@ -135,3 +135,25 @@ Route::get('/socialjson', function () {
     return view('social.socialjson',['data' => $data]);
 
 });
+
+  //// for Brand
+Route::resource('brands','Brand\BrandController');
+
+  ///for Menu
+Route::resource('menus','Menu\MenuController');
+
+   ///for menudetails
+
+Route::resource('menudetails','Menudetail\MenudetailController');
+
+   ///for colorpaletts
+
+Route::resource('colorpalettes','ColorPalette\ColorPaletteController');
+
+   ///for logos
+
+Route::resource('logos','Logo\LogoController');
+
+   ///for company
+
+Route::resource('companies','Company\CompanyController');
