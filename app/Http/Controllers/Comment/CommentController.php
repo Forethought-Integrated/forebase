@@ -67,7 +67,7 @@ class CommentController extends Controller
     {
         
          $client = new Client();
-        $response = $client->request('PUT', $this->URL.$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->commentView,
@@ -87,7 +87,7 @@ class CommentController extends Controller
     {
         // return 'delete';
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

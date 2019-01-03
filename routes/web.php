@@ -1,16 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -52,7 +40,8 @@ Route::resource('/social', 'Post\PostController');
 Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
 Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
 Route::resource('/comment', 'Comment\CommentController');
-Route::resource('/reaction', 'PostReaction\PostReactionController');
+Route::resource('/postreaction', 'PostReaction\PostReactionController');
+Route::resource('/reaction', 'Reaction\ReactionController');
 // ./Social Blade
 
 // User Profile
@@ -142,6 +131,7 @@ Route::get('/admin', function () {
 });
 // ./Permission Module
 
+// testing
 
 Route::get('/socialjson', function () {
 
@@ -165,15 +155,30 @@ Route::get('/socialjson', function () {
     return view('social.socialjson',['data' => $data]);
 
 });
+        use Illuminate\Support\Facades\App; 
+
 
 Route::get('/socialjsond', function () {
 
    $client = new Client();
         $res = $client->request('GET', 'http://localhost:8001/api/post');
         $posts=$res->getBody();
-        $area = json_decode($posts, true);
-        $data['post']=$area;
+        $postData = json_decode($posts, true);
+        // $data = json_decode($posts, true);
 
-    return view('social.socialjson',['data' => $data]);
+        // $postData['post']=$data;
+        $data['post']=$postData;
+
+
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+
+        
+        // $data['reactionData']=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+         $data['notReactionData']=$reaction->getData();
+        // return view('social/socialDashboard')->with('data', $data);
+
+
+    return view('social.socialjson',compact('data'));
 
 });
+// ./testing

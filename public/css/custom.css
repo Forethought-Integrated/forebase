@@ -68,3 +68,51 @@ padding-right:5px;
 .interaction_d {
     display: inline-block;
 }
+
+/*.reactionHover:hover  {
+    display: block !important;
+    background-color: yellow;
+}*/
+
+/*vikram*/
+/*--Reaction*/
+.parentDivReaction:hover  .divReactionOnHover  {display: block !important;
+    
+}
+.reactionImage {margin-bottom: -7px;}
+.divReactionOnHover  {
+    display: none;
+    border-radius: 26px;
+    border: solid;
+    border-width: 1px;
+    /* padding-top: 23px; */
+    margin-left: -27px;
+    width: 200px;
+    padding: 5px 0px 0px 5px;
+}
+/*--./Reaction*/
+
+/*--comment*/
+.commentUpdateParent{
+    border-bottom-width: 2.05px;
+    /*margin-top: 15px;*/
+    border-bottom-style: solid;
+    border-bottom-color: aliceblue;
+        width: 504px;
+            padding: 7px;
+}
+.commentDiv{
+padding: 25px;
+    border-top-width: 2.05px;
+    margin-top: 15px;
+    border-top-style: solid;
+    border-top-color: aliceblue;
+}
+.inline_block{display: inline-block;}
+.commentUpdateChild {display: none;}
+.commentEdit {display: none;}
+.commentView {display: inline;}
+.commentUpdateParent:hover .commentUpdateChild{display: inline;}
+/*--./comment*/
+
+/*./Vikram*/

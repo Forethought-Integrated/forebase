@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use GuzzleHttp\Client;
+        use Illuminate\Support\Facades\App; 
+
 
 
 class PostController extends Controller
@@ -30,11 +32,21 @@ class PostController extends Controller
         $client = new Client();
         $res = $client->request('GET', $this->URL);
         $posts=$res->getBody();
-        $data = json_decode($posts, true);
+        $postData = json_decode($posts, true);
+        // $data = json_decode($posts, true);
 
-        $postData['post']=$data;
+        // $postData['post']=$data;
+        $data['post']=$postData;
 
-        return view('social/socialDashboard')->with('posts', $postData);
+
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+
+        
+        // $data['reactionData']=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+         $data['notReactionData']=$reaction->getData();
+         // $data['notReactionData']=unserialize($reaction);
+        // return view('social/socialDashboard')->with('data', $data);
+        return view('social/socialDashboard',compact('data'));
     }
 
     /**

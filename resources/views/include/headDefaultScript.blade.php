@@ -12,6 +12,9 @@
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <!-- jQuery 3 -->
+    <script src="{{asset("/admin_lte/bower_components/jquery/dist/jquery.min.js")}}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
