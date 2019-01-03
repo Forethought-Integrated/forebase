@@ -1,5 +1,4 @@
 @extends('layouts.adminApp')
-
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
@@ -77,10 +76,23 @@
               </div>
             
 
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <label for="TaskStatus" >Task Status</label>
                 <input type="text" class="form-control" id="TaskStatus" name="TaskStatus" placeholder="TaskStatus">
-              </div>
+              </div> -->
+              <div class="form-group">
+                   <label>Task Status</label>
+
+                   <select class="form-control" name="TaskStatus">
+                     <option> Not Started</option>
+                     <option> In Progress</option>
+                     <option> Completed</option>
+                     <option> On Hold</option>
+                    
+                   </select>
+                 </div>
+
+
             
 
 
@@ -114,11 +126,24 @@
               <input type="text" class="form-control" id="AssignedBy" name="AssignedBy" placeholder="AssignedBy">
             </div>
  
-            <div class="form-group">
+           <!--  <div class="form-group">
               <label for="TaskCompletion" >Task Completion %</label>
               <input type="text" class="form-control" id="TaskCompletion" name="TaskCompletion" placeholder="TaskCompletion">
-            </div>
-          
+            </div> -->
+             <div class="form-group">
+                   <label>Task Completion</label>
+
+                   <select class="form-control" name="TaskCompletion">
+                     <option> 0</option>
+                     <option> 20</option>
+                     <option> 40</option>
+                     <option> 60</option>
+                     <option> 80</option>
+                     <option>100</option>
+                   </select>
+                 </div>
+
+
  
             
   

@@ -40,7 +40,7 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
        
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="inputTaskLeadId" >Task Lead ID</label>
                 <input type="text" class="form-control" id="TaskLeadId" name="task_lead_id" value="{{ $task->task_lead_id }}" />
               </div>
@@ -61,7 +61,7 @@
               <div class="form-group">
                 <label for="inputTaskAccountId" >Task Account ID</label>
                 <input type="text" class="form-control" id="TaskAccountId" name="task_account_id" value="{{ $task->task_account_id }}" />
-              </div>
+              </div> -->
             
               <div class="form-group">
                 <label for="inputTaskSubject" >Task Subject</label>
@@ -73,10 +73,29 @@
                 <input type="text" class="form-control" id="TaskGroup" name="task_group" value="{{ $task->task_group }}" />
               </div>
 
-              <div class="form-group">
-                <label for="TaskStatus" >Task Status</label>
-                <input type="text" class="form-control" id="TaskStatus" name="task_status" placeholder="TaskStatus" value="{{ $task->task_status }}">
+             <div class="form-group">
+                   <label>Task Status</label>
+
+                   <select class="form-control" name="TaskStatus" >
+                     <option> Not Started</option>
+                     <option> In Progress</option>
+                     <option> Completed</option>
+                     <option> On Hold</option>
+                    
+                   </select>
+                 </div>
+
+                 <div class="form-group">
+                  <label for="inputTaskDescription" >Task Description</label>
+                  <input type="text" class="form-control" id="TaskDescription" name="task_description"   value="{{ $task->task_description}}" />
               </div>
+  
+              <div class="form-group">
+                <label for="inputSartDate" >Start Date</label>
+                <input type="date" class="form-control" id="StartDate" name="task_startdate" value="{{ $task->task_startdate }}" />
+              </div>
+  
+             
             
           
   
@@ -89,22 +108,14 @@
           <div class="col-md-6">
             {{-- FormBOXBody --}}
             <div class="box-body">
-  
-              <div class="form-group">
-                  <label for="inputTaskDescription" >Task Description</label>
-                  <input type="text" class="form-control" id="TaskDescription" name="task_description"   value="{{ $task->task_description}}" />
-              </div>
-  
-              <div class="form-group">
-                <label for="inputSartDate" >Start Date</label>
-                <input type="date" class="form-control" id="StartDate" name="task_startdate" value="{{ $task->task_startdate }}" />
-              </div>
-  
-              <div class="form-group">
+
+               <div class="form-group">
                 <label for="inputEnddate" >End date</label>
                 <input type="date" class="form-control" id="EndDate" name="task_enddate" value="{{ $task->task_enddate }}"/>
               </div>
   
+  
+              
   
               <div class="form-group">
                 <label for="inputAssignTo" >Assigned To</label>
@@ -116,11 +127,31 @@
                 <input type="text" class="form-control" id="AssignedBy" name="task_assignedby" value="{{ $task->task_assignedby }}" />
               </div>
 
+            
+           <div class="form-group">
+                   <label>Task Completion</label>
 
-            <div class="form-group">
-              <label for="TaskCompletion" >Task Completion %</label>
-              <input type="text" class="form-control" id="TaskCompletion" name="task_percentage" placeholder="TaskCompletion" value="{{ $task->task_percentage }}">
-            </div>
+                   <select class="form-control" name="taskPercentage">
+                     <option  @if($task->task_percentage==0)
+              selected
+              @endif> 0</option>
+                     <option  @if($task->task_percentage==20)
+              selected
+              @endif> 20</option>
+                     <option  @if($task->task_percentage==40)
+              selected
+              @endif> 40</option>
+                     <option  @if($task->task_percentage==60)
+              selected
+              @endif> 60</option>
+                     <option  @if($task->task_percentage==80)
+              selected
+              @endif> 80</option>
+                     <option  @if($task->task_percentage==100)
+              selected
+              @endif>100</option>
+                   </select>
+                 </div>
           
   
               

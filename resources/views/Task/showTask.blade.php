@@ -1,5 +1,4 @@
 @extends('layouts.adminApp')
-
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
@@ -40,7 +39,7 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
       
-                <div class="form-group">
+               <!--  <div class="form-group">
                   <label for="inputTaskLeadId" >Task Lead ID</label>
                   <input type="text" class="form-control" id="TaskLeadId" name="TaskLeadId" value="{{ $task->task_lead_id }}" disabled>
                 </div>
@@ -61,7 +60,7 @@
                 <div class="form-group">
                   <label for="inputTaskAccountId" >Task Account ID</label>
                   <input type="text" class="form-control" id="TaskAccountId" name="TaskAccountId" value="{{ $task->task_account_id }}" disabled>
-                </div>
+                </div> -->
                   
               <div class="form-group">
                 <label for="inputTaskSubject" >Task Subject</label>
@@ -77,6 +76,16 @@
                 <label for="TaskStatus" >Task Status</label>
                 <input type="text" class="form-control" id="TaskStatus" name="TaskStatus" placeholder="TaskStatus" value="{{ $task->task_status }}" disabled>
               </div>
+
+               <div class="form-group">
+                <label for="inputTaskDescription" >Task Description</label>
+                <input type="text" class="form-control" id="TaskDescription" name="TaskDescription" value="{{ $task->task_description}}" disabled>
+              </div>
+        
+              <div class="form-group">
+                <label for="inputSartDate" >Start Date</label>
+                <input type="date" class="form-control" id="StartDate" name="StartDate" value="{{ $task->task_startdate }}" disabled>
+              </div>
   
            
             </div>
@@ -90,15 +99,7 @@
             {{-- FormBOXBody --}}
             <div class="box-body">
             
-              <div class="form-group">
-                <label for="inputTaskDescription" >Task Description</label>
-                <input type="text" class="form-control" id="TaskDescription" name="TaskDescription" value="{{ $task->task_description}}" disabled>
-              </div>
-        
-              <div class="form-group">
-                <label for="inputSartDate" >Start Date</label>
-                <input type="date" class="form-control" id="StartDate" name="StartDate" value="{{ $task->task_startdate }}" disabled>
-              </div>
+             
         
               <div class="form-group">
                 <label for="inputEnddate" >End date</label>
