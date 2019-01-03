@@ -12,6 +12,20 @@ use GuzzleHttp\Client;
 
 class ContactController extends Controller
 {
+
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_CRMURL');
+        $this->URL=$this->ENV_URL.'contact';    
+    }
+    
+
+ 
     /**
      * Create a new controller instance.
      *
@@ -22,7 +36,7 @@ class ContactController extends Controller
     {
      
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact');
+        $res = $client->request('GET', $this->URL);
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
@@ -44,7 +58,7 @@ class ContactController extends Controller
      {  
 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/contact', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'contact_type' => $request->contactType,
                     'contact_name' => $request->Name,
@@ -65,7 +79,7 @@ class ContactController extends Controller
      {
  
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
@@ -79,7 +93,7 @@ class ContactController extends Controller
     {
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/contact/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
@@ -92,7 +106,7 @@ class ContactController extends Controller
 
      {  
          $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/contact/".$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'contact_type' => $request->contactType,
                     'contact_name' => $request->Name,
@@ -114,7 +128,7 @@ class ContactController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/contact/'.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/contact');
     }
 

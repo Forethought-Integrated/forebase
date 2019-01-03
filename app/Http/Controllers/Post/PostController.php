@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use GuzzleHttp\Client;
+        use Illuminate\Support\Facades\App; 
+
 
 
 class PostController extends Controller
@@ -21,7 +23,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
-        $this->URL=$this->ENV_URL.'post/';    
+        $this->URL=$this->ENV_URL.'post';    
                 // $this->middleware('auth');
     }
 
@@ -29,19 +31,22 @@ class PostController extends Controller
     {
         $client = new Client();
         $res = $client->request('GET', $this->URL);
-        // return $res->getStatusCode();
-        // return $res->getBody();
         $posts=$res->getBody();
-        $area = json_decode($posts, true);
-        // return view('socialapp')->with('post', $posts);
-        // if(Auth::user()->id==)
+        $postData = json_decode($posts, true);
+        // $data = json_decode($posts, true);
 
-        $postData['post']=$area;
-        // $postData['updateView']=$;
+        // $postData['post']=$data;
+        $data['post']=$postData;
 
-        // return view('socialapp')->with('posts', $area);
-        return view('social/socialDashboard')->with('posts', $postData);
-        // return view('Post.postDashboard',['posts' => $posts]);
+
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+
+        
+        // $data['reactionData']=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+         $data['notReactionData']=$reaction->getData();
+         // $data['notReactionData']=unserialize($reaction);
+        // return view('social/socialDashboard')->with('data', $data);
+        return view('social/socialDashboard',compact('data'));
     }
 
     /**
@@ -107,7 +112,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
        $client = new Client();
-        $response = $client->request('PUT', $this->URL.$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->postBodyData,
@@ -132,7 +137,7 @@ class PostController extends Controller
 
 
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
     }
 }

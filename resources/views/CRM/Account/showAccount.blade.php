@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                   <label for="accountAddress" >Account Address</label>
-                      <input type="text" class="form-control enabelInputField" id="accountAddress" name="accountAddress" value="{{$data['account']['account_address']}}" disabled>
+                  <input type="text" class="form-control enabelInputField" id="accountAddress" name="accountAddress" value="{{$data['account']['account_address']}}" disabled>
                 </div>
 
                 <div class="form-group">

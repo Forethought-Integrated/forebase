@@ -1,28 +1,24 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Auth::routes();
 use GuzzleHttp\Client;
-
+use App\Model\Task;
 
 // Route::middleware('auth')->group(function () {
  Route::group(['middleware' => ['auth']], function () {
    
     Route::get('/', function () {
+
+        // $taskData=Task::where('task_assignedto',Auth::user()->id)->get()->pluck('task_subject','task_percentage');
+        $taskData=Task::where('task_assignedto',Auth::user()->id)->get();
+        $taskCount= $taskData->count();
+        // return $taskCount;
+        Session::put('taskData',$taskData);
+        Session::put('taskCount',$taskCount);
+        // return $taskData;
     return view('/dashboard/dashboard');
     });
 
@@ -40,12 +36,12 @@ Route::get('/knowledge', function () {
 Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');
 Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
 Route::resource('/social', 'Post\PostController');
-// Route::resource('/comment', 'Comment\CommentController');
 // --Comment Blade
 Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
 Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
 Route::resource('/comment', 'Comment\CommentController');
-Route::resource('/reaction', 'PostReaction\PostReactionController');
+Route::resource('/postreaction', 'PostReaction\PostReactionController');
+Route::resource('/reaction', 'Reaction\ReactionController');
 // ./Social Blade
 
 // User Profile
@@ -61,8 +57,22 @@ Route::resource('lead', 'CRM\LeadController');
 Route::resource('campaign', 'CRM\CampaignController');
 Route::resource('opportunity', 'CRM\OpportunityController');
 Route::resource('customer', 'CRM\AccountController');
-//  ./CRM----------------------------------------------------------------------------------------------  
-// Route::get('/social', function () {
+// Route::get('/crm/task/{id}', function () {
+//     return 'hehe';
+// });
+
+Route::resource('/crm/task/', 'Task\TaskController');
+Route::get('/crm/task/{id}', 'Task\TaskController@show');
+Route::get('/crm/task/{id}/edit', 'Task\TaskController@edit');
+Route::put('/crm/task/{id}/', 'Task\TaskController@update');
+Route::delete('/crm/task/{id}/', 'Task\TaskController@destroy');
+//  ./CRM--------------------------------------------------------------------------------------------  
+
+// Administration-----------------------------------------------------------------------------------
+Route::get('/administration', function () {
+    return view('administration.administrationDashboard');
+});
+// ./Administration-----------------------------------------------------------------------------------
 
 //  HelpDesk
 
@@ -121,6 +131,7 @@ Route::get('/admin', function () {
 });
 // ./Permission Module
 
+// testing
 
 Route::get('/socialjson', function () {
 
@@ -129,14 +140,23 @@ Route::get('/socialjson', function () {
     $res = $client->request('GET', 'http://localhost:8003/boards/'.'1'.'/'.'1'.'/'.'list'.'/'.'1'.'/'.'card');
      $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
-        $data['card']=$card;
+        if(is_null($card))
+        {
+            $data['card']='null';
+        }
+        else
+        {
+            $data['card']=$card;
+            
+            // $data['card']=null;
+        }
         $data['boardID']='1';
-
+        $data['listID']='1';
     return view('social.socialjson',['data' => $data]);
 
 });
 
-  //// for Brand
+//   for Brand
 Route::resource('brands','Brand\BrandController');
 
   ///for Menu
@@ -157,3 +177,33 @@ Route::resource('logos','Logo\LogoController');
    ///for company
 
 Route::resource('companies','Company\CompanyController');
+
+// testing
+
+use Illuminate\Support\Facades\App; 
+
+
+Route::get('/socialjsond', function () {
+
+   $client = new Client();
+        $res = $client->request('GET', 'http://localhost:8001/api/post');
+        $posts=$res->getBody();
+        $postData = json_decode($posts, true);
+        // $data = json_decode($posts, true);
+
+        // $postData['post']=$data;
+        $data['post']=$postData;
+
+
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+
+        
+        // $data['reactionData']=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+         $data['notReactionData']=$reaction->getData();
+        // return view('social/socialDashboard')->with('data', $data);
+
+
+    return view('social.socialjson',compact('data'));
+
+});
+// ./testing

@@ -11,6 +11,18 @@ use GuzzleHttp\Client;
 
 class LeadController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_CRMURL');
+        $this->URL=$this->ENV_URL.'lead';    
+    }
+    
+
     /**
      * Create a new controller instance.
      *
@@ -20,7 +32,7 @@ class LeadController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead');
+        $res = $client->request('GET', $this->URL);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -41,7 +53,7 @@ class LeadController extends Controller
      { 
 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/lead', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'lead_service_code' => $request->serviceCode,
                     'lead_name' => $request->Name,
@@ -81,7 +93,7 @@ class LeadController extends Controller
 
      {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead/' .$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -95,7 +107,7 @@ class LeadController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/lead/' .$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -107,7 +119,7 @@ class LeadController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/lead/" .$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'lead_service_code' => $request->serviceCode,
                     'lead_name' => $request->Name,
@@ -149,7 +161,7 @@ class LeadController extends Controller
 
      {  
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/lead/'.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/lead');
      }
 

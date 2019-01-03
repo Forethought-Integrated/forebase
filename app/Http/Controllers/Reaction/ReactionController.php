@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\PostReaction;
+namespace App\Http\Controllers\Reaction;
 
 // use App\Http\Requests\PostReactionRequest;
 use App\Http\Controllers\Controller;
@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 
 
 
-class PostReactionController extends Controller
+class ReactionController extends Controller
 {
 
     private $ENV_URL;
@@ -20,7 +20,7 @@ class PostReactionController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
-        $this->URL=$this->ENV_URL.'postreaction';    
+        $this->URL=$this->ENV_URL.'reaction';    
                 // $this->middleware('auth');
     }
 
@@ -34,13 +34,17 @@ class PostReactionController extends Controller
         $reaction=$res->getBody();
         $reactionDecode = json_decode($reaction, true);
 
-        $reactionData['reaction']=$reactionDecode;
+        $reactionData=$reactionDecode;
+        // $reactionData=$reaction;
+        // return $reactionData;
 
+        // return response()->json($reactionData);
         return response()->json($reactionData);
     }
 
     public function store(Request $request)
     {
+        return $request->all();
 
         $client = new Client();
         $response = $client->request('POST', $this->URL, [
@@ -68,12 +72,13 @@ class PostReactionController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $client->request('POST', $this->URL.'/'.$id, [
                     'form_params' => [
-                    // 'postID' => $request->postID,
-                    // 'userID' => $request->user()->id,
-                    'reactionID' => $request->reaction
+                    'postID' => $request->postID,
+                    'userID' => $request->user()->id,
+                    'reactionID' => $request->reactionID
                     ]
     ]);
        return redirect('/social');

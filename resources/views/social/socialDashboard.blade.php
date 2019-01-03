@@ -8,30 +8,14 @@
 
 @section('ContentHeader(Page_header)')
 
-
-{{-- <div class="row mb-2" id="scorlling_social">
-  <div class="col-sm-6">
-    <h2 class="m-0 text-dark">Social</h2>
-  </div> --}}
-  <!-- /.col -->
-  {{-- <div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active">Social</li>
-    </ol>
-  </div> --}}
-  <!-- /.col -->
-{{-- </div> --}}
-<!-- /.row -->
-
- <h1>
-        Social
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Social</li>
-      </ol>
+<h1>
+  Social
+  <small>Control panel</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li class="active">Social</li>
+</ol>
 
 
 @endsection
@@ -63,7 +47,7 @@
     <div class="card card-primary card-outline">
       <div class="card-body">
         <header><h3>what other people say...</h3></header>
-        @foreach($posts['post']['data'] as $post)
+        @foreach($data['post']['data'] as $post)
           <article class="post" data-postid="{{$post['postID']}}">
             <div id="{{'postBody'.$post['postID']}}" data-postbody="{{$post['postBody']}}">
               {!! $post['postBody'] !!}
@@ -71,102 +55,183 @@
             <div class="info">
                 posted by {{ $post['userName'] }} on {{ $post['createdAt']['date'] }}
             </div>
+            {{-- Reaction --}}
             <div class="interaction">
-                  {{-- @if($post['userReactionID'] == is_null(var)) --}}
+                  {{-- Reaction --}}
                   @if(is_null($post['userReactionID']))
-                    <a href=""  class="Reaction">
+                      {{-- Reaction Are available In App --}}
+                      {{-- parentDivReaction --}}
+                      <div class="parentDivReaction" style="display: inline;">
+                      <div class="divReactionOnHover">
+                        @foreach($data['notReactionData'] as $reaction )
+                            <form action="/postreaction" method="post" style ='display:inline;' >
+                              {{csrf_field()}}
+                              <input type="hidden" name="postID" value="{{$post['postID']}}">
+                              <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
+
+                              <input type="image" id="like" name="like" alt="Login"
+                                  src="{{asset($reaction->reaction_image)}}" class="submit_image">
+
+                              {{-- <input type="submit" name="reactionName" value="{{$reaction->reaction_name}}"> --}}
+
+                            </form>
+                        @endforeach
+                      </div>
+                      {{-- ./divReactionOnHover --}}
+                      <br>
+                      <div class="divReactionHover" style="display: inline;">
+                      <form action="/postreaction" method="post" style ='display:inline;' >
+                          {{csrf_field()}}
+                          <input type="hidden" name="postID" value="{{$post['postID']}}">
+                          <input type="hidden" name="reaction" value="{{$data['notReactionData']['0']->reaction_id}}">
+                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" 
+                              src="{{asset($data['notReactionData']['0']->reaction_image)}}" class="submit_image" width="20" height="auto" >
+
+
+                      </form>
+                    </div>
+                    {{-- ./divReactionHover --}}
+                  </div>
+                  {{-- ./parentDivReaction --}}
+
+                      {{-- ./Reaction Are available In App --}}
+                    
+                      {{-- POst Reaction Count --}}
                       @if($post['reactionCount'])
-                      
+                         &nbsp; &nbsp; <strong>{{$post['reactionCount']}}</strong>
+                      @else
                       @endif
-                      <form action="/reaction" method="post" >
-                        {{csrf_field()}}
-                        <input type="hidden" name="postID" value="{{$post['postID']}}">
-                        <input type="hidden" name="reaction" value="1">
-                        <input type="submit" name="like" value="love">
-                      </form>
-                    </a>
-                    <a href=""  class="Reaction">
-                      <form action="/reaction" method="post" >
-                        {{csrf_field()}}
-                        <input type="hidden" name="postID" value="{{$post['postID']}}">
-                        <input type="hidden" name="reaction" value="2">
-                        <input type="submit" name="like" value="Wow">
-                      </form>
-                    </a>
-                    <a href=""  class="Reaction">
-                      <form action="/reaction" method="post" >
-                        {{csrf_field()}}
-                        <input type="hidden" name="postID" value="{{$post['postID']}}">
-                        <input type="hidden" name="postID" value="3">
-                        <input type="submit" name="like" value="Happy">
-                      </form>
-                    </a>
+                      {{-- ./POst Reaction Count --}}
                   @else
-                    <a href="" id="{{$post['userPostReactionID']}}" class="reacted">
-                      <b>{{$post['userReactionName']}}</b><<strong>{{$post['reactionCount']}}</strong>
-                    </a>
+
+                    {{-- parentDivReaction --}}
+                      <div class="parentDivReaction" style="display: inline;">
+                      <div class="divReactionOnHover">
+                        @foreach($data['notReactionData'] as $reaction )
+                            <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
+                              {{csrf_field()}}
+                              @method('PUT')
+                              <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
+                              <input type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" class="submit_image">
+
+                              {{-- <input type="submit" name="reactionName" value="{{$reaction->reaction_name}}"> --}}
+
+                            </form>
+                        @endforeach
+                      </div>
+                      {{-- ./divReactionOnHover --}}
+                      <br>
+                      {{-- divReactionHover --}}
+                      <div class="divReactionHover" style="display: inline;">
+                      <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
+                          {{csrf_field()}}
+                          @method('DELETE')
+                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
+
+
+                      </form>
+                    </div>
+                    {{-- ./divReactionHover --}}
+                  </div>
+                  {{-- ./parentDivReaction --}}
+
+                      &nbsp; &nbsp; <strong>{{$post['reactionCount']}}</strong> 
                   @endif
+                  {{-- ./Reaction --}}
                   | 
-                <a href="" class="comment">Comment</a>  |
-                @if(Auth::user()->id == $post['userID'])
-                  <a href="#" class="editPost">Edit </a>|
-                  <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
-                @endif
-                <div class="commentDiv card" style="margin-top: 10px;">
+                  <a href="" class="comment"><i class="fa  fa-commenting">&nbsp;</i>Comment</a>  |
+                  @if(Auth::user()->id == $post['userID'])
+                    <a href="#" class="editPost">Edit </a>|
+                    <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
+                  @endif
+                   {{-- Comment --}}
+                <div class="commentDiv card">
                   <div class="card-body">
+                    {{-- Comment Display --}}
                     @foreach($post['comment'] as $comment)
+                      <div class="commentUpdateParent" id="commentUpdatedChild{{$comment['commentID']}}">  
+                        <div id="commentView{{$comment['commentID']}}" class="commentView abcd" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
+                        </div>
                       
-                      <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
+                      <div class="commentUpdateChild" > 
+
+                        {{-- <a href="" class="commentEditAnchor" data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}">
+                          <img src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
+                        </a> --}}
+
+                      <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block commentEditForm">
                       {{ csrf_field() }}
                        @method('PUT')
-                       <div id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}</div>
-                        <div class="form-group">
-                          <input type="text" name="commentView" value="{{$comment['commentBody']}}">
-                          <input class="editComment" type="submit" name="editComment" value="edit">
-                        </div>
+
+                       
+                          
+                          {{-- <div class="commentView" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
+                        </div> --}}
+
+                          {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}" class="commentedit"> --}}
+                          <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reactionImage commentImg" type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
+
+                          {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
                       </form>
                       
-                      <form action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
+                        <form  action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block">
+                        {{ csrf_field() }}
+                         @method('DELETE')
+                          {{-- <div class="form-group"> --}}
+                                <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
+                            
+                            {{-- <input class="editComment" type="submit" name="editComment" value="delete"> --}}
+                          {{-- </div> --}}
+                        </form>
+                      </div>
+                    </div>
+
+                      {{-- Vikram delete Working --}}
+                      {{-- <form action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
                       {{ csrf_field() }}
                        @method('DELETE')
                         <div class="form-group">
-                          {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}"> --}}
+                          <input type="text" name="commentView" value="{{$comment['commentBody']}}">
+                          <input class="fa fa-edit editComment" type="submit" name="editComment" value="delete">
+
                           <input class="editComment" type="submit" name="editComment" value="delete">
                         </div>
-                      </form>
+                      </form> --}}
+                      {{-- Vikram delete Working --}}
+
                       <br>
                     @endforeach
-                    <form action="/comment" method="post" style="display:none"  id="{{'commentDiv'.$post['postID']}}">
+                    {{-- ./Comment Display--}}
+                    {{-- Comment Get--}}
+                    <form action="/comment" method="post" {{-- style="display:none" --}}  id="{{'commentDiv'.$post['postID']}}">
                     {{ csrf_field() }}
                       <div class="form-group">
-                        <textarea  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment"></textarea >
-                        <input type="submit" name="send" value="send">
+                        <input  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment" style="border-radius: 15px;width: 404px;" />
+                        {{-- <input type="submit" name="send" value="send"> --}}
                         <input type="hidden" name="postID" value="{{$post['postID']}}"> 
                       </div>
                     </form>
+                    {{-- ./Comment Get--}}
                   </div>
                 </div>
-
-
-
-            
-            {{-- @foreach($post['reaction'] as $react)
-              reactionID{{$react['reactionID']}}<br>
-              @foreach($react['reactionName'] as $reactBody)
-                reactionName{{$reactBody['reactionName']}}<br>
-              @endforeach
-            @endforeach
-            @foreach($post['comment'] as $comment)
-              CommentBody{{$comment['commentBody']}}<br>
-            @endforeach --}}
+                {{-- ./Comment --}}
+                {{-- @foreach($post['reaction'] as $react)
+                  reactionID{{$react['reactionID']}}<br>
+                  @foreach($react['reactionName'] as $reactBody)
+                    reactionName{{$reactBody['reactionName']}}<br>
+                  @endforeach
+                @endforeach
+                @foreach($post['comment'] as $comment)
+                  CommentBody{{$comment['commentBody']}}<br>
+                @endforeach --}}
           </article>
+          {{-- ./article> --}}
         @endforeach
-
       </div>
     </div>
-        {{-- ./Post Body --}}
-      {{-- </article> --}}
-    </div>
+    {{-- ./Card --}}
+    {{-- ./Post Body --}}
+  </div>
 
         {{-- RightSide Content Video --}}
         <!-- /.col-md-6 -->
@@ -230,12 +295,7 @@ src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; au
               </div>
             </div>
                     
-           
-<!-- CK Editor -->
-{{-- <script src                                                                                                                                                                                                                                                                                                                                     ="{{asset("/admin-lte/plugins/ckeditor/ckeditor.js")}}"></script> --}}
-<!-- Bootstrap WYSIHTML5 -->
-{{-- <script src="{{asset("/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script> --}}
-<script>
+  <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor
 

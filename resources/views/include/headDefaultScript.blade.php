@@ -8,10 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>Forebase-1.0 | @yield('title')</title>
+    <title>{{ config('app.name', 'Laravel')}} | @yield('title')</title>
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <!-- jQuery 3 -->
+    <script src="{{asset("/admin_lte/bower_components/jquery/dist/jquery.min.js")}}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">

@@ -1,6 +1,6 @@
-<!-- jQuery 3 -->
+{{-- <!-- jQuery 3 -->
 <script src="{{asset("/admin_lte/bower_components/jquery/dist/jquery.min.js")}}"></script>
-<!-- jQuery UI 1.11.4 -->
+ --}}<!-- jQuery UI 1.11.4 -->
 <script src="{{asset("/admin_lte/bower_components/jquery-ui/jquery-ui.min.js")}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>

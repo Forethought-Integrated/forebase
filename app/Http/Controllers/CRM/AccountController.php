@@ -8,6 +8,17 @@ use GuzzleHttp\Client;
 
 class AccountController extends Controller
 {
+    private $ENV_URL;
+
+    private $URL;
+
+
+    public function __construct()
+    {
+        $this->ENV_URL = env('API_CRMURL');
+        $this->URL=$this->ENV_URL.'account';    
+                // $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
@@ -19,10 +30,9 @@ class AccountController extends Controller
     { 
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account');
+        $res = $client->request('GET', $this->URL);
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
-        // $accountData['dataArray']=$account;
         // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
         $data['account']=$account;
         return view('CRM.Account.listAccount')->with('data', $data);
@@ -41,7 +51,7 @@ class AccountController extends Controller
 
      { 
                     $client = new Client();
-                    $response = $client->request('POST', 'http://localhost:8002/api/v1/account', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
                     'account_name' => $request->accountName,
                     'account_email' => $request->accountEmail,
@@ -66,7 +76,7 @@ class AccountController extends Controller
 
 
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
         // $accountData['dataArray']=$account;
@@ -88,7 +98,7 @@ class AccountController extends Controller
      public function edit($id)
     {     
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/account/'.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
         // $accountData['dataArray']=$account;
@@ -104,7 +114,7 @@ class AccountController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/account/".$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'account_name' => $request->accountName,
                     'account_email' => $request->accountEmail,
@@ -125,10 +135,9 @@ class AccountController extends Controller
      }
 
       public function destroy($id)
-
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/account/'.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/account');
     }
 

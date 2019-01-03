@@ -83,7 +83,8 @@
 
         {{-- HelpDesk --}}
         <li>
-          <a href="/board/{{Auth::user()->id}}">
+          {{-- <a href="/board/{{Auth::user()->id}}"> --}}
+          <a href="#">
             <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>HelpDesk</span>
@@ -96,10 +97,10 @@
 
         {{-- Permission & Role --}}
         <li>
-          <a href="/permissions">
-            <img src="{{asset("/img/sidebar/Permission_&_role.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+          <a href="/administration">
+            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
-            <i class="fa "></i> <span>Permission & Role</span>
+            <i class="fa "></i> <span>Administration</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>

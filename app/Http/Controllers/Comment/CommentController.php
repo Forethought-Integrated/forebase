@@ -19,7 +19,7 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
-        $this->URL=$this->ENV_URL.'comment/';    
+        $this->URL=$this->ENV_URL.'comment';    
                 // $this->middleware('auth');
     }
 
@@ -30,7 +30,14 @@ class CommentController extends Controller
     {
         $comments = Comments::latest()->get();
 
-        return response()->json($comments);
+
+        $client = new Client();
+        $res = $client->request('GET', $this->URL);
+        $commentJson=$res->getBody();
+        $comment = json_decode($commentJson, true);
+        $data['comment']=$comment;
+
+        return response()->json($comment);
     }
 
     public function store(Request $request)
@@ -60,7 +67,7 @@ class CommentController extends Controller
     {
         
          $client = new Client();
-        $response = $client->request('PUT', $this->URL.$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->commentView,
@@ -80,7 +87,7 @@ class CommentController extends Controller
     {
         // return 'delete';
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);
