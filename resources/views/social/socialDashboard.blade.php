@@ -84,9 +84,9 @@
                   {{-- Reaction --}}
                   @if(is_null($post['userReactionID']))
                       {{-- Reaction Are available In App --}}
-                      {{-- parentDivReaction --}}
-                      <div class="parentDivReaction" style="display: inline;">
-                      <div class="divReactionOnHover">
+                      {{-- parent_div_reaction --}}
+                      <div class="parent_div_reaction" style="display: inline;">
+                      <div class="div_reaction_on_hover">
                         @foreach($data['notReactionData'] as $reaction )
                             <form action="/postreaction" method="post" style ="display:inline;" >
                               {{csrf_field()}}
@@ -100,22 +100,22 @@
                             </form>
                         @endforeach
                       </div>
-                      {{-- ./divReactionOnHover --}}
+                      {{-- ./div_reaction_on_hover --}}
                       <div class="divReactionHover" style="display: inline;">
                       <form action="/postreaction" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           <input type="hidden" name="postID" value="{{$post['postID']}}">
                           <input type="hidden" name="reaction" value="{{$data['notReactionData']['0']->reaction_id}}">
-                          {{-- <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" 
+                          {{-- <input class="reaction_image" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" 
                               src="{{asset($data['notReactionData']['0']->reaction_image)}}" class="submit_image" width="20" height="auto" > --}}
-                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" src="{{asset("/img/reaction/like.png")}}" class="submit_image" width="22" height="auto" >
+                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" src="{{asset("/img/reaction/like.png")}}" class="submit_image" width="22" height="auto" >
 
 
                       </form>
                     </div>
                     {{-- ./divReactionHover --}}
                   </div>
-                  {{-- ./parentDivReaction --}}
+                  {{-- ./parent_div_reaction --}}
 
                       {{-- ./Reaction Are available In App --}}
                     
@@ -127,9 +127,9 @@
                       {{-- ./POst Reaction Count --}}
                   @else
                     {{-- reacted --}}
-                    {{-- parentDivReaction --}}
-                      <div class="parentDivReaction" style="display: inline;">
-                      <div class="divReactionOnHover">
+                    {{-- parent_div_reaction --}}
+                      <div class="parent_div_reaction" style="display: inline;">
+                      <div class="div_reaction_on_hover">
                         @foreach($data['notReactionData'] as $reaction )
                             <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
                               {{csrf_field()}}
@@ -142,18 +142,18 @@
                             </form>
                         @endforeach
                       </div>
-                      {{-- ./divReactionOnHover --}}
+                      {{-- ./div_reaction_on_hover --}}
                       {{-- divReactionHover --}}
                       <div class="divReactionHover" style="display: inline;">
                       <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           @method('DELETE')
-                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
+                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
                       </form>
                     </div>
                     {{-- ./divReactionHover --}}
                   </div>
-                  {{-- ./parentDivReaction --}}
+                  {{-- ./parent_div_reaction --}}
 
                       &nbsp; &nbsp; <strong>{{$post['reactionCount']}}</strong> 
                   @endif
@@ -165,31 +165,31 @@
                     <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
                   @endif
                    {{-- Comment --}}
-                <div class="commentDiv card">
+                <div class="comment_div card">
                   <div class="card-body">
                     {{-- Comment Display --}}
                     @foreach($post['comment'] as $comment)
-                      <div class="commentUpdateParent" id="commentUpdatedChild{{$comment['commentID']}}">  
-                        <div id="commentView{{$comment['commentID']}}" class="commentView abcd" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
+                      <div class="comment_update_parent" id="comment_updated_child{{$comment['commentID']}}">  
+                        <div id="comment_view{{$comment['commentID']}}" class="comment_view abcd" data-comment="{{$comment['commentID']}}" id="indexComment_div.{{$comment['commentID']}}">{{$comment['commentBody']}}
                         </div>
                       
-                      <div class="commentUpdateChild" > 
+                      <div class="comment_update_child" > 
 
-                        {{-- <a href="" class="commentEditAnchor" data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}">
+                        {{-- <a href="" class="comment_editAnchor" data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}">
                           <img src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
                         </a> --}}
 
-                        <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block commentEditForm">
+                        <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block comment_edit_form">
                         {{ csrf_field() }}
                          @method('PUT')
 
                          
                             
-                            {{-- <div class="commentView" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
+                            {{-- <div class="comment_view" data-comment="{{$comment['commentID']}}" id="indexComment_div.{{$comment['commentID']}}">{{$comment['commentBody']}}
                           </div> --}}
 
-                            {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}" class="commentedit"> --}}
-                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reactionImage commentImg" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
+                            {{-- <input type="text" name="comment_view" value="{{$comment['commentBody']}}" class="comment_edit"> --}}
+                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image comment_img" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
 
                             {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
                         </form>
@@ -198,7 +198,7 @@
                         {{ csrf_field() }}
                          @method('DELETE')
                           {{-- <div class="form-group"> --}}
-                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}" width="15" height="auto">
+                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}" width="15" height="auto">
                           
                             {{-- <input class="editComment" type="submit" name="editComment" value="delete"> --}}
                           {{-- </div> --}}
@@ -211,7 +211,7 @@
                       {{ csrf_field() }}
                        @method('DELETE')
                         <div class="form-group">
-                          <input type="text" name="commentView" value="{{$comment['commentBody']}}">
+                          <input type="text" name="comment_view" value="{{$comment['commentBody']}}">
                           <input class="fa fa-edit editComment" type="submit" name="editComment" value="delete">
 
                           <input class="editComment" type="submit" name="editComment" value="delete">
@@ -222,7 +222,7 @@
                     @endforeach
                     {{-- ./Comment Display--}}
                     {{-- Comment Get--}}
-                    <form class="commentInputBox" action="/comment" method="post" {{-- style="display:none" --}}  id="{{'commentDiv'.$post['postID']}}">
+                    <form class="comment_input_box" action="/comment" method="post" {{-- style="display:none" --}}  id="{{'comment_div'.$post['postID']}}">
                     {{ csrf_field() }}
                       <div class="form-group">
                         <input  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment" style="border-radius: 15px;width: 404px;" />

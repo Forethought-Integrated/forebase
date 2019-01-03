@@ -79,11 +79,11 @@ padding-right:5px;
 .post{padding-bottom: 0px !important;}
 /*Post*/
 /*--Reaction*/
-.parentDivReaction:hover  .divReactionOnHover  {display: block !important;
+.parent_div_reaction:hover  .div_reaction_on_hover  {display: block !important;
     
 }
-.reactionImage {margin-bottom: -7px;}
-.divReactionOnHover  {
+.reaction_image {margin-bottom: -7px;}
+.div_reaction_on_hover  {
     display: none;
     border-radius: 26px;
     border: solid;
@@ -96,7 +96,7 @@ padding-right:5px;
 /*--./Reaction*/
 
 /*--comment*/
-.commentUpdateParent{
+.comment_update_parent{
     border-bottom-width: 2.05px;
     /*margin-top: 15px;*/
     border-bottom-style: solid;
@@ -104,7 +104,7 @@ padding-right:5px;
         width: 504px;
             padding: 7px;
 }
-.commentInputBox{
+.comment_input_box{
     border-bottom-width: 2.05px;
     /*margin-top: 15px;*/
     border-bottom-style: solid;
@@ -112,7 +112,7 @@ padding-right:5px;
         width: 504px;
             padding: 7px 7px 0px 7px;
 }
-.commentDiv{
+.comment_div{
 padding: 0px 25px 0px 25px;
     border-top-width: 2.05px;
     margin-top: 15px;
@@ -120,10 +120,10 @@ padding: 0px 25px 0px 25px;
     border-top-color: aliceblue;
 }
 .inline_block{display: inline-block;}
-.commentUpdateChild {display: none;}
-.commentEdit {display: none;}
-.commentView {display: inline;}
-.commentUpdateParent:hover .commentUpdateChild{display: inline;}
+.comment_update_child {display: none;}
+.comment_edit {display: none;}
+.comment_view {display: inline;}
+.comment_update_parent:hover .comment_update_child{display: inline;}
 /*--./comment*/
 
 /*./Vikram*/
