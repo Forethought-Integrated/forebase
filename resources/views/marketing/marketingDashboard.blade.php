@@ -1,6 +1,6 @@
 @extends('layouts.adminApp')
 
-@section('title', 'Administration Dashboard')
+@section('title', 'marketing Dashboard')
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
@@ -9,12 +9,12 @@
 @section('ContentHeader(Page_header)')
 
  <h1>
-        Administration
+        Marketing
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Administration</li>
+        <li class="active">Marketing</li>
       </ol>
 
 
@@ -26,47 +26,39 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/permissions" title="">
-          <img src="{{asset("/img/administration/permission-&-role.jpg")}}" alt="Snow" style="width:100%">
+        <a href="/brands" title="">
+          <img src="{{asset("/img/marketing/brand.png")}}" alt="Snow" style="width:100%">
         </a>
+        <strong>Brand</strong>
       </div>
     </div>
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/users" title="">
-          <img src="{{asset("/img/administration/users.png")}}" alt="Snow" style="width:100%">
+        <a href="/colorpalettes" title="">
+          <img src="{{asset("/img/marketing/colorpalate.png")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>User</strong>
+        <strong>Color Palettes</strong>
       </div>
     </div>
 
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/roles" title="">
-          <img src="{{asset("/img/administration/role.png")}}" alt="Snow" style="width:100%">
+        <a href="/logos" title="">
+          <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Role</strong>
+        <strong>Logos</strong>
       </div>
     </div>
       
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/menus" title="">
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:100%">
+        <a href="/under-construction" title="">
+          <img src="{{asset("/img/marketing/companies.png")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Menu</strong>
-      </div>
-    </div>
-
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/menudetails" title="">
-          <img src="{{asset("/img/administration/menudetail.png")}}" alt="Snow" style="width:100%">
-        </a>
-        <strong>Customize Menu</strong>
+        <strong>Company</strong>
       </div>
     </div>
       

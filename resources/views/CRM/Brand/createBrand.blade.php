@@ -37,7 +37,7 @@
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                   <label for="brandGuidelines" >Brand Guidelines</label>
-                      <input type="text" class="form-control" id="brandGuidelines" name="brandGuidelines" placeholder="Brand Guidelines">
+                  <input type="text" class="form-control" id="brandGuidelines" name="brandGuidelines" placeholder="Brand Guidelines">
                 </div>
 
                 <div class="form-group">
@@ -71,7 +71,6 @@
                 <div class="form-group">
                   <label for="brandDisc" >Brand Disclaimer</label>
                   <input type="text" class="form-control" id="brandDisc" name="brandDisc" placeholder="Brand Disclaimer">
-                  
                 </div>
 
               </div>
@@ -79,54 +78,8 @@
             </div>
             {{-- ./Left Form Field --}}
 
-            {{-- RIght Form Field --}}
-           <!--  <div class="col-md-6">
-              {{-- FormBOXBody --}}
-              <div class="box-body">
-                
-                {{-- ........ --}}
-
-                <div class="form-group">
-                  <label for="accountCity" >City</label>
-                  <input type="text" class="form-control" id="accountCity" name="accountCity" placeholder="City">
-                </div>
-
-                <div class="form-group">
-                  <label for="accountState" >State</label>
-                  <input type="text" class="form-control" id="accountState" name="accountState" placeholder="State">
-                </div>
-
-                <div class="form-group">
-                  <label for="accountCountry" >Country</label>
-                  <input type="text" class="form-control" id="accountCountry" name="accountCountry" placeholder="Country">
-                </div>
-
-
-                <div class="form-group">
-                  <label for="accountPinCode" >Pin Code</label>
-                  <input type="text" class="form-control" id="accountPinCode" name="accountPinCode" placeholder="Pincode">
-                </div>
-
-                <div class="form-group">
-                  <label for="accountPanNo" >Pan No.</label>
-                  <input type="text" class="form-control" id="accountPanNo" name="accountPanNo" placeholder="Pan No.">
-                </div>
-
-                <div class="form-group">
-                  <label for="accountGSTNo" >GST No.</label>
-                  <input type="text" class="form-control" id="accountGSTNo" name="accountGSTNo" placeholder="GST No.">
-                </div>
-
-
-                {{-- ........ --}}
-
-              </div>
-              {{-- ./FormBOXBody --}} 
-
-
-            </div>
-            {{-- ./RIght Form Field --}}
-        </div> -->
+           
+        </div> 
 
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">Submit</button>

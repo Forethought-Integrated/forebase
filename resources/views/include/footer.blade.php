@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2019-2020 <a href="http://www.mastechdigital.com/">Techilla</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="http://www.Techeela.com/">Techeela</a>.</strong> All rights
     reserved.
 </footer>
 

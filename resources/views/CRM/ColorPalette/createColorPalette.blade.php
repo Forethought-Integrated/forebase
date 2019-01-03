@@ -37,7 +37,7 @@
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
@@ -71,7 +71,6 @@
                 <div class="form-group">
                   <label for="color_pantone_code" >Color Pantone Code</label>
                   <input type="varchar" class="form-control" id="color_pantone_code" name="color_pantone_code" placeholder="Color Pantone Code">
-                  
                 </div>
 
               </div>
@@ -79,13 +78,13 @@
             </div>
             {{-- ./Left Form Field --}}
 
-            {{-- RIght Form Field --}}
           
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div> 
-      </form>
-      {{-- ./Form --}}
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div> 
+          </div>
+        </form>
+        {{-- ./Form --}}
     </div>
 {{--  ./Horizonantal Form  --}}
   </div>

@@ -10,27 +10,38 @@ use App\Model\Task;
 // Route::middleware('auth')->group(function () {
  Route::group(['middleware' => ['auth']], function () {
    
-    Route::get('/', function () {
+    // Route::get('/', function () {
 
-        // $taskData=Task::where('task_assignedto',Auth::user()->id)->get()->pluck('task_subject','task_percentage');
-        $taskData=Task::where('task_assignedto',Auth::user()->id)->get();
-        $taskCount= $taskData->count();
-        // return $taskCount;
-        Session::put('taskData',$taskData);
-        Session::put('taskCount',$taskCount);
-        // return $taskData;
-    return view('/dashboard/dashboard');
-    });
+    //     // $taskData=Task::where('task_assignedto',Auth::user()->id)->get()->pluck('task_subject','task_percentage');
+    //     $taskData=Task::where('task_assignedto',Auth::user()->id)->get();
+    //     $taskCount= $taskData->count();
+    //     // return $taskCount;
+    //     Session::put('taskData',$taskData);
+    //     Session::put('taskCount',$taskCount);
+    //     // return $taskData;
+    // return view('/dashboard/dashboard');
+    // });
 
     Route::get('/crm', function () {
     return view('/CRM/crmDashboard');
     });
 
+    Route::get('/under-construction', function () {
+    return view('underConstruction');
+    });
+
 });
+
+Route::get('/', 'Home\HomeController@index');
 
 Route::get('/knowledge', function () {
     return view('/knowledge/knowledge');
 });
+// Marketing
+Route::get('/marketing', function () {
+    return view('/marketing/marketingDashboard');
+});
+// ./Marketing
 
 // Social Blade
 Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');

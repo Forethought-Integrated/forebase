@@ -84,7 +84,7 @@
         {{-- HelpDesk --}}
         <li>
           {{-- <a href="/board/{{Auth::user()->id}}"> --}}
-          <a href="#">
+          <a href="/under-construction">
             <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>HelpDesk</span>
@@ -95,7 +95,7 @@
         </li>
         {{-- ./HelpDesk --}}
 
-        {{-- Permission & Role --}}
+        {{-- Administration --}}
         <li>
           <a href="/administration">
             <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -106,18 +106,31 @@
             </span>
           </a>
         </li>
-        {{-- ./Brand --}}
+        {{-- ./Administration --}}
 
+
+        {{-- Marketing --}}
         <li>
-          <a href="/brands">
-            <img src="{{asset("/img/sidebar/Permission_&_role.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+          <a href="/marketing">
+            <img src="{{asset("/img/sidebar/marketing.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
-            <i class="fa "></i> <span>Brand</span>
+            <i class="fa "></i> <span>Marketing</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
+        {{-- ./Marketing --}}
+
+       {{--  <li>
+          <a href="/brands">
+            <img src="{{asset("/img/sidebar/Permission_&_role.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Brand</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li> --}}
 
 
 

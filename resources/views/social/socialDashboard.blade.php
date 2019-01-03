@@ -4,6 +4,30 @@
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+</style>
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -64,7 +88,7 @@
                       <div class="parentDivReaction" style="display: inline;">
                       <div class="divReactionOnHover">
                         @foreach($data['notReactionData'] as $reaction )
-                            <form action="/postreaction" method="post" style ='display:inline;' >
+                            <form action="/postreaction" method="post" style ="display:inline;" >
                               {{csrf_field()}}
                               <input type="hidden" name="postID" value="{{$post['postID']}}">
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
@@ -73,19 +97,18 @@
                                   src="{{asset($reaction->reaction_image)}}" class="submit_image">
 
                               {{-- <input type="submit" name="reactionName" value="{{$reaction->reaction_name}}"> --}}
-
                             </form>
                         @endforeach
                       </div>
                       {{-- ./divReactionOnHover --}}
-                      <br>
                       <div class="divReactionHover" style="display: inline;">
                       <form action="/postreaction" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           <input type="hidden" name="postID" value="{{$post['postID']}}">
                           <input type="hidden" name="reaction" value="{{$data['notReactionData']['0']->reaction_id}}">
-                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" 
-                              src="{{asset($data['notReactionData']['0']->reaction_image)}}" class="submit_image" width="20" height="auto" >
+                          {{-- <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" 
+                              src="{{asset($data['notReactionData']['0']->reaction_image)}}" class="submit_image" width="20" height="auto" > --}}
+                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" src="{{asset("/img/reaction/like.png")}}" class="submit_image" width="22" height="auto" >
 
 
                       </form>
@@ -103,7 +126,7 @@
                       @endif
                       {{-- ./POst Reaction Count --}}
                   @else
-
+                    {{-- reacted --}}
                     {{-- parentDivReaction --}}
                       <div class="parentDivReaction" style="display: inline;">
                       <div class="divReactionOnHover">
@@ -120,15 +143,12 @@
                         @endforeach
                       </div>
                       {{-- ./divReactionOnHover --}}
-                      <br>
                       {{-- divReactionHover --}}
                       <div class="divReactionHover" style="display: inline;">
                       <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           @method('DELETE')
                           <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
-
-
                       </form>
                     </div>
                     {{-- ./divReactionHover --}}
@@ -139,7 +159,7 @@
                   @endif
                   {{-- ./Reaction --}}
                   | 
-                  <a href="" class="comment"><i class="fa  fa-commenting">&nbsp;</i>Comment</a>  |
+                  <a href="" class="comment">{{-- <i class="fa  fa-commenting">&nbsp;</i> --}}<span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
                   @if(Auth::user()->id == $post['userID'])
                     <a href="#" class="editPost">Edit </a>|
                     <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
@@ -159,27 +179,27 @@
                           <img src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
                         </a> --}}
 
-                      <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block commentEditForm">
-                      {{ csrf_field() }}
-                       @method('PUT')
+                        <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block commentEditForm">
+                        {{ csrf_field() }}
+                         @method('PUT')
 
-                       
-                          
-                          {{-- <div class="commentView" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
-                        </div> --}}
+                         
+                            
+                            {{-- <div class="commentView" data-comment="{{$comment['commentID']}}" id="indexCommentDiv.{{$comment['commentID']}}">{{$comment['commentBody']}}
+                          </div> --}}
 
-                          {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}" class="commentedit"> --}}
-                          <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reactionImage commentImg" type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
+                            {{-- <input type="text" name="commentView" value="{{$comment['commentBody']}}" class="commentedit"> --}}
+                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reactionImage commentImg" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
 
-                          {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
-                      </form>
-                      
+                            {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
+                        </form>
+                        
                         <form  action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block">
                         {{ csrf_field() }}
                          @method('DELETE')
                           {{-- <div class="form-group"> --}}
-                                <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
-                            
+                          <input class="reactionImage" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}" width="15" height="auto">
+                          
                             {{-- <input class="editComment" type="submit" name="editComment" value="delete"> --}}
                           {{-- </div> --}}
                         </form>
@@ -199,11 +219,10 @@
                       </form> --}}
                       {{-- Vikram delete Working --}}
 
-                      <br>
                     @endforeach
                     {{-- ./Comment Display--}}
                     {{-- Comment Get--}}
-                    <form action="/comment" method="post" {{-- style="display:none" --}}  id="{{'commentDiv'.$post['postID']}}">
+                    <form class="commentInputBox" action="/comment" method="post" {{-- style="display:none" --}}  id="{{'commentDiv'.$post['postID']}}">
                     {{ csrf_field() }}
                       <div class="form-group">
                         <input  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment" style="border-radius: 15px;width: 404px;" />
@@ -228,11 +247,19 @@
           {{-- ./article> --}}
         @endforeach
       </div>
+      {{-- <div class="card-footer">
+        <div class="pagination">
+          <a href="#">&laquo;</a>
+          <a href="#">First</a>
+          <a href="#" class="active">Present</a>
+          <a href="#">Last</a>
+          <a href="#">&raquo;</a>
+        </div>
+      </div> --}}
     </div>
     {{-- ./Card --}}
     {{-- ./Post Body --}}
   </div>
-
         {{-- RightSide Content Video --}}
         <!-- /.col-md-6 -->
     <div class="col-lg-3">
@@ -253,7 +280,12 @@ src="https://www.youtube.com/embed/BF-yUgKU9LQ" allow="accelerometer; autoplay; 
           <hr>
     
           <iframe width="100%" 
-src="https://www.youtube.com/embed/nftTNFIyIFI?ecver=2" allow="accelerometer; autoplay; encrypted-media;">
+src="https://www.youtube.com/embed/yMt2O1422gc" allow="accelerometer; autoplay; encrypted-media;">
+          </iframe>
+          <hr>
+    
+          <iframe width="100%" 
+src="https://www.youtube.com/embed/HGF2a30Pmqs" allow="accelerometer; autoplay; encrypted-media;">
           </iframe>
         </div>
       </div>      

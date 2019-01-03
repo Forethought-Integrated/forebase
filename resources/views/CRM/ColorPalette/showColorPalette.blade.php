@@ -33,13 +33,12 @@
       <!-- /.card-header -->
 
       {{-- form--}} 
-       {{csrf_field()}}
       <form role="form">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
@@ -80,21 +79,8 @@
             </div>
             {{-- ./Left Form Field --}}
 
-            {{-- RIght Form Field --}} 
-           
-
-
-              </div>
+          </div>
               {{-- ./FormBOXBody --}} 
-
-
-            </div> -->
-            {{-- ./RIght Form Field --}}
-        </div>
-
-        {{-- <div class="box-footer">
-          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </div> --}} 
       </form>
       {{-- ./Form --}}
     </div>

@@ -36,7 +36,7 @@
         @method('PUT')
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 

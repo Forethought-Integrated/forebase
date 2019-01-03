@@ -10,7 +10,6 @@
 
   <h1>
     Brand Detail
-    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -36,7 +35,7 @@
         @method('PUT')
         <div class="row">
             {{-- Left Form Field --}}
-            <div class="col-md-6">
+            <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
@@ -48,7 +47,7 @@
 
                 <div class="form-group">
                   <label for="brandGuidelines" >Brand Guidelines</label>
-                      <input type="text" class="form-control enabelInputField" id="brandGuidelines" name="brand_guidelines" value="{{ $brand->brand_guidelines }}"  >
+                  <input type="text" class="form-control enabelInputField" id="brandGuidelines" name="brand_guidelines" value="{{ $brand->brand_guidelines }}"  >
                 </div>
 
                 <div class="form-group">

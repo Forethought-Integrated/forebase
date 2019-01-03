@@ -32,7 +32,7 @@ img{max-width: 100%;height:auto;}
 .file_img img {
     width: 75px;
 }
-.post .info {padding-bottom: 15px;}
+ .info {padding-bottom: 15px;}
 .interaction_d .reaction_change img{width:25px;}
 .react_link_data .link_cl img,.submit_image{
     width: 35px;
@@ -75,6 +75,9 @@ padding-right:5px;
 }*/
 
 /*vikram*/
+/*post*/
+.post{padding-bottom: 0px !important;}
+/*Post*/
 /*--Reaction*/
 .parentDivReaction:hover  .divReactionOnHover  {display: block !important;
     
@@ -101,8 +104,16 @@ padding-right:5px;
         width: 504px;
             padding: 7px;
 }
+.commentInputBox{
+    border-bottom-width: 2.05px;
+    /*margin-top: 15px;*/
+    border-bottom-style: solid;
+    border-bottom-color: aliceblue;
+        width: 504px;
+            padding: 7px 7px 0px 7px;
+}
 .commentDiv{
-padding: 25px;
+padding: 0px 25px 0px 25px;
     border-top-width: 2.05px;
     margin-top: 15px;
     border-top-style: solid;

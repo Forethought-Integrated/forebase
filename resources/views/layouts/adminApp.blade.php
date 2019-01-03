@@ -58,7 +58,7 @@
              
             @include('include.footer')
             {{-- Control Sidebar --}}
-            @include('include.controlSidebar')
+            {{-- @include('include.controlSidebar') --}}
             {{-- ./Control Sidebar --}}
 
 

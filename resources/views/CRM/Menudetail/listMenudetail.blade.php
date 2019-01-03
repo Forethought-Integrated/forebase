@@ -12,14 +12,14 @@
 @section('ContentHeader(Page_header)') 
 
   <h1>
-     MenuDetails List
+     Menu Details List
     <a href="/menudetails/create" title=""> 
       <i class="fa fa-edit">create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Menudetails List</li>
+    <li class="active">Menu Details List</li>
   </ol>
 
 
@@ -39,7 +39,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>MenuDetail ID</th>
+                  <th>Menu Detail ID</th>
                   <th>Menu ID</th>
                   <th>Menu Field Name</th>
                   <th>Menu URL</th> 
@@ -74,7 +74,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                   <th>MenuDetail ID</th>
+                   <th>Menu Detail ID</th>
                   <th>Menu ID</th>
                   <th>Menu Field Name</th>
                   <th>Menu URL</th>

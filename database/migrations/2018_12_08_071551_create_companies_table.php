@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id');
             $table->string('company_name')->nullable();
-            $table->text('company_registered_address')->nullable();
+            $table->text('company_registration_address')->nullable();
             $table->string('company_state')->nullable();
             $table->string('company_country')->nullable();
             $table->string('company_pincode')->nullable();
@@ -25,7 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_primary_contact')->nullable();
             $table->string('company_secondary_contact')->nullable();
             $table->string('company_pan_no')->nullable();
-            $table->string('company_registeration_no')->nullable();
+            $table->string('company_registration_no')->nullable();
             $table->text('company_overview')->nullable();
             $table->string('company_industry')->nullable();
             $table->string('company_website')->nullable();
