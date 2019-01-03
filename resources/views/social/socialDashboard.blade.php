@@ -189,7 +189,7 @@
                           </div> --}}
 
                             {{-- <input type="text" name="comment_view" value="{{$comment['commentBody']}}" class="comment_edit"> --}}
-                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image comment_img" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
+                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image commentimg" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
 
                             {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
                         </form>

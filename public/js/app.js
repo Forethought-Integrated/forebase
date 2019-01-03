@@ -73,7 +73,7 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 
 // --comment edit On Click
 	// ---
-	$('.comment_img').on('click',function(event){
+	$('.commentimg').on('click',function(event){
 		event.preventDefault();
 		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 		var cmtData=$(this).data('commentdata');
