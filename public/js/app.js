@@ -72,8 +72,25 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 // --./comment display On Click
 
 // --comment edit On Click
-	// ---
-	$('.commentimg').on('click',function(event){
+	// ---working 4-jan
+	// $('.commentimg').on('click',function(event){
+	// 	event.preventDefault();
+	// 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	// 	var cmtData=$(this).data('commentdata');
+	// 	var cmtID=$(this).data('commentid');
+	// 	var hCmtID='comment_view'+cmtID;
+	// 	$('#'+hCmtID).css("display","none");
+	// 	var in1='<input type="hidden" name="_token" value="'+CSRF_TOKEN+'">';
+	// 	var in2='<input type="hidden" name="_method" value="PUT">';
+	// 	var in3='<input type="text" name="commentView" value="'+cmtData+'">';
+	// 	console.log(in1+in2+in3);
+	// 	$(this).parent().html(in1+in2+in3);
+	// });
+	// ----working 4-jan
+	
+
+	$(document).ready(function(){
+		$('.commentimg').on('click',function(event){
 		event.preventDefault();
 		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 		var cmtData=$(this).data('commentdata');
@@ -83,10 +100,11 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 		var in1='<input type="hidden" name="_token" value="'+CSRF_TOKEN+'">';
 		var in2='<input type="hidden" name="_method" value="PUT">';
 		var in3='<input type="text" name="commentView" value="'+cmtData+'">';
-		console.log(in1+in2+in3);
+		// console.log(in1+in2+in3);
 		$(this).parent().html(in1+in2+in3);
+		});
 	});
-	// ----
+
 // --./comment edit On Click
 
 
