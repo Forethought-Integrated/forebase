@@ -1,4 +1,4 @@
-@extends('layouts.adminApp')
+  @extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
 
@@ -24,6 +24,18 @@
 
   <div class="row" style="padding: 25px">
 
+
+     <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/contact" title="">
+          <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+
+
+
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/account" title="">
@@ -32,23 +44,8 @@
       </div>
     </div>
 
-      
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/campaign" title="">
-          <img src="{{asset("/img/crm_dashboard/Campaigns.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-      </div>
-    </div>
 
-      
-     <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/contact" title="">
-          <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-      </div>
-    </div>
+
 
     <div  class="col-md-2">
       <div class="column col_logo">
@@ -58,7 +55,7 @@
       </div>
     </div>
 
-      
+
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/opportunity" title="">
@@ -66,6 +63,22 @@
         </a>
       </div>
     </div>
+
+    
+      
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/campaign" title="">
+          <img src="{{asset("/img/crm_dashboard/Campaigns.jpg")}}" alt="Snow" style="width:100%">
+        </a>
+      </div>
+    </div>
+
+
+
+
+      
+
 
 {{--     <div  class="col-md-2">
       <div class="column col_logo">

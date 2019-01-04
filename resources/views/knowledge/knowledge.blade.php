@@ -1,5 +1,5 @@
-{{-- @extends('layouts.vkadminApp') --}}
-@extends('layouts.newAdminApp')
+@extends('layouts.adminApp')
+
 
 @section('title', 'KnowledgeCenter')
 
@@ -9,12 +9,12 @@
 
 @section('ContentHeader(Page_header)')
 
- <h1><i class="fa fa-key"></i>Available Permissions
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Knowledge Center</li>
-      </ol>
+<h1>Files
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li class="active">Files</li>
+</ol>
 
 
 @endsection

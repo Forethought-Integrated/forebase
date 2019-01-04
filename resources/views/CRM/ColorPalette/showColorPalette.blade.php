@@ -9,14 +9,14 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Color Palatte Detail
+    Color Palette Detail
     <a id="editFormField" href="/colorpalettes/{{ $color_palette->color_palette_id}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Color Palatte Detail</li> 
+    <li class="active">Color Palette Detail</li> 
   </ol>
 
 @endsection

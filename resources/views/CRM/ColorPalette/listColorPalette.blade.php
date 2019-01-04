@@ -39,7 +39,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Color Pallettes ID</th>
+                  <th>Color Palettes ID</th>
                   <th>Color Type</th>
                   <th>Color Description</th>
                   <th>Color CMYK Code</th>
@@ -79,7 +79,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Color Pallettes ID</th>
+                  <th>Color Palettes ID</th>
                   <th>Color Type</th>
                   <th>Color Description</th>
                   <th>Color CMYK Code</th>

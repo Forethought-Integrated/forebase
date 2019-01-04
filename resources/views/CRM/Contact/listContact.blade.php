@@ -12,7 +12,7 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Contect List
+    Contact List
     <a href="/contact/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>

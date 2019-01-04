@@ -9,12 +9,12 @@
 @section('ContentHeader(Page_header)')
 
  <h1>
-        Marketing
+        Brand
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Marketing</li>
+        <li class="active">Brand</li>
       </ol>
 
 
@@ -29,7 +29,7 @@
         <a href="/brands" title="">
           <img src="{{asset("/img/marketing/brand.png")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Brand</strong>
+        <strong>Brand Guideline</strong>
       </div>
     </div>
 

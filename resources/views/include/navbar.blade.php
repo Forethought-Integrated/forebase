@@ -2,10 +2,10 @@
   <!-- Logo -->
   <a href="/" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>M</b>D</span>
+        <span class="logo-mini"><b>MD</b></span>
         <!-- logo for regular state and mobile devices -->
         {{-- <span class="logo-lg"><b>Admin</b>LTE</span> --}}
-        <span class="logo-lg"><b>Mastech</b>DIGITAL</span>
+        <span class="logo-lg"><b>MASTECHDIGITAL</b></span>
   </a>
 {{-- ./Logo --}}
 
