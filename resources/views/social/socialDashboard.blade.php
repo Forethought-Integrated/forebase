@@ -3,7 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
-<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
 
 <style>
 .pagination {
@@ -295,38 +294,56 @@ src="https://www.youtube.com/embed/HGF2a30Pmqs" allow="accelerometer; autoplay; 
       {{-- /.row --}}
   @endsection
 
-  @section('bodyScriptUpdate')
+@section('bodyScriptUpdate')
       <!-- REQUIRED SCRIPTS -->
+<script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.commentimg').on('click',function(event){
+    event.preventDefault();
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    var cmtData=$(this).data('commentdata');
+    var cmtID=$(this).data('commentid');
+    var hCmtID='comment_view'+cmtID;
+    $('#'+hCmtID).css("display","none");
+    var in1='<input type="hidden" name="_token" value="'+CSRF_TOKEN+'">';
+    var in2='<input type="hidden" name="_method" value="PUT">';
+    var in3='<input type="text" name="commentView" value="'+cmtData+'">';
+    // console.log(in1+in2+in3);
+    $(this).parent().html(in1+in2+in3);
+    });
+  });
+</script>
 
-      <!--Admin Model-->
-        <div id="edit_modal"class="modal fade" >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <form  id="postModalForm" method="post" action="">
+<!--Admin Model-->
+<div id="edit_modal"class="modal fade" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form  id="postModalForm" method="post" action="">
 
-                {{-- {{ csrf_field() }} --}}
-                {{-- <input name="_method" type="hidden" value="PUT"> --}}
-                <div class="modal-header">
-                  <h4 class="modal-title">Edit Post</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  </div>
-                  <div class="modal-body">
-                    <!--<form>-->
-                      <div class="form-group">
-                        <label for="post-body">Edit the Post</label>
-                        <textarea class="form-control" name="postModalTextArea" id="postModalTextArea" row="5" >abcd</textarea>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                      <button type="submit" id="postModalSave" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-                    
+      {{-- {{ csrf_field() }} --}}
+      {{-- <input name="_method" type="hidden" value="PUT"> --}}
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Post</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+        <!--<form>-->
+          <div class="form-group">
+            <label for="post-body">Edit the Post</label>
+            <textarea class="form-control" name="postModalTextArea" id="postModalTextArea" row="5" >abcd</textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" id="postModalSave" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+              
   <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor
