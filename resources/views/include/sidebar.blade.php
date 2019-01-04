@@ -47,7 +47,7 @@
           <a href="/social">
              <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px"> 
-            <i class="fa "></i> <span>Mass Com</span>
+            <i class="fa "></i> <span>MasComm</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>

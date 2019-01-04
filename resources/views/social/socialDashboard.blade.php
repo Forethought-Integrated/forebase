@@ -33,12 +33,12 @@
 @section('ContentHeader(Page_header)')
 
 <h1>
-  Social
+  MasComm
   <small>Control panel</small>
 </h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li class="active">Social</li>
+  <li class="active">MasComm</li>
 </ol>
 
 
