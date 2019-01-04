@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                   <label for="color_description" >Color Description</label>
-                      <input type="text" class="form-control" id="color_description" name="color_description" placeholder="color_description">
+                      <input type="text" class="form-control" id="color_description" name="color_description" placeholder="Color Description">
                 </div>
 
                 <div class="form-group">
@@ -74,14 +74,15 @@
                 </div>
 
               </div>
+                          <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div> 
               {{-- ./FormBOXBody --}}
             </div>
             {{-- ./Left Form Field --}}
 
           
-            <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div> 
+
           </div>
         </form>
         {{-- ./Form --}}

@@ -47,7 +47,7 @@
           <a href="/social">
              <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px"> 
-            <i class="fa "></i> <span>Social</span>
+            <i class="fa "></i> <span>Mass Com</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
@@ -60,7 +60,7 @@
           <a href="/knowledge">
             <img src="{{asset("/img/sidebar/File_Manager.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px">
-            <i class="fa "></i> <span>File Manager</span>
+            <i class="fa "></i> <span>Files </span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
@@ -87,7 +87,7 @@
           <a href="/under-construction">
             <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
-            <i class="fa "></i> <span>HelpDesk</span>
+            <i class="fa "></i> <span>Marketing Desk</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
@@ -95,32 +95,38 @@
         </li>
         {{-- ./HelpDesk --}}
 
-        {{-- Administration --}}
-        <li>
-          <a href="/administration">
-            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style=" width: 30px">
-            <i class="fa "></i> <span>Administration</span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        {{-- ./Administration --}}
-
-
-        {{-- Marketing --}}
+        {{-- Brand --}}
         <li>
           <a href="/marketing">
             <img src="{{asset("/img/sidebar/marketing.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
-            <i class="fa "></i> <span>Marketing</span>
+            <i class="fa "></i> <span>Brand</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
-        {{-- ./Marketing --}}
+        {{-- ./Brand --}}
+
+
+        {{-- Admin --}}
+        <li>
+          <a href="/administration">
+            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Admin</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        {{-- ./Admin --}}
+
+
+
+
+
+
 
        {{--  <li>
           <a href="/brands">
