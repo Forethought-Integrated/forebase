@@ -39,12 +39,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <td>Contact ID</td>
-                <td>Contact Type</td>
-                <td>Name</td>
-                <td>Mobile No</td>
-                <td>Landline No</td>
-                <td>Email</td>
+                <th>Contact ID</th>
+                <th>Contact Type</th>
+                <th>Name</th>
+                <th>Mobile No</th>
+                <th>Landline No</th>
+                <th>Email</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
@@ -74,12 +74,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <td>Contact ID</td>
-                <td>Contact Type</td>
-                <td>Name</td>
-                <td>Mobile No</td>
-                <td>Landline No</td>
-                <td>Email</td>
+                <th>Contact ID</th>
+                <th>Contact Type</th>
+                <th>Name</th>
+                <th>Mobile No</th>
+                <th>Landline No</th>
+                <th>Email</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

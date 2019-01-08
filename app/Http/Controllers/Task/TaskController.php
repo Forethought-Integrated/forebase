@@ -59,8 +59,8 @@ class TaskController extends Controller
             'task_compaign_id' => $request['TaskCampaignId'],
             'task_account_id' => $request['TaskAccountId'],
             'task_subject' => $request['TaskSubject'],
-            'task_description' => $request['TaskDescription'],
-            'task_startdate' => $request['StartDate'],
+            'task_description' => $request['TaskDescription'], 
+            'task_startdate'=> $request['StartDate'], 
             'task_enddate' => $request['EndDate'],
             'task_assignedto' => $request['AssignedTo'],
             'task_assignedby' => $request['AssignedBy'],
@@ -101,7 +101,7 @@ class TaskController extends Controller
                  // get the lead of id 
         $task = $this->get_singel_data($idd);
             
-        // show the view and pass the lead to it
+        // show the view and pass the lead to it 
         return view('Task.editTask',['task'=>$task]);
        
    
@@ -114,7 +114,7 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) 
     {
         //
         // DB::table('tasks')->where('id', $id)->update(['name' => $request->name]);
@@ -133,10 +133,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
-         DB::table('tasks')->where('task_id','=',$id)->delete();
-
        
-            return redirect('/crm/task');
+         DB::table('tasks')->where('task_id','=',$id)->delete();
+       
+         return redirect('/crm/task'); 
     }
 }

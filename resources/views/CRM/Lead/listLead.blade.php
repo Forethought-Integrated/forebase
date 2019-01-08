@@ -39,13 +39,13 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <td>Lead ID</td>
-                    <td>Service Code</td>
-                    <td>Name</td>
-                    <td>Designation</td>
-                    <td>Comapany Name</td>
-                    <td>Mobile No.</td>
-                    <td>Email</td>
+                    <th>Lead ID</th>
+                    <th>Service Code</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Comapany Name</th>
+                    <th>Mobile No.</th>
+                    <th>Email</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
@@ -75,13 +75,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td>Lead ID</td>
-                    <td>Service Code</td>
-                    <td>Name</td>
-                    <td>Designation</td>
-                    <td>Comapany Name</td>
-                    <td>Mobile No.</td>
-                    <td>Email</td>
+                    <th>Lead ID</th>
+                    <th>Service Code</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Comapany Name</th>
+                    <th>Mobile No.</th>
+                    <th>Email</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

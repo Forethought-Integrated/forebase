@@ -10,7 +10,7 @@
 
   <h1>
     Opportunity Form
-    <small>Control panel</small>
+    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -103,7 +103,7 @@
 
                 <div class="form-group">
                   <label for="Satge" >Stage</label>
-                  <input type="text" class="form-control" id="Satge" name="Satge" placeholder="Satge">
+                  <input type="text" class="form-control" id="Satge" name="Satge" placeholder="Stage">
                 </div>
 
                 <div class="form-group">

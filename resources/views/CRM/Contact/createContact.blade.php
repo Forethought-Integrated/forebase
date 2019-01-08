@@ -10,7 +10,7 @@
 
   <h1>
     Contact Form
-    <small>Control panel</small>
+   
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -55,7 +55,6 @@
                   <label for="emailId" >Email Id</label>
                   <input type="email" class="form-control" id="emailId" name="emailId" placeholder="Email Id">
                 </div>
-
                 
                 <div class="form-group">
                   <label for="MobileNo" >Mobile No.</label>

@@ -10,8 +10,8 @@
 
   <h1>
     Lead Form
-    <small>Control panel</small>
-  </h1>
+    
+  </h1> 
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Lead Form</li>
@@ -107,7 +107,7 @@
 
                 <div class="form-group">
                   <label for="UTMCampaignContent">UTM Campaign Content</label>
-                  <input type="text" class="form-control" id="UTMCampaignContent" name="UTMCampaignContent" placeholder="UTM Campaign Content" >
+                  <input type="text" class="form-control" id="UTMCampaignContent" name="UTMCampaignContent" placeholder="UTM Campaign Content">
                 </div>
 
 
@@ -119,7 +119,7 @@
 
                 <div class="form-group">
                   <label for="Address">Address</label>
-                  <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter your Address" >
+                  <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter your Address">
                 </div>
 
               </div>
@@ -163,7 +163,7 @@
 
                   <div class="form-group">
                   <label for="LeadStatus" >Lead Status</label>
-                  <input type="text" class="form-control" id="LeadStatus" name="LeadStatus" placeholder="LeadStatus">
+                  <input type="text" class="form-control" id="LeadStatus" name="LeadStatus" placeholder="Lead Status">
                 </div>
 
                   <div class="form-group">

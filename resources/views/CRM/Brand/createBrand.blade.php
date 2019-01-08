@@ -1,4 +1,4 @@
-  
+    
 @extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="brandColorpalate" >Brand Color Palatte</label>
-                  <input type="text" class="form-control" id="brandColorpalate" name="brandColorpalate" placeholder="Brand Color Palatte">
+                  <label for="brandColorpalate" >Brand Color Palette</label>
+                  <input type="text" class="form-control" id="brandColorpalate" name="brandColorpalate" placeholder="Brand Color Palette">
                 </div>
 
 

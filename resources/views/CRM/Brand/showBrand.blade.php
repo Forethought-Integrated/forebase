@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="brandColorpalate" >Brand Color Palatte</label>
+                  <label for="brandColorpalate" >Brand Color Palette</label>
                   <input type="text" class="form-control enabelInputField" id="brandColorpalate" name="brandColorpalate" value="{{ $brand->brand_color_palette}}" disabled>
                 </div>
 

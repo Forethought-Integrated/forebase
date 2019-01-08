@@ -42,12 +42,12 @@
                   <th>Brand ID</th>
                   <th>Brand Persona</th>
                   <th>Brand guidelines</th>
-                  <th>Brand color Palate</th>
-                  <th>Brand Typography</th>
-                  <th>Brand Email Signature</th> 
+                  <th>Brand color Palette</th>
+                  <th>Brand Typography</thh
+                  <th>Brand Email Signature</th>h
                   <th>Brand Disclaimer</th>
 
-                  {{-- <th>Edit</th> --}}
+                  {{-- <th>Edit</th> --}} 
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -80,7 +80,7 @@
                   <th>Brand ID</th>
                   <th>Brand Persona</th>
                   <th>Brand guidelines</th>
-                  <th>Brand color Palate</th>
+                  <th>Brand color Palette</th>
                   <th>Brand Typography</th>
                    <th>Brand Email Signature</th>
                     <th>Brand Disclaimer</th>

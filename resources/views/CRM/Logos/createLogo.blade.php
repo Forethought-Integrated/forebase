@@ -1,4 +1,4 @@
-
+  
 @extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
@@ -11,7 +11,7 @@
 
   <h1>
     Logo Form 
-    <small>Control panel</small>
+   
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -62,6 +62,7 @@
                   <label for="logo_usage" >Logo Usage</label>
                       <input type="text" class="form-control" id="logo_usage" name="logo_usage" placeholder="Logo Usage">
                 </div>
+              </div>
 
 
                  <div class="box-footer">

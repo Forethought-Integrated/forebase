@@ -51,6 +51,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                  
                   @foreach($logo as $logos)
                     <tr>
                       <td>{{$logos->logo_id}}</td>
