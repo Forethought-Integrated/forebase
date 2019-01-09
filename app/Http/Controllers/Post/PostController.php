@@ -8,8 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use GuzzleHttp\Client;
-        use Illuminate\Support\Facades\App; 
-
+use Illuminate\Support\Facades\App; 
 
 
 class PostController extends Controller
@@ -26,6 +25,8 @@ class PostController extends Controller
         $this->URL=$this->ENV_URL.'post';    
                 // $this->middleware('auth');
     }
+
+  
 
     public function index()
     {

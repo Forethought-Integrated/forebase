@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Model\Task;
 use Auth;
 use Session;
+use Helper;
+
 class HomeController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class HomeController extends Controller
         Session::put('taskData',$taskData);
         Session::put('taskCount',$taskCount);
         // return $taskData;
-    return view('/dashboard/dashboard');
+         return view('/dashboard/dashboard');
    
     }
 }
