@@ -41,6 +41,8 @@ class ContactController extends Controller
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
+        $data['fileModalTitle']='File Upload';
+        $data['fileUrl']=url('/contact/uploadFile');
         return view('CRM.Contact.listContact')->with('data', $data);
 
     }
