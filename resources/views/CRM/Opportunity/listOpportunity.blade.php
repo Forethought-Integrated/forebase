@@ -19,7 +19,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Opportunity LIst</li>
+    <li class="active">Opportunity List</li>
   </ol>
 
 
@@ -38,16 +38,16 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
-              <td>Opportunity ID</td>
-              <td>Deal Owner</td>
-              <td>Deal Name</td>
-              <td>Account Name</td>
-              <td>Lead ID</td>
-              <td>Campaign ID</td>
-              <td>Contact ID</td>
-              <td>Amount</td>
-              <td>Satge</td>
+             <tr>
+              <th>Opportunity ID</th>
+              <th>Deal Owner</th>
+              <th>Deal Name</th>
+              <th>Account Name</th>
+              <th>Lead ID</th>
+              <th>Campaign ID</th>
+              <th>Contact ID</th>
+              <th>Amount</th>
+              <th>Stage</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
@@ -79,15 +79,15 @@
                 </tbody>
                 <tfoot>
                 <tr>
-              <td>Opportunity ID</td>
-              <td>Deal Owner</td>
-              <td>Deal Name</td>
-              <td>Account Name</td>
-              <td>Lead ID</td>
-              <td>Campaign ID</td>
-              <td>Contact ID</td>
-              <td>Amount</td>
-              <td>Satge</td>
+              <th>Opportunity ID</th>
+              <th>Deal Owner</th>
+              <th>Deal Name</th>
+              <th>Account Name</th>
+              <th>Lead ID</th>
+              <th>Campaign ID</th>
+              <th>Contact ID</th>
+              <th>Amount</th>
+              <th>Stage</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

@@ -60,6 +60,7 @@
                   <label for="logo_usage" >Logo Usage</label>
                       <input type="text" class="form-control enabelInputField" id="logo_usage" name="logo_usage	" value="{{ $logos->logo_usage }}" >
                 </div>
+              </div>
 
 
 

@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="budgetCost" >Budget Cost.</label>
+                  <label for="budgetCost" >Budget Cost</label>
                   <input type="text" class="form-control" id="budgetCost" name="budgetCost"  placeholder="Budget Cost">
                   
                 </div>

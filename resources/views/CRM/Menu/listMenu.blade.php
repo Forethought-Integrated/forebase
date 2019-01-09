@@ -63,7 +63,7 @@
                        <form action="{{ url('menus'.'/' .$menus->menu_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn " type="submit">Delete</button>
+                          <button class="btn remove_btn" type="submit">Delete</button>
                         </form>
                       </td>
                     </tr>

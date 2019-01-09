@@ -10,7 +10,7 @@
 
   <h1>
     Account Form
-    <small>Control panel</small>
+    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,7 +20,7 @@
 
 @endsection
 
-@section('MainContent')
+@section('MainContent') 
 <div class="row">
   <!--  column -->
   <div class="col-md-12">

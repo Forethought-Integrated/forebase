@@ -59,7 +59,7 @@
                 </div>
 
                  <div class="form-group">
-                  <label for="logo_usage" >Menu Sort</label>
+                  <label for="logo_usage" >Logo Usage</label>
                       <input type="text" class="form-control enabelInputField" id="logo_usage" name="logo_usage" value="{{ $logos->logo_usage}}" disabled>
                 </div>
 

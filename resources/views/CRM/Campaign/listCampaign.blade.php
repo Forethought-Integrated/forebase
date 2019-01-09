@@ -27,7 +27,7 @@
 
 @section('MainContent')
 <div class="row">
-   {{-- column --}}
+   {{-- column --}} 
   <div class="col-md-12">
     {{-- Box --}}
     <div class="box">
@@ -39,14 +39,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <td>Campaign ID</td>
-                <td>Campaign Name</td>
-                <td>Campaign Type</td>
-                <td>Description</td>
-                <td>Start Date</td>
-                <td>End Date</td>
-                <td>Budget Cost</td>
-                  {{-- <th>Edit</th> --}}
+                <th>Campaign ID</th>
+                <th>Campaign Name</th>
+                <th>Campaign Type</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Budget Cost</th>
+                  {{-- <th>Edit</th> --}} 
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -57,7 +57,7 @@
                       <td><a href="{{ url('campaign'.'/'.$data['campaign_id'])}}">{{$data['campaign_name']}}</a></td>
                       {{-- <td>{{$data['campaign_name']}}</td> --}}
                       <td>{{$data['campaign_type']}}</td>
-                      <td>{{$data['campaign_description']}}</td>
+                      <td>{{$data['campaign_description']}}</td> 
                       <td>{{$data['campaign_startDate']}}</td>
                       <td>{{$data['campaign_endDate']}}</td>
                       <td>{{$data['campaign_budgetCost']}}</td>
@@ -77,13 +77,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <td>Campaign ID</td>
-                <td>Campaign Name</td>
-                <td>Campaign Type</td>
-                <td>Description</td>
-                <td>Start Date</td>
-                <td>End Date</td>
-                <td>Budget Cost</td>
+                <th>Campaign ID</th>
+                <th>Campaign Name</th>
+                <th>Campaign Type</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Budget Cost</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

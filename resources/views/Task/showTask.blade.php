@@ -39,13 +39,13 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
       
-               <!--  <div class="form-group">
+                <div class="form-group">
                   <label for="inputTaskLeadId" >Task Lead ID</label>
                   <input type="text" class="form-control" id="TaskLeadId" name="TaskLeadId" value="{{ $task->task_lead_id }}" disabled>
                 </div>
   
         
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="inputTaskContactId" >Task Contact ID</label>
                   <input type="text" class="form-control" id="TaskContactId" name="TaskContactId" value="{{ $task->task_contact_id }}" disabled>
                 </div>
@@ -67,6 +67,11 @@
                 <input type="Tell" class="form-control" id="TaskSubject" name="TaskSubject" value="{{ $task->task_subject }}" disabled>
               </div>
 
+                <div class="form-group">
+                <label for="inputTaskDescription" >Task Description</label>
+                <input type="text" class="form-control" id="TaskDescription" name="TaskDescription" value="{{ $task->task_description}}" disabled>
+              </div>
+
               <div class="form-group">
                 <label for="inputTaskGroup" >Task Group</label>
                 <input type="text" class="form-control" id="TaskGroup" name="TaskGroup" value="{{ $task->task_group }}" disabled>
@@ -77,15 +82,9 @@
                 <input type="text" class="form-control" id="TaskStatus" name="TaskStatus" placeholder="TaskStatus" value="{{ $task->task_status }}" disabled>
               </div>
 
-               <div class="form-group">
-                <label for="inputTaskDescription" >Task Description</label>
-                <input type="text" class="form-control" id="TaskDescription" name="TaskDescription" value="{{ $task->task_description}}" disabled>
-              </div>
+             
         
-              <div class="form-group">
-                <label for="inputSartDate" >Start Date</label>
-                <input type="date" class="form-control" id="StartDate" name="StartDate" value="{{ $task->task_startdate }}" disabled>
-              </div>
+             
   
            
             </div>
@@ -98,6 +97,11 @@
           <div class="col-md-6">
             {{-- FormBOXBody --}}
             <div class="box-body">
+
+               <div class="form-group">
+                <label for="inputSartDate" >Start Date</label>
+                <input type="date" class="form-control" id="StartDate" name="StartDate" value="{{ $task->task_startdate }}" disabled>
+              </div>
             
              
         

@@ -40,13 +40,13 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
        
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <label for="inputTaskLeadId" >Task Lead ID</label>
                 <input type="text" class="form-control" id="TaskLeadId" name="task_lead_id" value="{{ $task->task_lead_id }}" />
               </div>
   
   
-              <div class="form-group">
+             <!--  <div class="form-group">
                 <label for="inputTaskContactId" >Task Contact ID</label>
                 <input type="text" class="form-control" id="TaskContactId" name="task_contact_id" value="{{ $task->task_contact_id }}" />
               </div>
@@ -61,11 +61,16 @@
               <div class="form-group">
                 <label for="inputTaskAccountId" >Task Account ID</label>
                 <input type="text" class="form-control" id="TaskAccountId" name="task_account_id" value="{{ $task->task_account_id }}" />
-              </div> -->
-            
+              </div>
+             -->
               <div class="form-group">
                 <label for="inputTaskSubject" >Task Subject</label>
                 <input type="Tell" class="form-control" id="TaskSubject" name="task_subject" value="{{ $task->task_subject }}"/>
+              </div>
+
+               <div class="form-group">
+                  <label for="inputTaskDescription" >Task Description</label>
+                  <input type="text" class="form-control" id="TaskDescription" name="task_description"   value="{{ $task->task_description}}" />
               </div>
 
               <div class="form-group">
@@ -85,15 +90,8 @@
                    </select>
                  </div>
 
-                 <div class="form-group">
-                  <label for="inputTaskDescription" >Task Description</label>
-                  <input type="text" class="form-control" id="TaskDescription" name="task_description"   value="{{ $task->task_description}}" />
-              </div>
+                
   
-              <div class="form-group">
-                <label for="inputSartDate" >Start Date</label>
-                <input type="date" class="form-control" id="StartDate" name="task_startdate" value="{{ $task->task_startdate }}" />
-              </div>
   
              
             
@@ -108,6 +106,12 @@
           <div class="col-md-6">
             {{-- FormBOXBody --}}
             <div class="box-body">
+
+              
+              <div class="form-group">
+                <label for="inputSartDate" >Start Date</label>
+                <input type="date" class="form-control" id="StartDate" name="task_startdate" value="{{ $task->task_startdate }}" />
+              </div>
 
                <div class="form-group">
                 <label for="inputEnddate" >End date</label>

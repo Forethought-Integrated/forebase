@@ -106,8 +106,8 @@
   
             
             <div class="form-group">
-              <label for="inputSartDate" >Start Date</label>
-              <input type="date" class="form-control" id="StartDate" name="StartDate" placeholder="StartDate">
+              <label for="inputStartDate" >Start Date</label>
+              <input type="date" class="form-control" id="StartDate" name="StartDate" placeholder="Start Date">
             </div>
   
             <div class="form-group">
