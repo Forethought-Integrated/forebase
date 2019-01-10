@@ -49,7 +49,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($menus as $menus)
+                  @foreach($menu as $menus)
                     <tr>
                       <td>{{$menus->menu_id}}</td>
                       <td><a href="{{ url('menus'.'/'.$menus->menu_id)}}">{{$menus->user_id}}</a></td>
@@ -80,6 +80,8 @@
                 </tr>
                 </tfoot>
               </table>
+              {{ $menu->links() }}
+
             </div>
             <!-- /.box-body -->
           </div>

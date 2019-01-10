@@ -55,7 +55,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/under-construction" title="">
+        <a href="/companies" title="">
           <img src="{{asset("/img/marketing/companies.png")}}" alt="Snow" style="width:100%">
         </a>
         <strong>Company</strong>

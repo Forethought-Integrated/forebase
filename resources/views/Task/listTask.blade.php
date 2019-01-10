@@ -56,7 +56,7 @@
                 <tbody>
                  <!--  <tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">No data available in table</td></tr>
  -->
-                  @foreach($tasks as $tasks)
+                  @foreach($task as $tasks)
                  <tr>
                     <td>{{$tasks->task_id}}</td>
                     {{-- <td>{{$tasks->task_lead_id}}</td> --}}
@@ -101,6 +101,8 @@
                 </tr>
                 </tfoot>
             </table>
+            {{ $task->links() }}
+           
          </div>
             <!-- /.box-body -->
           </div>

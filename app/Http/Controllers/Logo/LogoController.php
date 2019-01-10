@@ -25,7 +25,7 @@ class LogoController extends Controller
     public function index()
     {
         
-       $logo=DB::table('logos')->get();
+       $logo=DB::table('logos')->paginate(10);
 
        return view('CRM.Logos.listLogo',['logo'=>$logo]); 
     } 

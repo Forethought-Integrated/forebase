@@ -83,7 +83,7 @@
                   <th>Color Type</th>
                   <th>Color Description</th>
                   <th>Color CMYK Code</th>
-                  <th>Color RGB Code</th>
+                  <th>Color RGB Code</th> 
                    <th>Color HEXA Code</th>
                     <th>Color Pantone Code</th>
                   {{-- <th>Edit</th> --}}
@@ -91,6 +91,7 @@
                 </tr>
                 </tfoot>
               </table>
+              {{ $color_palettes->links() }}
             </div>
             <!-- /.box-body -->
           </div>

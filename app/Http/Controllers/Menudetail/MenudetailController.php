@@ -19,9 +19,9 @@ class MenudetailController extends Controller
 
     public function index()
     {
-       $menu_details=DB::table('menu_details')->get();
+       $menu_detail=DB::table('menu_details')->paginate(10);
 
-       return view('CRM.Menudetail.listMenudetail',['menu_details'=>$menu_details]); 
+       return view('CRM.Menudetail.listMenudetail',['menu_detail'=>$menu_detail]); 
     }
     
 
@@ -50,18 +50,18 @@ class MenudetailController extends Controller
 
     public function show($id)
     {
-        $menu_details = $this->get_singel_data($id);
+        $menu_detail = $this->get_singel_data($id);
             
        
-        return view('CRM.Menudetail.showMenudetail',['menu_details'=>$menu_details]);
+        return view('CRM.Menudetail.showMenudetail',['menu_detail'=>$menu_detail]);
     }
 
      public function edit($id)
     {
-       $menu_details = $this->get_singel_data($id);
+       $menu_detail = $this->get_singel_data($id);
             
         
-         return view('CRM.Menudetail.editMenudetail',['menu_details'=>$menu_details]);
+         return view('CRM.Menudetail.editMenudetail',['menu_detail'=>$menu_detail]);
 
 
     }
@@ -69,10 +69,10 @@ class MenudetailController extends Controller
     public function update(Request $request, $id)
     { 
          
-        $menu_details=Menudetail::findOrFail($id);      
-        $menu_details->update($request->all());
+        $menu_detail=Menudetail::findOrFail($id);      
+        $menu_detail->update($request->all());
          
-        $menu_details->save();
+        $menu_detail->save();
         return redirect('/menudetails');
     }
 

@@ -10,8 +10,7 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Company Form
-   
+    Company Form   
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,9 +21,9 @@
 @endsection
 
 @section('MainContent')
-<div class="row">
+<div class="row" style="background-color:white;">
   <!--  column -->
-  <data></data>iv class="col-md-12">
+  <div class="col-md-12">
     <!-- Horizontal Form -->
     <div class="box box-primary">
             <div class="box-header with-border">

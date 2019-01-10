@@ -43,38 +43,66 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
-                <div class="form-group">
+               <!--  <div class="form-group">
                   <label for="brandPerson" >Brand Persona</label>
                   <input type="text" class="form-control enabelInputField" id="brandPerson" name="brandPerson" value="{{ $brand->brand_persona}}" disabled>
-                </div>
+                </div> -->
+
+                 <div class="form-group">
+                    <label for="brandPerson" >Brand Persona</label>
+                    <textarea  class="form-control textarea" name="brandPerson" id="brandPerson" rows="15" disabled><?php echo $brand->brand_persona;?>
+                  </textarea >
                 
-
+<!-- 
+               
+ -->
                 <div class="form-group">
-                  <label for="brandGuidelines" >Brand Guidelines</label>
-                      <input type="text" class="form-control enabelInputField" id="brandGuidelines" name="brandGuidelines" value="{{ $brand->brand_guidelines}}" disabled>
-                </div>
+                    <label for="brandGuidelines" >Brand Logo</label>
+                    <textarea  class="form-control textarea" name="brandGuidelines" id="brandGuidelines" rows="15"disabled ><?php echo $brand->brand_guidelines;?>
+                  </textarea >
 
-                <div class="form-group">
+
+               <!--  <div class="form-group">
                   <label for="brandColorpalate" >Brand Color Palette</label>
                   <input type="text" class="form-control enabelInputField" id="brandColorpalate" name="brandColorpalate" value="{{ $brand->brand_color_palette}}" disabled>
-                </div>
-
+                </div> -->
 
                 <div class="form-group">
+                    <label for="brandColorpalate" >Brand Color Palette</label>
+                    <textarea  class="form-control textarea" name="brandColorpalate" id="brandColorpalate" rows="15"disabled ><?php echo $brand->brand_color_palette;?>
+                  </textarea >
+
+
+               <!--  <div class="form-group">
                   <label for="brandTypography" >Brand Typography</label>
                   <input type="text" class="form-control enabelInputField" id="brandTypography" name="brandTypography" value="{{ $brand->brand_typography}}" disabled>
-                </div>
+                </div> -->
+
+                  <div class="form-group">
+                    <label for="brandTypography" >Brand Typography</label>
+                    <textarea  class="form-control textarea " name="brandTypography" id="brandTypography" rows="15"disabled ><?php echo $brand->brand_typography;?>
+                  </textarea>
                 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="brandEmail" >Brand Email Signature</label>
                   <input type="varchar" class="form-control enabelInputField" id="brandEmail" name="brandEmail" value="{{ $brand->brand_email_signature}}" disabled>
-                </div>
+                </div> -->
+
 
                 <div class="form-group">
+                    <label for="brandEmail">Brand Email Signature</label>
+                    <textarea  class="form-control textarea" name="brandEmail" id="brandEmail" rows="15"disabled ><?php echo $brand->brand_email_signature;?>
+                  </textarea>
+
+                <!-- <div class="form-group">
                   <label for="brandDisc" >Brand Disclaimer</label>
                   <input type="Text" class="form-control enabelInputField" id="brandDisc" name="brandDisc" value="{{ $brand-> brand_disclaimer}}" disabled>
-                </div>
+                </div> -->
 
+                <div class="form-group">
+                    <label for="brandDisc">Brand Disclaimer</label>
+                    <textarea  class="form-control textarea " name="brandDisc" id="brandDisc" rows="15"disabled ><?php echo $brand->brand_disclaimer;?>
+                  </textarea>
               </div>
               {{-- ./FormBOXBody --}}
             </div>
@@ -102,6 +130,17 @@
   </div>
   {{--  ./Col  --}}
 </div>
+<script>
+  $(function () {
+        // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+
+    });
+
+  });
+</script>
 <!-- /.row -->
 
 @endsection
