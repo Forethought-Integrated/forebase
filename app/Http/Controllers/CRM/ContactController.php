@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactResources;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Helper;
 
 
 class ContactController extends Controller
@@ -40,6 +41,8 @@ class ContactController extends Controller
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
+        $data['fileModalTitle']='File Upload';
+        $data['fileUrl']=url('/contact/uploadFile');
         return view('CRM.Contact.listContact')->with('data', $data);
 
     }
@@ -54,7 +57,6 @@ class ContactController extends Controller
 
 
      public function store(Request $request)
-
      {  
 
                     $client = new Client();
@@ -124,13 +126,33 @@ class ContactController extends Controller
      }
 
 
-   public function destroy($id)
-
+    public function destroy($id)
     {
         $client = new Client();
         $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/contact');
     }
 
-   
+    public function importCsv(Request $request)
+    {  
+        if($request->hasFile('file')){
+            // $filePath Is the Path in storage where stored file is stored
+            $filePath='/public/vikram';
+            $storedFilePath=Helper::fileUpload($request,$filePath);
+
+            $file= storage_path('app/'.$storedFilePath);
+            $dataArr = Helper::csvToArray($file);
+            $client = new Client();
+            foreach ($dataArr as $data) {
+                $response = $client->request('POST', $this->URL, [
+                       'form_params' => $data
+                   ]);
+            }
+            return redirect('/contact');
+        }
+        else
+        {
+            return 'empty File';
+        }
     }
+}

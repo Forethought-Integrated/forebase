@@ -311,16 +311,11 @@
                                         @csrf
                   </form>
                 </div>
-                <!-- <p>
-                   <a href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                Logout   
-              </a>
-                </p> -->
               </li>
             </ul>
           </li>
+          <!-- ./User Account: style can be found in dropdown.less -->
+
           <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>

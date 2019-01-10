@@ -26,12 +26,18 @@
 @endsection
 
 @section('MainContent')
+{{-- <pre>{{print_r($data)}}</pre> --}}
 <div class="row">
    {{-- column --}}
   <div class="col-md-12">
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
+              {{-- <form action="{{url('account')}}" method="post" class="pull-right"> --}}
+                {{-- <a href="#fileModel"> --}}
+                <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
+                {{-- </a> --}}
+              {{-- </form> --}}
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
             </div>
             <!-- /.box-header -->
@@ -50,19 +56,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['contact']['data'] as $data)
+                  <?php $no=1;?>
+                  @foreach($data['contact']['data'] as $contact)
                     <tr>
-                      <td>{{$data['contact_id']}}</td>
-                      <td>{{$data['contact_type']}}</td>
-                      <td><a href="{{ url('contact'.'/'.$data['contact_id'])}}">{{$data['contact_name']}}</a></td> 
-                      <td>{{$data['contact_mobileNo']}}</td>
-                      <td>{{$data['contact_landlineNo']}}</td>
-                      <td>{{$data['contact_email']}}</td>
+                      {{-- <td>{{$contact['contact_id']}}</td> --}}
+                      <td>{{$no++}}</td>
+                      <td>{{$contact['contact_type']}}</td>
+                      <td><a href="{{ url('contact'.'/'.$contact['contact_id'])}}">{{$contact['contact_name']}}</a></td> 
+                      <td>{{$contact['contact_mobileNo']}}</td>
+                      <td>{{$contact['contact_landlineNo']}}</td>
+                      <td>{{$contact['contact_email']}}</td>
       {{--            <td>
                         <a class="btn btn-small btn-primary" href="{{ url('contact'.'/'.$data['contact_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('contact'.'/'.$data['contact_id'])}}" method="post">
+                       <form action="{{ url('contact'.'/'.$contact['contact_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn" type="submit">Delete</button>
@@ -86,6 +94,8 @@
                 </tfoot>
               </table>
             </div>
+            {{-- $data['contact']['data'] --}}
+            {{-- {{$data['contact']->links('vendor.pagination.custom')}} --}}
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -94,16 +104,44 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
+<!-- Upload File  Model -->
+{{-- <div class="modal fade" id="fileModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form  id="model-post-form" method="post" action="{{url('/contact/uploadFile')}}" enctype="multipart/form-data">
+      {{ csrf_field() }}
+        <div class="modal-header">
+          <h4 class="modal-title">Upload File</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <!--<form>-->
+          <div class="form-group">
+            <input type="file"  name="file">
+          </div>
+          <!--</form>-->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="submit" id="post-save-model" class="btn btn-primary">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ --}}<!-- ./Create Folder/Directory  Model -->
 
 @endsection
 
 @section('bodyScriptUpdate')
 
+@include('include.uploadFile')
 <!-- DataTables -->
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("/admin_lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 {{-- Page Script--}}
-<script>
+{{-- <script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -115,7 +153,7 @@
       'autoWidth'   : false
     })
   })
-</script>
+</script> --}}
 {{-- ./Page Script--}}
  
 @endsection
