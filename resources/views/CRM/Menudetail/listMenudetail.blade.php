@@ -51,7 +51,7 @@
                  </tr>
                 </thead>
                 <tbody>
-                  @foreach($menu_details as $menu_details)
+                  @foreach($menu_detail as $menu_details)
                     <tr>
                       <td>{{$menu_details->menu_detail_id}}</td>
                       <td><a href="{{ url('menudetails'.'/'.$menu_details->menu_detail_id)}}">{{$menu_details->menu_id}}</a></td>
@@ -85,6 +85,7 @@
                 </tr>
                 </tfoot>
               </table>
+              {{$menu_detail->links()}}
             </div>
             <!-- /.box-body -->
           </div>

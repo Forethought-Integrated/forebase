@@ -41,27 +41,27 @@
                 <tr>
                   <th>Brand ID</th>
                   <th>Brand Persona</th>
-                  <th>Brand guidelines</th>
+                  <th>Brand Logo</th>                 
                   <th>Brand color Palette</th>
-                  <th>Brand Typography</thh
-                  <th>Brand Email Signature</th>h
-                  <th>Brand Disclaimer</th>
+                  <th>Brand Typography</th>
+                 <!--  <th>Brand Email Signature</th>  -->
+                 <!--  <th>Brand Disclaimer</th> -->
 
-                  {{-- <th>Edit</th> --}} 
+                  {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbohy>
                   @foreach($brands as $brands)
                     <tr> 
                       <td>{{$brands->brand_id}}</td>
-                      <td><a href="{{ url('brands'.'/'.$brands->brand_id)}}">{{$brands->brand_persona}}</a></td>
+                      <td><a href="{{ url('brands'.'/'.$brands->brand_id)}}">{!!$brands->brand_persona!!}</a></td>
                       
-                       <td>{{$brands->brand_guidelines}}</td>
-                        <td>{{$brands->brand_color_palette}}</td>
-                        <td>{{$brands->brand_typography}}</td>
-                        <td>{{$brands->brand_email_signature}}</td>
-                        <td>{{$brands->brand_disclaimer}}</td>
+                       <td>{!!$brands->brand_guidelines!!}</td>
+                        <td>{!!$brands->brand_color_palette!!}</td>
+                        <td>{!!$brands->brand_typography!!}</td>
+                        <!-- <td>{!!$brands->brand_email_signature!!}</td> -->
+                       <!--  <td>{!!$brands->brand_disclaimer!!}</td> -->
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('brand'.'/' .$brands->brand_id)}}">Edit</a>
                       </td>
@@ -79,11 +79,11 @@
                 <tr>
                   <th>Brand ID</th>
                   <th>Brand Persona</th>
-                  <th>Brand guidelines</th>
-                  <th>Brand color Palette</th>
+                  <th>Brand Logo</th>
+                  <th>Brand color Palate</th>
                   <th>Brand Typography</th>
-                   <th>Brand Email Signature</th>
-                    <th>Brand Disclaimer</th>
+                   <!-- <th>Brand Email Signature</th> -->
+                    <!-- <th>Brand Disclaimer</th> -->
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>

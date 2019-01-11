@@ -113,6 +113,7 @@
                 </tr>
                 </tfoot>
               </table>
+              {{ $company->links() }}
             </div>
             <!-- /.box-body -->
           </div>

@@ -52,7 +52,7 @@ class  BrandController extends Controller
                    
                     
                 ]);
-                    return redirect('/brands');
+                    return redirect('/brands'); 
     }
 
     /**
@@ -66,6 +66,7 @@ class  BrandController extends Controller
 
         $brands = $this->get_singel_data($id);
             
+       return view('CRM.Brand.listDemo',['brand'=>$brands]);
        
         return view('CRM.Brand.showBrand',['brand'=>$brands]);
     }
@@ -87,9 +88,9 @@ class  BrandController extends Controller
          public function update(Request $request, $id)
 
      {  
+       
         $brand=Brand::findOrFail($id);
         $brand->update($request->all());
-        //return $brand;
         $brand->save();
             
                 // DB::table('brands')->where('brand_id', $id)->update(['brand_persona' => $request->brand_persona]);

@@ -20,7 +20,7 @@
 @endsection
 
 @section('MainContent')
-<div class="row">
+<div class="row" style="background-color:white;">
   <!--  column -->
   <div class="col-md-12">
     <!-- Horizontal Form -->
@@ -86,7 +86,9 @@
 
           
             {{-- ./RIght Form Field --}}
+            <div class="row">
             <div class="col-md-6">
+              <div class="box-body">
 
                  <div class="form-group">
                   <label for="company_primary_contact" >Company Primary Contact.</label>
@@ -126,10 +128,12 @@
                   <input type="Text" class="form-control enabelInputField" id="company_industry" name="company_website" value="{{ $companies->company_website}}">
                 </div>
               </div>
+            </div>
 
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+        
         </div> 
+        <div class="box-footer" style="margin:15px;">
+          <button type="submit" class="btn btn-primary">Update</button>
       </div>
       </form>
       {{-- ./Form --}}

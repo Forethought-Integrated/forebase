@@ -22,7 +22,7 @@ class ColorPaletteController extends Controller
     public function index()
     {
            
-       $color_palette=DB::table('color_palettes')->get();
+       $color_palette=DB::table('color_palettes')->paginate(10);
 
        return view('CRM.ColorPalette.listColorPalette',['color_palettes'=>$color_palette]);
     }

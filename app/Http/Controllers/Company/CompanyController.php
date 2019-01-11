@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Company; 
 use Illuminate\Http\Request;
-
-use App\Http\Requests\CompanyRequest;
-use App\Company;
+use App\Model\Company;
+//use App\Http\Requests\CompanyRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
   
 
-class CompanyController extends Controller
+class CompanyController extends Controller 
 {
 
 
@@ -21,7 +20,9 @@ class CompanyController extends Controller
     }
     public function index()
     {
-       $company=DB::table('companies')->get();
+
+
+       $company=DB::table('companies')->paginate(10);
 
        return view('CRM.Company.listCompany',['company'=>$company]);
     }
@@ -58,6 +59,7 @@ class CompanyController extends Controller
 
     public function show($id)
     {
+         
         $company = $this->get_singel_data($id);
             
        

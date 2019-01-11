@@ -78,7 +78,7 @@
                 <tfoot>
                 <tr>
                   <th>Logo ID</th>
-                  <th>Primary Logo URL</th>
+                  <th>Primary Logo URL</th> 
                   <th>Secondry Logo URL</th>
                   <th>Mnemonic URL</th>
                   <th>Logo Usage</th>
@@ -89,6 +89,7 @@
                 </tr>
                 </tfoot>
               </table>
+              {{ $logo->links() }}
             </div>
             <!-- /.box-body -->
           </div>

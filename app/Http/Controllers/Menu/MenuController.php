@@ -25,8 +25,8 @@ class MenuController extends Controller
 
     public function index()
     {
-       $menus=DB::table('Menus')->get();
-       return view('CRM.Menu.listMenu',['menus'=>$menus]); 
+       $menu=DB::table('Menus')->paginate(10);
+       return view('CRM.Menu.listMenu',['menu'=>$menu]); 
     }
       
     
@@ -50,18 +50,18 @@ class MenuController extends Controller
 
     public function show($id)
     {
-      $menus = $this->get_singel_data($id);
+      $menu = $this->get_singel_data($id);
             
        
-        return view('CRM.Menu.showMenu',['menu'=>$menus]);
+        return view('CRM.Menu.showMenu',['menu'=>$menu]);
     }
     
     public function edit($id)
     {
-       $menus = $this->get_singel_data($id);
+       $menu = $this->get_singel_data($id);
             
         
-         return view('CRM.Menu.editMenu',['menu'=>$menus]);
+         return view('CRM.Menu.editMenu',['menu'=>$menu]);
 
 
     }
