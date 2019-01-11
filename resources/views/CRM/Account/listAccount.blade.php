@@ -32,6 +32,7 @@
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
+              <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
             </div>
             <!-- /.box-header -->
@@ -49,9 +50,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                   <?php $no=1;?>
                   @foreach($data['account']['data'] as $data)
                     <tr>
-                      <td>{{$data['account_id']}}</td>
+                     <!--  <td>{{$data['account_id']}}</td> -->
+                     <td>{{$no++}}</td>
                       <td><a href="{{ url('account'.'/'.$data['account_id'])}}">{{$data['account_name']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
                       <td>{{$data['account_mobileNo']}}</td>

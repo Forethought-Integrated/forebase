@@ -64,7 +64,7 @@ class ContactController extends Controller
                     'form_params' => [
                     'contact_type' => $request->contactType,
                     'contact_name' => $request->Name,
-                    'contact_email '=> $request->emailId,
+                    'contact_email' => $request->emailId,
                     'contact_mobileNo' => $request->MobileNo,
                     'contact_landlineNo' => $request->LandlineNo,
                     'contact_companyID' => $request->CompanyID,
@@ -112,7 +112,7 @@ class ContactController extends Controller
                     'form_params' => [
                     'contact_type' => $request->contactType,
                     'contact_name' => $request->Name,
-                    'contact_email '=> $request->emailId,
+                    'contact_email' => $request->emailId,
                     'contact_mobileNo' => $request->MobileNo,
                     'contact_landlineNo' => $request->LandlineNo,
                     'contact_companyID' => $request->CompanyID,

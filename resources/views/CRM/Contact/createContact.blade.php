@@ -58,7 +58,7 @@
                 
                 <div class="form-group">
                   <label for="MobileNo" >Mobile No.</label>
-                  <input type="Tell" class="form-control" id="MobileNo" name="MobileNo" placeholder="Enter your number" >
+                  <input type="text" class="form-control" id="MobileNo" name="MobileNo" placeholder="Enter your number">
                 </div>
 
               </div>

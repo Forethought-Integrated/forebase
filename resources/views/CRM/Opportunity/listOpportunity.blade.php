@@ -53,9 +53,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php $no=1;?>
                   @foreach($data['opportunity']['data'] as $data)
                     <tr>
-                      <td>{{$data['opportunity_id']}}</td>
+                      <!-- <td>{{$data['opportunity_id']}}</td> -->
+                      <td>{{$no++}}</td>
                       <td>{{$data['opportunity_deal_owner']}}</td>
                       <td><a href="{{ url('opportunity'.'/'.$data['opportunity_id'])}}">{{$data['opportunity_deal_name']}}</a></td>
                       <td>{{$data['opportunity_account_name']}}</td> 
