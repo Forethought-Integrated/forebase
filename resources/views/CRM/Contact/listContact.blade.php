@@ -141,7 +141,7 @@
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("/admin_lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>
 {{-- Page Script--}}
-{{-- <script>
+<script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -153,7 +153,7 @@
       'autoWidth'   : false
     })
   })
-</script> --}}
+</script>
 {{-- ./Page Script--}}
  
 @endsection
