@@ -34,6 +34,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('administration.administrationDashboard');
     });
     Route::resource('datamapper', 'DataMapper\DataMapperController');
+    //--File Upload & Import TO CSV
+    Route::post('/datamapper/uploadFile', 'DataMapper\DataMapperController@importCsv');
+    //--./File Upload & Import TO CSV
 
     // ./Administration-----------------------------------------------------------------------------------
 
@@ -46,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('customer', 'CRM\AccountController');
     //--File Upload & Import TO CSV
     Route::post('/contact/uploadFile', 'CRM\ContactController@importCsv');
+    Route::post('/account/uploadFile', 'CRM\AccountController@importCsv');
     //--./File Upload & Import TO CSV
 
     // Route::get('/crm/task/{id}', function () {

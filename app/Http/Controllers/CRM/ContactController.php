@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use Helper;
 
 
+
 class ContactController extends Controller
 {
 
@@ -135,12 +136,15 @@ class ContactController extends Controller
 
     public function importCsv(Request $request)
     {  
+        // return $request->platform;
+        // $dataMapperArray=dataMapper->where('')
         if($request->hasFile('file')){
             // $filePath Is the Path in storage where stored file is stored
-            $filePath='/public/vikram';
+            $filePath='/public/csv-upload/crm/contact';
             $storedFilePath=Helper::fileUpload($request,$filePath);
 
             $file= storage_path('app/'.$storedFilePath);
+            return Helper::csvToArray($file);
             $dataArr = Helper::csvToArray($file);
             $client = new Client();
             foreach ($dataArr as $data) {

@@ -32,8 +32,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/datamapper" method="POST">
-        {{ csrf_field() }}
+      <form role="form" >
         <div class="row">
             {{-- Left Form Field --}}
             <div class="col-md-6">
@@ -42,18 +41,18 @@
                 
                 <div class="form-group">
                   <label for="mappingPlatform">Mapping Platform</label>
-                  <input type="Tell" class="form-control" id="mappingPlatform" name="mappingPlatform" value="{{$data['mapping']}}" placeholder="Mapping Platform" >
+                  <input type="Tell" class="form-control" id="mappingPlatform" name="mappingPlatform" value="{{$data['mapper']['mapping_platform']}}" placeholder="Mapping Platform" >
                 </div>
 
                 <div class="form-group">
                   <label for="tableName">Table Name</label>
-                  <input type="text" class="form-control" id="tableName" name="tableName" value="{{$data['']}}" placeholder="Table Name">
+                  <input type="text" class="form-control" id="tableName" name="tableName" value="{{$data['mapper']['table_name']}}" placeholder="Table Name">
                 </div>
                 
 
                 <div class="form-group">
                   <label for="tableFieldName">Table Field Name</label>
-                  <input type="text" class="form-control" id="tableFieldName" name="tableFieldName" value="{{$data['']}}" placeholder="Table Field Name">
+                  <input type="text" class="form-control" id="tableFieldName" name="tableFieldName" value="{{$data['mapper']['field_name']}}" placeholder="Table Field Name">
                 </div>
 
               </div>
@@ -72,12 +71,12 @@
 
                 <div class="form-group">
                   <label for="mappingTableName">Mapping Table Name</label>
-                  <input type="text" class="form-control" id="mappingTableName" name="mappingTableName" value="{{$data['']}}" placeholder="Mapping Table Name">
+                  <input type="text" class="form-control" id="mappingTableName" name="mappingTableName" value="{{$data['mapper']['mapping_table_name']}}" placeholder="Mapping Table Name">
                 </div>
 
                 <div class="form-group">
                   <label for="mappingFieldName">Mapping Field</label>
-                  <input type="text" class="form-control" id="mappingFieldName" name="mappingFieldName" value="{{$data['']}}" placeholder="Mapping Field">
+                  <input type="text" class="form-control" id="mappingFieldName" name="mappingFieldName" value="{{$data['mapper']['mapping_field_name']}}" placeholder="Mapping Field">
                 </div>
 
                 {{-- ........ --}}
@@ -90,9 +89,7 @@
             {{-- ./RIght Form Field --}}
         </div>
 
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div> 
+        
       </form>
       {{-- ./Form --}}
     </div>

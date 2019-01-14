@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataMapper;
 use App\Model\DataMapper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Helper;
 
 
 class DataMapperController extends Controller
@@ -18,6 +19,9 @@ class DataMapperController extends Controller
     {
         //
         $data['mapper']=DataMapper::all();
+        $data['fileModalTitle']='File Upload';
+        $data['fileUrl']=url('/datamapper/uploadFile');
+        
         return view('dataMapper.listDataMapper',compact('data'));
     }
 
@@ -56,7 +60,7 @@ class DataMapperController extends Controller
     {
         //
         $data['mapper']=$dataMapper->find($id);
-        return view('dataMapper/showDataMapper');
+        return view('dataMapper/showDataMapper',compact('data'));
     }
 
     /**
@@ -68,6 +72,8 @@ class DataMapperController extends Controller
     public function edit(DataMapper $dataMapper)
     {
         //
+         $data['mapper']=$dataMapper->find($id);
+        return view('dataMapper/editDataMapper',compact('data'));
     }
 
     /**
@@ -95,5 +101,25 @@ class DataMapperController extends Controller
         // return $dataMapper->findOrFail($id);
         $dataMapper->find($id)->delete();
         return redirect('datamapper');
+    }
+
+    public function importCsv(Request $request)
+    {  
+        // return $request->platform;
+        if($request->hasFile('file')){
+            // $filePath Is the Path in storage where stored file is stored
+            $filePath='/public/csv-upload/datamapper';
+            $storedFilePath=Helper::fileUpload($request,$filePath);
+            $file= storage_path('app/'.$storedFilePath);
+            $dataArr = Helper::csvToArray($file);
+            foreach ($dataArr as $data) {
+               DataMapper::Create($data);
+            }
+            return redirect('/datamapper');
+        }
+        else
+        {
+            return 'empty File';
+        }
     }
 }

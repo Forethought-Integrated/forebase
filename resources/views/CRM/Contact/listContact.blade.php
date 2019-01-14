@@ -136,7 +136,7 @@
 
 @section('bodyScriptUpdate')
 
-@include('include.uploadFile')
+@include('include.uploadFilePlatform')
 <!-- DataTables -->
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>
 <script src="{{asset("/admin_lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")}}"></script>

@@ -130,4 +130,61 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 // });
 // ./Reaction Funtionaloty
 
+// Campaign 
 
+$(document).ready(function(){
+    $(".utm").keyup(function(){
+      switch ($(this).attr('id')) {
+        case "utmWebsiteUrl":
+        	if($(this).val()=='')
+        		{
+	        		$('#utmWebsiteUrlGen').html($(this).val());
+	        		$('#utm-copy').css('display','none');
+        		}
+        	else
+        		{
+	        		$('#utm-copy').css('display','block');
+	        		$('#utmWebsiteUrlGen').text($(this).val()+'?');
+        		}
+        	break;
+        case 'utmCampaignSource':
+        	if($(this).val()=='')
+	        	$('#utmCampaignSourceGen').html($(this).val());
+        	else
+	        	$('#utmCampaignSourceGen').html('utm_source='+$(this).val()+'&');
+        	break;
+        case "utmCampaignMedium":
+        	if($(this).val()=='')
+	        	$('#utmCampaignMediumGen').html($(this).val());
+        	else
+	        	$('#utmCampaignMediumGen').html('utm_medium='+$(this).val()+'&');
+        	break;
+        case 'utmCampaignName':
+        	if($(this).val()=='')
+	        	$('#utmCampaignNameGen').html($(this).val());
+        	else
+	        	$('#utmCampaignNameGen').html($(this).val());
+        	break;
+        case "utmCampaignTerm":
+        	if($(this).val()=='')
+	        	$('#utmCampaignTermGen').html($(this).val());
+        	else
+	        	$('#utmCampaignTermGen').html('utm_term='+$(this).val()+'&');
+        	break;
+        case 'utmCampaignContent':
+        	if($(this).val()=='')
+	        	$('#utmCampaignContentGen').html($(this).val());
+        	else
+	        	$('#utmCampaignContentGen').html('utm_content='+$(this).val());
+      }
+
+    });
+
+    $('#utm-copy').on('click',function(e){
+    	e.preventDefault();
+    	console.log('clicked');
+    });
+
+});
+
+//  ./Campaign

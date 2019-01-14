@@ -10,11 +10,17 @@
         </div>
         <div class="modal-body">
           <!--<form>-->
-            
-          <div class="form-group">
-            <input type="file"  name="file">
-          </div>
-          <!--</form>-->
+            <div class="form-group">
+                <label>Platform</label>
+                <select class="form-control select2" style="width: 50%;" name='platform'>
+                  <option value="Discoverorg" selected="selected">Discover</option>
+                  <option value="fb">Alaska</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <input type="file"  name="file">
+            </div>
+            <!--</form>-->
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>

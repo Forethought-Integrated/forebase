@@ -125,5 +125,11 @@ padding: 0px 25px 0px 25px;
 .comment_view {display: inline;}
 .comment_update_parent:hover .comment_update_child{display: inline;}
 /*--./comment*/
-
+/*Campaign*/
+.utmGen{
+    margin-left: 0px;
+}
+#utm-copy{
+display: none;
+}
 /*./Vikram*/

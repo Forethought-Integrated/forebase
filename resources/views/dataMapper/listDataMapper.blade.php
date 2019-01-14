@@ -33,6 +33,7 @@
     <div class="box">
             <div class="box-header">
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
+               <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -54,11 +55,11 @@
                     <tr>
                       <td>{{$no++}}</td>
                       {{-- <td>{{$mapper['data_mappers_id']}}</td> --}}
-                      <td><a href="{{ url('datamapper'.'/'.$mapper['data_mappers_id'])}}">{{$mapper['mapping_platform']}}</a></td>
-                      <td>{{$mapper['table_name']}}</td>
+                      <td><a href="{{ url('datamapper'.'/'.$mapper['data_mappers_id'])}}">{{$mapper['table_name']}}</a></td>
                       <td>{{$mapper['field_name']}}</td>
                       <td>{{$mapper['mapping_table_name']}}</td>
                       <td>{{$mapper['mapping_field_name']}}</td>
+                      <td>{{$mapper['mapping_platform']}}</td>
                       <td>
                        <form action="{{url('datamapper'.'/'.$mapper['data_mappers_id'])}}" method="post">
                           {{csrf_field()}}
@@ -94,6 +95,7 @@
 @endsection
 
 @section('bodyScriptUpdate')
+@include('include.uploadFile')
 
 <!-- DataTables -->
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>

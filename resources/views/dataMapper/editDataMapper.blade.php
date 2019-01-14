@@ -9,17 +9,18 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Account Detail
+    Data Mapper Form
     
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Account Detail</li>
+    <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li class="active">Data Mapper Form</li>
   </ol>
+
 
 @endsection
 
-@section('MainContent')
+@section('MainContent') 
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -31,9 +32,8 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/account/{{$data['account']['id']}}" method="POST">
-        {{csrf_field()}}
-        @method('PUT')
+      <form role="form" action="/datamapper" method="POST">
+        {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
             <div class="col-md-6">
@@ -41,35 +41,19 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="accountName" >Account Name</label>
-                  <input type="text" class="form-control enabelInputField" id="accountName" name="accountName" value="{{$data['account']['account_name']}}" >
+                  <label for="mappingPlatform">Mapping Platform</label>
+                  <input type="Tell" class="form-control" id="mappingPlatform" name="mappingPlatform" value="{{$data['mapper']['mapping_platform']}}" placeholder="Mapping Platform" >
+                </div>
+
+                <div class="form-group">
+                  <label for="tableName">Table Name</label>
+                  <input type="text" class="form-control" id="tableName" name="tableName" value="{{$data['mapper']['table_name']}}" placeholder="Table Name">
                 </div>
                 
 
                 <div class="form-group">
-                  <label for="accountAddress" >Account Address</label>
-                      <input type="text" class="form-control enabelInputField" id="accountAddress" name="accountAddress" value="{{$data['account']['account_address']}}" >
-                </div>
-
-                <div class="form-group">
-                  <label for="accountWebsite" >Website</label>
-                  <input type="text" class="form-control enabelInputField" id="accountWebsite" name="accountWebsite" value="{{$data['account']['account_website']}}" >
-                </div>
-
-
-                <div class="form-group">
-                  <label for="accountEmail" >Email Id</label>
-                  <input type="email" class="form-control enabelInputField" id="accountEmail" name="accountEmail" value="{{$data['account']['account_email']}}" >
-                </div>
-                
-                <div class="form-group">
-                  <label for="accountMobileNo" >Mobile No.</label>
-                  <input type="Tell" class="form-control enabelInputField" id="accountMobileNo" name="accountMobileNo" value="{{$data['account']['account_mobileNo']}}" >
-                </div>
-
-                <div class="form-group">
-                  <label for="accountLandlineNo" >Landline No.</label>
-                  <input type="Tell" class="form-control enabelInputField" id="accountLandlineNo" name="accountLandlineNo" value="{{$data['account']['account_landlineNo']}}" >
+                  <label for="tableFieldName">Table Field Name</label>
+                  <input type="text" class="form-control" id="tableFieldName" name="tableFieldName" value="{{$data['mapper']['field_name']}}" placeholder="Table Field Name">
                 </div>
 
               </div>
@@ -82,38 +66,21 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
+                {{-- ........ --}}
 
-                <div class="form-group">
-                  <label for="accountCity" >City</label>
-                  <input type="text" class="form-control enabelInputField" id="accountCity" name="accountCity" value="{{$data['account']['account_city']}}" >
-                </div>
-
-                <div class="form-group">
-                  <label for="accountState" >State</label>
-                  <input type="text" class="form-control enabelInputField" id="accountState" name="accountState" value="{{$data['account']['account_state']}}" >
-                </div>
-
-                <div class="form-group">
-                  <label for="accountCountry" >Country</label>
-                  <input type="text" class="form-control enabelInputField" id="accountCountry" name="accountCountry" value="{{$data['account']['account_country']}}" >
-                </div>
 
 
                 <div class="form-group">
-                  <label for="accountPinCode" >Pin Code</label>
-                  <input type="text" class="form-control enabelInputField" id="accountPinCode" name="accountPinCode" value="{{$data['account']['account_pincode']}}" >
+                  <label for="mappingTableName">Mapping Table Name</label>
+                  <input type="text" class="form-control" id="mappingTableName" name="mappingTableName" value="{{$data['mapper']['mapping_table_name']}}" placeholder="Mapping Table Name">
                 </div>
 
                 <div class="form-group">
-                  <label for="accountPanNo" >Pan No.</label>
-                  <input type="text" class="form-control enabelInputField" id="accountPanNo" name="accountPanNo" value="{{$data['account']['account_panNo']}}" >
+                  <label for="mappingFieldName">Mapping Field</label>
+                  <input type="text" class="form-control" id="mappingFieldName" name="mappingFieldName" value="{{$data['mapper']['mapping_field_name']}}" placeholder="Mapping Field">
                 </div>
 
-                <div class="form-group">
-                  <label for="accountGSTNo" >GST No.</label>
-                  <input type="text" class="form-control enabelInputField" id="accountGSTNo" name="accountGSTNo" value="{{$data['account']['account_GSTNo']}}" >
-                </div>
-
+                {{-- ........ --}}
 
               </div>
               {{-- ./FormBOXBody --}} 
@@ -124,12 +91,12 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div> 
       </form>
       {{-- ./Form --}}
     </div>
-    {{--  ./Horizonantal Form  --}}
+{{--  ./Horizonantal Form  --}}
   </div>
   {{--  ./Col  --}}
 </div>
