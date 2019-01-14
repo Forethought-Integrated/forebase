@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('campaign', 'CRM\CampaignController');
     Route::resource('opportunity', 'CRM\OpportunityController');
     Route::resource('customer', 'CRM\AccountController');
+    
     //--File Upload & Import TO CSV
     Route::post('/contact/uploadFile', 'CRM\ContactController@importCsv');
     Route::post('/account/uploadFile', 'CRM\AccountController@importCsv');

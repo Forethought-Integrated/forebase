@@ -51,9 +51,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php $no=1;?>
                   @foreach($data['lead']['data'] as $data)
                     <tr>
-                      <td>{{$data['lead_id']}}</td>
+                      <!-- <td>{{$data['lead_id']}}</td> -->
+                      <td>{{$no++}}</td>
                       <td>{{$data['lead_service_code']}}</td>
                       <td><a href="{{ url('lead'.'/'.$data['lead_id'])}}">{{$data['lead_name']}}</a></td>
                       <td>{{$data['lead_designation']}}</td> 

@@ -55,7 +55,7 @@ class CampaignController extends Controller
                     'form_params' => [
                     'campaign_name' => $request->Name,
                     'campaign_type' => $request->Type,
-                    'campaign_description '=> $request->description,
+                    'campaign_description' => $request->description,
                     'campaign_startDate' => $request->startDate,
                     'campaign_endDate' => $request->endDate,
                     'campaign_budgetCost' => $request->budgetCost,
@@ -111,7 +111,7 @@ class CampaignController extends Controller
                     'form_params' => [
                     'campaign_name' => $request->campaignName,
                     'campaign_type' => $request->campaignType,
-                    'campaign_description '=> $request->description,
+                    'campaign_description' => $request->description,
                     'campaign_startDate' => $request->startDate,
                     'campaign_endDate' => $request->endDate,
                     'campaign_budgetCost' => $request->budgetCost,

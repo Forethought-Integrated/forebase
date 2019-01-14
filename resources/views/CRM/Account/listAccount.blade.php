@@ -32,6 +32,7 @@
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
+              <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
               <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
             </div>
