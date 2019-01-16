@@ -8,6 +8,8 @@ use App\Model\Task;
 use Auth;
 use Session;
 use Helper;
+use App\User;
+use App\Notifications\TaskNotification;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // return view('home');
         // $taskData=Task::where('task_assignedto',Auth::user()->id)->get()->pluck('task_subject','task_percentage');
@@ -35,6 +37,8 @@ class HomeController extends Controller
         // return $taskCount;
         Session::put('taskData',$taskData);
         Session::put('taskCount',$taskCount);
+
+        // User::find($request->user()->id)->notify(new TaskNotification);
         // return $taskData;
          return view('/dashboard/dashboard');
    

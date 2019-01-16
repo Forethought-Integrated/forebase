@@ -102,6 +102,45 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{Auth::user()->unreadNotifications->count()}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">{{Auth::user()->unreadNotifications->count()}} unread notifications<span class="pull-right"><a href="/notification-mark-read-all">Mark All As Read</a></span></li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  {{-- @foreach(Auth::user()->unreadNotifications as $notification)
+                  <li>
+                    <a href="{{$notification->data['url']}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}">
+                      <i class="fa fa-users text-aqua"></i> {{$notification->data['subject']}}
+                    </a>
+                  </li>
+                  @endforeach
+                   @foreach(Auth::user()->readNotifications as $notification)
+                  <li>
+                    <a href="{{$notification->data['url']}}">
+                      <i class="fa fa-users text-aqua"></i> {{$notification->data['subject']}}
+                    </a>
+                  </li>
+                  @endforeach --}}
+                  @foreach(Auth::user()->notifications as $notification)
+                  <li class="{{$notification->read_at ? '' : 'notification'}}">
+                    <a href="{{$notification->data['url']}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}">
+                      <i class="fa fa-users text-aqua"></i> {{$notification->data['subject']}}
+                    </a>
+                  </li>
+                  @endforeach
+                </ul>
+              </li>
+              <li class="footer"><a href="/notification">View all</a></li>
+            </ul>
+          </li>
+
+
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
             <ul class="dropdown-menu">

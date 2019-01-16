@@ -5,57 +5,7 @@
 @section('headAdminScriptUpdate')
 
 <script type="text/javascript" src="{{asset("/js/app.js")}}"></script>
-{{-- <script type="text/javascript">
-$(document).ready(function(){
-    // $("#utmWebsiteUrl").keyup(function(){
-    $(".utm").keyup(function(){
-      // console.log('hi');
-      console.log($(this).val());
-      console.log($(this).attr('id'));
 
-      // <span id="utmWebsiteUrlGen" class="utmWebsiteUrl"></span>
-      //             <span id="utmCampaignSourceGen" class="utmCampaignSource"></span>
-      //             <span id="utmCampaignMediumGen" class="utmCampaignMedium"></span>
-      //             <span id="utmCampaignNameGen" class="utmCampaignName"></span>
-      //             <span id="utmCampaignTermGen" class="utmCampaignTerm"></span>
-      //             <span id="utmCampaignContentGen" class="utmCampaignContent"></span>
-
-
-
-      switch ($(this).attr('id')) {
-        case "utmWebsiteUrlGen":
-      console.log('hi');
-
-        // $('#utmWebsiteUrlGen').text($(this).val());
-          break;
-        case 'utmCampaignMediumGen':
-        $('#utmCampaignMediumGen').text($(this).val());
-
-          // break;
-        // case 2:
-        //    day = "Tuesday";
-        //   break;
-        // case 3:
-        //   day = "Wednesday";
-        //   break;
-        // case 4:
-        //   day = "Thursday";
-        //   break;
-        // case 5:
-        //   day = "Friday";
-        //   break;
-        // case 6:
-        //   day = "Saturday";
-      }
-        // Getting the current value of textarea
-        // var currentText = $(this).val();
-        
-        // Setting the Div content
-        // $('#generatedCampaignURL').text($(this).val());
-        // $("#generatedCampaignURL").text(currentText);
-    });
-});
-</script> --}}
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -133,10 +83,8 @@ $(document).ready(function(){
             {{-- RIght Form Field --}}
             <div class="col-md-6">
               {{-- FormBOXBody --}}
-              <div class="box-body">
-                
+              <div class="box-body" data-utm="vk">
                 {{-- ........ --}}
-
                 <div class="form-group">
                   <label for="utmWebsiteUrl">UTM Website URL</label>
                   <input type="text" class="form-control utm" id="utmWebsiteUrl" name="utmWebsiteUrl" placeholder="UTM Website URL">
@@ -177,18 +125,44 @@ $(document).ready(function(){
                   <span id="utmCampaignTermGen" class="utmCampaignTerm utmGen"></span>
                   <span id="utmCampaignContentGen" class="utmCampaignContent utmGen"></span>
                 </div>
-                {{-- <textarea id="generatedCampaignURL">
-                  <span id="utmWebsiteUrlGen" class="utmWebsiteUrl utmGen"></span>
-                  <span id="utmCampaignSourceGen" class="utmCampaignSource utmGen"></span>
-                  <span id="utmCampaignMediumGen" class="utmCampaignMedium utmGen"></span>
-                  <span id="utmCampaignNameGen" class="utmCampaignName utmGen"></span>
-                  <span id="utmCampaignTermGen" class="utmCampaignTerm utmGen"></span>
-                  <span id="utmCampaignContentGen" class="utmCampaignContent utmGen"></span>
-                </textarea> --}}
                 <button id='utm-copy'>Copy URL</button>
-
                 {{-- ........ --}}
+                {{-- Capaign genrator with text area --}}
+                {{-- <div class="form-group">
+                  <label for="utmWebsiteUrl">UTM Website URL</label>
+                  <input type="text" class="form-control utm" id="utmWebsiteUrl" name="utmWebsiteUrl" placeholder="UTM Website URL">
+                </div>
 
+                <div class="form-group">
+                  <label for="utmCampaignSource">UTM Campaign Source</label>
+                  <input type="text" class="form-control utm" id="utmCampaignSource" name="utmCampaignSource" placeholder="UTM Campaign Source">
+                </div>
+
+                <div class="form-group">
+                  <label for="utmCampaignMedium">UTM Campaign Medium</label>
+                  <input type="text" class="form-control utm" id="utmCampaignMedium" name="utmCampaignMedium" placeholder="UTM campaign Medium">
+                </div>
+
+
+                <div class="form-group">
+                  <label for="utmCampaignName">UTM Campaign Name</label>
+                  <input type="text" class="form-control utm" id="utmCampaignName" name="utmCampaignName" placeholder="UTM Campaign Name">
+                </div>
+
+                <div class="form-group">
+                  <label for="utmCampaignTerm">UTM Campaign Term</label>
+                  <input type="text" class="form-control utm" id="utmCampaignTerm" name="utmCampaignTerm" placeholder="UTM Campaign Term">
+                </div>
+
+                <div class="form-group">
+                  <label for="utmCampaignContent">UTM Campaign Content</label>
+                  <input type="text" class="form-control utm" id="utmCampaignContent" name="utmCampaignContent" placeholder="UTM campaign Content">
+                </div>
+
+                <div id="generatedCampaignURL" style="display: none;">
+                  <button id='utm-copy'>Copy URL</button>
+                </div> --}}
+                {{-- ./Capaign genrator with text area --}}
               </div>
               {{-- ./FormBOXBody --}} 
 
