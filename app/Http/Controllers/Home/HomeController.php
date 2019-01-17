@@ -10,6 +10,8 @@ use Session;
 use Helper;
 use App\User;
 use App\Notifications\TaskNotification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
 
 class HomeController extends Controller
 {
@@ -42,5 +44,14 @@ class HomeController extends Controller
         // return $taskData;
          return view('/dashboard/dashboard');
    
+    }
+
+    public function mail()
+    {
+       $name = 'Vikram Pratap Singh';
+       // Mail::to('krunal@appdividend.com')->send(new SendMailable($name));
+       Mail::to('vikram2327@gmail.com')->send(new SendMailable($name));
+       
+       return 'Email was sent';
     }
 }

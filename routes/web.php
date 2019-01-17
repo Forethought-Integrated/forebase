@@ -46,8 +46,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/notification-mark-read-icon/{id}', 'Notification\NotificationController@markAsReadIcon');
     Route::get('/notification-mark-unread-icon/{id}', 'Notification\NotificationController@markAsUnReadIcon');
     Route::get('/notification-mark-read-all', 'Notification\NotificationController@markAsReadAll');
-
-
     // ./Notofication
 
     // CRM---------------------------------------------------------------------------------------
@@ -119,7 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
        ///for company
 
     Route::resource('companies','Company\CompanyController');
-
+    Route::get('/send/email', 'Home\HomeController@mail');
 
 });
 
