@@ -66,7 +66,7 @@ class  BrandController extends Controller
 
         $brands = $this->get_singel_data($id);
             
-       return view('CRM.Brand.listDemo',['brand'=>$brands]);
+      //  return view('CRM.Brand.listDemo',['brand'=>$brands]);
        
         return view('CRM.Brand.showBrand',['brand'=>$brands]);
     }

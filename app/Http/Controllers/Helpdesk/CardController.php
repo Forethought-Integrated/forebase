@@ -16,7 +16,7 @@ class CardController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_HELPDESKURL');
-        $this->URL=$this->ENV_URL.'boards/';    
+        $this->URL=$this->ENV_URL.'cards/';     
                 // $this->middleware('auth');
     }
     /**
@@ -25,76 +25,72 @@ class CardController extends Controller
      * @return void
      */
 
-    public function index($boardID,$userID,$listID)
-
+    public function index()
+ 
     { 
-
         $client = new Client();
-        $res = $client->request('GET', $this->URL.$boardID.'/'.$userID.'/'.'list'.'/'.$listID.'/'.'card');
-        $cardJson=$res->getBody();
+        $res = $client->request('GET',  $this->URL);
+        $cardJson=$res->getBody(); 
         $card = json_decode($cardJson, true);
-         if(is_null($card))
-        {
-            $data['card']='null';
-        }
-        else
-        {
-            $data['card']=$card;
-            
-            // $data['card']=null;
-        }
-        $data['boardID']='1';
-        $data['listID']='1';
-        return view('helpdesk.card.listCard')->with('data', $data);
+        $data['cards']=$card;
+        return view('helpdesk.card.listCard')->with('data',$data);
 
     }
 
 
-      public function create($boardID,$userID,$listID)
-     {
-        $data['boardID']=$boardID;
-        $data['listID']=$listID;
-        return view('helpdesk.card.createCard')->with('data',$data);
+      public function create()
+    {
+        
+        return view('helpdesk.card.createCard');
+
      }
 
-     public function store(Request $request,$boardID,$userID,$listID)
+     public function store(request $request)
 
      { 
+     // return "hello";
                     $client = new Client();
-                    $response = $client->request('POST', $this->URL.$boardID.'/'.$userID.'/'.'list'.'/'.$listID.'/'.'card', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
-                    'card_name' => $request->CardName,
-                    'card_description' => $request->CardDescription,
+                    'list_id' => $request->user()->id,
+                    'name' => $request->name,
+                    'description'=>$request->description,
+                    'order' => $request->order,
+                    'members' => $request->members,
+                    'archieved' => $request->archieved,
                     ]
                 ]);
-                    return redirect('/board/'.$boardID.'/'.$userID.'/list/'.$listID.'/card/');
+                     // return "hello";
+                    return redirect('/cards');
      }
 
      public function show($id)
 
-     {
-
-
+     {      
+        //return "hello";
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/card/'.$id);
+        $res = $client->request('GET',$this->URL.$id);
         $cardJson=$res->getBody();
-        $card = json_decode($cardJson, true);
-        $data['card']=$card;
-        return view('helpdesk.card.showcard',['data'=>$data]);
+        $card=json_decode($cardJson, true);        
+        $data['cards']=$card;         
+
+        return view('helpdesk.card.showCard',['data'=>$data]);
      }
 
 
      public function edit($id)
     {     
+
+        
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/card/'.$id);
+        $res = $client->request('GET', $this->URL.$id);
         $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
-        // $cardData['dataArray']=$card;
-        $data['card']=$card;
+        
+        $data['cards']=$card;
 
-        // $card = card::find($id);
-        return view('helpdesk.card.editcard',['data'=>$data]);
+       
+        return view('helpdesk.card.editCard',['data'=>$data]);
     }
 
 
@@ -103,33 +99,30 @@ class CardController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/card/".$id, [
+        $response = $client->request('PUT', $this->URL.$id, [
                     'form_params' => [
-                    'card_name' => $request->cardName,
-                    'card_email' => $request->cardEmail,
-                    'card_mobileNo '=> $request->cardMobileNo,
-                    'card_landlineNo' => $request->cardLandlineNo,
-                    'card_address' => $request->cardAddress,
-                    'card_website' => $request->cardWebsite,
-                    'card_city' => $request->cardCity,
-                    'card_state' => $request->cardState,
-                    'card_country' => $request->cardCountry,
-                    'card_pincode' => $request->cardPincode,
-                    'card_panNo' => $request->cardPanNo,
-                    'card_GSTNo' => $request->cardGSTNo
+                    //'owner_id' => $request->user()->id,
+                    'list_id' => $request->list_id,
+                    'name' => $request->name,
+                    'description' => $request->description, 
+                    'order' => $request->order, 
+                    'members' => $request->members,
+                    'archieved' => $request->archieved,                  
                     ]
         ]);
         // return response()->json(['success'=>'200']); 
-         return redirect('/card');       
+         return redirect('/cards');       
      }
 
-      public function destroy($boardID,$userID,$listID,$cardID)
-    {
+      public function destroy($id)
 
+    {
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$boardID.'/'.$userID.'/list/'.$listID.'/card/'.$cardID);
-        return redirect()->back();
+        $res = $client->request('DELETE', $this->URL.$id);
+        return redirect('/cards');
     }
 
 
 }
+
+

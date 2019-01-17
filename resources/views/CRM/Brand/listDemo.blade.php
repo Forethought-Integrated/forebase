@@ -47,13 +47,9 @@
 
                 {{!!$brand->brand_disclaimer!!}}
                 
-              {{-- ./FormBOXBody --}}
+             
             </div>
-            {{-- ./Left Form Field --}}
-
-            {{-- RIght Form Field --}} 
-           
-
+            
 
               </div>
               {{-- ./FormBOXBody --}} 

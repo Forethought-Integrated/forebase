@@ -13,13 +13,13 @@
 
   <h1>
     Board List
-    <a href="/board/{{Auth::user()->id}}/create" title="">
-      <i class="fa fa-edit"> create</i>
+    <a href="/boards/create" title="">
+      <i class="fa fa-edit">create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Board LIst</li>
+    <li class="active">Helpdesk List</li>
   </ol>
 
 
@@ -39,40 +39,51 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <td>Board ID</td>
-                <td>Board Name</td>
+                  <th>Board ID</th>
+                  <th>Owner ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['board'] as $data)
+                 <!-- <pre>{{print_r($data)}}</pre> -->
+                  @foreach($data['boards'] as $data)
                     <tr>
-                      <td>{{$data['id']}}</td>
-                      <td><a href="{{ url('board'.'/'.$data['id'].'/'.Auth::user()->id.'/'.'list')}}">{{$data['name']}}</a></td> 
-      {{--            <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('board'.'/'.$data['board_id'])}}">Edit</a>
+                      <td>{{$data['board_id']}}</td>
+                      <td><a href="{{ url('boards'.'/'.$data['board_id'])}}">{{$data['owner_id']}}</a></td>
+                      {{-- <td>{{$data['account_name']}}</td> --}}
+                      <td>{{$data['name']}}</td>
+                      <td>{{$data['description']}}</td>
+                     
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['board_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('board'.'/'.$data['id'])}}" method="post">
+                       <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
+                            @method('DELETE')
                           <button class="btn remove_btn" type="submit">Delete</button>
                         </form>
-                        
                       </td>
                     </tr>
                   @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                <td>Board ID</td>
-                <td>Board Name</td>
+                   <th>Board ID</th>
+                  <th>Owner ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </tfoot>
               </table>
+             
+              
             </div>
             <!-- /.box-body -->
           </div>

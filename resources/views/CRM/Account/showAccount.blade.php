@@ -10,13 +10,13 @@
 
   <h1>
     Account Detail
-    <a id="editFormField" href="/account/{{$data['account']['id']}}/edit/" title="">
+    <a id="editFormField" href="/boards/{{$data['boards']['owner_id']}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Account Detail</li>
+    <li class="active">Board Detail</li>
   </ol>
 
 @endsection
@@ -41,17 +41,17 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="accountName" >Account Name</label>
-                  <input type="text" class="form-control enabelInputField" id="accountName" name="accountName" value="{{$data['account']['account_name']}}" disabled>
+                  <label for="name" >Name</label>
+                  <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$data['boards']['name']}}" disabled>
                 </div>
                 
 
                 <div class="form-group">
-                  <label for="accountAddress" >Account Address</label>
-                  <input type="text" class="form-control enabelInputField" id="accountAddress" name="accountAddress" value="{{$data['account']['account_address']}}" disabled>
+                  <label for="description" >Description</label>
+                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['boards']['description']}}" disabled>
                 </div>
 
-                <div class="form-group">
+              <!--   <div class="form-group">
                   <label for="accountWebsite" >Website</label>
                   <input type="text" class="form-control enabelInputField" id="accountWebsite" name="accountWebsite" value="{{$data['account']['account_website']}}" disabled>
                 </div>
@@ -114,7 +114,7 @@
                   <input type="text" class="form-control enabelInputField" id="accountGSTNo" name="accountGSTNo" value="{{$data['account']['account_GSTNo']}}" disabled>
                 </div>
 
-
+ -->
               </div>
               {{-- ./FormBOXBody --}} 
 

@@ -1,4 +1,4 @@
-@extends('layouts.adminApp')
+  @extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
 
@@ -9,17 +9,18 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Create Card
+    Card Form
+    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Create Card</li>
+    <li class="active">Card Form</li>
   </ol>
 
 
 @endsection
 
-@section('MainContent')
+@section('MainContent') 
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -29,56 +30,54 @@
               <h3 class="box-title">Enter Detail</h3>
             </div>
       <!-- /.card-header -->
-{{-- Route::post('/board/{boardID}/{userID}/list/{listID}/card','Helpdesk\CardController@store'); --}}
 
       {{-- form--}}
-      <form role="form" action="/board/{{$data['boardID']}}/{{Auth::user()->id}}/list/{{$data['listID']}}/card/" method="POST">
+      <form role="form" action="/cards" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
             <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
-
-                <div class="form-group">
-                  <label for="CardName" >Card Name</label>
-                      <input type="text" class="form-control" id="CardName" name="CardName" placeholder="Card Name">
-                </div>
-
-                <div class="form-group">
-                  <label for="CardDescription" >Card Description</label>
-                  <input type="text" class="form-control" id="CardDescription" name="CardDescription" placeholder="Card Description">
-                </div>
-
-
-              </div>
-              {{-- ./FormBOXBody --}}
-            </div>
-            {{-- ./Left Form Field --}}
-
-            {{-- RIght Form Field --}}
-          <!--   <div class="col-md-6">
-              {{-- FormBOXBody --}}
-              <div class="box-body">
                 
-                {{-- ........ --}}
+                <div class="form-group">
+                  <label for="list_id">List Id</label>
+                  <input type="int" class="form-control" id="list_id" name="list_id" placeholder="List Id">
+                </div>
+                
 
-            
+                <div class="form-group">
+                  <label for="name" >Name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                </div>
 
+                <div class="form-group">
+                  <label for="description" >Description</label>
+                  <input type="varchar" class="form-control" id="description" name="description" placeholder="Description">
+                </div>
+                   <div class="form-group">
+                     <label for="order">Order</label>
+                     <input type="varchar" class="form-control" id="order" name="order" placeholder="order">
+                </div>
 
-                {{-- ........ --}}
+                 <div class="form-group">
+                  <label for="members">Members</label>
+                  <input type="varchar" class="form-control" id="members" name="members" placeholder="Members">
+                </div>
+
+                 <div class="form-group">
+                  <label for="archieved">Archieved</label>
+                  <input type="varchar" class="form-control" id="archieved" name="archieved" placeholder="Archieved">
+                </div>
 
               </div>
-              {{-- ./FormBOXBody --}} 
+
+                 <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+               </div> 
 
 
-            </div> -->
-            {{-- ./RIght Form Field --}}
-        </div>
-
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Add Card</button>
-        </div> 
+                
       </form>
       {{-- ./Form --}}
     </div>

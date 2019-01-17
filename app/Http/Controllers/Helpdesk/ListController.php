@@ -16,7 +16,8 @@ class ListController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_HELPDESKURL');
-        $this->URL=$this->ENV_URL.'boards/';    
+        $this->URL=$this->ENV_URL.'lists/';     
+                // $this->middleware('auth');
     }
     /**
      * Create a new controller instance.
@@ -24,76 +25,70 @@ class ListController extends Controller
      * @return void
      */
 
-    public function index($boardID,$userID)
-
-    {   
-
+    public function index()
+ 
+    { 
         $client = new Client();
-        $res = $client->request('GET', $this->URL.$boardID.'/'.$userID.'/'.'list/'  );
-        $listJson=$res->getBody();
+        $res = $client->request('GET',  $this->URL);
+        $listJson=$res->getBody(); 
         $list = json_decode($listJson, true);
-        $data['list']=$list;
-        return view('helpdesk.list.listList')->with('data', $data);
+        $data['lists']=$list;
+        return view('helpdesk.list.listList')->with('data',$data);
 
     }
 
 
-      public function create($boardID,$userID)
+      public function create()
     {
-
-        return view('helpdesk.list.createList')->with('data',$boardID);
+        
+        return view('helpdesk.list.createList');
 
      }
 
-     public function store(Request $request,$boardID,$userID)
+     public function store(request $request)
 
      { 
+     // return "hello";
                     $client = new Client();
-                    $response = $client->request('POST', $this->URL.$boardID.'/'.$userID.'/'.'list/', [
+                    $response = $client->request('POST', $this->URL, [
                     'form_params' => [
-                    'listName' => $request->listName,
-                    'boardID' => $boardID,
+                    'board_id' => $request->user()->id,
+                    'name' => $request->name,                    
+                    'order' => $request->order,                    
+                    'archieved' => $request->archieved,
                     ]
                 ]);
-                    return redirect('/board/'.$boardID.'/'.$userID.'/'.'list/');
+                     // return "hello";
+                    return redirect('/lists');
      }
 
      public function show($id)
 
-     {
-
-
+     {      
+        //return "hello";
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/list/'.$id);
+        $res = $client->request('GET',$this->URL.$id);
         $listJson=$res->getBody();
-        $list = json_decode($listJson, true);
-        // $listData['dataArray']=$list;
-        $data['list']=$list;
+        $list=json_decode($listJson, true);        
+        $data['lists']=$list;         
 
-
-        // return view('social.socialjson',['posts' => $listData]);
-        
-        // return view('helpdesk.list.listlist')->with('listdata', $listData);
-
-
-        // $list = list::where('id',$id);
-        // return response()->json($list, 200);
-
-        return view('helpdesk.list.showlist',['data'=>$data]);
+        return view('helpdesk.list.showList',['data'=>$data]);
      }
 
 
      public function edit($id)
     {     
+
+        
         $client = new Client();
-        $res = $client->request('GET', 'http://localhost:8002/api/v1/list/'.$id);
+        $res = $client->request('GET', $this->URL.$id);
         $listJson=$res->getBody();
         $list = json_decode($listJson, true);
-        // $listData['dataArray']=$list;
-        $data['list']=$list;
+        
+        $data['lists']=$list;
 
-        // $list = list::find($id);
-        return view('helpdesk.list.editlist',['data'=>$data]);
+       
+        return view('helpdesk.list.editList',['data'=>$data]);
     }
 
 
@@ -102,34 +97,28 @@ class ListController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', "http://localhost:8002/api/v1/list/".$id, [
+        $response = $client->request('PUT', $this->URL.$id, [
                     'form_params' => [
-                    'list_name' => $request->listName,
-                    'list_email' => $request->listEmail,
-                    'list_mobileNo '=> $request->listMobileNo,
-                    'list_landlineNo' => $request->listLandlineNo,
-                    'list_address' => $request->listAddress,
-                    'list_website' => $request->listWebsite,
-                    'list_city' => $request->listCity,
-                    'list_state' => $request->listState,
-                    'list_country' => $request->listCountry,
-                    'list_pincode' => $request->listPincode,
-                    'list_panNo' => $request->listPanNo,
-                    'list_GSTNo' => $request->listGSTNo
+                    //'owner_id' => $request->user()->id,
+                    'board_id' => $request->board_id,
+                    'name' => $request->name,                     
+                    'order' => $request->order,                     
+                    'archieved' => $request->archieved,                  
                     ]
         ]);
-
         // return response()->json(['success'=>'200']); 
-         return redirect('/list');       
+         return redirect('/lists');       
      }
 
       public function destroy($id)
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', 'http://localhost:8002/api/v1/list/'.$id);
-        return redirect('/list');
+        $res = $client->request('DELETE', $this->URL.$id);
+        return redirect('/lists');
     }
 
 
 }
+
+
