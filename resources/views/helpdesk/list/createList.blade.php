@@ -1,4 +1,4 @@
-@extends('layouts.adminApp')
+  @extends('layouts.adminApp')
 
 @section('title', 'Dashboard')
 
@@ -9,18 +9,18 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    List Create
-    <small>Control panel</small>
+    List Form
+    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">List create</li>
+    <li class="active">List Form</li>
   </ol>
 
 
 @endsection
 
-@section('MainContent')
+@section('MainContent') 
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -32,48 +32,46 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/board/{{$data}}/{{Auth::user()->id}}/list" method="POST">
+      <form role="form" action="/lists" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
             <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
+                
+                <div class="form-group">
+                  <label for="board_id">Board Id</label>
+                  <input type="int" class="form-control" id="board_id" name="board_id" placeholder="Board Id">
+                </div>
+                
 
                 <div class="form-group">
-                  <label for="listName" >List Name</label>
-                      <input type="text" class="form-control" id="listName" name="listName" placeholder="List Name">
+                  <label for="name" >Name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                 </div>
 
+               
+                   <div class="form-group">
+                     <label for="order">Order</label>
+                     <input type="varchar" class="form-control" id="order" name="order" placeholder="order">
+                </div>
+
+                 
+
+                 <div class="form-group">
+                  <label for="archieved">Archieved</label>
+                  <input type="varchar" class="form-control" id="archieved" name="archieved" placeholder="Archieved">
+                </div>
 
               </div>
-              {{-- ./FormBOXBody --}}
-            </div>
-            {{-- ./Left Form Field --}}
 
-            {{-- RIght Form Field --}}
-          <!--   <div class="col-md-6">
-              {{-- FormBOXBody --}}
-              <div class="box-body">
+                 <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+               </div> 
+
+
                 
-                {{-- ........ --}}
-
-            
-
-
-                {{-- ........ --}}
-
-              </div>
-              {{-- ./FormBOXBody --}} 
-
-
-            </div> -->
-            {{-- ./RIght Form Field --}}
-        </div>
-
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Add board</button>
-        </div> 
       </form>
       {{-- ./Form --}}
     </div>

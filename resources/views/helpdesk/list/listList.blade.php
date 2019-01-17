@@ -1,4 +1,4 @@
- @extends('layouts.adminApp')
+@extends('layouts.adminApp')
 
 @section('title', 'ListAccount')
 
@@ -13,8 +13,8 @@
 
   <h1>
     List List
-    <a href="/board/{{$data['list']['lists']['0']['id']}}/{{Auth::user()->id}}/list/create" title="">
-      <i class="fa fa-edit"> create</i>
+    <a href="/lists/create" title="">
+      <i class="fa fa-edit">create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
@@ -39,40 +39,54 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <th>List ID</th>
-                <th>List Name</th>
+                  <th>List ID</th>
+                  <th>Board ID</th>
+                  <th>Name</th>                  
+                  <th>Order</th>                 
+                  <th>Archieved</th>
+                  
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['list']['lists'] as $data)
+                 <!-- <pre>{{print_r($data)}}</pre> -->
+                  @foreach($data['lists'] as $data)
                     <tr>
-                      <td>{{$data['id']}}</td>
-                      <td><a href="{{ url('board'.'/'.$data['board_id'].'/'.Auth::user()->id.'/'.'list'.'/'.$data['id'].'/'.'card')}}">{{$data['name']}}</a></td> 
-      {{--            <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('board'.'/'.$data['board_id'])}}">Edit</a>
+                      <td>{{$data['list_id']}}</td>
+                      <td><a href="{{ url('lists'.'/'.$data['list_id'])}}">{{$data['board_id']}}</a></td>
+                      {{-- <td>{{$data['account_name']}}</td> --}}
+                      <td>{{$data['name']}}</td>                      
+                      <td>{{$data['order']}}</td>                      
+                      <td>{{$data['archieved']}}</td>
+                     
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['board_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('board'.'/'.$data['id'])}}" method="post">
+                       <form action="{{url('lists'.'/'.$data['list_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
+                            @method('DELETE')
                           <button class="btn remove_btn" type="submit">Delete</button>
                         </form>
-                        
                       </td>
                     </tr>
                   @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>List ID</th>
-                <th>List Name</th>
+                  <th>List ID</th>
+                  <th>Board ID</th>
+                  <th>Name</th>                  
+                  <th>Order</th>                 
+                  <th>Archieved</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </tfoot>
               </table>
+             
+              
             </div>
             <!-- /.box-body -->
           </div>
