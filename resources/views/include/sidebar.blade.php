@@ -136,6 +136,20 @@
         {{-- ./Back --}}
 
 
+        {{-- Notification --}}
+        <li>
+          <a href="/notification">
+            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Notification</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        {{-- ./Notification --}}
+
+
 
 
 

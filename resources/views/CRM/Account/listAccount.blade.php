@@ -32,7 +32,9 @@
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
+              <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
+              <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -49,19 +51,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($data['account']['data'] as $data)
+                  @foreach($data['account']['data'] as $account)
                     <tr>
-                      <td>{{$data['account_id']}}</td>
-                      <td><a href="{{ url('account'.'/'.$data['account_id'])}}">{{$data['account_name']}}</a></td>
+                      <td>{{$account['account_id']}}</td>
+                      <td><a href="{{ url('account'.'/'.$account['account_id'])}}">{{$account['account_name']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
-                      <td>{{$data['account_mobileNo']}}</td>
-                      <td>{{$data['account_email']}}</td>
-                      <td>{{$data['account_website']}}</td>
+                      <td>{{$account['account_mobileNo']}}</td>
+                      <td>{{$account['account_email']}}</td>
+                      <td>{{$account['account_website']}}</td>
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['account_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{url('account'.'/'.$data['account_id'])}}" method="post">
+                       <form action="{{url('account'.'/'.$account['account_id'])}}" method="post">
                           {{csrf_field()}}
                             @method('DELETE')
                           <button class="btn remove_btn " type="submit">Delete</button>
@@ -97,6 +99,7 @@
 @endsection
 
 @section('bodyScriptUpdate')
+@include('include.uploadFilePlatform')
 
 <!-- DataTables -->
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>

@@ -20,8 +20,11 @@ class Helper
 	    $header = null;
 	    $data = array();
 	    if (($handle = fopen($filename, 'r')) !== false)
-	    {
-	        while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+	    { 
+	    	// return $header;
+	    	// return fgetcsv($handle, 1000, $delimiter); //46;
+	        // while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+	        while (($row = fgetcsv($handle, '', $delimiter)) !== false)
 	        {
 	            if (!$header)
 	                $header = $row;

@@ -6,12 +6,19 @@ use App\Model\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Notifications\TaskNotification;
+use Auth;
 
 
 class TaskController extends Controller
 {
 
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
 
@@ -53,7 +60,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        Task::create([
+       $task= Task::create([
             'task_lead_id' => $request['TaskLeadId'],
             'task_contact_id' => $request['TaskContactId'],
             'task_compaign_id' => $request['TaskCampaignId'],
@@ -69,8 +76,16 @@ class TaskController extends Controller
             'task_percentage' => $request['TaskCompletion'],
           
         ]);
+        $notificationAr['subject']=$request['TaskSubject'];
+        $notificationAr['icon']=$request['TaskSubject'];
+        $notificationAr['url']="/crm/task/$task->task_id";
+
+        User::find($request['AssignedTo'])->notify(new TaskNotification($notificationAr));
+        
+
+
     
-            return redirect('/crm/task');
+        return redirect('/crm/task');
     }
 
     /**
@@ -83,8 +98,9 @@ class TaskController extends Controller
     {
         //
                             // get the lead of id 
+
         $task = $this->get_singel_data($id);
-            
+        
         // show the view and pass the lead to it
         return view('Task.showTask',['task'=>$task]);
     }

@@ -62,7 +62,7 @@
                 
                 <div class="form-group">
                   <label for="MobileNo" >Mobile No.</label>
-                  <input type="Tell" class="form-control enabelInputField" id="MobileNo" name="MobileNo" value="{{$data['contact']['contact_mobileNo']}}" disabled>
+                  <input type="text" class="form-control enabelInputField" id="MobileNo" name="MobileNo" value="{{$data['contact']['contact_mobileNo']}}" disabled>
                 </div>
 
               </div>

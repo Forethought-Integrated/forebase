@@ -5,6 +5,9 @@ namespace App\Http\Controllers\CRM;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use Helper;
+use App\Model\DataMapper;
+
 
 class AccountController extends Controller
 {
@@ -35,7 +38,10 @@ class AccountController extends Controller
         $account = json_decode($accountJson, true);
         // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
         $data['account']=$account;
-        return view('CRM.Account.listAccount')->with('data', $data);
+        $data['fileModalTitle']='File Upload';
+        $data['fileUrl']=url('/account/uploadFile');
+        // return view('CRM.Account.listAccount')->with('data', $data); // change on addition upload funtion on 11/jan/2019
+        return view('CRM.Account.listAccount',compact('data'));
 
     }
 
@@ -134,11 +140,40 @@ class AccountController extends Controller
          return redirect('/account');       
      }
 
-      public function destroy($id)
+    public function destroy($id)
     {
         $client = new Client();
         $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/account');
+    }
+
+    public function importCsv(Request $request)
+    {  
+        // $dataMapper= new DataMapper;
+        // $dataMapperArr=$dataMapper->where('mapping_platform',$request->platform)->select('mapping_field_name','field_name')->get();
+        // return $dataMapperArr;
+
+        if($request->hasFile('file')){
+            // $filePath Is the Path in storage where stored file is stored
+            $filePath='/public/csv-upload/crm/account';
+            $storedFilePath=Helper::fileUpload($request,$filePath);
+
+            $file= storage_path('app/'.$storedFilePath);
+            // return  count(Helper::csvToArray($file));
+            $dataArr = Helper::csvToArray($file);
+            return $dataArr;
+            $client = new Client();
+            foreach ($dataArr as $data) {
+                $response = $client->request('POST', $this->URL, [
+                       'form_params' => $data
+                   ]);
+            }
+            return redirect('/account');
+        }
+        else
+        {
+            return 'empty File';
+        }
     }
 
 

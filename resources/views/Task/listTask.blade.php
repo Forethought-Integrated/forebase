@@ -54,11 +54,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                  <?php $no=1;?>
                  <!--  <tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">No data available in table</td></tr>
  -->
                   @foreach($task as $tasks)
                  <tr>
-                    <td>{{$tasks->task_id}}</td>
+                    <!-- <td>{{$tasks->task_id}}</td> -->
+                    <td>{{$no++}}</td>
                     {{-- <td>{{$tasks->task_lead_id}}</td> --}}
                     {{-- <td>{{$tasks->task_contact_id}}</td> --}} 
                     {{-- <td>{{$tasks->task_campaign_id}}</td> --}}

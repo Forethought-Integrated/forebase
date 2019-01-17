@@ -9,18 +9,18 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Contact Form
-   
+    Data Mapper Form
+    
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Contact Form</li>
+    <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li class="active">Data Mapper Form</li>
   </ol>
 
 
 @endsection
 
-@section('MainContent')
+@section('MainContent') 
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -32,7 +32,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/contact" method="POST">
+      <form role="form" action="/datamapper" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
@@ -41,24 +41,19 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="contactType" >Contact Type</label>
-                  <input type="text" class="form-control" id="contactType" name="contactType" placeholder="Contact Type">
+                  <label for="mappingPlatform">Mapping Platform</label>
+                  <input type="Tell" class="form-control" id="mappingPlatform" name="mappingPlatform" placeholder="Mapping Platform" >
+                </div>
+
+                <div class="form-group">
+                  <label for="tableName">Table Name</label>
+                  <input type="text" class="form-control" id="tableName" name="tableName" placeholder="Table Name">
                 </div>
                 
 
                 <div class="form-group">
-                  <label for="Name" >Name</label>
-                      <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
-                </div>
-
-                <div class="form-group">
-                  <label for="emailId" >Email Id</label>
-                  <input type="email" class="form-control" id="emailId" name="emailId" placeholder="Email Id">
-                </div>
-                
-                <div class="form-group">
-                  <label for="MobileNo" >Mobile No.</label>
-                  <input type="text" class="form-control" id="MobileNo" name="MobileNo" placeholder="Enter your number">
+                  <label for="tableFieldName">Table Field Name</label>
+                  <input type="text" class="form-control" id="tableFieldName" name="tableFieldName" placeholder="Table Field Name">
                 </div>
 
               </div>
@@ -73,28 +68,17 @@
                 
                 {{-- ........ --}}
 
-                <div class="form-group">
-                  <label for="LandlineNo" >Landline No.</label>
-                  <input type="text" class="form-control" id="LandlineNo" name="LandlineNo" placeholder="Landline No.">
-                </div>
-
-                <div class="form-group">
-                  <label for="CompanyID" >Company ID</label>
-                  <input type="text" class="form-control" id="CompanyID" name="CompanyID" placeholder="Company ID">
-                </div>
-
-                <div class="form-group">
-                  <label for="companyName" >Company Name</label>
-                  <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Company Name">
-                </div>
 
 
                 <div class="form-group">
-                  <label for="designation" >Designation</label>
-                  <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
+                  <label for="mappingTableName">Mapping Table Name</label>
+                  <input type="text" class="form-control" id="mappingTableName" name="mappingTableName" placeholder="Mapping Table Name">
                 </div>
 
-
+                <div class="form-group">
+                  <label for="mappingFieldName">Mapping Field</label>
+                  <input type="text" class="form-control" id="mappingFieldName" name="mappingFieldName" placeholder="Mapping Field">
+                </div>
 
                 {{-- ........ --}}
 

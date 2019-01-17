@@ -12,14 +12,14 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-    Opportunity List
-    <a href="/opportunity/create" title="">
+    Data Mapper
+    <a href="/datamapper/create" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Opportunity List</li>
+    <li class="active">Data Mapper</li>
   </ol>
 
 
@@ -33,46 +33,37 @@
     <div class="box">
             <div class="box-header">
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
+               <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <?php $no=1;?>   
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-             <tr>
-              <th>Opportunity ID</th>
-              <th>Deal Owner</th>
-              <th>Deal Name</th>
-              <th>Account Name</th>
-              <th>Lead ID</th>
-              <th>Campaign ID</th>
-              <th>Contact ID</th>
-              <th>Amount</th>
-              <th>Stage</th>
-                  {{-- <th>Edit</th> --}}
+                <tr>
+                  <th>Sn. No.</th>
+                  <th>Tabel</th>
+                  <th>Tabel Field</th>
+                  <th>Mapping Tabel</th>
+                  <th>Mapping Table Field</th>
+                  <th>Mapping Platform</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php $no=1;?>
-                  @foreach($data['opportunity']['data'] as $data)
+                  @foreach($data['mapper'] as $mapper)
                     <tr>
-                      <!-- <td>{{$data['opportunity_id']}}</td> -->
                       <td>{{$no++}}</td>
-                      <td>{{$data['opportunity_deal_owner']}}</td>
-                      <td><a href="{{ url('opportunity'.'/'.$data['opportunity_id'])}}">{{$data['opportunity_deal_name']}}</a></td>
-                      <td>{{$data['opportunity_account_name']}}</td> 
-                      <td>{{$data['opportunity_lead_id']}}</td>
-                      <td>{{$data['opportunity_campaign_id']}}</td>
-                      <td>{{$data['opportunity_contact_id']}}</td>
-                      <td>{{$data['opportunity_amount']}}</td>
-                      <td>{{$data['opportunity_stage']}}</td>
-      {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('opporyunity'.'/'.$data['opportunity_id'])}}">Edit</a>
-                      </td>
-       --}}                <td>
-                       <form action="{{url('opportunity'.'/'.$data['opportunity_id'])}}" method="post">
+                      {{-- <td>{{$mapper['data_mappers_id']}}</td> --}}
+                      <td><a href="{{ url('datamapper'.'/'.$mapper['data_mappers_id'])}}">{{$mapper['table_name']}}</a></td>
+                      <td>{{$mapper['field_name']}}</td>
+                      <td>{{$mapper['mapping_table_name']}}</td>
+                      <td>{{$mapper['mapping_field_name']}}</td>
+                      <td>{{$mapper['mapping_platform']}}</td>
+                      <td>
+                       <form action="{{url('datamapper'.'/'.$mapper['data_mappers_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
+                            @method('DELETE')
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
                       </td>
@@ -81,16 +72,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-              <th>Opportunity ID</th>
-              <th>Deal Owner</th>
-              <th>Deal Name</th>
-              <th>Account Name</th>
-              <th>Lead ID</th>
-              <th>Campaign ID</th>
-              <th>Contact ID</th>
-              <th>Amount</th>
-              <th>Stage</th>
-                  {{-- <th>Edit</th> --}}
+                  <th>Sn No</th>
+                  <th>Tabel</th>
+                  <th>Tabel Field</th>
+                  <th>Mapping Tabel</th>
+                  <th>Mapping Table Field</th>
+                  <th>Mapping Platform</th>
                   <th>Delete</th>
                 </tr>
                 </tfoot>
@@ -108,6 +95,7 @@
 @endsection
 
 @section('bodyScriptUpdate')
+@include('include.uploadFile')
 
 <!-- DataTables -->
 <script src="{{asset("/admin_lte/bower_components/datatables.net/js/jquery.dataTables.min.js")}}"></script>

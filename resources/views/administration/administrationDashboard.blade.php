@@ -69,6 +69,16 @@
         <strong>Customize Menu</strong>
       </div>
     </div>
+
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/datamapper" title="">
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:100%">
+        </a>
+        <strong>Mapper</strong>
+      </div>
+    </div>
+
       
     
     
