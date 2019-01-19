@@ -52,7 +52,7 @@ class BoardController extends Controller
                     $client = new Client();
                     $response = $client->request('POST', $this->URL, [
                     'form_params' => [
-                    'owner_id' => $request->owner_id,
+                    'owner_id' => $request->user()->id,
                     'name' => $request->name,
                     'description'=>$request->description,
                     ]
@@ -99,7 +99,7 @@ class BoardController extends Controller
         $response = $client->request('PUT', $this->URL.$id, [
                     'form_params' => [
                     //'owner_id' => $request->user()->id,
-                    'owner_id' => $request->owner_id,
+                    'owner_id' => $request->user()->id,
                     'name' => $request->name,
                     'description' => $request->description,                    
                     ]

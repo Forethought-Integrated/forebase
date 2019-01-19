@@ -47,8 +47,11 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
-        return view('Task.createTask');
+        // $task =  $this->get_singel_data($id);
+        // return view('Task.createTask',['task'=>$task]);
+        $data['user']=User::select('id','name')->get();
+        // $data['user']=User::all();
+        return view('Task.createTask',compact('data'));
     }
 
     /**
@@ -59,7 +62,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
        $task= Task::create([
             'task_lead_id' => $request['TaskLeadId'],
             'task_contact_id' => $request['TaskContactId'],
@@ -70,7 +73,8 @@ class TaskController extends Controller
             'task_startdate'=> $request['StartDate'], 
             'task_enddate' => $request['EndDate'],
             'task_assignedto' => $request['AssignedTo'],
-            'task_assignedby' => $request['AssignedBy'],
+            // 'task_assignedby' => $request['AssignedBy'],
+            'task_assignedby' => $request->user()->id,
             'task_group' => $request['TaskGroup'],
             'task_status' => $request['TaskStatus'],
             'task_percentage' => $request['TaskCompletion'],

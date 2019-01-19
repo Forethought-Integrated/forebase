@@ -132,6 +132,7 @@ Route::get('/knowledge', function () {
 
 
 
+
 //  HelpDesk
 route::resource('boards','Helpdesk\BoardController');
 route::resource('cards','Helpdesk\CardController');

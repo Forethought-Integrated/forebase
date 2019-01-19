@@ -33,6 +33,15 @@
       </div>
     </div>
 
+     <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/lists" title="">
+          <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:100%">
+        </a>
+        <strong>List</strong>
+      </div>
+    </div>
+
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/cards" title="">
@@ -43,14 +52,7 @@
     </div>
 
 
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/lists" title="">
-          <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:100%">
-        </a>
-        <strong>List</strong>
-      </div>
-    </div>
+   
       
 
     <!-- <div  class="col-md-2">
