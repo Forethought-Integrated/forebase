@@ -116,11 +116,7 @@
             </div>
   
   
-            <!-- div class="form-group">
-              <label for="inputAssignTo" >Assigned To</label>
-              <input type="text" class="form-control" id="AssignedTo" name="AssignedTo" placeholder="AssignedTo">
-            </div>
- -->
+           
             <div class="form-group">
                    <label>Assigned To</label>
 
