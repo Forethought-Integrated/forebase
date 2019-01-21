@@ -40,10 +40,10 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="owner_id">Owner Id</label>
                   <input type="int" class="form-control" id="owner_id" name="owner_id" placeholder="Owner Id">
-                </div>
+                </div> -->
                 
 
                 <div class="form-group">

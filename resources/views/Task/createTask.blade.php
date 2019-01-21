@@ -14,6 +14,8 @@
     <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
     <li class="active">Task Form</li>
   </ol>
+            <!-- <pre>{{print_r($data)}}</pre> -->
+
 
 @endsection
 
@@ -90,10 +92,7 @@
                      <option> On Hold</option>
                     
                    </select>
-                 </div>
-
-
-            
+                 </div>           
 
 
             </div>
@@ -103,6 +102,7 @@
           {{-- FormBOXBody --}}
           <div class="box-body">
               
+              <!-- {{Auth::user()->id}} -->
   
             
             <div class="form-group">
@@ -116,16 +116,29 @@
             </div>
   
   
+           
             <div class="form-group">
-              <label for="inputAssignTo" >Assigned To</label>
-              <input type="text" class="form-control" id="AssignedTo" name="AssignedTo" placeholder="AssignedTo">
-            </div>
+                   <label>Assigned To</label>
+
+                   <select class="form-control" name="AssignedTo">
+                     @foreach($data['user'] as $user)
+                     <option value="{{$user['id']}}">{{$user['name']}}</option>
+                     <!-- <option> In Progress</option>
+                     <option> Completed</option>
+                     <option> On Hold</option> -->
+                    @endforeach
+                   </select>
+                 </div>           
+
   
             <div class="form-group">
               <label for="inputAssignedBy" >Assigned By</label>
-              <input type="text" class="form-control" id="AssignedBy" name="AssignedBy" placeholder="AssignedBy">
+              <input type="int" class="form-control" id="AssignedBy" name="AssignedBy" value="{{Auth::user()->name}}" disabled  >
+              
             </div>
- 
+        
+
+
            <!--  <div class="form-group">
               <label for="TaskCompletion" >Task Completion %</label>
               <input type="text" class="form-control" id="TaskCompletion" name="TaskCompletion" placeholder="TaskCompletion">
@@ -141,7 +154,7 @@
                      <option> 80</option>
                      <option>100</option>
                    </select>
-                 </div>
+              </div>
 
 
  
@@ -150,6 +163,7 @@
           </div> 
         </div> 
       </div>
+      
       
   
         

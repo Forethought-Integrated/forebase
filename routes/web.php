@@ -124,14 +124,15 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-    //  HelpDesk
-    route::resource('boards','Helpdesk\BoardController');
-    route::resource('cards','Helpdesk\CardController');
-    route::resource('lists','Helpdesk\ListController');
-    Route::get('/helpdesk', function () {
-        return view('/helpdesk/helpdeskDashboard');
-    });
-    // ./ HelpDesk
+
+//  HelpDesk
+route::resource('boards','Helpdesk\BoardController');
+route::resource('cards','Helpdesk\CardController');
+route::resource('lists','Helpdesk\ListController');
+Route::get('/helpdesk', function () {
+    return view('/helpdesk/helpdeskDashboard');
+});
+// ./ HelpDesk
 
 
     // Permission Module

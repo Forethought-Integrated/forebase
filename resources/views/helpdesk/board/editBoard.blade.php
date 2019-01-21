@@ -41,10 +41,10 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
 
-                <div class="form-group">
+               <!--  <div class="form-group">
                   <label for="owner_id" >Owner ID</label>
                   <input type="text" class="form-control enabelInputField" id="owner_id" name="owner_id" value="{{$data['boards']['owner_id']}}">
-                </div>
+                </div> -->
                 
                 <div class="form-group">
                   <label for="name" >Name</label>
