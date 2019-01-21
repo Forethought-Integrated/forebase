@@ -60,7 +60,7 @@
 
 
                 <div class="form-group">
-                  <label for="startDate" >Start Date</label>
+                  <label for="startDate">Start Date</label>
                   <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
                 </div>
                 
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="budgetCost" >Budget Cost</label>
+                  <label for="budgetCost">Budget Cost</label>
                   <input type="text" class="form-control" id="budgetCost" name="budgetCost"  placeholder="Budget Cost">
                   
                 </div>

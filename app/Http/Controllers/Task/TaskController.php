@@ -76,11 +76,22 @@ class TaskController extends Controller
             'task_percentage' => $request['TaskCompletion'],
           
         ]);
-        $notificationAr['subject']=$request['TaskSubject'];
-        $notificationAr['icon']=$request['TaskSubject'];
-        $notificationAr['url']="/crm/task/$task->task_id";
+       // return  $task['task_id'];
+        $user=User::where('id',$task['task_assignedby'])->pluck('name');
 
-        User::find($request['AssignedTo'])->notify(new TaskNotification($notificationAr));
+        $notificationAr['subject']=$request['TaskSubject'];
+        $notificationAr['icon']=$request['TaskSubject'];    
+        $notificationAr['url']="/crm/task/$task->task_id";
+        $notificationAr['type']='Task';
+        $notificationAr['assignedBy']=$user['0'];
+        $notificationAr['assignedByUrl']="/users/".$task['task_assignedby'];
+        // $notificationAr['assignedByUrl']=asset("users/".$task['task_assignedby']);
+        $notificationAr['taskId']=$task['task_id'];
+        $notificationAr['taskEndDate']=$task['task_enddate'];
+        // $ab=implode(',',$a);
+        // $ab=$a['0'];
+        // return $ab;
+        User::find($task['task_assignedto'])->notify(new TaskNotification($notificationAr));
         
 
 
