@@ -25,13 +25,6 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 		event.preventDefault();
 		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 		var URL="/social/"+post_id;
-		// console.log("csrf token= "+CSRF_TOKEN);
-		// console.log("Post ID= "+post_id);
-		// console.log("URL = "+URL);
-
-
-		// console.log("beforeSave ModelBody="+$('#postModalTextArea').val());
-
 		$.ajax({
 		    url: URL,
 		    type: "PUT",
@@ -46,7 +39,6 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 			$('#edit_modal').modal("hide");
 		    },
 		    error: function(err){
-		        // console.log("ajaxPosterror"+this.url);
 		    }
 		});
 
@@ -130,159 +122,89 @@ $('.post').find('.interaction').find('.editPost').on('click',function(event){
 // });
 // ./Reaction Funtionaloty
 
-// Campaign  Working with DIV Without Textarea
+
+
+// // Campaign  Working with Textarea
 $(document).ready(function(){
-    $(".utm").keyup(function(){
-      switch ($(this).attr('id')) {
+	$(".utm").keyup(function(){
+	function status(obj){
+		switch ($(obj).attr('id')) {
         case "utmWebsiteUrl":
-        	if($(this).val()=='')
+        	if($(obj).val()=='')
         		{
-	        		$('#utmWebsiteUrlGen').html($(this).val());
-	        		$('#utm-copy').css('display','none');
+	        		return $(obj).val();
         		}
         	else
         		{
-	        		$('#utm-copy').css('display','block');
-	        		$('#utmWebsiteUrlGen').text($(this).val()+'?');
+	        		return $(obj).val();
         		}
         	break;
         case 'utmCampaignSource':
-        	if($(this).val()=='')
-	        	$('#utmCampaignSourceGen').html($(this).val());
+        	if($(obj).val()=='')
+        	{	
+				$('#generatedCampaignURL').css('display','none');
+	        	return $(obj).val();
+        	}
         	else
-	        	$('#utmCampaignSourceGen').html('utm_source='+$(this).val()+'&');
+        	{
+				$('#generatedCampaignURL').css('display','block');
+	        	return '?utm_source='+$(obj).val();
+        	}
         	break;
         case "utmCampaignMedium":
-        	if($(this).val()=='')
-	        	$('#utmCampaignMediumGen').html($(this).val());
+        	if($(obj).val()=='')
+        	{
+	        	return $(obj).val();
+        	}
         	else
-	        	$('#utmCampaignMediumGen').html('utm_medium='+$(this).val()+'&');
+        	{
+	        	return '&utm_medium='+$(obj).val();
+        	}
         	break;
         case 'utmCampaignName':
-        	if($(this).val()=='')
-	        	$('#utmCampaignNameGen').html($(this).val());
+        	if($(obj).val()=='')
+        	{
+	        	return $(obj).val();
+        	}
         	else
-	        	$('#utmCampaignNameGen').html($(this).val());
+        	{
+	        	return '&utm_campaign='+$(obj).val();
+        	}
         	break;
         case "utmCampaignTerm":
-        	if($(this).val()=='')
-	        	$('#utmCampaignTermGen').html($(this).val());
+        	if($(obj).val()=='')
+        	{
+	        	return $(obj).val();
+        	}
         	else
-	        	$('#utmCampaignTermGen').html('utm_term='+$(this).val()+'&');
+	        {
+	        	return '&utm_term='+$(obj).val();
+        	}
         	break;
         case 'utmCampaignContent':
-        	if($(this).val()=='')
-	        	$('#utmCampaignContentGen').html($(this).val());
+        	if($(obj).val()=='')
+        	{
+	        	return $(obj).val();
+        	}
         	else
-	        	$('#utmCampaignContentGen').html('utm_content='+$(this).val());
+        	{
+	        	return '&utm_content='+$(obj).val();
+        	}
       }
+	}
+	// ./status
 
+var gen=status('#utmWebsiteUrl')+status('#utmCampaignSource')+status('#utmCampaignMedium')+status('#utmCampaignName')+status('#utmCampaignTerm')+status('#utmCampaignContent');
+ 					$('#generatedCampaignURL textarea').val(gen);
     });
-
-    $('#utm-copy').on('click',function(e){
-    	e.preventDefault();
-    	console.log('clicked');
-    });
-
 });
-//  ./Campaign
-// Campaign  Working with DIV Without Textarea
-
-// // Campaign  Working with Textarea
-// $(document).ready(function(){
-//     $(".utm").keyup(function(){
-//     	// 1?utm_source=1&utm_medium=1&utm_campaign=1&utm_term=1&utm_content=1
-//     	var utmConst={
-//     		web:'?',
-//     		src:'',
-//     		med:'',
-//     		name:'',
-//     		term:'',
-//     		content:'',
-//     		gen:''
-//     	};
-//     	var utmData={
-//     		web:'?',
-//     		src:'',
-//     		med:'',
-//     		name:'',
-//     		term:'',
-//     		content:'',
-//     		gen:''
-//     	};
-
-// // utmData['gen']=utmData['web']+utmData['src']+utmData['med']+utmData['name']+utmData['term']+utmData['content'];
-
-//     	var utmId={
-//     		web:'utmWebsiteUrl',
-//     		src:'utmCampaignSource',
-//     		med:'utmCampaignMedium',
-//     		name:'utmCampaignName',
-//     		term:'utmCampaignTerm',
-//     		content:'utmCampaignContent',
-//     		gen:''
-//     	};
-    	
-//     	var parentNode=$(this).parent().parent();
-//     	var parentNodeData=parentNode.attr('data-utm');
-//     	// console.log(parentNode.attr('class'));
-//     	console.log();
-//       switch ($(this).attr('id')) {
-//         case "utmWebsiteUrl":
-//         	if($(this).val()=='')
-//         		{
-// 	        		utmData['web']=$(this).val();
-//         		}
-//         	else
-//         		{
-// 	        		utmData['web']=$(this).val();
-//         		}
-//         	break;
-//         case 'utmCampaignSource':
-//         	if($(this).val()=='')
-//         	{	
-//         		$('#generatedCampaignURL').css('display','none');
-// 	        	// $('#utmCampaignSourceGen').html($(this).val());
-//         	}
-//         	else
-//         	{
-// 	        		utmData['src']=$(this).val();
-// 	        		// utmData['gen']=
-//         		$('#generatedCampaignURL').css('display','block');
-// 	        	$('#utmCampaignSourceGen').html('utm_source='+$(this).val()+'&');
-//         	}
-//         	break;
-//         case "utmCampaignMedium":
-//         	if($(this).val()=='')
-// 	        	$('#utmCampaignMediumGen').html($(this).val());
-//         	else
-// 	        	$('#utmCampaignMediumGen').html('utm_medium='+$(this).val()+'&');
-//         	break;
-//         case 'utmCampaignName':
-//         	if($(this).val()=='')
-// 	        	$('#utmCampaignNameGen').html($(this).val());
-//         	else
-// 	        	$('#utmCampaignNameGen').html($(this).val());
-//         	break;
-//         case "utmCampaignTerm":
-//         	if($(this).val()=='')
-// 	        	$('#utmCampaignTermGen').html($(this).val());
-//         	else
-// 	        	$('#utmCampaignTermGen').html('utm_term='+$(this).val()+'&');
-//         	break;
-//         case 'utmCampaignContent':
-//         	if($(this).val()=='')
-// 	        	$('#utmCampaignContentGen').html($(this).val());
-//         	else
-// 	        	$('#utmCampaignContentGen').html('utm_content='+$(this).val());
-//       }
-
-//     });
-
-//     // $('#utm-copy').on('click',function(e){
-//     // 	e.preventDefault();
-//     // 	console.log('clicked');
-//     // });
-
-// });
 // // ./Campaign  Working with Textarea
+
+//  Copy To Clipboard Funtionality
+function copyToClipBoard() {
+  /* Select the text field */
+  $('#generatedCampaignURL textarea').select();
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+//  ./Copy To Clipboard Funtionality

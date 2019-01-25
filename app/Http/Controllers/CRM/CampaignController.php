@@ -64,7 +64,8 @@ class CampaignController extends Controller
                     'utm_Campaign_Medium' => $request->utmCampaignMedium,
                     'utm_campaign_name' => $request->utmCampaignName,
                     'utm_campaign_term' => $request->utmCampaignTerm,
-                    'utm_campaign_content' => $request->utmCampaignContent
+                    'utm_campaign_content' => $request->utmCampaignContent,
+                    'utm_campaign_url' => $request->utmCampaignUrl,
                     ]
                 ]);
                 return redirect('/campaign');
@@ -120,7 +121,8 @@ class CampaignController extends Controller
                     'utm_Campaign_Medium' => $request->utmCampaignMedium,
                     'utm_campaign_name' => $request->utmCampaignName,
                     'utm_campaign_term' => $request->utmCampaignTerm,
-                    'utm_campaign_content' => $request->utmCampaignContent
+                    'utm_campaign_content' => $request->utmCampaignContent,
+                    'utm_campaign_url' => $request->utmCampaignUrl,
                     ]
     ]);
         // return response()->json(['success'=>'200']); 

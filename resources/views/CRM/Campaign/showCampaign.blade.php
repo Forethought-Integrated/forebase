@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
-
+  <script type="text/javascript" src="{{asset("/js/app.js")}}"></script>
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -117,6 +117,12 @@
                   <input type="text" class="form-control enabelInputField" id="utmCampaignContent" name="utmCampaignContent" value="{{$data['campaign']['utm_campaign_content']}}" disabled>
                 </div>
 
+                <div id="generatedCampaignURL">
+                  <label for="utmCampaignUrl">UTM Campaign URL</label>
+                  <textarea id="utmCampaignUrl" rows="2" class="FormField" readonly="" style="height: 54px;width: 100%" name="utmCampaignUrl" {{-- disabled="true" --}}>{{$data['campaign']['utm_campaign_url']}}</textarea>
+                  <br>
+                  <button onclick="copyToClipBoard()" type="button">Copy text</button>
+                </div>
 
                 {{-- ........ --}}
 

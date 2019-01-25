@@ -31,5 +31,7 @@ class SendMailable extends Mailable
     {
         // return $this->view('view.name');
         return $this->view('emails.name');
+        // return $this->from('himanshu.mishra@groovenexus')->view('emails.name');
+        
     }
 }
