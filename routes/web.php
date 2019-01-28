@@ -98,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //   for Brand
     Route::resource('brands','Brand\BrandController');
+   Route::get('/brands-view/{id}','Brand\BrandController@view');
 
       ///for Menu
     Route::resource('menus','Menu\MenuController');
@@ -128,15 +129,21 @@ Route::get('/knowledge', function () {
 });
 
 
-
+route::resource('boards','newhelp\BoardController');
+route::get('board-detail/{id}','newhelp\BoardController@boardIndex');
+route::resource('cards','newhelp\CardController');
+// route::get('card-create/{listid}','newhelp\CardController@CardCreate');
+route::get('card/{listid}/create','newhelp\CardController@CardCreate');
+route::get('board-card-detail/{id}/{listid}','newhelp\BoardController@boardListCardIndex');
+route::resource('lists','newhelp\ListController');
 
 
 
 
 //  HelpDesk
-route::resource('boards','Helpdesk\BoardController');
-route::resource('cards','Helpdesk\CardController');
-route::resource('lists','Helpdesk\ListController');
+// route::resource('boards','Helpdesk\BoardController');
+// route::resource('cards','Helpdesk\CardController');
+// route::resource('lists','Helpdesk\ListController');
 Route::get('/helpdesk', function () {
     return view('/helpdesk/helpdeskDashboard');
 });

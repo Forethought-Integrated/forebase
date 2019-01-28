@@ -286,3 +286,80 @@ $(document).ready(function(){
 
 // });
 // // ./Campaign  Working with Textarea
+
+
+// helpdesk
+
+// $(".abs:select").on('click',function(e){
+// $("#abs:select").on('click',function(e){
+//     	e.preventDefault();
+//     	console.log('clicked');
+// });
+// $('#abc').change(function(){ 
+//     // var value = $(this).val();
+//     console.log('hi');
+// });
+// ./helpdesk
+
+// $("#abc").on('change',function(e){
+// 	// console.log(e);
+//     // console.log('hi');
+//     alert('sg');
+
+
+// });
+$(document).ready(function(){
+
+  $('#abc').on('change', function() {
+  var value = $(this).val();
+  // console.log(value);
+  // console.log($(this).attr('class'));
+  console.log($(this).attr('data-board'));
+  // $('select[name="list_name"] :selected').attr('class');
+  console.log($('select[name="list_name"] :selected').attr('data-list'));
+
+  var boardid=$(this).attr('data-board');
+  var listid=$('select[name="list_name"] :selected').attr('data-list');
+  // Create card Link
+  // $('#create-card-link').attr('href','/card/'+listid+'/create');	
+  $('#create-card-link').attr('href','/card/'+listid+'/create');	
+  // ./Create card Link
+  var URL="/board-card-detail/"+boardid+'/'+listid;
+  $.ajax({
+	  	type: "GET",
+	  	url: URL,
+	  	cache: 'false',
+		success: function (data) {
+		        	// console.log('hi');
+		        	var newtr;
+				$("#tbody").empty();
+
+		        // for (i in myObj.cars) {
+		        for (i in data.card) {
+  				// console.log('ss');
+             	// console.log(data.card[i]['card_id']); //working
+              	// console.log(data.card[i]['card_id']);
+      			newtr="<tr><td>"+data.card[i]['card_id']+"</td>"+"<td>"
+      			+data.card[i]['list_id']+"</td>"+"<td>"
+      			+data.card[i]['card_name']+"</td>"
+      			+"<td>"+data.card[i]['card_description'
+      			]+"</td>"+"<td>"+data.card[i]['card_order']
+      			+"</td>"+"<td>"+data.card[i]['card_members']
+      			+"</td>"+"<td>"+data.card[i]['card_archieved']
+      			+"</td>"+"<td>Delete</td></tr>";
+      			console.log('before----'+$("#tbody").html());
+				// $("#tbody").html(newtr);
+				$("#tbody").append(newtr);
+      			console.log('after----'+$("#tbody").html());
+
+				// $("#tbody").html(newtr);
+				// console.log($("#tbody").html());
+				}
+		    },
+		    error: function(err){
+		        console.log("VKERROR");
+		    }
+		});
+	});
+});
+

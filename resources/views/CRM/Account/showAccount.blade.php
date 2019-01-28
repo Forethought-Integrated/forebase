@@ -16,7 +16,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Board Detail</li>
+    <li class="active">Account Detail</li>
   </ol>
 
 @endsection
@@ -40,7 +40,7 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
-                <div class="form-group">
+               <!--  <div class="form-group">
                   <label for="name" >Name</label>
                   <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$data['boards']['name']}}" disabled>
                 </div>
@@ -49,9 +49,9 @@
                 <div class="form-group">
                   <label for="description" >Description</label>
                   <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['boards']['description']}}" disabled>
-                </div>
+                </div> -->
 
-              <!--   <div class="form-group">
+                <div class="form-group">
                   <label for="accountWebsite" >Website</label>
                   <input type="text" class="form-control enabelInputField" id="accountWebsite" name="accountWebsite" value="{{$data['account']['account_website']}}" disabled>
                 </div>
@@ -114,7 +114,7 @@
                   <input type="text" class="form-control enabelInputField" id="accountGSTNo" name="accountGSTNo" value="{{$data['account']['account_GSTNo']}}" disabled>
                 </div>
 
- -->
+
               </div>
               {{-- ./FormBOXBody --}} 
 

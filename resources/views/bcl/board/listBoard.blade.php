@@ -1,6 +1,6 @@
 @extends('layouts.adminApp')
 
-@section('title', 'ListBrand')
+@section('title', 'ListAccount')
 
 @section('headAdminScriptUpdate')
 
@@ -9,17 +9,17 @@
 
 @endsection
 
-@section('ContentHeader(Page_header)') 
+@section('ContentHeader(Page_header)')
 
   <h1>
-    Brand  List
-    <a href="/brands/create" title="">
-      <i class="fa fa-edit"> create</i>
+    Board List
+    <a href="/boards/create" title="">
+      <i class="fa fa-edit">create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Brand LIst</li>
+    <li class="active">Helpdesk List</li>
   </ol>
 
 
@@ -39,38 +39,33 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Brand ID</th>
-                  <th>Brand Persona</th>
-                  <th>Brand Logo</th>                 
-                  <th>Brand color Palette</th>
-                  <th>Brand Typography</th>
-                 <!--  <th>Brand Email Signature</th>  -->
-                 <!--  <th>Brand Disclaimer</th> -->
-
-                   <th>Show</th> 
+                  <th>Board ID</th>
+                  <th>Owner ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  
+                  {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
-                <tbohy>
-                  @foreach($brands as $brands)
-                    <tr> 
-                      <td>{{$brands->brand_id}}</td>
-                      <td><a href="{{ url('brands'.'/'.$brands->brand_id)}}">{!!$brands->brand_persona!!}</a></td>
-                      
-                       <td>{!!$brands->brand_guidelines!!}</td>
-                        <td>{!!$brands->brand_color_palette!!}</td>
-                        <td>{!!$brands->brand_typography!!}</td>
-                        <!-- <td>{!!$brands->brand_email_signature!!}</td> -->
-                       <!--  <td>{!!$brands->brand_disclaimer!!}</td> -->
-                     <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('brands-view'.'/'.$brands->brand_id)}}">show</a>
-
+                <tbody>
+                 <!-- <pre>{{print_r($data)}}</pre> -->
+                  @foreach($data['boards'] as $data)
+                    <tr>
+                      <td>{{$data['board_id']}}</td>
+                      <td>{{$data['owner_id']}}</a></td>
+                      {{-- <td>{{$data['account_name']}}</td> --}}
+                      <td><a href="{{ url('board-detail'.'/'.$data['board_id'])}}">{{$data['board_name']}}</td>
+                      <td>{{$data['board_description']}}</td>
+                     
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['board_id'])}}">Edit</a>
                       </td>
-                       <td>
-                       <form action="{{ url('brands'.'/' .$brands->brand_id)}}" method="post">
+       --}}                <td>
+                       <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn " type="submit">Delete</button>
+                            @method('DELETE')
+                          <button class="btn remove_btn" type="submit">Delete</button>
                         </form>
                       </td>
                     </tr>
@@ -78,18 +73,17 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Brand ID</th>
-                  <th>Brand Persona</th>
-                  <th>Brand Logo</th>
-                  <th>Brand color Palette</th>
-                  <th>Brand Typography</th>
-                   <!-- <th>Brand Email Signature</th> -->
-                    <!-- <th>Brand Disclaimer</th> -->
-                  <th>Show</th>
+                   <th>Board ID</th>
+                  <th>Owner ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </tfoot>
               </table>
+             
+              
             </div>
             <!-- /.box-body -->
           </div>

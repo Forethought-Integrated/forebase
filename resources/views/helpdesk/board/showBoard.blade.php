@@ -25,8 +25,8 @@
 @endsection
 
 @section('MainContent')
-<div class="row">
-  <!--  column -->
+<!-- <div class="row">
+  <!- column -->
   <div class="col-md-12">
     <!-- Horizontal Form -->
     <div class="box box-primary">
@@ -41,26 +41,30 @@
             {{-- Left Form Field --}}
             <div class="col-md-12">
               {{-- FormBOXBody --}}
-              <div class="box-body">
+              <div class="box-body">            
                 
-                <!-- <div class="form-group">
-                  <label for="owner_id" >Owner Id</label>
-                  <input type="text" class="form-control enabelInputField" id="owner_id" name="owner_id" value="{{$data['boards']['owner_id']}}" disabled>
-                </div> -->
                 
-
-                <div class="form-group">
+               <div class="form-group">
                   <label for="name" >Name</label>
                   <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$data['boards']['name']}}" disabled>
                 </div>
+                
 
                 <div class="form-group">
                   <label for="description" >Description</label>
-                  <input type="email" class="form-control enabelInputField" id="description" name="description" value="{{$data['boards']['description']}}" disabled>
+                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['boards']['description']}}" disabled>
                 </div>
-              </div>
-            </div>
 
+                
+                 
+              </div>
+            </div> 
+
+          
+</body>
+</html> 
+
+            
                 
                
         </div>

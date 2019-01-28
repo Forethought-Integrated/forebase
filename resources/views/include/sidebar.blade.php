@@ -135,6 +135,15 @@
         </li>
 
         <li>
+          <a href="/boards">
+            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>New Helpdesk</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
           
         {{-- ./Back --}}
 

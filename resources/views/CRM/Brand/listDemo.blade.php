@@ -18,10 +18,7 @@
   <div class="col-md-12">
     <!-- Horizontal Form -->
     <div class="box box-primary">
-            <!-- <div class="box-header with-border">
-              <h3 class="box-title">Enter Detail</h3>
-            </div> -->
-      <!-- /.card-header -->
+           
 
       {{-- form--}} 
        {{csrf_field()}}
@@ -35,7 +32,7 @@
               <div class="box-body">
                 
               
-                {!! $brand->brand_persona !!}
+                {!!$brand->brand_persona!!}
 
                 {!!$brand->brand_guidelines!!}
 
@@ -46,6 +43,7 @@
                 {{!!$brand->brand_email_signature!!}}
 
                 {{!!$brand->brand_disclaimer!!}}
+
                 
              
             </div>
