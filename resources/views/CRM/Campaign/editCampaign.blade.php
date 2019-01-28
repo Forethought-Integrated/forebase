@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
-
+  <script type="text/javascript" src="{{asset("/js/app.js")}}"></script>
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -88,35 +88,41 @@
 
                 <div class="form-group">
                   <label for="utmWebsiteUrl" >UTM Website URL</label>
-                  <input type="text" class="form-control enabelInputField" id="utmWebsiteUrl" name="utmWebsiteUrl" value="{{$data['campaign']['utm_website_url']}}">
+                  <input type="text" class="form-control enabelInputField utm" id="utmWebsiteUrl" name="utmWebsiteUrl" value="{{$data['campaign']['utm_website_url']}}">
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignSource" >UTM Campaign Source</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignSource" name="utmCampaignSource" value="{{$data['campaign']['utm_campaign_source']}}" >
+                  <input type="text" class="form-control enabelInputField utm" id="utmCampaignSource" name="utmCampaignSource" value="{{$data['campaign']['utm_campaign_source']}}" >
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignMedium" >UTM Campaign Medium</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignMedium" name="utmCampaignMedium" value="{{$data['campaign']['utm_Campaign_Medium']}}">
+                  <input type="text" class="form-control enabelInputField utm" id="utmCampaignMedium" name="utmCampaignMedium" value="{{$data['campaign']['utm_Campaign_Medium']}}">
                 </div>
 
 
                 <div class="form-group">
                   <label for="utmCampaignName" >UTM Campaign Name</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignName" name="utmCampaignName" value="{{$data['campaign']['utm_campaign_name']}}">
+                  <input type="text" class="form-control enabelInputField utm" id="utmCampaignName" name="utmCampaignName" value="{{$data['campaign']['utm_campaign_name']}}">
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignTerm" >UTM Campaign Term</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignTerm" name="utmCampaignTerm" value="{{$data['campaign']['utm_campaign_term']}}">
+                  <input type="text" class="form-control enabelInputField utm" id="utmCampaignTerm" name="utmCampaignTerm" value="{{$data['campaign']['utm_campaign_term']}}">
                 </div>
 
                 <div class="form-group">
                   <label for="utmCampaignContent" >UTM Campaign Content</label>
-                  <input type="text" class="form-control enabelInputField" id="utmCampaignContent" name="utmCampaignContent" value="{{$data['campaign']['utm_campaign_content']}}">
+                  <input type="text" class="form-control enabelInputField utm" id="utmCampaignContent" name="utmCampaignContent" value="{{$data['campaign']['utm_campaign_content']}}">
                 </div>
 
+                <div id="generatedCampaignURL">
+                  <label for="utmCampaignUrl">UTM Campaign URL</label>
+                  <textarea id="utmCampaignUrl" rows="2" class="FormField" readonly="" style="height: 54px;width: 100%" name="utmCampaignUrl">{{$data['campaign']['utm_campaign_url']}}</textarea>
+                  <br>
+                  <button onclick="copyToClipBoard()" type="button">Copy text</button>
+                </div>
 
                 {{-- ........ --}}
 

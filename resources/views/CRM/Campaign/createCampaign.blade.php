@@ -60,7 +60,7 @@
 
 
                 <div class="form-group">
-                  <label for="startDate" >Start Date</label>
+                  <label for="startDate">Start Date</label>
                   <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
                 </div>
                 
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="budgetCost" >Budget Cost</label>
+                  <label for="budgetCost">Budget Cost</label>
                   <input type="text" class="form-control" id="budgetCost" name="budgetCost"  placeholder="Budget Cost">
                   
                 </div>
@@ -85,7 +85,7 @@
               {{-- FormBOXBody --}}
               <div class="box-body" data-utm="vk">
                 {{-- ........ --}}
-                <div class="form-group">
+               {{--  <div class="form-group">
                   <label for="utmWebsiteUrl">UTM Website URL</label>
                   <input type="text" class="form-control utm" id="utmWebsiteUrl" name="utmWebsiteUrl" placeholder="UTM Website URL">
                 </div>
@@ -125,10 +125,10 @@
                   <span id="utmCampaignTermGen" class="utmCampaignTerm utmGen"></span>
                   <span id="utmCampaignContentGen" class="utmCampaignContent utmGen"></span>
                 </div>
-                <button id='utm-copy'>Copy URL</button>
+                <button id='utm-copy'>Copy URL</button> --}}
                 {{-- ........ --}}
                 {{-- Capaign genrator with text area --}}
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label for="utmWebsiteUrl">UTM Website URL</label>
                   <input type="text" class="form-control utm" id="utmWebsiteUrl" name="utmWebsiteUrl" placeholder="UTM Website URL">
                 </div>
@@ -142,7 +142,6 @@
                   <label for="utmCampaignMedium">UTM Campaign Medium</label>
                   <input type="text" class="form-control utm" id="utmCampaignMedium" name="utmCampaignMedium" placeholder="UTM campaign Medium">
                 </div>
-
 
                 <div class="form-group">
                   <label for="utmCampaignName">UTM Campaign Name</label>
@@ -160,8 +159,11 @@
                 </div>
 
                 <div id="generatedCampaignURL" style="display: none;">
-                  <button id='utm-copy'>Copy URL</button>
-                </div> --}}
+                  <label for="utmCampaignUrl">UTM Campaign URL</label>
+                  <textarea id="utmCampaignUrl" rows="2" class="FormField" readonly="" style="height: 54px;width: 100%" name="utmCampaignUrl"></textarea>
+                  <br>
+                  <button onclick="copyToClipBoard()" type="button">Copy text</button>
+                </div>
                 {{-- ./Capaign genrator with text area --}}
               </div>
               {{-- ./FormBOXBody --}} 

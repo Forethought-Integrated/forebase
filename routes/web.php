@@ -120,11 +120,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('companies','Company\CompanyController');
     Route::get('/send/email', 'Home\HomeController@mail');
 
-});
-
-Route::get('/', 'Home\HomeController@index');
-
-Route::get('/knowledge', function () {
+    Route::get('/knowledge', function () {
     return view('/knowledge/knowledge');
 });
 
@@ -161,12 +157,25 @@ Route::get('/helpdesk', function () {
 
     Route::resource('posts', 'PostController');
 
-    Route::get('/admin', function () {
-
-
-        return view('admin/admin');
-    });
+  
     // ./Permission Module
+
+
+});
+
+Route::get('/', 'Home\HomeController@index');
+
+
+
+Route::get('/admin', function () {
+
+
+    return view('admin/admin');
+});
+
+
+
+
 
 // testing
 

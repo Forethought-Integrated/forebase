@@ -16,17 +16,19 @@ class TaskNotification extends Notification
      *
      * @return void
      */
+    protected $notifArr;
 
-    protected $notificationSubject;
-    protected $notificationIcon;
-    protected $notificationURL;
+    // protected $notificationSubject;
+    // protected $notificationIcon;
+    // protected $notificationURL;
     
     public function __construct($data)
     {
         //
-        $this->notificationSubject=$data['subject'];
-        $this->notificationIcon=$data['icon'];
-        $this->notificationURL=$data['url'];
+        // $this->notificationSubject=$data['subject'];
+        // $this->notificationIcon=$data['icon'];
+        // $this->notificationURL=$data['url'];
+        $this->notifArr=$data;
     }
 
     /**
@@ -71,9 +73,28 @@ class TaskNotification extends Notification
             // 'data'=>'this is my first notification in notification class Task Notification',
         // 'invoice_id' => $this->invoice->id,
         // 'amount' => $this->invoice->amount,
-            'subject' => $this->notificationSubject,
-            'icon' => $this->notificationIcon,
-            'url' => $this->notificationURL,
+            // 'subject' => $this->notificationSubject,
+            // 'icon' => $this->notificationIcon,
+            // 'url' => $this->notificationURL,
+            'subject' => $this->notifArr['subject'],
+            'icon' => $this->notifArr['icon'],
+            'url' => $this->notifArr['url'],
+            'type' => $this->notifArr['type'],
+            'assignedBy' => $this->notifArr['assignedBy'],
+            'assignedByUrl' => $this->notifArr['assignedByUrl'],
+            'taskId' => $this->notifArr['taskId'],
+            'taskEndDate' => $this->notifArr['taskEndDate'],
+
+        // $notificationAr['subject']=$request['TaskSubject'];
+        // $notificationAr['icon']=$request['TaskSubject'];    
+        // $notificationAr['url']="/crm/task/$task->task_id";
+        // $notificationAr['type']='Task';
+        // $notificationAr['assignedBy']=$task['task_assignedby'];
+        // $notificationAr['assignedByUrl']=asset("users/".$task['task_assignedby']);
+        // $notificationAr['taskId']=$task['task_id'];
+        // $notificationAr['taskEndDate']=$task['task_enddate'];
+
+
         ];
     }
 }
