@@ -127,11 +127,19 @@ Route::group(['middleware' => ['auth']], function () {
 
 route::resource('boards','newhelp\BoardController');
 route::get('board-detail/{id}','newhelp\BoardController@boardIndex');
+// route::delete('cards/{id}',function(){
+//     return 'dfdfg';
+// });
 route::resource('cards','newhelp\CardController');
+// route::delete('cards','newhelp\CardController');
+// route::delete('cards/{id}',function(){
+//     return 'dfdfg';
+// });
 // route::get('card-create/{listid}','newhelp\CardController@CardCreate');
 route::get('card/{listid}/create','newhelp\CardController@CardCreate');
 route::get('board-card-detail/{id}/{listid}','newhelp\BoardController@boardListCardIndex');
 route::resource('lists','newhelp\ListController');
+route::get('lists/{boardname}/{boardid}/create','newhelp\ListController@create');
 
 
 

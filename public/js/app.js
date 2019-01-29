@@ -223,7 +223,7 @@ var gen=status('#utmWebsiteUrl')+status('#utmCampaignSource')+status('#utmCampai
 // });
 $(document).ready(function(){
 
-  $('#abc').on('change', function() {
+  $('#link').on('change', function() {
   var value = $(this).val();
   // console.log(value);
   // console.log($(this).attr('class'));
@@ -245,6 +245,8 @@ $(document).ready(function(){
 		success: function (data) {
 		        	// console.log('hi');
 		        	var newtr;
+		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 				$("#tbody").empty();
 
 		        // for (i in myObj.cars) {
@@ -254,23 +256,42 @@ $(document).ready(function(){
               	// console.log(data.card[i]['card_id']);
       			newtr="<tr><td>"+data.card[i]['card_id']+"</td>"+"<td>"
       			+data.card[i]['list_id']+"</td>"+"<td>"
-      			+data.card[i]['card_name']+"</td>"
+      			+'<a href="/cards/'+data.card[i]['card_id']+'">'+
+      			data.card[i]['card_name']+"</a>"+"</td>"
       			+"<td>"+data.card[i]['card_description'
       			]+"</td>"+"<td>"+data.card[i]['card_order']
       			+"</td>"+"<td>"+data.card[i]['card_members']
       			+"</td>"+"<td>"+data.card[i]['card_archieved']
-      			+"</td>"+"<td>Delete</td></tr>";
-      			console.log('before----'+$("#tbody").html());
+      			+"</td>"+
+      			"<td>"+
+
+      			'<form action="/cards/'+data.card[i]['card_id']+'" method="POST">'
+        	        +'<input type="hidden" name="_method" value="DELETE">'
+        	        +'<input type="hidden" name="_token" value="'+CSRF_TOKEN+'">'
+                    +'<input type="submit" value="Delete" class="btn remove_btn" >'
+                +'</form>'
+      			+
+      			"</td></tr>";
+      			// console.log('before----'+$("#tbody").html());
 				// $("#tbody").html(newtr);
 				$("#tbody").append(newtr);
-      			console.log('after----'+$("#tbody").html());
+      			// console.log('after----'+$("#tbody").html());
+      			   
+
+      			//    "<form action="+"/cards/"+" method="+"POST"+">"
+         //                  +"<input type="+"hidden"+" name="+"_method"+" value="+"DELETE"+">"+ 
+      			// "Delete"+"<input type="+"hidden"+"name="+"_token"+"value="+"CSRF_TOKEN"+">"+
+      			// // "<input type="+"submit"+ "value"+"=Delete"+"class="+"btn remove_btn"+">"+
+      			// "</form>"  			
 
 				// $("#tbody").html(newtr);
 				// console.log($("#tbody").html());
 				}
+				console.log(newtr); 
 		    },
+		    
 		    error: function(err){
-		        console.log("VKERROR");
+		        console.log("ERROR");
 		    }
 		});
 	});

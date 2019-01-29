@@ -32,7 +32,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/board-detail" method="POST">
+      <form role="form" action="{{route('cards.store')}}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
@@ -41,14 +41,17 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="list_id">List Id</label>
-                  <input type="int" class="form-control" id="list_id" name="list_id" placeholder="List Id">
+                  <label for="list_name">List Name</label>
+                  <input type="text" class="form-control" id="list_name" name="list_name" value="{{$data['list']['list_name']}}" disabled>
+                  <input type="hidden" class="form-control" id="list_id" name="list_id" value="{{$data['list']['list_id']}}">
+                  <input type="hidden" class="form-control" id="board_id" name="board_id" value="{{$data['list']['board_id']}}">
                 </div>
                 
 
                 <div class="form-group">
-                  <label for="card_name" >Name</label>
-                   <input type="text" class="form-control" id="card_name" name="card_name" >
+                  <label for="card_name"> Card Name</label>
+
+                   <input type="text" class="form-control" id="card_name" name="card_name" placeholder="Card Name">
                 </div>
 
                 <div class="form-group">

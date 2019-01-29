@@ -8,9 +8,7 @@
 @section('ContentHeader(Page_header)')
 
   <h1>
-     Board Detail
-<!--  -->
-    
+    {{$data['board']['board_name']}}  
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
@@ -26,9 +24,9 @@
   <div class="col-md-12">
     <!-- Horizontal Form -->
     <div class="box box-primary">
-            <div class="box-header with-border">
+           <!--  <div class="box-header with-border">
               <h3 class="box-title">{{$data['board']['board_name']}}</h3>
-            </div>
+            </div> -->
 
       <!-- /.card-header -->
 
@@ -43,11 +41,11 @@
                 
                
                  <div class="form-group">
-                  <a href="/lists/create" title="" style="float: right;">
+                  <a href="/lists/{{$data['board']['board_name']}}/{{$data['board']['board_id']}}/create" title="" style="float: right;">
                    <h3> <i class="fa fa-edit">create</i></h3>
                   </a>
                    <label>List</label>
-                   <select class="form-control abs" name="list_name" id="abc" data-board="asdfs">
+                   <select class="form-control abs" name="list_name" id="link" data-board="asdfs">
                     @if(empty($data['list']))
                       <option >Empty List</option>                     
                       @else
@@ -88,9 +86,9 @@
                       @foreach($data['card'] as $card)
                   <tr>
                       <td>{{$card['card_id']}}</td>
-                      <td><a href="{{ url('cards'.'/'.$card['card_id'])}}">{{$card['list_id']}}</a></td>
+                      <td>{{$card['list_id']}}</a></td>
 
-                      <td>{{$card['card_name']}}</td>
+                      <td><a href="{{ url('cards'.'/'.$card['card_id'])}}">{{$card['card_name']}}</td>
                       <td>{{$card['card_description']}}</td>
                       <td>{{$card['card_order']}}</td>
                       <td>{{$card['card_members']}}</td>
@@ -99,11 +97,13 @@
       {{--            <td>
                        <a class="btn btn-small btn-primary" href="{{ url('cards'.'/'.$data['board_id'])}}">Edit</a>
                       </td>
-       --}}                <td>
+       --}}           
+                      <td>
+                        <form action="{{ url('cards'.'/'.$card['card_id']) }}" method="POST">
+                          @method('DELETE')
                           {{csrf_field()}}
-                            @method('DELETE')
-               <form>
-                          <button class="btn remove_btn" type="submit">Delete</button>
+                          <!-- <button type="submit" value="submit" class="btn remove_btn" >Delete</button> -->
+                          <input type="submit" value="Delete" class="btn remove_btn" >
                         </form>
                       </td>
                    </tr>
@@ -167,8 +167,4 @@
 @section('bodyScriptUpdate')
 <script src="{{asset("/js/app.js")}}"></script>
 
-<script type="text/javascript">
-
-
-</script> 
 @endsection
