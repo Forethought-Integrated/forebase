@@ -81,7 +81,7 @@
                                   <a href="{{asset('/contact/'.$contact['contact_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/contact/.delete/'.$contact['contact_id'])}}">
+                                  <a href="{{asset('/contact/delete/'.$contact['contact_id'])}}">
                                     <i>Delete</i>
                                   </a>
                                   <a href="{{asset('/account')}}">

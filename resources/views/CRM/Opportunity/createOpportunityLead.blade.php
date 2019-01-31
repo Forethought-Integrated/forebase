@@ -17,7 +17,7 @@
     <li class="active">Opportunity Form</li>
   </ol>
 
-<pre>{{print_r($data)}}</pre>
+{{-- <pre>{{print_r($data)}}</pre> --}}
 @endsection
 
 @section('MainContent')
@@ -70,8 +70,13 @@
                 <div class="form-group">
                   <label for="campaignID" >Campaign ID</label>
                   <input type="Tell" class="form-control" id="campaignID" name="campaignID" placeholder="Campaign ID">
-                  
                 </div>
+
+                <div class="form-group">
+                  <label for="description" >Description</label>
+                  <input type="text" class="form-control" id="expectedRevenue" name="expectedRevenue" placeholder="Description">
+                </div>
+
 
               </div>
               {{-- ./FormBOXBody --}}
@@ -116,11 +121,7 @@
                   <input type="text" class="form-control" id="expectedRevenue" name="expectedRevenue" placeholder="Expected Revenue">
                 </div>
 
-                  <div class="form-group">
-                  <label for="description" >Description</label>
-                  <input type="text" class="form-control" id="expectedRevenue" name="expectedRevenue" placeholder="Description">
-                </div>
-
+                
                 {{-- ........ --}}
 
               </div>

@@ -104,17 +104,22 @@ class AccountController extends Controller
      }
 
      public function show($id)
-
      {
-
-
+        // return 'hi';
         $client = new Client();
         $res = $client->request('GET', $this->URL.'/'.$id);
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
         // $accountData['dataArray']=$account;
-        $data['account']=$account;
-
+        // return $data;
+        // return $account;
+        // return gettype($account);
+        // return empty($account);
+        if(empty($account))
+            return redirect('/account');
+        else
+            $data['account']=$account;
+                // return 'bye';
 
         // return view('social.socialjson',['posts' => $accountData]);
         

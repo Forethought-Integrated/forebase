@@ -66,9 +66,11 @@ class LeadController extends Controller
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
         $data['account']=$account;
-        // return $data;
-        return view('CRM.Lead.createLeadContactAccount',compact('data'));
-
+        if(count($account)&&count($contact))
+            return view('CRM.Lead.createLeadContactAccount',compact('data'));
+        else
+            // return 'bye';
+            return redirect('/lead');
     }
 
     public function indexLeadContactAccount($contactid,$accountid)
