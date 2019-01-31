@@ -94,7 +94,11 @@
                                   <a href="{{asset('/account/'.$contact['contact_id'])}}">
                                     View Account
                                   </a>
-                                  <a href="{{asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}">
+                                  {{-- <a href="{{asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}">
+                                    <i>Create Lead</i>
+                                  </a> --}}
+                                  <a href="{{ count($contact['contact_account_id']) ? asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create') : asset('/lead') }}">
+                                    {{-- <a href="{{ count($contact['contact_account_id']) ? asset('/lead') :  asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}"> --}}
                                     <i>Create Lead</i>
                                   </a>
                                   <a href="{{asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'])}}">
