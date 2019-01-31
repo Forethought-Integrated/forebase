@@ -16,7 +16,7 @@ class ListController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_HELPDESKURL');
-        $this->URL=$this->ENV_URL.'lists/';     
+        $this->URL=$this->ENV_URL.'lists';     
                 // $this->middleware('auth');
     }
     /**
@@ -71,7 +71,7 @@ class ListController extends Controller
      {      
         //return "hello";
         $client = new Client();
-        $res = $client->request('GET',$this->URL.$id);
+        $res = $client->request('GET',$this->URL.'/'.$id);
         $listJson=$res->getBody();
         $list=json_decode($listJson, true);        
         $data['lists']=$list;         
@@ -85,7 +85,7 @@ class ListController extends Controller
 
         
         $client = new Client();
-        $res = $client->request('GET', $this->URL.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $listJson=$res->getBody();
         $list = json_decode($listJson, true);
         
@@ -101,7 +101,7 @@ class ListController extends Controller
 
      {  
         $client = new Client();
-        $response = $client->request('PUT', $this->URL.$id, [
+        $response = $client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     //'owner_id' => $request->user()->id,
                     'board_id' => $request->board_id,
@@ -118,7 +118,7 @@ class ListController extends Controller
 
     {
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/lists');
     }
 

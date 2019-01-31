@@ -16,7 +16,7 @@ class CardController extends Controller
     public function __construct()
     {
         $this->ENV_URL = env('API_HELPDESKURL');
-        $this->URL=$this->ENV_URL.'cards/';     
+        $this->URL=$this->ENV_URL.'cards';     
                 // $this->middleware('auth');
     }
     /**
@@ -40,7 +40,7 @@ class CardController extends Controller
     public function CardCreate($listid)
     {        
         $client = new Client();
-        $res = $client->request('GET',env('API_HELPDESKURL').'lists/'.$listid);
+        $res = $client->request('GET',$this->ENV_URL.'lists/'.$listid);
         $listJson=$res->getBody();
         $list=json_decode($listJson, true);        
         $data['list']=$list;
@@ -78,7 +78,7 @@ class CardController extends Controller
      {      
         //return "hello";
         $client = new Client();
-        $res = $client->request('GET',$this->URL.$id);
+        $res = $client->request('GET',$this->URL.'/'.$id);
         $cardJson=$res->getBody();
         $card=json_decode($cardJson, true);        
         $data['cards']=$card;         
@@ -92,7 +92,7 @@ class CardController extends Controller
 
         
         $client = new Client();
-        $res = $client->request('GET', $this->URL.$id);
+        $res = $client->request('GET', $this->URL.'/'.$id);
         $cardJson=$res->getBody();
         $card = json_decode($cardJson, true);
         
@@ -111,7 +111,7 @@ class CardController extends Controller
        // return $request;
       // return $request->card_members;
         $client = new Client();
-        $response = $client->request('PUT',$this->URL.$id, [
+        $response = $client->request('PUT',$this->URL.'/'.$id, [
                     'form_params' => [
                    // 'owner_id' => $request->user()->id,
                    // 'list_id' => $request->list_id,
@@ -130,7 +130,7 @@ class CardController extends Controller
     public function destroy($id)
     {
         $client = new Client();
-        $res = $client->request('DELETE', $this->URL.$id);
+        $res = $client->request('DELETE', $this->URL.'/'.$id);
         return redirect()->back();       
 
         
