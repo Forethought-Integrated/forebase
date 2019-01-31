@@ -52,17 +52,17 @@ class BoardController extends Controller
      public function store(request $request)
 
      { 
-     //return "hello";
-                    $client = new Client();
-                    $response = $client->request('POST', $this->URL, [
-                    'form_params' => [
-                    'owner_id' => $request->user()->id,
-                    'board_name' => $request->board_name,
-                    'board_description'=>$request->board_description,
+     
+            $client = new Client();
+            $response = $client->request('POST', $this->URL, [
+            'form_params' => [
+            'owner_id' => $request->user()->id,
+            'board_name' => $request->board_name,
+            'board_description'=>$request->board_description,
                     ]
-                ]);
-                     // return "hello";
-                    return redirect('/boards');
+        ]);
+                    
+            return redirect('/boards');
      }
 
      public function show($id)
@@ -109,7 +109,7 @@ class BoardController extends Controller
             // $card=json_decode($cardJson,true);
             // $data['card']=$card;
 
-                        $data['list']=NULL; 
+            $data['list']=NULL; 
             $data['card']=NULL;
 
             return view('bcl.board.showBoard',['data'=>$data]);
@@ -127,41 +127,16 @@ class BoardController extends Controller
             // $data['card']=NULL;
             return view('bcl.board.showBoard',['data'=>$data]);
         }
-        // if()
-        // return $listJson;
-        // if($resList==null)
-        // {
-        //     // return $list;
-
-        //    return $list;
-        // }
-        // else
-        // {
-        //     return  $data;
-        //     //return 'hiisasa';
-        // }
-        // if (empty($resList) || count($resList)==0)
-        // {
-        //     return back()->withError('there is no list!');
-        // }
-
-        // $list=json_decode($listJson,true);
-        // return $data['lists']['0']['list_id'];
-
         
     }
 
-    // 
+    
     public function boardListCardIndex($id,$listid)
     {  
-        // return 'hio';    
+            
         $client = new Client();
         $resCard = $client->request('GET','http://localhost:8003/board/list/card/'.$listid);
-        $cardJson=$resCard->getBody();
-        // return $listJson;
-        // return $cardJson;
-        // return response()->json($cardJson);
-
+        $cardJson=$resCard->getBody();        
         $card=json_decode($cardJson,true);
         // return $card;
         // return response()->json($card);
