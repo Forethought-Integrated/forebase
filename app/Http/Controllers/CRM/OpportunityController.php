@@ -12,14 +12,18 @@ use GuzzleHttp\Client;
 class OpportunityController extends Controller
 {
     private $ENV_URL;
-
     private $URL;
+    private $ENV_leadURL;
+    private $leadURL;
 
 
     public function __construct()
     {
         $this->ENV_URL = env('API_CRMURL');
-        $this->URL=$this->ENV_URL.'opportunity';    
+        $this->URL=$this->ENV_URL.'opportunity';
+        $this->ENV_leadURL = env('API_CRMURL');
+        $this->leadURL=$this->ENV_URL.'lead';    
+
     }
     
 
@@ -44,13 +48,23 @@ class OpportunityController extends Controller
     }
 
     
-   public function create()
+    public function create()
     {
-        
         return view('CRM.Opportunity.createOpportunity');
+    }
+    
+    
+    public function createOpportunityLead($leadid)
+    {
+        // return 'hi';
+        $client = new Client();
+        $res = $client->request('GET', $this->leadURL.'/'.$leadid);
+        $leadJson=$res->getBody();
+        $lead = json_decode($leadJson, true);
+        $data['lead']=$lead;
 
-     }
-
+        return view('CRM.Opportunity.createOpportunityLead',compact('data'));
+    }
 
      public function store(Request $request)
 

@@ -60,6 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('lead/{contactid}/{accountid}', 'CRM\LeadController@indexLeadContactAccount');
     Route::resource('campaign', 'CRM\CampaignController');
     Route::resource('opportunity', 'CRM\OpportunityController');
+    Route::get('/opportunity/create/{leadid}', 'CRM\OpportunityController@createOpportunityLead');
+    Route::get('/opportunity/delete/{id}', 'CRM\OpportunityController@destroy');
     Route::resource('customer', 'CRM\AccountController');
     
     //--File Upload & Import TO CSV

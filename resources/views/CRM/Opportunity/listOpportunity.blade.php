@@ -38,19 +38,18 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-             <tr>
-              <th>Opportunity ID</th>
-              <th>Deal Owner</th>
-              <th>Deal Name</th>
-              <th>Account Name</th>
-              <th>Lead ID</th>
-              <th>Campaign ID</th>
-              <th>Contact ID</th>
-              <th>Amount</th>
-              <th>Stage</th>
-                  {{-- <th>Edit</th> --}}
-                  <th>Delete</th>
-                </tr>
+                  <tr>
+                    <th>Opportunity ID</th>
+                    <th>Deal Owner</th>
+                    <th>Deal Name</th>
+                    <th>Account Name</th>
+                    <th>Lead ID</th>
+                    <th>Campaign ID</th>
+                    <th>Contact ID</th>
+                    <th>Amount</th>
+                    <th>Stage</th>
+                    <th>Action</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <?php $no=1;?>
@@ -69,29 +68,56 @@
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('opporyunity'.'/'.$data['opportunity_id'])}}">Edit</a>
                       </td>
-       --}}                <td>
+       --}}                {{-- <td>
                        <form action="{{url('opportunity'.'/'.$data['opportunity_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
+                      </td> --}}
+
+                      <td>
+                        <li class="dropdown notifications-menu" type="none">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i>Action</i>
+                          </a>
+                          <ul class="dropdown-menu" style="padding: 0px 30px 0px 0px;left: -6px;min-width: -webkit-fill-available;">
+                            <li>
+                              <li class="header"></li>
+                              <!-- inner menu: contains the actual data -->
+                              <ul class="menu" type="none">
+                                 <li class="">
+                                  <a href="{{asset('opportunity/'.$data['opportunity_id'].'/edit')}}">
+                                    <i>Edit</i>
+                                  </a>
+                                  <br>
+                                  <a href="{{asset('/opportunity/delete/'.$data['opportunity_id'])}}">
+                                    <i>Delete</i>
+                                  </a>
+                                  
+                                </li>
+                              </ul>
+                            </ul>
+                            </li>
+                          </ul>
+                        </li>
                       </td>
+
                     </tr>
                   @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-              <th>Opportunity ID</th>
-              <th>Deal Owner</th>
-              <th>Deal Name</th>
-              <th>Account Name</th>
-              <th>Lead ID</th>
-              <th>Campaign ID</th>
-              <th>Contact ID</th>
-              <th>Amount</th>
-              <th>Stage</th>
-                  {{-- <th>Edit</th> --}}
-                  <th>Delete</th>
+                    <th>Opportunity ID</th>
+                    <th>Deal Owner</th>
+                    <th>Deal Name</th>
+                    <th>Account Name</th>
+                    <th>Lead ID</th>
+                    <th>Campaign ID</th>
+                    <th>Contact ID</th>
+                    <th>Amount</th>
+                    <th>Stage</th>
+                    <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

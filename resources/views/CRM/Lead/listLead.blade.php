@@ -22,7 +22,7 @@
     <li class="active">Lead LIst</li>
   </ol>
 
-
+{{-- <pre>{{print_r($data)}}</pre> --}}
 @endsection
 
 @section('MainContent')
@@ -46,7 +46,6 @@
                     <th>Comapany Name</th>
                     <th>Mobile No.</th>
                     <th>Email</th>
-                    <th>Delete</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -54,7 +53,7 @@
                   <?php $no=1;?>
                   @foreach($data['lead']['data'] as $data)
                     <tr>
-                      <!-- <td>{{$data['lead_id']}}</td> -->
+                       {{-- <td>{{$data['lead_id']}}</td>  --}}
                       <td>{{$no++}}</td>
                       <td>{{$data['lead_service_code']}}</td>
                       <td><a href="{{ url('lead'.'/'.$data['lead_id'])}}">{{$data['lead_name']}}</a></td>
@@ -62,13 +61,13 @@
                       <td>{{$data['lead_companyName']}}</td>
                       <td>{{$data['lead_mobileNo']}}</td>
                       <td>{{$data['lead_email']}}</td>
-                      <td>
+                      {{-- <td>
                        <form action="{{url('lead'.'/'.$data['lead_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
-                      </td>
+                      </td> --}}
                       <td>
                         <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -83,10 +82,11 @@
                                   <a href="{{asset('/lead/'.$data['lead_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
+                                  <br>
                                   <a href="{{asset('/lead/delete/'.$data['lead_id'])}}">
                                     <i>Delete</i>
                                   </a>
-                                  <a href="{{asset('/account/contact/create/'.$data['lead_id'])}}">
+                                  <a href="{{asset('/opportunity/create/'.$data['lead_id'])}}">
                                     Create Opportunity
                                   </a>
 
@@ -110,7 +110,6 @@
                     <th>Comapany Name</th>
                     <th>Mobile No.</th>
                     <th>Email</th>
-                    <th>Delete</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>

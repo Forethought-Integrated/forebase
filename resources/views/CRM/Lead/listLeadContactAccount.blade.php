@@ -45,7 +45,6 @@
                     <th>Comapany Name</th>
                     <th>Mobile No.</th>
                     <th>Email</th>
-                    <th>Delete</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -64,13 +63,13 @@
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('lead'.'/'.$data['lead_id'])}}">Edit</a>
                       </td> --}}  
-                     <td>
+                     {{-- <td>
                        <form action="{{url('lead'.'/'.$data['lead_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
-                      </td>
+                      </td> --}}
                       <td>
                         <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -115,7 +114,6 @@
                     <th>Comapany Name</th>
                     <th>Mobile No.</th>
                     <th>Email</th>
-                    <th>Delete</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
