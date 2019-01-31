@@ -37,30 +37,33 @@ class ListController extends Controller
 
     }
 
-
-      public function create()
+      public function create($boardname,$boardid)
     {
-        $data['list']=User::select('id','name')->get();
+        $data['boardid']=$boardid;
+        $data['boardname']=$boardname;
+        // $data['list']=User::select('id','name')->get();
         //$User = User::where('list_name',$user->id)->first();
-        return view('bcl.list.createList');
+        return view('bcl.list.createList')->with('data',$data);
+
 
      }
 
      public function store(request $request)
 
      { 
-     // return "hello";
+        // return 'hi';
+     // return $request;
                     $client = new Client();
                     $response = $client->request('POST', $this->URL, [
                     'form_params' => [
-                    'board_id' => $request->user()->id,
-                    'name' => $request->name,                    
-                    'order' => $request->order,                    
-                    'archieved' => $request->archieved,
+                    'board_id' => $request->board_id,
+                    'list_name' => $request->list_name,                    
+                    'list_order' => $request->list_order,                    
+                    'list_archieved' => $request->archieved,
                     ]
                 ]);
                      // return "hello";
-                    return redirect('/lists');
+                    return redirect("/board-detail/$request->board_id");
      }
 
      public function show($id)

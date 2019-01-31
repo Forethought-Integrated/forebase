@@ -34,20 +34,17 @@ class CardController extends Controller
         $card = json_decode($cardJson, true);
         $data['cards']=$card;
         return view('bcl.card.listCard')->with('data',$data);
-
     }
 
    
     public function CardCreate($listid)
-    {
-        // return 'hi';
-         $client = new Client();
+    {        
+        $client = new Client();
         $res = $client->request('GET',env('API_HELPDESKURL').'lists/'.$listid);
         $listJson=$res->getBody();
         $list=json_decode($listJson, true);        
         $data['list']=$list;
         return view('bcl.card.createCard')->with('data',$data);
-
      }
 
 
@@ -58,24 +55,22 @@ class CardController extends Controller
 
     }
 
-     public function store(request $request, $id)
+     public function store(Request $request)
 
      { 
-     // return "hello";
-                   
-                    $client = new Client();
-                    $response = $client->request('POST', $this->URL, [
-                    'form_params' => [
-                    //'list_id' => $request->user()->id,
-                    'card_name' => $request->card_name,
-                    'card_description'=>$request->card_description,
-                    'card_order' => $request->card_order,
-                    'card_members' => $request->card_members,
-                    'card_archieved' => $request->card_archieved,
-                    ]
-                ]);
-                     // return "hello";
-                    return redirect('/board-detail');
+        $client = new Client();
+        $response = $client->request('POST', $this->URL, [
+        'form_params' => [
+        'list_id' => $request->list_id,
+        'card_name' => $request->card_name,
+        'card_description'=>$request->card_description,
+        'card_order' => $request->card_order,
+        'card_members' => $request->card_members,
+        'card_archieved' => $request->card_archieved,
+        ]
+  ]);
+       // return "hello";
+      return redirect("/board-detail/$request->board_id");
      }
 
      public function show($id)
@@ -88,7 +83,7 @@ class CardController extends Controller
         $card=json_decode($cardJson, true);        
         $data['cards']=$card;         
 
-        return view('bcl.board.showBoard',['data'=>$data]);
+        return view('bcl.card.showCard',['data'=>$data]);
      }
 
 
@@ -112,30 +107,36 @@ class CardController extends Controller
      public function update(Request $request,$id)
 
      {  
+      // return $id;
+       // return $request;
+      // return $request->card_members;
         $client = new Client();
         $response = $client->request('PUT',$this->URL.$id, [
                     'form_params' => [
-                    //'owner_id' => $request->user()->id,
-                    'list_id' => $request->list_id,
+                   // 'owner_id' => $request->user()->id,
+                   // 'list_id' => $request->list_id,
                     'card_name' => $request->card_name,
-                    'card_description' => $request->card_description, 
+                    'card_description'=> $request->card_description, 
                     'card_order' => $request->card_order, 
                     'card_members' => $request->card_members,
                     'card_archieved' => $request->card_archieved,                  
                     ]
-        ]);
-        // return response()->json(['success'=>'200']); 
-         return redirect('/board-detail');       
+        ]);        
+         // return redirect("/board-detail/$request->board_id");       
+        return redirect()->back();       
+
      }
 
-      public function destroy($id)
-
+    public function destroy($id)
     {
         $client = new Client();
         $res = $client->request('DELETE', $this->URL.$id);
-        return redirect('/board-detail');
+        return redirect()->back();       
+
+        
     }
 
 }
 
 
+       

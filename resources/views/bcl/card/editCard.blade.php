@@ -30,9 +30,8 @@
               <h3 class="box-title">Enter Detail</h3>
             </div>
       <!-- /.card-header -->
-
       {{-- form--}}
-      <form role="form" action="/board-detail/{{$data['cards']['card_id']}}" method="POST">
+      <form role="form" action="/cards/{{$data['cards']['card_id']}}" method="POST">
         {{ csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -43,7 +42,7 @@
 
                 <div class="form-group">
                   <label for="list_id" >List ID</label>
-                  <input type="text" class="form-control enabelInputField" id="list_id" name="list_id" value="{{$data['cards']['list_id']}}">
+                  <input type="text" class="form-control enabelInputField" id="list_id" name="list_id" value="{{$data['cards']['list_id']}}" disabled>
                 </div>
                 
                 <div class="form-group">
@@ -54,7 +53,7 @@
 
                 <div class="form-group">
                   <label for="description" >Description</label>
-                      <input type="text" class="form-control enabelInputField" id="card_description" name="description" value="{{$data['cards']['card_description']}}">
+                      <input type="text" class="form-control enabelInputField" id="card_description" name="card_description" value="{{$data['cards']['card_description']}}">
                 </div>
 
                 <div class="form-group">
