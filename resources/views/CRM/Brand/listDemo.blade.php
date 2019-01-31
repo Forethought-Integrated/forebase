@@ -36,13 +36,13 @@
 
                 {!!$brand->brand_guidelines!!}
 
-                {{!!$brand->brand_color_palette!!}}
+                {!!$brand->brand_color_palette!!}
 
-                {{!!$brand->brand_typography!!}}
+                {!!$brand->brand_typography!!}
 
-                {{!!$brand->brand_email_signature!!}}
+                {!!$brand->brand_email_signature!!}
 
-                {{!!$brand->brand_disclaimer!!}}
+                {!!$brand->brand_disclaimer!!}
 
                 
              
@@ -67,7 +67,7 @@
   </div>
   {{--  ./Col  --}}
 </div>
-<script>
+<!-- <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor
 
@@ -77,7 +77,7 @@
     });
 
   });
-</script>
+</script> -->
 <!-- /.row -->
 
 @endsection

@@ -2,12 +2,11 @@
 
 // use DB;
 use Illuminate\Database\Seeder;
-use App\User;
-use App\Model\MenuDetail;
-use App\Model\Menu;
-use Illuminate\Database\Eloquent\Model;
 
-use Faker\Factory as Faker;
+
+// use Illuminate\Database\Eloquent\Model;
+
+// use Faker\Factory as Faker;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,8 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(dbseeder::class);
-        $this->call(menuseeder::class);
+        // $this->call(dbseeder::class);
+        // $this->call(menuseeder::class);
+         $this->call(BrandSeeder::class);
+         $this->call(TaskSeeder::class);
+         $this->call(CompanySeeder::class);
+         $this->call(ColorPaletteSeeder::class);
+         $this->call(LogoSeeder::class);
 
         // $this->call(UsersTableSeeder::class);
         // $faker = Faker::create();

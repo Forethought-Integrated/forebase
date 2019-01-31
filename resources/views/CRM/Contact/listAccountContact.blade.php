@@ -62,8 +62,8 @@
                       <td>
                        <form action="{{ url('contact'.'/'.$contact['contact_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn" type="submit">Delete</button>
+                            <!-- <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn remove_btn" type="submit">Delete</button> -->
                         </form>
                         
                       </td>
@@ -81,7 +81,7 @@
                                   <a href="{{asset('/contact/'.$contact['contact_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/contact/create')}}">
+                                  <a href="{{asset('/contact/.delete/'.$contact['contact_id'])}}">
                                     <i>Delete</i>
                                   </a>
                                   <a href="{{asset('/account')}}">
