@@ -8,15 +8,13 @@
 
 @section('ContentHeader(Page_header)')
 
- <h1>
-        CRM
-        
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">CRM</li>
-      </ol>
-
+<h1>
+  CRM
+</h1>
+<ol class="breadcrumb">
+  <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li class="active">CRM</li>
+</ol>
 
 @endsection
 
@@ -25,7 +23,7 @@
   <div class="row" style="padding: 25px">
 
 
-     <div  class="col-md-2">
+    <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/contact" title="">
           <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">

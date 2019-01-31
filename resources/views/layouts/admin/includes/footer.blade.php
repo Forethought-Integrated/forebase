@@ -12,5 +12,6 @@
 </div>
 <!-- ./wrapper -->
 @include('layouts.admin.includes.footerScript')
-</body>
+{{-- </body>
 </html>
+ --}}

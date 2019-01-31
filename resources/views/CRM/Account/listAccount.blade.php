@@ -34,7 +34,6 @@
             <div class="box-header">
               <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
-              <button class="btn remove_btn pull-right" data-toggle="modal" data-target="#fileModal">upload</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,6 +46,7 @@
                   <th>Email</th>
                   <th>Website</th>
                   {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -69,6 +69,37 @@
                           <button class="btn remove_btn " type="submit">Delete</button>
                         </form>
                       </td>
+                      <td>
+                        <li class="dropdown notifications-menu" type="none">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i>Action</i>
+                          </a>
+                          <ul class="dropdown-menu" style="padding: 0px 30px 0px 0px;left: -6px;min-width: -webkit-fill-available;">
+                            <li> --}}
+                              <li class="header"></li>
+                              <!-- inner menu: contains the actual data -->
+                              <ul class="menu" type="none">
+                                 <li class="">
+                                  <a href="{{asset('/account/'.$account['account_id'].'/edit/')}}">
+                                    <i>Edit</i>
+                                  </a>
+                                  <a href="{{asset('/account/create')}}">
+                                    <i>Delete</i>
+                                  </a>
+                                  <a href="{{asset('/account/contact/create/'.$account['account_id'])}}">
+                                    Create Contact
+                                  </a>
+                                  <a href="{{asset('/account/contact/'.$account['account_id'])}}">
+                                    <i>View Contact</i>
+                                  </a>
+
+                                </li>
+                              </ul>
+                            </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -80,6 +111,7 @@
                   <th>Email</th>
                   <th>Website</th>
                   {{-- <th>Edit</th> --}}
+                  <th>Delete</th>
                   <th>Delete</th>
                 </tr>
                 </tfoot>

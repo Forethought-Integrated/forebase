@@ -10,7 +10,7 @@
 
   <h1>
     Account Detail
-    <a id="editFormField" href="/boards/{{$data['boards']['owner_id']}}/edit/" title="">
+    <a id="editFormField" href="/account/{{$data['account']['account_id']}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>
@@ -18,7 +18,6 @@
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Account Detail</li>
   </ol>
-
 @endsection
 
 @section('MainContent')
@@ -40,16 +39,10 @@
               {{-- FormBOXBody --}}
               <div class="box-body">
                 
-               <!--  <div class="form-group">
-                  <label for="name" >Name</label>
-                  <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$data['boards']['name']}}" disabled>
-                </div>
-                
-
                 <div class="form-group">
-                  <label for="description" >Description</label>
-                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['boards']['description']}}" disabled>
-                </div> -->
+                  <label for="name" >Name</label>
+                  <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$data['account']['account_name']}}" disabled>
+                </div>
 
                 <div class="form-group">
                   <label for="accountWebsite" >Website</label>
@@ -71,6 +64,12 @@
                   <label for="accountLandlineNo" >Landline No.</label>
                   <input type="Tell" class="form-control enabelInputField" id="accountLandlineNo" name="accountLandlineNo" value="{{$data['account']['account_landlineNo']}}" disabled>
                 </div>
+
+                <div class="form-group">
+                  <label for="description" >Address</label>
+                  <input type="text" class="form-control enabelInputField" id="description" name="description" value="{{$data['account']['account_address']}}" disabled>
+                </div>
+
 
               </div>
               {{-- ./FormBOXBody --}}

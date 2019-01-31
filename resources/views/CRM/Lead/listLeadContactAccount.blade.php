@@ -22,7 +22,6 @@
     <li class="active">Lead LIst</li>
   </ol>
 
-
 @endsection
 
 @section('MainContent')
@@ -51,8 +50,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <?php $no=1;?>
-                  @foreach($data['lead']['data'] as $data)
+                 <?php $no=1;?>
+                  @foreach($data['lead'] as $data)
                     <tr>
                       <!-- <td>{{$data['lead_id']}}</td> -->
                       <td>{{$no++}}</td>
@@ -62,7 +61,10 @@
                       <td>{{$data['lead_companyName']}}</td>
                       <td>{{$data['lead_mobileNo']}}</td>
                       <td>{{$data['lead_email']}}</td>
-                      <td>
+      {{--                 <td>
+                        <a class="btn btn-small btn-primary" href="{{ url('lead'.'/'.$data['lead_id'])}}">Edit</a>
+                      </td> --}}  
+                     <td>
                        <form action="{{url('lead'.'/'.$data['lead_id'])}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
@@ -75,19 +77,22 @@
                             <i>Action</i>
                           </a>
                           <ul class="dropdown-menu" style="padding: 0px 30px 0px 0px;left: -6px;min-width: -webkit-fill-available;">
-                            <li>
+                            <li> --}}
                               <li class="header"></li>
                               <!-- inner menu: contains the actual data -->
                               <ul class="menu" type="none">
                                  <li class="">
-                                  <a href="{{asset('/lead/'.$data['lead_id'].'/edit/')}}">
+                                  <a href="{{asset('/account/'.$account['account_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/lead/delete/'.$data['lead_id'])}}">
+                                  <a href="{{asset('/account/create')}}">
                                     <i>Delete</i>
                                   </a>
-                                  <a href="{{asset('/account/contact/create/'.$data['lead_id'])}}">
-                                    Create Opportunity
+                                  <a href="{{asset('/account/contact/create/'.$account['account_id'])}}">
+                                    Create Contact
+                                  </a>
+                                  <a href="{{asset('/account/contact/'.$account['account_id'])}}">
+                                    <i>View Contact</i>
                                   </a>
 
                                 </li>
@@ -99,7 +104,7 @@
                       </td>
 
                     </tr>
-                  @endforeach
+                  @endforeach 
                 </tbody>
                 <tfoot>
                 <tr>
