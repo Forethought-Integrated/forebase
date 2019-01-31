@@ -52,7 +52,7 @@
                 <th>Mobile No</th>
                 <th>Landline No</th>
                 <th>Email</th>
-                <th>Delete</th>
+                {{--<th>Delete</th>--}}
                 <th>Action</th>
                 </tr>
                 </thead>
@@ -73,16 +73,7 @@
        --}}                <td>
                        <form action="{{ url('contact'.'/'.$contact['contact_id'])}}" method="post">
                           {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn" type="submit">Delete</button>
-                        </form>
-                        
-                      </td>
-                      
-                       {{--  --}}
-
-                      <td>
-                        <li class="dropdown notifications-menu" type="none">
+                          <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i>Action</i>
                           </a>
@@ -97,7 +88,7 @@
                                   <a href="{{asset('/contact/'.$contact['contact_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/contact/create')}}">
+                                  <a href="{{asset('/contact/delete/'.$contact['contact_id'])}}">
                                     <i>Delete</i>
                                   </a>
                                   <a href="{{asset('/account/'.$contact['contact_id'])}}">
@@ -116,7 +107,15 @@
                             </li>
                           </ul>
                         </li>
+
+                          
+                        </form>
+                        
                       </td>
+                      
+                       {{--  --}}
+
+                      
 
                       {{--  --}}  
 
@@ -132,7 +131,8 @@
                 <th>Landline No</th>
                 <th>Email</th>
                   {{-- <th>Edit</th> --}}
-                  <th>Delete</th>
+                  {{--<th>Delete</th>--}}
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

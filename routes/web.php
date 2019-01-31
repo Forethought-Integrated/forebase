@@ -50,9 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // CRM---------------------------------------------------------------------------------------
     Route::resource('account','CRM\AccountController');
+    Route::get('account/delete/{id}', 'CRM\AccountController@destroy');
     Route::get('account/contact/create/{accountID}','CRM\AccountController@createContactAccount');
     Route::get('account/contact/{accountID}', 'CRM\AccountController@indexAccountContact');
     Route::resource('contact', 'CRM\ContactController');
+    Route::get('contact/delete/{id}', 'CRM\ContactController@destroy');
     // Route::get('account/contact/{accountID}', 'CRM\AccountController@indexAccountContact');
     Route::resource('lead', 'CRM\LeadController');
     Route::get('lead/delete/{id}', 'CRM\LeadController@destroy');

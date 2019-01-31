@@ -82,17 +82,15 @@
         {{-- ./CRM --}}
 
         {{-- HelpDesk --}}
-        <li>
-          {{-- <a href="/board/{{Auth::user()->id}}"> --}}
+        {{--<li>
           <a href="/under-construction">
             <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Marketing Desk</span>
             <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
-        </li>
+        </li>--}}
         {{-- ./HelpDesk --}}
 
         {{-- Brand --}}
@@ -123,7 +121,8 @@
         {{-- ./Admin --}}
 
         {{-- Back --}}
-        <li>
+                          {{-- old helpdesk --}}
+       <!--  <li>
           <a href="/helpdesk">
             <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
@@ -132,13 +131,14 @@
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
-        </li>
+        </li>-->
+         {{-- end of old helpdesk --}}
 
-        <li>
+        <li>  
           <a href="/boards">
             <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
-            <i class="fa "></i> <span>New Helpdesk</span>
+            <i class="fa "></i> <span>Helpdesk</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>

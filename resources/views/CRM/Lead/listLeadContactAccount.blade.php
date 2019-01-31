@@ -85,7 +85,7 @@
                                   <a href="{{asset('/account/'.$account['account_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/account/create')}}">
+                                  <a href="{{asset('/account/')}}">
                                     <i>Delete</i>
                                   </a>
                                   <a href="{{asset('/account/contact/create/'.$account['account_id'])}}">

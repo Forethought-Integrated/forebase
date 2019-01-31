@@ -46,14 +46,15 @@
                   <th>Email</th>
                   <th>Website</th>
                   {{-- <th>Edit</th> --}}
-                  <th>Delete</th>
-                  <th>Delete</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                  <?php $no=1;?>
                   @foreach($data['account']['data'] as $account)
                     <tr>
-                      <td>{{$account['account_id']}}</td>
+                      {{-- <td>{{$account['account_id']}}</td> --}}
+                      <td>{{$no++}}</td>
                       <td><a href="{{ url('account'.'/'.$account['account_id'])}}">{{$account['account_name']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
                       <td>{{$account['account_mobileNo']}}</td>
@@ -62,20 +63,15 @@
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['account_id'])}}">Edit</a>
                       </td>
-       --}}                <td>
-                       <form action="{{url('account'.'/'.$account['account_id'])}}" method="post">
-                          {{csrf_field()}}
-                            @method('DELETE')
-                          <button class="btn remove_btn " type="submit">Delete</button>
-                        </form>
-                      </td>
+       --}}            
+
                       <td>
                         <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i>Action</i>
                           </a>
                           <ul class="dropdown-menu" style="padding: 0px 30px 0px 0px;left: -6px;min-width: -webkit-fill-available;">
-                            <li> --}}
+                            <li> 
                               <li class="header"></li>
                               <!-- inner menu: contains the actual data -->
                               <ul class="menu" type="none">
@@ -83,7 +79,7 @@
                                   <a href="{{asset('/account/'.$account['account_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/account/create')}}">
+                                  <a href="{{asset('/account/delete/'.$account['account_id'])}}">
                                     <i>Delete</i>
                                   </a>
                                   <a href="{{asset('/account/contact/create/'.$account['account_id'])}}">
@@ -111,8 +107,8 @@
                   <th>Email</th>
                   <th>Website</th>
                   {{-- <th>Edit</th> --}}
-                  <th>Delete</th>
-                  <th>Delete</th>
+                  <th>Action</th>
+
                 </tr>
                 </tfoot>
               </table>
