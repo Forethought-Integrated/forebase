@@ -10,7 +10,6 @@
 
   <h1>
     Account Detail
-    
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -31,7 +30,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/account/{{$data['account']['id']}}" method="POST">
+      <form role="form" action="/account/{{$data['account']['account_id']}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

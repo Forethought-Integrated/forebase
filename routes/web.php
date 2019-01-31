@@ -49,9 +49,15 @@ Route::group(['middleware' => ['auth']], function () {
     // ./Notofication
 
     // CRM---------------------------------------------------------------------------------------
-    Route::resource('account', 'CRM\AccountController');
+    Route::resource('account','CRM\AccountController');
+    Route::get('account/contact/create/{accountID}','CRM\AccountController@createContactAccount');
+    Route::get('account/contact/{accountID}', 'CRM\AccountController@indexAccountContact');
     Route::resource('contact', 'CRM\ContactController');
+    // Route::get('account/contact/{accountID}', 'CRM\AccountController@indexAccountContact');
     Route::resource('lead', 'CRM\LeadController');
+    Route::get('lead/delete/{id}', 'CRM\LeadController@destroy');
+    Route::get('lead/{contactid}/{accountid}/create', 'CRM\LeadController@createLeadContactAccount');
+    Route::get('lead/{contactid}/{accountid}', 'CRM\LeadController@indexLeadContactAccount');
     Route::resource('campaign', 'CRM\CampaignController');
     Route::resource('opportunity', 'CRM\OpportunityController');
     Route::resource('customer', 'CRM\AccountController');

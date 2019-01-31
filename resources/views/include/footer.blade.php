@@ -8,6 +8,7 @@
 
   <!-- Control Sidebar -->
   {{-- @include('layouts.admin.includes.controlSidebar') --}}
+  {{-- @include('includes.controlSidebar') --}}
   <!-- /.control-sidebar -->
 {{-- </div> --}}
 <!-- ./wrapper -->

@@ -10,13 +10,11 @@
 
   <h1>
     Account Form
-    
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
     <li class="active">Account Form</li>
   </ol>
-
 
 @endsection
 
@@ -26,9 +24,9 @@
   <div class="col-md-12">
     <!-- Horizontal Form -->
     <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Enter Detail</h3>
-            </div>
+      <div class="box-header with-border">
+        <h3 class="box-title">Enter Detail</h3>
+      </div>
       <!-- /.card-header -->
 
       {{-- form--}}

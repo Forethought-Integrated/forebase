@@ -45,6 +45,33 @@ class AccountController extends Controller
 
     }
 
+    public function indexAccountContact($accountid)
+    { 
+        $client = new Client();
+        $res = $client->request('GET', $this->URL.'/contact/'.$accountid);
+        $accountJson=$res->getBody();
+        $account = json_decode($accountJson, true);
+        // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
+        $data['contact']=$account;
+        // return $data;
+        $data['fileModalTitle']='File Upload';
+        $data['fileUrl']=url('/account/uploadFile');
+        // return view('CRM.Account.listAccount')->with('data', $data); // change on addition upload funtion on 11/jan/2019
+        return view('CRM.Contact.listAccountContact',compact('data'));
+    }
+
+    public function createContactAccount($accountID)
+    {
+        $client = new Client();
+        $res = $client->request('GET', $this->URL.'/'.$accountID);
+        $accountJson=$res->getBody();
+        $account = json_decode($accountJson, true);
+        // $accountData['dataArray']=$account;
+        $data['account']=$account;
+        // return $data;
+        return view('CRM.Contact.createContactAccount',compact('data'));
+    }
+
 
       public function create()
     {
@@ -161,7 +188,6 @@ class AccountController extends Controller
             $file= storage_path('app/'.$storedFilePath);
             // return  count(Helper::csvToArray($file));
             $dataArr = Helper::csvToArray($file);
-            return $dataArr;
             $client = new Client();
             foreach ($dataArr as $data) {
                 $response = $client->request('POST', $this->URL, [

@@ -137,7 +137,7 @@
           </li>
 
 
-          <!-- Notifications: style can be found in dropdown.less -->
+          {{-- <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -179,7 +179,7 @@
               <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
-
+ --}}
           <!-- Tasks: style can be found in dropdown.less -->
 
           <li class="dropdown tasks-menu">
