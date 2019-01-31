@@ -96,7 +96,7 @@ class BoardController extends Controller
         $data['board']=$board;  
         // return $data['boards']['board_id'];
         // Get List
-        $resList = $client->request('GET'$ENV_URL.'board/list/'.$data['board']['board_id']);
+        $resList = $client->request('GET',$ENV_URL.'board/list/'.$data['board']['board_id']);
         $listJson=$resList->getBody();
         $list=json_decode($listJson,true);
         if(empty($list))
