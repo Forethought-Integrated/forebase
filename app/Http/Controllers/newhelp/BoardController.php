@@ -118,7 +118,7 @@ class BoardController extends Controller
         {
                 $data['list']=$list; 
              // Get all card of First List
-            $resCard = $client->request('GET',$ENV_URL.'board/list/card/'.$data['list']['0']['list_id']);
+            $resCard = $client->request('GET',$this->ENV_URL.'board/list/card/'.$data['list']['0']['list_id']);
             $cardJson=$resCard->getBody();
             $card=json_decode($cardJson,true);
             $data['card']=$card;
@@ -135,7 +135,7 @@ class BoardController extends Controller
     {  
             
         $client = new Client();
-        $resCard = $client->request('GET',$ENV_URL.'board/list/card/'.$listid);
+        $resCard = $client->request('GET',$this->ENV_URL.'board/list/card/'.$listid);
         $cardJson=$resCard->getBody();        
         $card=json_decode($cardJson,true);
         // return $card;
