@@ -52,6 +52,7 @@
                                 @endif
                             </div>
                         </div>
+                       
 
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -60,6 +61,24 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                         <div class="form-group">
+                            <label for="captcha" class="col-md-4 control-label text-md-right">Captcha</label>
+                            <div class="col-md-6">
+                            {!! Recaptcha::render() !!}
+                        </div>
+
+
+                        </div>
+
+                        
+                        </div>                  
+
+
+        
+
+
+                        </script>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
