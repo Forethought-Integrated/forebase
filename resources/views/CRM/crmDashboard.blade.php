@@ -126,6 +126,24 @@
       </div>
     </div>
 
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/templates" title="">
+          <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
+          <center>Template</center>
+        </a>
+      </div>
+    </div>
+
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="/templatesgrid" title="">
+          <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
+          <center>Template Grid</center>
+        </a>
+      </div>
+    </div>
+
     
     
 

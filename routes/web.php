@@ -74,7 +74,10 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('/crm/task/{id}', function () {
     //     return 'hehe';
     // });
-
+    Route::resource('templates','Template\TemplateController');
+    Route::get('templatesgrid','Template\TemplateController@indexGrid');
+    Route::get('templatesgrid/{templateid}',"Template\TemplateController@editGrid");
+    // Route::get('/crm/templates/{id}','Template\TemplateController@show');
     Route::resource('/crm/task/', 'Task\TaskController');
     Route::get('/crm/task/{id}', 'Task\TaskController@show');
     Route::get('/crm/task/{id}/edit', 'Task\TaskController@edit');

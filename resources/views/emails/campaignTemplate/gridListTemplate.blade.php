@@ -9,58 +9,37 @@
 @section('ContentHeader(Page_header)')
 
  <h1>
-        Brand
+       Template List
+        <a id="editFormField" href="/templatesgrid/{{$data['template']['0']->template_id}}/edit/" title="">
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Brand</li>
+        <li class="active">Template</li>
       </ol>
-
-
+{{-- {{$data['template']['0']['template_body']}} --}}
+{{-- {{print_r($data['template']['0']->template_body)}} --}}
+{{-- <pre>{{print_r($data)}}</pre> --}}
 @endsection
 
 @section('MainContent')
 
   <div class="row" style="padding: 25px">
+    @foreach($data['template'] as $template)
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/brands" title="">
+        <a href="/templates/{{$template->template_id}}/edit/" title="">
           <img src="{{asset("/img/marketing/brandguidelines.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        
-      </div>
-    </div>
-
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/colorpalettes" title="">
-          <img src="{{asset("/img/marketing/colorpalettes.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-        
+        <a href="">{{$template->template_body}}</a>
+        {{-- {{$template['template_body']}} --}}
       </div>
     </div>
 
 
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/logos" title="">
-          <img src="{{asset("/img/marketing/logo.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-        
-      </div>
-    </div>
-      
-
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/companies" title="">
-          <img src="{{asset("/img/marketing/company.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-        
-      </div>
-    </div>
+    @endforeach
+   
       
     
     

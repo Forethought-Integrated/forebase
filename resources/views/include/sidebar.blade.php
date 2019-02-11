@@ -96,7 +96,7 @@
         {{-- Brand --}}
         <li>
           <a href="/marketing">
-            <img src="{{asset("/img/sidebar/marketing.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+            <img src="{{asset("/img/sidebar/Brand.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Brand</span>
             <span class="pull-right-container">
@@ -110,7 +110,7 @@
         {{-- Admin --}}
         <li>
           <a href="/administration">
-            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+            <img src="{{asset("/img/sidebar/Admin.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Admin</span>
             <span class="pull-right-container">
@@ -136,7 +136,7 @@
 
         <li>  
           <a href="/boards">
-            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+            <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Helpdesk</span>
             <span class="pull-right-container">
@@ -151,7 +151,7 @@
         {{-- Notification --}}
         <li>
           <a href="/notification">
-            <img src="{{asset("/img/sidebar/administration.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+            <img src="{{asset("/img/sidebar/Notification.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Notification</span>
             <span class="pull-right-container">

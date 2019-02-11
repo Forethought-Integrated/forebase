@@ -35,9 +35,9 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/users" title="">
-          <img src="{{asset("/img/administration/users.png")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/user.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>User</strong>
+        
       </div>
     </div>
 
@@ -45,9 +45,9 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/roles" title="">
-          <img src="{{asset("/img/administration/role.png")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/role.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Role</strong>
+      
       </div>
     </div>
       
@@ -55,27 +55,27 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menus" title="">
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Menu</strong>
+        
       </div>
     </div>
 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menudetails" title="">
-          <img src="{{asset("/img/administration/menudetail.png")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/customize.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Customize Menu</strong>
+        
       </div>
     </div>
 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/datamapper" title="">
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/mapper.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <strong>Mapper</strong>
+        
       </div>
     </div>
 
