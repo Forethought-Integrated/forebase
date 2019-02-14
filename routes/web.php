@@ -3,7 +3,7 @@
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => 'true']);
 use GuzzleHttp\Client;
 use App\Model\Task;
 // Route::middleware('auth')->group(function () {
@@ -92,15 +92,20 @@ Route::group(['middleware' => ['auth']], function () {
     // ./Marketing
 
     // Social Blade
-    Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');
-    Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
-    Route::resource('/social', 'Post\PostController');
-    // --Comment Blade
-    Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
-    Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
-    Route::resource('/comment', 'Comment\CommentController');
-    Route::resource('/postreaction', 'PostReaction\PostReactionController');
-    Route::resource('/reaction', 'Reaction\ReactionController');
+    Route::group(['middleware' => ['permission:Files']], function () {
+
+        Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');
+        Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
+        Route::resource('/social', 'Post\PostController');
+        // --Comment Blade
+        Route::put('/comment/{id}', 'Comment\CommentController@update')->name('editComment');
+        Route::delete('/comment/{id}', 'Comment\CommentController@destroy')->name('deleteComment');
+        Route::resource('/comment', 'Comment\CommentController');
+        Route::resource('/postreaction', 'PostReaction\PostReactionController');
+        Route::resource('/reaction', 'Reaction\ReactionController');
+
+    });
+    
     // ./Social Blade
 
     // User Profile
@@ -133,9 +138,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('companies','Company\CompanyController');
     Route::get('/send/email', 'Home\HomeController@mail');
 
-    Route::get('/knowledge', function () {
-    return view('/knowledge/knowledge');
-});
+    // Route::group(['middleware' => ['role:Admin']], function () {
+    Route::group(['middleware' => ['permission:Files']], function () {
+    //
+        Route::get('/knowledge', function () {
+            return view('/knowledge/knowledge');
+        });
+    });
+    
 
 
 route::resource('boards','newhelp\BoardController');
@@ -254,3 +264,6 @@ Route::get('/socialjsond', function () {
 
 });
 // ./testing
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -43,6 +43,7 @@
         </li> --}}
 
         {{-- Social --}}
+        @can('SocialPost')
         <li>
           <a href="/social">
              <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -53,9 +54,11 @@
             </span>
           </a>
         </li>
+        @endcan
         {{-- ./social --}}
 
         {{-- File Manager --}}
+        @can('FileManager')
         <li>
           <a href="/knowledge">
             <img src="{{asset("/img/sidebar/File_Manager.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -66,9 +69,11 @@
             </span>
           </a>
         </li>
+        @endcan
         {{-- ./File Manager --}}
 
         {{-- CRM --}}
+        @can('CRM')
         <li>
           <a href="/crm">
             <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -79,6 +84,7 @@
             </span>
           </a>
         </li>
+        @endcan
         {{-- ./CRM --}}
 
         {{-- HelpDesk --}}
@@ -94,6 +100,7 @@
         {{-- ./HelpDesk --}}
 
         {{-- Brand --}}
+        @can('Brand')
         <li>
           <a href="/marketing">
             <img src="{{asset("/img/sidebar/Brand.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -104,10 +111,12 @@
             </span>
           </a>
         </li>
+        @endcan
         {{-- ./Brand --}}
 
 
         {{-- Admin --}}
+        @can('Administration')
         <li>
           <a href="/administration">
             <img src="{{asset("/img/sidebar/Admin.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -118,6 +127,8 @@
             </span>
           </a>
         </li>
+        @endcan
+
         {{-- ./Admin --}}
 
         {{-- Back --}}
@@ -133,7 +144,7 @@
           </a>
         </li>-->
          {{-- end of old helpdesk --}}
-
+        @can('Helpdesk')
         <li>  
           <a href="/boards">
             <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
@@ -144,6 +155,7 @@
             </span>
           </a>
         </li>
+        @endcan
           
         {{-- ./Back --}}
 

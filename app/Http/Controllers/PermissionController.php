@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Auth;
 
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+// use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Permission;
+use App\Model\SpatiePermission\Role;
+use App\Model\SpatiePermission\Permission;
 
 use Session;
 
