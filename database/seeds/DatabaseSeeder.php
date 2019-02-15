@@ -18,11 +18,24 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(dbseeder::class);
         // $this->call(menuseeder::class);
-         $this->call(BrandSeeder::class);
-         $this->call(TaskSeeder::class);
-         $this->call(CompanySeeder::class);
-         $this->call(ColorPaletteSeeder::class);
-         $this->call(LogoSeeder::class);
+        //  $this->call(BrandSeeder::class);
+        //  $this->call(TaskSeeder::class);
+        //  $this->call(CompanySeeder::class);
+        //  $this->call(ColorPaletteSeeder::class);
+        //  $this->call(LogoSeeder::class);
+
+
+        // these are the Permissions Seeder
+         $this->call(Usertableseeder::class);
+         $this->call(PermissionSeeder::class);
+         $this->call(Roletableseeder::class); 
+         $this->call(RoleHasPermissiontableseeder::class);
+         $this->call(ModelHasRoletableseeder::class);
+
+         // $this->call(ModelHasPermissiontableseeder::class);
+         //end of permission seeder
+
+         
 
         // $this->call(UsersTableSeeder::class);
         // $faker = Faker::create();
