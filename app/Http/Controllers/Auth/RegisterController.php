@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+// use Illuminate\Foundation\Auth\Session;
+use Session;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
+
+
 class RegisterController extends Controller
 {
     /*
@@ -23,12 +30,35 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    // Vikram Overiding RegistersUsers Trits Method 14-feb-2019
+    // protected function registered(Request $request, $user)
+    // {
+    //     //
+    //     Session::flash('flash_message', "Thanks, {$request->user()->name}! You've been registered and logged in."); // or however else you want to flash your message
+
+    // }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user); // use for auto login AFTER REGISTRATION
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    // Vikram Overiding RegistersUsers Trits Method 14-feb-2019
+
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/registered-succesfully';
 
     /**
      * Create a new controller instance.
@@ -52,7 +82,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'g-recaptcha-response'=>'required|recaptcha',
+            // 'g-recaptcha-response'=>'required|recaptcha',
         ]);
     }
 

@@ -3,11 +3,15 @@
 //     return view('welcome');
 // });
 
+// Auth::routes(['verify' => 'true']);
 Auth::routes(['verify' => 'true']);
 use GuzzleHttp\Client;
 use App\Model\Task;
+Route::get('/registered-succesfully', function () {
+    return view('/auth/registeredView');
+    });
 // Route::middleware('auth')->group(function () {
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','verified']], function () {
    
     // Route::get('/', function () {
 
@@ -20,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     //     // return $taskData;
     // return view('/dashboard/dashboard');
     // });
+
+    Route::get('/', 'Home\HomeController@index');
 
     Route::get('/crm', function () {
     return view('/CRM/crmDashboard');
@@ -194,7 +200,6 @@ Route::get('/helpdesk', function () {
 
 });
 
-Route::get('/', 'Home\HomeController@index');
 
 
 
