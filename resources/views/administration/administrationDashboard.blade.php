@@ -22,6 +22,8 @@
 
 @section('MainContent')
 
+@can('permissions')
+
   <div class="row" style="padding: 25px">
 
     <div  class="col-md-2">
@@ -31,7 +33,9 @@
         </a>
       </div>
     </div>
+@endcan
 
+ @can('users')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/users" title="">
@@ -40,7 +44,9 @@
         
       </div>
     </div>
-
+  @endcan
+    
+  @can('roles')
 
     <div  class="col-md-2">
       <div class="column col_logo">
@@ -50,8 +56,9 @@
       
       </div>
     </div>
+   @endcan
       
-
+  @can('menus')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menus" title="">
@@ -60,7 +67,9 @@
         
       </div>
     </div>
+  @endcan
 
+  @can('menudetails')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menudetails" title="">
@@ -69,6 +78,9 @@
         
       </div>
     </div>
+  @endcan
+
+  @can('datamapper')
 
     <div  class="col-md-2">
       <div class="column col_logo">
@@ -78,6 +90,7 @@
         
       </div>
     </div>
+    @endcan
 
       
     

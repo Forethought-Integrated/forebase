@@ -7,8 +7,8 @@
 @endsection
 
 @section('ContentHeader(Page_header)')
-
- <h1>
+    
+     <h1>
         Brand
         <small>Control panel</small>
       </h1>
@@ -22,6 +22,8 @@
 
 @section('MainContent')
 
+@can('BrandGuidelines')
+
   <div class="row" style="padding: 25px">
 
     <div  class="col-md-2">
@@ -32,7 +34,9 @@
         
       </div>
     </div>
+    @endcan
 
+    @can('ColorPalettes')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/colorpalettes" title="">
@@ -41,8 +45,9 @@
         
       </div>
     </div>
+    @endcan
 
-
+   @can('Logos')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/logos" title="">
@@ -51,8 +56,9 @@
         
       </div>
     </div>
+    @endcan
       
-
+    @can('Company')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/companies" title="">
@@ -61,6 +67,7 @@
         
       </div>
     </div>
+    @endcan
       
     
     

@@ -22,7 +22,7 @@
 
   <div class="row" style="padding: 25px">
 
-
+ @can('Contacts')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/contact" title="">
@@ -30,10 +30,11 @@
         </a>
       </div>
     </div>
+  @endcan
 
 
 
-
+  @can('Accounts')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/account" title="">
@@ -41,10 +42,11 @@
         </a>
       </div>
     </div>
+  @endcan
 
 
 
-
+  @can('Leads')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/lead" title="">
@@ -52,8 +54,9 @@
         </a>
       </div>
     </div>
+  @endcan
 
-
+  @can('Opportunities')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/opportunity" title="">
@@ -61,9 +64,10 @@
         </a>
       </div>
     </div>
+  @endcan
 
     
-      
+   @can('Campaigns')   
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/campaign" title="">
@@ -71,6 +75,7 @@
         </a>
       </div>
     </div>
+    @endcan
 
 
 

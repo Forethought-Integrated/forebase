@@ -173,6 +173,21 @@
         </li>
         {{-- ./Notification --}}
 
+        {{--Task start--}}
+
+         <li>
+          <a href="/crm/task">
+            <img src="{{asset("/img/sidebar/Task.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Task</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+
+        {{--Task-End--}}
+
 
 
 

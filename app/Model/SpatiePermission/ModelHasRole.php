@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Model\Spatie\Permission;
+namespace App\Model\SpatiePermission;
 
 use Illuminate\Database\Eloquent\Model;
 
 class ModelHasRole extends Model
 {
-    //
-    protected $table = 'model_has_roles';
     
+    // protected $primaryKey = 'role_id';
+    protected $fillable=['model_type','model_id'];    
+    public $timestamps = false;
 }
