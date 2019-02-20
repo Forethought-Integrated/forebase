@@ -11,6 +11,8 @@ use Spatie\Permission\Traits\HasRoles;
 // Forethought-vikram added for passport   05/dec/18
 use Laravel\Passport\HasApiTokens;
 // ./Forethought-vikram added for passport   05/dec/18
+use Illuminate\Support\Facades\Hash;
+
 
 
 
@@ -44,9 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function setPasswordAttribute($password)
-{   
-    $this->attributes['password'] = bcrypt($password);
-}
+    {   
+        // $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = Hash::make($password);
+    }
 
 
 

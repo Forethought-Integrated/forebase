@@ -12,6 +12,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use App\Notifications\RegisterationNotification;
+
 
 
 
@@ -92,12 +94,27 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    // protected function create(array $data)
+    // {
+    //     return User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         // 'password' => Hash::make($data['password']),
+    //         'password' => $data['password'],
+    //     ]);
+    // }
+
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            // 'password' => Hash::make($data['password']),
+            'password' => $data['password'],
         ]);
+
+        $user->notify(new RegisterationNotification('/users/'.$user->id));
+
+        return $user;
     }
 }

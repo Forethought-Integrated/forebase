@@ -26,14 +26,39 @@
         </div> --}}
         <!-- /.box-header -->
         {{-- <a href="{{$notification->data['url']}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}"> --}}
-            <div class="box-body">
-             <span class="fa fa-users text-aqua">{{$notification->data['type']}} with Subject: <a href="{{$notification->data['url']}}"> <b><i style="font-size: 15px">{{$notification->data['subject']}}</i></b> </a> has been assigned to you by <a href="{{$notification->data['assignedByUrl']}}">{{$notification->data['assignedBy']}}</a> with due date {{$notification->data['taskEndDate']}}
-            </div>
-        {{-- </a>  --}}
-        {{-- task with subject:value has been assigned to you by himanshu with due date...... (notification date:time) --}}
-        <div class="pull-right">
+          @if($notification->type=='App\Notifications\RegisterationNotification')
+          <div class="box-body">
+            <a href="{{$notification->data['url']}}"><span class="fa fa-users text-aqua">{{$notification->data['subject']}}</span></a>
+          </div>
+
+          <div class="pull-right">
           <a href="{{$notification->read_at ? asset("/notification-mark-unread-icon/$notification->id") : asset("/notification-mark-read-icon/$notification->id")}}"><i class="fa {{$notification->read_at ? 'fa-circle-o' : 'fa-circle'}}"></i></a>
         </div>
+          @endif
+          @if($notification->type=='App\Notifications\TaskNotification')
+            {{-- Task --}}
+             <div class="box-body">
+             <span class="fa fa-users text-aqua">{{$notification->data['type']}} with Subject: <a href="{{$notification->data['url']}}"> <b><i style="font-size: 15px">{{$notification->data['subject']}}</i></b> </a> has been assigned to you by <a href="{{$notification->data['assignedByUrl']}}">{{$notification->data['assignedBy']}}</a> with due date {{$notification->data['taskEndDate']}}</span>
+            </div>
+
+            <div class="pull-right">
+              <a href="{{$notification->read_at ? asset("/notification-mark-unread-icon/$notification->id") : asset("/notification-mark-read-icon/$notification->id")}}"><i class="fa {{$notification->read_at ? 'fa-circle-o' : 'fa-circle'}}"></i></a>
+            </div>
+          @endif
+          {{-- Working --}}
+            {{-- <div class="box-body">
+             <span class="fa fa-users text-aqua">{{$notification->data['type']}} with Subject: <a href="{{$notification->data['url']}}"> <b><i style="font-size: 15px">{{$notification->data['subject']}}</i></b> </a> has been assigned to you by <a href="{{$notification->data['assignedByUrl']}}">{{$notification->data['assignedBy']}}</a> with due date {{$notification->data['taskEndDate']}}
+            </div> --}}
+          {{-- Working --}}
+
+        {{-- </a>  --}}
+        {{-- task with subject:value has been assigned to you by himanshu with due date...... (notification date:time) --}}
+          {{-- Working --}}
+        {{-- <div class="pull-right">
+          <a href="{{$notification->read_at ? asset("/notification-mark-unread-icon/$notification->id") : asset("/notification-mark-read-icon/$notification->id")}}"><i class="fa {{$notification->read_at ? 'fa-circle-o' : 'fa-circle'}}"></i></a>
+        </div> --}}
+          {{-- Working --}}
+
 
         <!-- /.box-body -->
       </div>

@@ -98,7 +98,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     // ./Marketing
 
     // Social Blade
-    Route::group(['middleware' => ['permission:Files']], function () {
+    Route::group(['middleware' => ['permission:FileManager']], function () {
 
         Route::get('/socialdel/{post_id}', 'Post\PostController@destroy');
         Route::post('/social/reaction/{id}', 'Post\PostController@reaction');
@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/send/email', 'Home\HomeController@mail');
 
     // Route::group(['middleware' => ['role:Admin']], function () {
-    Route::group(['middleware' => ['permission:Files']], function () {
+    Route::group(['middleware' => ['permission:FileManager']], function () {
     //
         Route::get('/knowledge', function () {
             return view('/knowledge/knowledge');

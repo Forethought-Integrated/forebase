@@ -18,6 +18,8 @@
 
 @section('MainContent')
 
+{{-- <pre>{{print_r($roles)}}</pre> --}}
+
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -34,7 +36,7 @@
 
                     <td>{{ $role->name }}</td>
 
-                    <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
+                    <td>{{ str_replace(array('[',']','"'),' ', $role->permissions()->pluck('name')) }} </td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                     <td>
                     <a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
 

@@ -5,7 +5,7 @@
         <span class="logo-mini"><b>MD</b></span>
         <!-- logo for regular state and mobile devices -->
         {{-- <span class="logo-lg"><b>Admin</b>LTE</span> --}}
-        <span class="logo-lg"><b>MASTECHDIGITAL</b></span>
+        <span class="logo-lg"><b>MASTECH DIGITAL</b></span>
   </a>
 {{-- ./Logo --}}
 

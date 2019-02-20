@@ -68,9 +68,10 @@ class RoleController extends Controller {
             $role->givePermissionTo($p);
         }
 
-        return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' added!'); 
+        // return redirect()->route('roles.index')
+        //     ->with('flash_message',
+        //      'Role'. $role->name.' added!'); 
+        return redirect()->route('roles.index'); 
     }
 
     /**
@@ -127,9 +128,12 @@ class RoleController extends Controller {
             $role->givePermissionTo($p);  //Assign permission to role
         }
 
-        return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' updated!');
+        // return redirect()->route('roles.index')
+        //     ->with('flash_message',
+        //      'Role'. $role->name.' updated!');
+
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -143,9 +147,10 @@ class RoleController extends Controller {
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role deleted!');
+        // return redirect()->route('roles.index')
+        //     ->with('flash_message',
+        //      'Role deleted!');
 
+        return redirect()->route('roles.index');
     }
 }
