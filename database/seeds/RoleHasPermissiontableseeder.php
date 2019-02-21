@@ -128,7 +128,7 @@ class RoleHasPermissiontableseeder extends Seeder
 
         $role=new RoleHasPermission();
         $role->permission_id='2';
-        $role->role_id='3;
+        $role->role_id='3';
         $role->save();
 
 
