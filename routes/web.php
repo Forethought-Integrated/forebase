@@ -35,6 +35,11 @@ Route::group(['middleware' => ['auth','verified']], function () {
     return view('underConstruction');
     });
 
+    Route::get('/knowledgemanager', function () {
+    return view('/fileManager/index');
+    // return view('/fileManager/index');
+    });
+
     // Administration-----------------------------------------------------------------------
     Route::get('/administration', function () {
         return view('administration.administrationDashboard');

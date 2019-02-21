@@ -117,6 +117,21 @@ class RoleHasPermissiontableseeder extends Seeder
         $role->role_id='1';
         $role->save();
 
+        // File Manager Role 
+
+        $role=new RoleHasPermission();
+        $role->permission_id='3';
+        $role->role_id='2';
+        $role->save();
+
+        // \Social Role 
+
+        $role=new RoleHasPermission();
+        $role->permission_id='2';
+        $role->role_id='3;
+        $role->save();
+
+
 
     }
 }

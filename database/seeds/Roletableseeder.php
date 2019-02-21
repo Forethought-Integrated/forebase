@@ -23,5 +23,16 @@ class Roletableseeder extends Seeder
        $role->name='Admin';
        $role->guard_name='web';
        $role->save();
+
+       $role=new Role;
+       // $role->id='1';
+       $role->name='FileManager';
+       $role->guard_name='web';
+       $role->save();
+
+       $role=new Role;
+       $role->name='SocialPost';
+       $role->guard_name='web';
+       $role->save();
     }
 }

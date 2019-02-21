@@ -17,10 +17,14 @@
      
                 <!-- Content Header (Page header) -->
 
-
+<center>
 <h1>Welcome</h1>
 
-You Are Register Succesfully, Acctivate Your Account on by clicking on link send to your email ID
+Thank you for registering!
+<br>
+You have registered sucessfully,to activate your account click on the link sent to your registered email ID.
+</center>
+{{-- //You are Register Succesfully, Acctivate Your Account on by clicking on link send to your email ID --}}
               
 
 
