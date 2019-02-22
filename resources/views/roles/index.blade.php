@@ -1,4 +1,3 @@
-{{-- @extends('layouts.vkadminApp') --}}
 @extends('layouts.adminApp')
 
 @section('title', '| Roles')
@@ -17,8 +16,6 @@
 @endsection
 
 @section('MainContent')
-
-{{-- <pre>{{print_r($roles)}}</pre> --}}
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::get('/knowledgemanager', function () {
     return view('/fileManager/index');
+        // return 'hi';
     // return view('/fileManager/index');
     });
 

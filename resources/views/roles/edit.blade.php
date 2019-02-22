@@ -15,26 +15,35 @@
 
 @section('MainContent')
 
-    <div class="row">
+     <div class="row">
         <div class="col-md-12">
            {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
 
-    <div class="form-group">
-        {{ Form::label('name', 'Role Name') }}
-        {{ Form::text('name', null, array('class' => 'form-control')) }}
-    </div>
+            <div class="form-group">
+                {{ Form::label('name', 'Role Name') }}
+                {{ Form::text('name', null, array('class' => 'form-control')) }}
+            </div>
 
-    <h5><b>Assign Permissions</b></h5>
-    @foreach ($permissions as $permission)
+            <h5><b>Assign Permissions</b></h5>
+            <?php $i=1;?>
+            <div class='form-group'>
+                <div class="row">
+                    @foreach ($permissions as $permission)
+                        <div class='col-md-3'>
+                            {{Form::checkbox('permissions[]',  $permission->id, $role->permissions ) }}
+                            {{Form::label($permission->name, ucfirst($permission->name)) }}<br>
+                        </div>
+                        @if($i++ %4==0)
+                            </div>
+                            <div class='row'>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
 
-        {{Form::checkbox('permissions[]',  $permission->id, $role->permissions ) }}
-        {{Form::label($permission->name, ucfirst($permission->name)) }}<br>
-
-    @endforeach
-    <br>
-    {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
-
-    {{ Form::close() }}   
+            {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
+        
+            {{ Form::close() }}   
         </div>
 
     </div>

@@ -24,36 +24,35 @@
 
     <div class="row">
         <div class="col-md-12">
-          {{ Form::open(array('url' => 'roles')) }}
+            {{ Form::open(array('url' => 'roles')) }}
 
-    <div class="form-group">
-        {{ Form::label('name', 'Name') }}
-        {{ Form::text('name', null, array('class' => 'form-control')) }}
-    </div>
-    <h5><b>Assign Permissions</b></h5>
-    <?php $i=1;?>
-    <div class='form-group'>
-        <div class="row">
-            @foreach ($permissions as $permission)
-            <div class='col-md-3'>
-                {{ Form::checkbox('permissions[]',  $permission->id ) }}
-                {{ Form::label($permission->name, ucfirst($permission->name)) }}
+            <div class="form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', null, array('class' => 'form-control')) }}
             </div>
-                @if($i++ %4==0)
+            <h5><b>Assign Permissions</b></h5>
+            <?php $i=1;?>
+            <div class='form-group'>
+                <div class="row">
+                    @foreach ($permissions as $permission)
+                    <div class='col-md-3'>
+                        {{ Form::checkbox('permissions[]',  $permission->id ) }}
+                        {{ Form::label($permission->name, ucfirst($permission->name)) }}
+                    </div>
+                        @if($i++ %4==0)
+                        </div>
+                    <div class='row'>
+                        @endif
+                    @endforeach
+                    
                 </div>
-            <div class='row'>
-                @endif
-            @endforeach
-            
-        </div>
-    </div>
+            </div>
 
-    {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
 
-    {{ Form::close() }}
+            {{ Form::close() }}
  
         </div>
-
     </div>
 
 @endsection
