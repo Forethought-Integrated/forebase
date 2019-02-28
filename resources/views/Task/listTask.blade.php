@@ -75,11 +75,11 @@
                     </td>
  --}}
                      <td>
-                      <form action="{{url('/crm/task'.'/'.$tasks->task_id)}}" method="post">
-                        {{csrf_field()}}
-                         @method('DELETE')       
-                        <button class="btn remove_btn " type="submit">Delete</button>
-                      </form>
+                      {{-- <form action="{{url('/crm/task'.'/'.$tasks->task_id)}}" method="post"> --}}
+                        {{-- {{csrf_field()}} --}}
+                         {{-- @method('DELETE')        --}}
+                        <button class="btn remove_btn delete-record" data-taskid="{{$tasks->task_id}}" type="submit">Delete</button>
+                      {{-- </form> --}}
 
                     </td>
                 </tr>
@@ -118,5 +118,6 @@
 @endsection
 
 @section('bodyScriptUpdate')
- 
+  <script src="{{asset("/js/modal/deleteModal.js")}}"></script>
+  @include('include.modal.deleteModal')
 @endsection

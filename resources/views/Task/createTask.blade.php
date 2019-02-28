@@ -2,6 +2,12 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
+<!-- Select2 -->
+  {{-- <link rel="stylesheet" href="{{asset("bower_components/select2/dist/css/select2.min.css")}}"> --}}
+{{-- <script src="{{asset("admin_lte/bower_components/select2/dist/js/select2.full.min.js")}}"></script> --}}
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 @endsection
 
@@ -14,9 +20,6 @@
     <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
     <li class="active">Task Form</li>
   </ol>
-            <!-- <pre>{{print_r($data)}}</pre> -->
-
-
 @endsection
 
 @section('MainContent')
@@ -102,7 +105,6 @@
           {{-- FormBOXBody --}}
           <div class="box-body">
               
-              <!-- {{Auth::user()->id}} -->
   
             
             <div class="form-group">
@@ -118,18 +120,18 @@
   
            
             <div class="form-group">
-                   <label>Assigned To</label>
+                    <label>Assigned To</label>
+  
+                      <select class="form-control select2" name="AssignedTo"{{--  multiple="multiple" --}}>
+                        @foreach($data['user'] as $user)
+                          <option value="{{$user['id']}}">{{$user['name']}}</option>
+                        @endforeach
+                       {{-- {{ $data['user']->links() }} --}}
+                       {{-- {{ $data['user']->render() }} --}}
+                    </select>
+                    {{-- {{ $data['user']->render() }} --}}
 
-                   <select class="form-control" name="AssignedTo">
-                     @foreach($data['user'] as $user)
-                     <option value="{{$user['id']}}">{{$user['name']}}</option>
-                     <!-- <option> In Progress</option>
-                     <option> Completed</option>
-                     <option> On Hold</option> -->
-                    @endforeach
-                   </select>
-                 </div>           
-
+                 </div>      
   
             <div class="form-group">
               <label for="inputAssignedBy" >Assigned By</label>
@@ -155,10 +157,6 @@
                      <option>100</option>
                    </select>
               </div>
-
-
- 
-            
   
           </div> 
         </div> 
@@ -181,9 +179,53 @@
   </div>
   <!-- /.row -->
   
+<!-- Select2 -->
+{{-- <script src="{{asset("admin_lte/bower_components/select2/dist/js/select2.full.min.js")}}"></script> --}}
+<script>
+$(document).ready(function() {
+  // var url = '/search-user/email';
+  // var url = '/search-user-data/name/vi';
+  var pageSize = 20;
+  $(".select2").select2({
+      ajax: {
+          dataType: 'json',
+          delay: 250,
+          url: function (params) {
+               return '/search-user-data/name/' + params.term;
+               // console.log($(this).data(field));
+             },
+          processResults: function (data, params) {
+              params.page = params.page || 1;
+              return {
+                  results:  $.map(data, function (users) {
+                      return {
+                          // text: users.Text,
+                          // id: users.Value
+                          id: users.id,
+                          text: users.name
+                      }
+                  }),
+                 // pagination: {
+                 //      more: (params.page * pageSize) < data.pager.TotalItemCount
+                 //  }
+                  pagination: {
+                    more: true
+                  }
+              };
+          },
+          cache: true
+      },
+      minimumInputLength: 2,
+      placeholder: "-- Select --",
+      allowClear: true
+  });
+});
+</script>
 
 @endsection
 
 @section('bodyScriptUpdate')
+
+
  
 @endsection

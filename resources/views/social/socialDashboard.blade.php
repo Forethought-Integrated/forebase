@@ -48,6 +48,7 @@
 
 <div class="row">
   <div class="col-lg-9">
+    @can('SocialPost Create')
     {{-- Write Post --}}
     <div class="card">
       <div class="card-body">
@@ -65,6 +66,7 @@
       </div>
     </div>
     {{-- ./Write Post --}}
+    @endcan
         
     {{--Post Body  --}}
     <div class="card card-primary card-outline">

@@ -10,10 +10,12 @@ use App\User;
 use App\Notifications\TaskNotification;
 use Auth;
 
+use App\Traits\User\UserModelHelper;
+
 
 class TaskController extends Controller
 {
-
+    use UserModelHelper;
 
     public function __construct()
     {
@@ -22,10 +24,9 @@ class TaskController extends Controller
 
 
 
-      function get_singel_data($idd)
+    function get_singel_data($idd)
     {
         $data = DB::table('tasks')->where('task_id',$idd )->first();
-               
         return $data;
     }
     /**
@@ -49,7 +50,11 @@ class TaskController extends Controller
     {
         // $task =  $this->get_singel_data($id);
         // return view('Task.createTask',['task'=>$task]);
-        $data['user']=User::select('id','name')->get();
+        // $data['user']=User::select('id','name')->paginate('1');
+        // return $this->getUserData('name','vi');
+        // return $this->getUserData(Null,Null,5);
+        $data['user']= $this->getUserData('5','name');
+        // return $data;
         // $data['user']=User::all();
         return view('Task.createTask',compact('data'));
     }
@@ -149,7 +154,7 @@ class TaskController extends Controller
     {
         //
         // DB::table('tasks')->where('id', $id)->update(['name' => $request->name]);
-         $task = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
         $task->update($request->all());
         $task->save();
 

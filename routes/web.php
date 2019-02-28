@@ -122,6 +122,12 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     // User Profile
     Route::resource('/user-profile', 'UserProfile\UserProfileController');
+    Route::get('/search-user/{data?}', 'User\UserController@getSearchUser');
+    Route::get('/search-user-data/{field}/{data?}','User\UserController@getSearchUserFieldLike');
+
+
+
+
     // //Route::resource('/userUpload', 'UserController@uploadImage');
     // Route::resource('/userUpload', 'UploadFileController');
     // ./User Profile

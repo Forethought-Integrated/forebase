@@ -17,10 +17,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // dd(config('customServices.services.social'));
+       
          $user = User::all()->count();
         if (!($user == 1)) {
             // if (!Auth::user()->hasPermissionTo('Administer roles & permissions')) //If user does //not have this permission
-            if (!Auth::user()->hasPermissionTo(env('APP_PER'))) //If user does //not have this permission
+            if (!Auth::user()->hasPermissionTo(config('customServices.app_per'))) //If user does //not have this permission
             {
                 // abort('401');
                 abort('403');

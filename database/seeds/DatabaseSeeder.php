@@ -16,16 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(dbseeder::class);
-        // $this->call(menuseeder::class);
+        // in Working
+
          $this->call(BrandSeeder::class);
-         // $this->call(TaskSeeder::class);
          $this->call(CompanySeeder::class);
          $this->call(ColorPaletteSeeder::class);
          $this->call(LogoSeeder::class);
-
-
         // these are the Permissions Seeder
+
          $this->call(Usertableseeder::class);
          $this->call(PermissionSeeder::class);
          $this->call(Roletableseeder::class); 
@@ -33,8 +31,25 @@ class DatabaseSeeder extends Seeder
          $this->call(ModelHasRoletableseeder::class);
          $this->call(NotificationSeeder::class);
 
-         // $this->call(ModelHasPermissiontableseeder::class);
          //end of permission seeder
+         
+
+        // ./in Working
+
+         // Testing
+
+        // factory('App\User',15)->create();
+
+         // ./Testing
+
+
+        // $this->call(dbseeder::class);
+        // $this->call(menuseeder::class);
+         // $this->call(TaskSeeder::class);
+
+
+         
+         // $this->call(ModelHasPermissiontableseeder::class);
 
          
 
