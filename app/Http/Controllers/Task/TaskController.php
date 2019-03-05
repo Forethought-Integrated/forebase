@@ -100,7 +100,7 @@ class TaskController extends Controller
         // $ab=implode(',',$a);
         // $ab=$a['0'];
         // return $ab;
-        User::find($task['task_assignedto'])->notify(new TaskNotification($notificationAr));
+        // User::find($task['task_assignedto'])->notify(new TaskNotification($notificationAr));
         
 
 

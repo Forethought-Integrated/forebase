@@ -99,12 +99,7 @@
                       </td>
        --}}           
                       <td>
-                        <form action="{{ url('cards'.'/'.$card['card_id']) }}" method="POST">
-                          @method('DELETE')
-                          {{csrf_field()}}
-                          <!-- <button type="submit" value="submit" class="btn remove_btn" >Delete</button> -->
-                          <input type="submit" value="Delete" class="btn remove_btn" >
-                        </form>
+                         <button class="btn remove_btn delete-record" data-recordid="{{$card['card_id']}}" type="submit">Delete</button>
                       </td>
                    </tr>
                    @endforeach                    
@@ -139,6 +134,19 @@
        </div>
      </div> 
 
+     <script>
+                $( document ).ready(function() {
+                     $('.delete-record').click(function(event){ 
+                      event.preventDefault();                                  
+                       // console.log($(this).data('recordid'));                                 
+                       var url='/cards/'+$(this).data('recordid');
+                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+</script>
+
           
 
 
@@ -161,6 +169,31 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
+
+<div class="modal fade" action="san" id="modal-default">
+          <div class="modal-dialog">
+            {{-- <form action="{{route('tasks.destroy','/crm/task/')}}" method="post"> --}}
+          <form id="modal-default-form" {{-- action=" --}}" method="post">
+                {{method_field('delete')}}
+                {{csrf_field()}} 
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+               <center> <h4 class="modal-title">Are you Sure You Want to delete?</h4></center>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">No, Cancel</button>
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </form>
+        </div>
+          <!-- /.modal-dialog -->
+  </div>
 
 @endsection
 

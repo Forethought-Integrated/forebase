@@ -19,7 +19,7 @@ return [
     'app_per' => env('APP_PER', 'Administer roles & permissions'),
     'services' => [
         'social' => env('API_SOCIAL'),
-        'crm' => env('API_CRMUR'),
+        'crm' => env('API_CRMURL'),
         'helpdesk' => env('API_HELPDESKURL'),
     ],
 
@@ -28,6 +28,11 @@ return [
         'crm' => env('Local_API_CRMUR'),
         'helpdesk' => env('Local_API_HELPDESKURL'),
     ],
+
+
+    
+
+
 // APP_PER='Administer roles & permissions'
     // 'name' => env('APP_NAME', 'Laravel'),
 

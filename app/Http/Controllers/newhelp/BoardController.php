@@ -17,11 +17,11 @@ class BoardController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_HELPDESKURL');
+
+        $this->ENV_URL = config('customServices.services.helpdesk');
         $this->URL=$this->ENV_URL.'boards';     
         $this->URLList=$this->ENV_URL.'lists';     
         $this->URLCard=$this->ENV_URL.'cards';     
-                // $this->middleware('auth');
     }
     /**
      * Create a new controller instance.

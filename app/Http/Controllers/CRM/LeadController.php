@@ -20,11 +20,11 @@ class LeadController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_CRMURL');
+        $this->ENV_URL = config('customServices.services.crm');
         $this->URL=$this->ENV_URL.'lead';  
-        $this->ENV_AccountURL = env('API_CRMURL');
+        $this->ENV_AccountURL = config('customServices.services.crm');
         $this->AccountURL=$this->ENV_AccountURL.'account';
-        $this->ENV_ContactURL = env('API_CRMURL');
+        $this->ENV_ContactURL = config('customServices.services.crm');
         $this->ContactURL=$this->ENV_ContactURL.'contact';  
 
     }

@@ -88,8 +88,8 @@
                                   <a href="{{asset('/contact/'.$contact['contact_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/contact/delete/'.$contact['contact_id'])}}">
-                                    <i>Delete</i>
+                                  <a href=button class="delete-record" data-recordid="{{$contact['contact_id']}}" type="submit">Delete</button></a>
+                                  
                                   </a>
                                   <a href="{{asset('/account/'.$contact['contact_id'])}}">
                                     View Account
@@ -97,9 +97,9 @@
                                   {{-- <a href="{{asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}">
                                     <i>Create Lead</i>
                                   </a> --}}
-                                  <a href="{{ count($contact['contact_account_id']) ? asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create') : asset('/lead') }}">
-                                    {{-- <a href="{{ count($contact['contact_account_id']) ? asset('/lead') :  asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}"> --}}
-                                    <i>Create Lead</i>
+                                 {{--  <a href="{{ count($contact['contact_account_id']) ? asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create') : asset('/lead') }}">
+                                    <a href="{{ count($contact['contact_account_id']) ? asset('/lead') :  asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'].'/create')}}">
+                                    <i>Create Lead</i> --}}
                                   </a>
                                   <a href="{{asset('/lead/'.$contact['contact_id'].'/'.$contact['contact_account_id'])}}">
                                     <i>View Lead</i>
@@ -179,6 +179,21 @@
 </div>
  --}}<!-- ./Create Folder/Directory  Model -->
 
+ <script>
+$( document ).ready(function() {
+     $('.delete-record').click(function(event){ 
+      event.preventDefault();                                  
+       // console.log($(this).data('taskid'));                                 
+       var url='/contact/'+$(this).data('recordid');
+       // var url="/boards/"+$data['boardid']+'/'.data('boardid');
+
+       // console.log(url);
+       $('#modal-default-form').attr('action',url);                             
+       $('#modal-default').modal('show')
+     });
+   });
+</script>
+
 @endsection
 
 @section('bodyScriptUpdate')
@@ -202,5 +217,31 @@
   })
 </script>
 {{-- ./Page Script--}}
+
+<div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            {{-- <form action="{{route('tasks.destroy','/crm/task/')}}" method="post"> --}}
+          <form id="modal-default-form" {{-- action=" --}}" method="post">
+                {{method_field('delete')}}
+                {{csrf_field()}} 
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+               <center> <h4 class="modal-title">Are you Sure You Want to delete?</h4></center>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">No, Cancel</button>
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </form>
+        </div>
+          <!-- /.modal-dialog -->
+  </div>
+
  
 @endsection

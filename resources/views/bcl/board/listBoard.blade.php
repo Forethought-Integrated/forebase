@@ -62,11 +62,12 @@
                         <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['board_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
+                       {{-- <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
                           {{csrf_field()}}
-                            @method('DELETE')
-                          <button class="btn remove_btn" type="submit">Delete</button>
-                        </form>
+                            @method('DELETE') --}}
+                          {{-- <button class="btn remove_btn" type="submit">Delete</button> --}}
+                          <button class="btn remove_btn delete-record" data-recordid="{{$data['board_id']}}" type="submit">Delete</button>
+                        {{-- </form> --}}
                       </td>
                     </tr>
                   @endforeach
@@ -93,6 +94,20 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
+<script>
+$( document ).ready(function() {
+     $('.delete-record').click(function(event){ 
+      event.preventDefault();                                  
+       // console.log($(this).data('taskid'));                                 
+       var url='/boards/'+$(this).data('recordid');
+       // var url="/boards/"+$data['boardid']+'/'.data('boardid');
+
+       // console.log(url);
+       $('#modal-default-form').attr('action',url);                             
+       $('#modal-default').modal('show')
+     });
+   });
+</script>
 
 @endsection
 
@@ -116,5 +131,35 @@
   })
 </script>
 {{-- ./Page Script--}}
+ <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            {{-- <form action="{{route('tasks.destroy','/crm/task/')}}" method="post"> --}}
+          <form id="modal-default-form" {{-- action=" --}}" method="post">
+                {{method_field('delete')}}
+                {{csrf_field()}} 
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+               <center> <h4 class="modal-title">Are you Sure You Want to delete?</h4></center>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">No, Cancel</button>
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </form>
+        </div>
+          <!-- /.modal-dialog -->
+  </div>
+
+
  
 @endsection
+{{-- @section('bodyScriptUpdate')
+  <script src="{{asset("/js/modal/deleteModal.js")}}"></script>
+  @include('include.modal.deleteModal')
+@endsection --}}

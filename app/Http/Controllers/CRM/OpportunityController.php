@@ -19,9 +19,9 @@ class OpportunityController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_CRMURL');
+        $this->ENV_URL = config('customServices.services.crm');
         $this->URL=$this->ENV_URL.'opportunity';
-        $this->ENV_leadURL = env('API_CRMURL');
+        $this->ENV_leadURL = config('customServices.services.crm');
         $this->leadURL=$this->ENV_URL.'lead';    
 
     }

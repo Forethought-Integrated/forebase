@@ -65,7 +65,8 @@
                        <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
                           {{csrf_field()}}
                             @method('DELETE')
-                          <button class="btn remove_btn" type="submit">Delete</button>
+                          {{-- <button class="btn remove_btn" type="submit">Delete</button> --}}
+                           <button class="btn remove_btn delete-record" data-boardid="{{$data->$data['board_id']}}" type="submit">Delete</button>
                         </form>
                       </td>
                     </tr>
@@ -117,4 +118,9 @@
 </script>
 {{-- ./Page Script--}}
  
+@endsection
+
+@section('bodyScriptUpdate')
+  <script src="{{asset("/js/modal/deleteModal.js")}}"></script>
+  @include('include.modal.deleteModal')
 @endsection

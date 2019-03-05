@@ -23,9 +23,10 @@ class ContactController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_CRMURL');
+        $this->ENV_URL = config('customServices.services.crm');
         $this->URL=$this->ENV_URL.'contact';    
-        $this->ENV_AccountURL = env('API_CRMURL');
+        $this->ENV_AccountURL = config('customServices.services.crm');
+
         $this->AccountURL=$this->ENV_AccountURL.'account';    
 
     }

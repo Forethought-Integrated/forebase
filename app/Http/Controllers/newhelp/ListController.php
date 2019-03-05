@@ -15,7 +15,7 @@ class ListController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_HELPDESKURL');
+        $this->ENV_URL = config('customServices.services.helpdesk');
         $this->URL=$this->ENV_URL.'lists';     
                 // $this->middleware('auth');
     }

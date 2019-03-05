@@ -19,7 +19,7 @@ class PostReactionController extends Controller
 
     public function __construct()
     {
-        $this->ENV_URL = env('API_SOCIAL');
+        $this->ENV_URL = config('customServices.services.social');
         $this->URL=$this->ENV_URL.'postreaction';    
                 // $this->middleware('auth');
     }
