@@ -122,8 +122,10 @@ class CardController extends Controller
                     'card_archieved' => $request->card_archieved,                  
                     ]
         ]);        
-         // return redirect("/board-detail/$request->board_id");       
-        return redirect()->back();       
+         // return redirect("/boards/$request->board_id"); 
+         return redirect("/boards/$request->board_i"); 
+
+        // return redirect()->back();       
 
      }
 

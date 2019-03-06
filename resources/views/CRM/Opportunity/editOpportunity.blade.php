@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/opportunity/{{$data['opportunity']['opportunity_id']}}" method="POST">
+      <form role="form" id="update-form" action="/opportunity/{{$data['opportunity']['opportunity_id']}}" method="POST">
         {{ csrf_field() }}
          @method('PUT')
         <div class="row">
@@ -132,7 +132,7 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="submit" data-recorid={{$data['opportunity']['opportunity_id']}} class="btn btn-primary update-record">Update</button>
         </div> 
       </form>
       {{-- ./Form --}}
@@ -143,8 +143,24 @@
 </div>
 <!-- /.row -->
 
+         <script>
+                 $( document ).ready(function() {
+                     $('.update-record').click(function(event){ 
+                      event.preventDefault();                                        
+                                          
+                       var url='/opportunity'+$(this).data('recordid');
+                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+               </script>
+<!-- /.row -->
+
 @endsection
 
 @section('bodyScriptUpdate')
+
+@include('include.modal.updateModal')
  
 @endsection

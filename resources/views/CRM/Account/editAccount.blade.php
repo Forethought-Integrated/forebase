@@ -30,7 +30,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/account/{{$data['account']['account_id']}}" method="POST">
+      <form role="form" id="update-form" action="/account/{{$data['account']['account_id']}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -123,7 +123,8 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          
+           <button type="submit" class="btn btn-primary update-record" data-recordid="{{$data['account']['account_id']}}" >Update</button>
         </div> 
       </form>
       {{-- ./Form --}}
@@ -132,10 +133,25 @@
   </div>
   {{--  ./Col  --}}
 </div>
+
+               <script>
+                 $( document ).ready(function() {
+                     $('.update-record').click(function(event){ 
+                      event.preventDefault();                                        
+                                          
+                       var url='/account'+$(this).data('recordid');
+                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+               </script>
 <!-- /.row -->
 
 @endsection
 
 @section('bodyScriptUpdate')
+
+ @include('include.modal.updateModal')
  
 @endsection

@@ -14,7 +14,7 @@
     <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
     <li class="active"> Form</li>
   </ol>
-<!-- <pre>{{print_r($data)}}</pre> -->
+
 
 @endsection
 

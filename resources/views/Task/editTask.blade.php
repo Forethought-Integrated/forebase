@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/crm/task/{{$task->task_id}}" method="POST">
+      <form role="form" id="update-form" action="/crm/task/{{$task->task_id}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -168,7 +168,8 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          {{-- <button type="submit" class="btn btn-primary">Update</button> --}}
+           <button class="btn remove_btn update-record" data-recordid="{{$task->task_id}}" type="submit" class="btn btn-primary">Update</button>
         </div> 
       </form>
       {{-- ./Form --}}
@@ -179,8 +180,23 @@
 </div>
 <!-- /.row -->
 
+             <script>
+                 $( document ).ready(function() {
+                     $('.update-record').click(function(event){ 
+                      event.preventDefault();                                        
+                                          
+                       var url='/crm/task/'+$(this).data('recordid');
+                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+               </script>
+
 @endsection
 
 @section('bodyScriptUpdate')
+
+   @include('include.modal.updateModal')
  
 @endsection
