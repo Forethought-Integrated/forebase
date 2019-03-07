@@ -22,12 +22,7 @@ return [
         'crm' => env('API_CRMURL'),
         'helpdesk' => env('API_HELPDESKURL'),
     ],
-
-    'localservices' => [
-        'social' => env('Local_API_SOCIAL'),
-        'crm' => env('Local_API_CRMUR'),
-        'helpdesk' => env('Local_API_HELPDESKURL'),
-    ],
+    'app_per' => env('APP_TOKEN'),
 
 
     

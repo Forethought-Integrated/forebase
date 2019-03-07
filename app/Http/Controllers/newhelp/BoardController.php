@@ -5,6 +5,7 @@ namespace App\Http\Controllers\newhelp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
 
 class BoardController extends Controller
 {
@@ -14,14 +15,21 @@ class BoardController extends Controller
     private $URLList;
     private $URLCard;
 
+    private $client;
+
+
 
     public function __construct()
     {
-
         $this->ENV_URL = config('customServices.services.helpdesk');
-        $this->URL=$this->ENV_URL.'boards';     
-        $this->URLList=$this->ENV_URL.'lists';     
-        $this->URLCard=$this->ENV_URL.'cards';     
+        $this->URL = $this->ENV_URL.'boards';     
+        $this->URLList = $this->ENV_URL.'lists';     
+        $this->URLCard = $this->ENV_URL.'cards';
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','helpdesk')->first()->authorizations_token;
+
+        // dd((string)$token);
+        // dd(ServiceAuthorization::select('authorizations_token')->where('authorizations_client','helpdesk')->first());
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
     }
     /**
      * Create a new controller instance.
@@ -32,8 +40,8 @@ class BoardController extends Controller
     public function index()
  
     { 
-        $client = new Client();
-        $res = $client->request('GET',  $this->URL);
+        // $client = new Client();
+        $res = $this->client->request('GET',  $this->URL);
         $boardJson=$res->getBody(); 
         $board = json_decode($boardJson,true);
         $data['boards']=$board;
@@ -53,8 +61,8 @@ class BoardController extends Controller
 
      { 
      
-            $client = new Client();
-            $response = $client->request('POST', $this->URL, [
+            // $client = new Client();
+            $response = $this->client->request('POST', $this->URL, [
             'form_params' => [
             'owner_id' => $request->user()->id,
             'board_name' => $request->board_name,
@@ -67,13 +75,13 @@ class BoardController extends Controller
 
      public function show($id)
      {      
-        $client = new Client();
-        $res = $client->request('GET',$this->URL.'/'.$id);
+        // $client = new Client();
+        $res = $this->client->request('GET',$this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board=json_decode($boardJson,true);        
         $data['boards']=$board;  
 
-        // $resList = $client->request('GET','http://localhost:8003/lists/'.$id);
+        // $resList = $this->client->request('GET','http://localhost:8003/lists/'.$id);
         // $ListJson=$resList->getBody();
         // $List=json_decode($ListJson,true);
         // $data['lists']=$List; 
@@ -88,22 +96,22 @@ class BoardController extends Controller
     // and Card Of First List  
     public function boardIndex($id)
     {  
-        $client = new Client();
+        // $client = new Client();
         // Get Board 
-        $res = $client->request('GET',$this->URL.'/'.$id);
+        $res = $this->client->request('GET',$this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board=json_decode($boardJson,true);        
         $data['board']=$board;  
         // return $data['boards']['board_id'];
         // Get List
-        $resList = $client->request('GET',$this->ENV_URL.'board/list/'.$data['board']['board_id']);
+        $resList = $this->client->request('GET',$this->ENV_URL.'board/list/'.$data['board']['board_id']);
         $listJson=$resList->getBody();
         $list=json_decode($listJson,true);
         if(empty($list))
         {
             // $data['list']=$list; 
             //  // Get all card of First List
-            // $resCard = $client->request('GET','http://localhost:8003/board/list/card/'.$data['list']['0']['list_id']);
+            // $resCard = $this->client->request('GET','http://localhost:8003/board/list/card/'.$data['list']['0']['list_id']);
             // $cardJson=$resCard->getBody();
             // // return $listJson;
             // $card=json_decode($cardJson,true);
@@ -118,7 +126,7 @@ class BoardController extends Controller
         {
                 $data['list']=$list; 
              // Get all card of First List
-            $resCard = $client->request('GET',$this->ENV_URL.'board/list/card/'.$data['list']['0']['list_id']);
+            $resCard = $this->client->request('GET',$this->ENV_URL.'board/list/card/'.$data['list']['0']['list_id']);
             $cardJson=$resCard->getBody();
             $card=json_decode($cardJson,true);
             $data['card']=$card;
@@ -134,8 +142,8 @@ class BoardController extends Controller
     public function boardListCardIndex($id,$listid)
     {  
             
-        $client = new Client();
-        $resCard = $client->request('GET',$this->ENV_URL.'board/list/card/'.$listid);
+        // $client = new Client();
+        $resCard = $this->client->request('GET',$this->ENV_URL.'board/list/card/'.$listid);
         $cardJson=$resCard->getBody();        
         $card=json_decode($cardJson,true);
         // return $card;
@@ -158,8 +166,8 @@ class BoardController extends Controller
     {     
 
         
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
+        // $client = new Client();
+        $res = $this->client->request('GET', $this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board = json_decode($boardJson, true);
         
@@ -174,8 +182,8 @@ class BoardController extends Controller
      public function update(Request $request, $id)
 
      {  
-        $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        // $client = new Client();
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     //'owner_id' => $request->user()->id,
                     'owner_id' => $request->user()->id,
@@ -191,8 +199,8 @@ class BoardController extends Controller
 
     {
         //return "hello";
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        // $client = new Client();
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/boards');
     }
 
