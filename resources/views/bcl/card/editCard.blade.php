@@ -31,7 +31,7 @@
             </div>
       <!-- /.card-header -->
       {{-- form--}}
-      <form role="form" action="/cards/{{$data['cards']['card_id']}}" method="POST">
+      <form role="form" id="update-form" action="/cards/{{$data['cards']['card_id']}}" method="POST">
         {{ csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="submit" data-recordid="{{$data['cards']['card_id']}}" type="submit" class="btn btn-primary  update-record">Update</button>
         </div> 
 
       </form>
@@ -84,8 +84,23 @@
 </div>
 <!-- /.row -->
 
+               <script>
+                 $( document ).ready(function() {
+                     $('.update-record').click(function(event){ 
+                      event.preventDefault();                                   
+                                          
+                       var url='/boards/'+$(this).data('recordid');                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+               </script>
+
 @endsection
 
 @section('bodyScriptUpdate')
+
+
+@include('include.modal.updateModal')
  
 @endsection
