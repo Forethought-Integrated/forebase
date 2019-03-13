@@ -87,6 +87,20 @@
         @endcan
         {{-- ./CRM --}}
 
+
+        {{-- File Tag Manager --}}
+        {{-- @can('File Tag Manager') --}}
+        <li>
+          <a href="/file-tag-manager">
+            <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
+            <i class="fa "></i> <span>File Manager</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        {{-- @endcan --}}
+        {{-- ./File Tag Manager --}}
+
         {{-- HelpDesk --}}
         {{--<li>
           <a href="/under-construction">

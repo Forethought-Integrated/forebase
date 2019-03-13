@@ -35,11 +35,18 @@ Route::group(['middleware' => ['auth','verified']], function () {
     return view('underConstruction');
     });
 
+    // File Manager-----------------------------------------------------------------------
     Route::get('/knowledgemanager', function () {
     return view('/fileManager/index');
-        // return 'hi';
-    // return view('/fileManager/index');
+        // return view('/fileManager/index');
     });
+    Route::get('/file-tag-manager', function () {
+    return view('/fileTagManager/fileManagerDashboard');
+        // return view('/fileManager/index');
+    });
+    Route::resource('/file-manager', 'FileTagManager\FileTagManagerController');
+    // ./File Manager-----------------------------------------------------------------------
+
 
     // Administration-----------------------------------------------------------------------
     Route::get('/administration', function () {

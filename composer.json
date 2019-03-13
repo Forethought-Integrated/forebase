@@ -13,7 +13,9 @@
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
+        "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^2.25",
+        "spatie/laravel-tags": "^2.2",
         "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
