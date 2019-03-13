@@ -18,20 +18,23 @@ class DatabaseSeeder extends Seeder
     {
         // in Working
 
-         $this->call(BrandSeeder::class);
-         $this->call(CompanySeeder::class);
-         $this->call(ColorPaletteSeeder::class);
-         $this->call(LogoSeeder::class);
-        // these are the Permissions Seeder
+        //  $this->call(BrandSeeder::class);
+        //  $this->call(CompanySeeder::class);
+        //  $this->call(ColorPaletteSeeder::class);
+        //  $this->call(LogoSeeder::class);
+        // // these are the Permissions Seeder
 
-         $this->call(Usertableseeder::class);
-         $this->call(PermissionSeeder::class);
-         $this->call(Roletableseeder::class); 
-         $this->call(RoleHasPermissiontableseeder::class);
-         $this->call(ModelHasRoletableseeder::class);
-         $this->call(NotificationSeeder::class);
+        //  $this->call(Usertableseeder::class);
+        //  $this->call(PermissionSeeder::class);
+        //  $this->call(Roletableseeder::class); 
+        //  $this->call(RoleHasPermissiontableseeder::class);
+        //  $this->call(ModelHasRoletableseeder::class);
+        //  $this->call(NotificationSeeder::class);
+
 
          //end of permission seeder
+
+         $this->call(Service_authorizationTableSeeder::class);
          
 
         // ./in Working

@@ -9,6 +9,7 @@ use App\Http\Resources\ContactResources;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 use Helper;
+use App\Model\ServiceAuthorization;
 
 
 
@@ -19,6 +20,7 @@ class ContactController extends Controller
     private $URL;
     private $ENV_AccountURL;
     private $AccountURL;
+    private $client;
 
 
     public function __construct()
@@ -27,7 +29,9 @@ class ContactController extends Controller
         $this->URL=$this->ENV_URL.'contact';    
         $this->ENV_AccountURL = config('customServices.services.crm');
 
-        $this->AccountURL=$this->ENV_AccountURL.'account';    
+        $this->AccountURL=$this->ENV_AccountURL.'account'; 
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;   
+         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
 
     }
     
@@ -40,8 +44,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;

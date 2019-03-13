@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\LeadResources;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
 
 class LeadController extends Controller
 {
@@ -17,6 +18,7 @@ class LeadController extends Controller
     private $AccountURL;
     private $ENV_ContactURL;
     private $ContactURL;
+    private $client;
 
     public function __construct()
     {
@@ -25,7 +27,10 @@ class LeadController extends Controller
         $this->ENV_AccountURL = config('customServices.services.crm');
         $this->AccountURL=$this->ENV_AccountURL.'account';
         $this->ENV_ContactURL = config('customServices.services.crm');
-        $this->ContactURL=$this->ENV_ContactURL.'contact';  
+        $this->ContactURL=$this->ENV_ContactURL.'contact'; 
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token; 
+
+         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
 
     }
     
@@ -38,8 +43,7 @@ class LeadController extends Controller
     public function index()
 
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;

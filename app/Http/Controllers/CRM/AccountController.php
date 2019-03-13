@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use Helper;
 use App\Model\DataMapper;
+use App\Model\ServiceAuthorization;
 
 
 class AccountController extends Controller
@@ -15,12 +16,16 @@ class AccountController extends Controller
 
     private $URL;
 
+    private $client;
+    
+
 
     public function __construct()
     {
         $this->ENV_URL = config('customServices.services.crm');
-        $this->URL=$this->ENV_URL.'account';    
-                // $this->middleware('auth');
+        $this->URL=$this->ENV_URL.'account';  
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
     }
     /**
      * Create a new controller instance.
@@ -29,11 +34,8 @@ class AccountController extends Controller
      */
 
     public function index()
-
     { 
-
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $accountJson=$res->getBody();
         $account = json_decode($accountJson, true);
         // return view('CRM.Account.listAccount')->with('accountdata', $accountData);
