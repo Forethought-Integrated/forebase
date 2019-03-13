@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CampaignResources;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
 
 class CampaignController extends Controller
 {
@@ -17,19 +18,25 @@ class CampaignController extends Controller
 
     private $URL;
 
+    private $client;
+
+
 
     public function __construct()
     {
         $this->ENV_URL = config('customServices.services.crm');
-        $this->URL=$this->ENV_URL.'campaign';    
+        $this->URL=$this->ENV_URL.'campaign'; 
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
+
+     
     }
     
 
     public function index()
 
     { 
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res=$this->client->request('GET', $this->URL);
         $campaignJson=$res->getBody();
         $campaign = json_decode($campaignJson, true);
         // $campaignData['dataArray']=$campaign;

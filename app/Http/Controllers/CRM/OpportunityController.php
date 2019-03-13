@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\OpportunityResources;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
 
 class OpportunityController extends Controller
 {
@@ -15,6 +16,7 @@ class OpportunityController extends Controller
     private $URL;
     private $ENV_leadURL;
     private $leadURL;
+    private $client;
 
 
     public function __construct()
@@ -22,7 +24,11 @@ class OpportunityController extends Controller
         $this->ENV_URL = config('customServices.services.crm');
         $this->URL=$this->ENV_URL.'opportunity';
         $this->ENV_leadURL = config('customServices.services.crm');
-        $this->leadURL=$this->ENV_URL.'lead';    
+        $this->leadURL=$this->ENV_URL.'lead'; 
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token; 
+
+         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
+              
 
     }
     
@@ -38,8 +44,7 @@ class OpportunityController extends Controller
 
     {
      
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
