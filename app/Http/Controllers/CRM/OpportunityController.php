@@ -61,9 +61,7 @@ class OpportunityController extends Controller
     
     public function createOpportunityLead($leadid)
     {
-        // return 'hi';
-        $client = new Client();
-        $res = $client->request('GET', $this->leadURL.'/'.$leadid);
+        $res = $this->client->request('GET', $this->leadURL.'/'.$leadid);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -74,33 +72,31 @@ class OpportunityController extends Controller
      public function store(Request $request)
 
      { 
-                    $client = new Client();
-                    $response = $client->request('POST', $this->URL, [
-                    'form_params' => [
-                    'opportunity_deal_owner' => $request->dealOwner,
-                    'opportunity_deal_name' => $request->dealName,
-                    'opportunity_account_name' => $request->AccountName,
-                    'opportunity_type'=> $request->Type,
-                    'opportunity_lead_id' => $request->leadID,
-                    'opportunity_campaign_id' => $request->campaignID,
-                    'opportunity_contact_id' => $request->contactID,
-                    'opportunity_amount' => $request->amount,
-                    'opportunity_closing_date' => $request->closingDate,
-                    'opportunity_stage' => $request->Satge,
-                    'opportunity_probability' => $request->Probability,
-                    'opportunity_expected_revenue' => $request->expectedRevenue,
-                    'opportunity_description' => $request->expectedRevenue
-                    ]
-                ]);
-                    return redirect('/opportunity');
+            $response = $this->client->request('POST', $this->URL, [
+            'form_params' => [
+            'opportunity_deal_owner' => $request->dealOwner,
+            'opportunity_deal_name' => $request->dealName,
+            'opportunity_account_name' => $request->AccountName,
+            'opportunity_type'=> $request->Type,
+            'opportunity_lead_id' => $request->leadID,
+            'opportunity_campaign_id' => $request->campaignID,
+            'opportunity_contact_id' => $request->contactID,
+            'opportunity_amount' => $request->amount,
+            'opportunity_closing_date' => $request->closingDate,
+            'opportunity_stage' => $request->Satge,
+            'opportunity_probability' => $request->Probability,
+            'opportunity_expected_revenue' => $request->expectedRevenue,
+            'opportunity_description' => $request->expectedRevenue
+            ]
+        ]);
+            return redirect('/opportunity');
 
      }
 
      public function show($id)
 
      {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
+        $res = $this->client->request('GET', $this->URL.'/'.$id);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
@@ -112,8 +108,7 @@ class OpportunityController extends Controller
 
 
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
+        $res = $this->client->request('GET', $this->URL.'/'.$id);
         $opportunityJson=$res->getBody();
         $opportunity = json_decode($opportunityJson, true);
         $data['opportunity']=$opportunity;
@@ -124,8 +119,7 @@ class OpportunityController extends Controller
         public function update(Request $request, $id)
 
      {  
-        $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'opportunity_deal_owner' => $request->dealOwner,
                     'opportunity_deal_name' => $request->dealName,
@@ -142,7 +136,6 @@ class OpportunityController extends Controller
                     'opportunity_description' => $request->expectedRevenue
                     ]
     ]);
-        // return response()->json(['success'=>'200']);   
         return redirect('/opportunity');     
      }
 
@@ -150,8 +143,7 @@ class OpportunityController extends Controller
 
      {  
 
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/opportunity');
      }
 

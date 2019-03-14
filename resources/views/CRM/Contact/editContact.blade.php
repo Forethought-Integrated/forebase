@@ -31,7 +31,7 @@
             </div>
       <!-- /.card-header -->
 
-      {{-- form--}}"
+      {{-- form--}}
             <form role="form" id="update-form" action="/contact/{{$data['contact']['contact_id']}}" method="POST">
         {{ csrf_field() }}
         @method('PUT')

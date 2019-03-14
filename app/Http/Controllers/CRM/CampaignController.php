@@ -57,8 +57,7 @@ class CampaignController extends Controller
      public function store(Request $request)
 
      {
-                    $client = new Client();
-                    $response = $client->request('POST', $this->URL, [
+                    $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'campaign_name' => $request->Name,
                     'campaign_type' => $request->Type,
@@ -83,39 +82,33 @@ class CampaignController extends Controller
 
      {
 
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
-        $campaignJson=$res->getBody();
-        $campaign = json_decode($campaignJson, true);
-        
-         $data['campaign']=$campaign;
+                $res = $this->client->request('GET', $this->URL.'/'.$id);
+                $campaignJson=$res->getBody();
+                $campaign = json_decode($campaignJson, true);
+                
+                 $data['campaign']=$campaign;
 
-        return view('CRM.Campaign.showCampaign',['data'=>$data]);
+            return view('CRM.Campaign.showCampaign',['data'=>$data]);
 
      }
-
-
-
 
      public function edit($id)
 
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
-        $campaignJson=$res->getBody();
-        $campaign = json_decode($campaignJson, true);
-        
-         $data['campaign']=$campaign;
+                $res = $this->client->request('GET', $this->URL.'/'.$id);
+                $campaignJson=$res->getBody();
+                $campaign = json_decode($campaignJson, true);
+                
+                 $data['campaign']=$campaign;
 
-        return view('CRM.Campaign.editCampaign',['data'=>$data]);
+                return view('CRM.Campaign.editCampaign',['data'=>$data]);
     }
 
 
      public function update(Request $request, $id)
 
      {  
-        $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'campaign_name' => $request->campaignName,
                     'campaign_type' => $request->campaignType,
@@ -131,19 +124,17 @@ class CampaignController extends Controller
                     'utm_campaign_content' => $request->utmCampaignContent,
                     'utm_campaign_url' => $request->utmCampaignUrl,
                     ]
-    ]);
-        // return response()->json(['success'=>'200']); 
+              ]);
         return redirect('/campaign');       
      }
 
 
-         public function destroy($id)
+      public function destroy($id)
 
-    {
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+      {
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/campaign');
-    }
+     }
 
 
 }

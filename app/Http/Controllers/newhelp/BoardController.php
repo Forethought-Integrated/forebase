@@ -10,11 +10,9 @@ use App\Model\ServiceAuthorization;
 class BoardController extends Controller
 {
     private $ENV_URL;
-
     private $URL;
     private $URLList;
     private $URLCard;
-
     private $client;
 
 
@@ -26,42 +24,27 @@ class BoardController extends Controller
         $this->URLList = $this->ENV_URL.'lists';     
         $this->URLCard = $this->ENV_URL.'cards';
         $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','helpdesk')->first()->authorizations_token;
-
-        // dd((string)$token);
-        // dd(ServiceAuthorization::select('authorizations_token')->where('authorizations_client','helpdesk')->first());
         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
     }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
 
     public function index()
- 
     { 
-        // $client = new Client();
         $res = $this->client->request('GET',  $this->URL);
         $boardJson=$res->getBody(); 
         $board = json_decode($boardJson,true);
         $data['boards']=$board;
         return view('bcl.board.listBoard')->with('data',$data);
-
     }
 
 
-      public function create()
+    public function create()
     {
-        
         return view('bcl.board.createBoard');
+    }
 
-     }
-
-     public function store(request $request)
-
-     { 
-     
-            // $client = new Client();
+    public function store(request $request)
+    { 
+    
             $response = $this->client->request('POST', $this->URL, [
             'form_params' => [
             'owner_id' => $request->user()->id,
@@ -75,48 +58,27 @@ class BoardController extends Controller
 
      public function show($id)
      {      
-        // $client = new Client();
         $res = $this->client->request('GET',$this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board=json_decode($boardJson,true);        
         $data['boards']=$board;  
 
-        // $resList = $this->client->request('GET','http://localhost:8003/lists/'.$id);
-        // $ListJson=$resList->getBody();
-        // $List=json_decode($ListJson,true);
-        // $data['lists']=$List; 
-        // $data['cardList']=$board;  
-      // return $data;
-
-
         return view('bcl.board.showBoard',['data'=>$data]);
      }
 
-    // this method take selected board id and get selected board Detail , get all List Of that Board,
-    // and Card Of First List  
+     
     public function boardIndex($id)
-    {  
-        // $client = new Client();
-        // Get Board 
+    {   
         $res = $this->client->request('GET',$this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board=json_decode($boardJson,true);        
         $data['board']=$board;  
-        // return $data['boards']['board_id'];
-        // Get List
         $resList = $this->client->request('GET',$this->ENV_URL.'board/list/'.$data['board']['board_id']);
         $listJson=$resList->getBody();
         $list=json_decode($listJson,true);
         if(empty($list))
         {
-            // $data['list']=$list; 
-            //  // Get all card of First List
-            // $resCard = $this->client->request('GET','http://localhost:8003/board/list/card/'.$data['list']['0']['list_id']);
-            // $cardJson=$resCard->getBody();
-            // // return $listJson;
-            // $card=json_decode($cardJson,true);
-            // $data['card']=$card;
-
+            
             $data['list']=NULL; 
             $data['card']=NULL;
 
@@ -124,82 +86,53 @@ class BoardController extends Controller
         }
         else
         {
-                $data['list']=$list; 
-             // Get all card of First List
+            $data['list']=$list; 
             $resCard = $this->client->request('GET',$this->ENV_URL.'board/list/card/'.$data['list']['0']['list_id']);
             $cardJson=$resCard->getBody();
             $card=json_decode($cardJson,true);
             $data['card']=$card;
 
-            // $data['list']=NULL; 
-            // $data['card']=NULL;
             return view('bcl.board.showBoard',['data'=>$data]);
         }
         
     }
 
-    
     public function boardListCardIndex($id,$listid)
     {  
             
-        // $client = new Client();
         $resCard = $this->client->request('GET',$this->ENV_URL.'board/list/card/'.$listid);
         $cardJson=$resCard->getBody();        
         $card=json_decode($cardJson,true);
-        // return $card;
-        // return response()->json($card);
-
         $data['card']=$card;
         return $data;
-        //return response()->json($data);
-         // return $data['card'];
-        // $data['cardList']=$board;  
-      // return $data;
-
-
-        // return view('bcl.board.showBoard',['data'=>$data]);
+        
     }
-
-
 
     public function edit($id)
     {     
-
-        
-        // $client = new Client();
         $res = $this->client->request('GET', $this->URL.'/'.$id);
         $boardJson=$res->getBody();
         $board = json_decode($boardJson, true);
-        
         $data['boards']=$board;
-
-       
         return view('bcl.board.editBoard',['data'=>$data]);
     }
-
-
 
      public function update(Request $request, $id)
 
      {  
-        // $client = new Client();
-        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
+           $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
-                    //'owner_id' => $request->user()->id,
                     'owner_id' => $request->user()->id,
                     'board_name' => $request->board_name,
                     'board_description' => $request->board_description,                    
                     ]
-        ]);
-        // return response()->json(['success'=>'200']); 
+            ]);
          return redirect('/boards');       
      }
 
       public function destroy($id)
 
     {
-        //return "hello";
-        // $client = new Client();
         $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/boards');
     }

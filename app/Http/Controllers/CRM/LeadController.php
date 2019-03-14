@@ -60,9 +60,7 @@ class LeadController extends Controller
 
     public function createLeadContactAccount($contactid,$accountid)
     {
-        // return 'hi0';
-       $client = new Client();
-        $res = $client->request('GET', $this->ContactURL.'/'.$contactid);
+        $res = $this->client->request('GET', $this->ContactURL.'/'.$contactid);
         $contactJson=$res->getBody();
         $contact = json_decode($contactJson, true);
         $data['contact']=$contact;
@@ -80,12 +78,10 @@ class LeadController extends Controller
     public function indexLeadContactAccount($contactid,$accountid)
     {
         // return 'hi0';
-        $client = new Client();
-        $res = $client->request('GET',$this->URL.'/'.$contactid.'/'.$accountid);
+        $res = $this->client->request('GET',$this->URL.'/'.$contactid.'/'.$accountid);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
-        // return view('CRM.Lead.listLead')->with('data', $data);
         return view('CRM.Lead.listLeadContactAccount',compact('data'));
 
     }
@@ -95,8 +91,7 @@ class LeadController extends Controller
 
      { 
 
-        $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $this->client->request('POST', $this->URL, [
             'form_params' => [
             'lead_service_code' => $request->serviceCode,
             'lead_name' => $request->Name,
@@ -137,8 +132,7 @@ class LeadController extends Controller
      public function show($id)
 
      {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
+        $res = $this->client->request('GET', $this->URL.'/'.$id);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -151,8 +145,7 @@ class LeadController extends Controller
 
 
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL.'/'.$id);
+        $res = $this->client->request('GET', $this->URL.'/'.$id);
         $leadJson=$res->getBody();
         $lead = json_decode($leadJson, true);
         $data['lead']=$lead;
@@ -163,8 +156,7 @@ class LeadController extends Controller
         public function update(Request $request, $id)
 
      {  
-        $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     'lead_service_code' => $request->serviceCode,
                     'lead_name' => $request->Name,
@@ -196,8 +188,7 @@ class LeadController extends Controller
                     'lead_Location' => $request->Location
                     ]
     ]);
-        // return response()->json(['success'=>'200']);  
-        return redirect('/lead');        
+          return redirect('/lead');        
      }
 
      
@@ -205,8 +196,7 @@ class LeadController extends Controller
      public function destroy($id)
 
      {  
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/lead');
      }
 
