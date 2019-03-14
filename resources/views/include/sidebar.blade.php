@@ -89,7 +89,7 @@
 
 
         {{-- File Tag Manager --}}
-        {{-- @can('File Tag Manager') --}}
+        @can('file-tag-manager')
         <li>
           <a href="/file-tag-manager">
             <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
@@ -98,7 +98,7 @@
             </span>
           </a>
         </li>
-        {{-- @endcan --}}
+        @endcan
         {{-- ./File Tag Manager --}}
 
         {{-- HelpDesk --}}

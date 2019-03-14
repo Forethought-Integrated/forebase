@@ -50,6 +50,11 @@ class PermissionSeeder extends Seeder
         $permission->name='Helpdesk';
         $permission->guard_name='web';
         $permission->save();
+
+        $permission=new Permission;
+        $permission->name='file-tag-manager';
+        $permission->guard_name='web';
+        $permission->save();
         //  SideBar End
 
         //CRM start
@@ -132,6 +137,13 @@ class PermissionSeeder extends Seeder
         $permission->name='datamapper';
         $permission->guard_name='web';
         $permission->save();
+
+        $permission=new Permission;
+        $permission->name='SocialPost Create';
+        $permission->guard_name='web';
+        $permission->save();
+
+        
 
         //end of Admin
 

@@ -37,7 +37,7 @@
   @can('Accounts')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/account" title="">
+        <a href="/tags" title="">
           <img src="{{asset("/img/crm_dashboard/Accounts.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>

@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
         // return view('/fileManager/index');
     });
     Route::resource('/file-manager', 'FileTagManager\FileTagManagerController');
+    Route::resource('/tags','FileTags\TagController');
     // ./File Manager-----------------------------------------------------------------------
 
 

@@ -12,14 +12,14 @@
 @section('ContentHeader(Page_header)') 
 
   <h1>
-    Company  List
-    <a href="/companies/create" title="">
-      <i class="fa fa-edit"> create</i>
+    Tag  List
+    <a href="/tags/create" title="">
+      <i class="fa fa-edit">create</i>
     </a>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Company List</li>
+    <li class="active">Tag List</li>
   </ol>
 
 
@@ -39,47 +39,34 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Company ID</th>
-                  <th>Company Name</th>
-                  <th>Company Registration Address</th>
-                  <th>Company State</th>
-                  <th>Company Country</th>
-                  <th>Country Pincode</th> 
-                  <th>Company Industry</th>
-                  <th>Company Website</th>
-
+                  <th>Tag ID</th>
+                  <th>Name</th>
+                  <th>Slug</th>
+                  {{-- <th>Type</th> --}}
+                  <th>Order Coloumn</th>
+                 
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($company as $companies)
+                  @foreach($tags as $tag)
                     <tr> 
-                      <td>{{ $companies->company_id }}</td>
-                      <td><a href="{{ url('companies'.'/'.$companies->company_id )}}">{{$companies->company_name}}</a></td>
+                      <td>{{ $tag->id }}</td>
+                      <td><a href="{{ url('tags'.'/'.$tag->id )}}">{{$tag->name}}</a></td>
                       
-                       <td>{{$companies->company_registration_address}}</td>
-                        <td>{{$companies->company_state}}</td>
-                        <td>{{$companies->company_country}}</td>
-                        <td>{{$companies->company_pincode}}</td>
-                       <!--  <td>{{$companies->company_email}}</td>
-                        <td>{{$companies->company_phone_no}}</td>
-                        <td>{{$companies->company_primary_contact}}</td>
-                        <td>{{$companies-> company_secondary_contact}}</td>
-                        <td>{{$companies->company_pan_no}}</td>
-                         <td>{{$companies->company_registration_no}}</td>
-                         <td>{{$companies-> company_overview}}</td> -->
-                         <td>{{$companies->company_industry}}</td>
-                         <td>{{$companies->company_website}}</td>
+                       <td>{{$tag->slug}}</td>
+                        {{-- <td>{{$tag->type}}</td> --}}
+                        <td>{{$tag->order_column}}</td>
+                       
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('companies'.'/' .$companies->company_id )}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('companies'.'/' .$companies->company_id)}}" method="post">
+                       <form action="{{ url('tags'.'/' .$tag->id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
-                          {{-- <button class="btn remove_btn " type="submit">Delete</button> --}}
-                          <button class="btn remove_btn delete-record" data-recordid="{{$companies->company_id}}" type="submit">Delete</button>
+                          <button class="btn remove_btn delete-record" data-recordid="{{$tag->id}}" type="submit">Delete</button>
                         </form>
                       </td>
                     </tr>
@@ -87,21 +74,16 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                   <th>Company ID</th>
-                  <th>Company Name</th>
-                  <th>Company Registration Address</th>
-                  <th>Company State</th>
-                  <th>Company Country</th>
-                  <th>Country Pincode</th> 
-                  
-                  <th>Company Industry</th>
-                  <th>Company Website</th>
+                   <th>Tag ID</th>
+                  <th>Name</th>
+                  <th>Slug</th>
+                  {{-- <th>Type</th> --}}
+                  <th>Order Coloumn</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </tfoot>
               </table>
-              {{ $company->links() }}
             </div>
             <!-- /.box-body -->
           </div>
@@ -116,9 +98,7 @@
                  $( document ).ready(function() {
                      $('.delete-record').click(function(event){ 
                       event.preventDefault();                          
-                                                        
-                       var url='/companies/'+$(this).data('recordid');
-                       
+                       var url='/tags/'+$(this).data('recordid');
                        $('#modal-default-form').attr('action',url);                             
                        $('#modal-default').modal('show')
                      });
