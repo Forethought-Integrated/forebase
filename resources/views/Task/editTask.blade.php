@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" id="update-form" action="/crm/task/{{$task->task_id}}" method="POST">
+      <form role="form" id="update-form" action="{{ asset('/crm/task/'.$task->task_id) }}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

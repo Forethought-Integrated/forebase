@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" id="update-form" action="{{ url('brands'.'/'.$brand->brand_id)}}" method="POST">
+      <form role="form" id="update-form" action="{{ asset('brands'.'/'.$brand->brand_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -40,11 +40,7 @@
               {{-- FormBOXBody --}}
               <div class="box-body"> 
                 
-               <!--  <div class="form-group">
-                  <label for="brandPerson" >Brand persona</label>
-                  <input type="text" class="form-control enabelInputField" id="brandPerson" name="brand_persona" value="{{ $brand->brand_persona }}" >
-                </div> -->
-                
+               
 
                <div class="form-group">
                     <label for="brand_persona">Brand Persona</label>
@@ -58,10 +54,7 @@
                     <textarea  class="form-control textarea " name="brand_guidelines" id="brand_guidelines" rows="15">   <?php echo $brand->brand_guidelines;?> 
                   </textarea >
 
-              <!--   <div class="form-group">
-                  <label for="brandColorpalate" >Brand Color Palette</label>
-                  <input type="text" class="form-control enabelInputField" id="brandColorpalate" name="brand_color_palette " value="{{ $brand->brand_color_palette }}" >
-                </div> -->
+             
 
                 <div class="form-group">
                     <label for="brand_color_palette">Brand Color Palette</label>
@@ -69,10 +62,7 @@
                   </textarea >
 
 
-               <!--  <div class="form-group">
-                  <label for="brandTypography" >Brand Typography</label>
-                  <input type="text" class="form-control enabelInputField" id="brandTypography" name="brand_typography" value="{{ $brand->brand_typography }}"  >
-                </div> -->
+               
 
                   <div class="form-group">
                     <label for="brand_typography">Brand Typography</label>

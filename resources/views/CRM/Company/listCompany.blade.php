@@ -13,7 +13,7 @@
 
   <h1>
     Company  List
-    <a href="/companies/create" title="">
+    <a href="{{ asset('/companies/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -56,7 +56,7 @@
                   @foreach($company as $companies)
                     <tr> 
                       <td>{{ $companies->company_id }}</td>
-                      <td><a href="{{ url('companies'.'/'.$companies->company_id )}}">{{$companies->company_name}}</a></td>
+                      <td><a href="{{ asset('companies'.'/'.$companies->company_id )}}">{{$companies->company_name}}</a></td>
                       
                        <td>{{$companies->company_registration_address}}</td>
                         <td>{{$companies->company_state}}</td>
@@ -75,7 +75,7 @@
                         <a class="btn btn-small btn-primary" href="{{ url('companies'.'/' .$companies->company_id )}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('companies'.'/' .$companies->company_id)}}" method="post">
+                       <form action="{{ asset('companies'.'/' .$companies->company_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           {{-- <button class="btn remove_btn " type="submit">Delete</button> --}}

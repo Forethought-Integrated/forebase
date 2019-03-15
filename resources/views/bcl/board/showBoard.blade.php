@@ -41,7 +41,7 @@
                 
                
                  <div class="form-group">
-                  <a href="/lists/{{$data['board']['board_name']}}/{{$data['board']['board_id']}}/create" title="" style="float: right;">
+                  <a href="{{ asset('/lists/'.$data['board']['board_name'].'/'.$data['board']['board_id']) }}/create" title="" style="float: right;">
                    <h3> <i class="fa fa-edit">create</i></h3>
                   </a>
                    <label>List</label>
@@ -59,7 +59,7 @@
                  <div class="form-group">
                    <label>Card</label>
                  
-                <a id="create-card-link" href="/card/{{$data['list']['0']['list_id']}}/create" title="" style="float: right;">
+                <a id="create-card-link" href="{{ asset('/card/'.$data['list']['0']['list_id']) }}/create" title="" style="float: right;">
                   <h3> <i class="fa fa-edit">create</i></h3>
                 </a>
 
@@ -88,7 +88,7 @@
                       <td>{{$card['card_id']}}</td>
                       <td>{{$card['list_id']}}</a></td>
 
-                      <td><a href="{{ url('cards'.'/'.$card['card_id'])}}">{{$card['card_name']}}</td>
+                      <td><a href="{{ asset('cards'.'/'.$card['card_id'])}}">{{$card['card_name']}}</td>
                       <td>{{$card['card_description']}}</td>
                       <td>{{$card['card_order']}}</td>
                       <td>{{$card['card_members']}}</td>

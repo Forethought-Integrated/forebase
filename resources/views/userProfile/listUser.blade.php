@@ -47,7 +47,7 @@
                     @foreach($users as $users)
                     <tr>
                       <td>{{$users->id}}</td>
-                      <td><a href="{{ url('user'.'/'.$users->id)}}">{{$users->name}}</a></td>
+                      <td><a href="{{ asset('user'.'/'.$users->id)}}">{{$users->name}}</a></td>
                       <td>{{$users->email}}</td>
                     <!--  <td>
                         <form action="user/{{$users->id}}" method="post">
@@ -58,7 +58,7 @@
                       </td> -->
                   
                          <td>
-                        <form action="user/{{$users->id}}" method="post">
+                        <form action="{{ asset('user/'.$users->id) }}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>
@@ -83,7 +83,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <a href="{{ url('user/delete','$users->email')}}"><button type="button" class="btn btn-primary">Delete <?php echo "$users->email"; ?> </button></a>
+                            <a href="{{ asset('user/delete','$users->email')}}"><button type="button" class="btn btn-primary">Delete <?php echo "$users->email"; ?> </button></a>
                           </div>
                         </div>
                         <!-- /.modal-content -->

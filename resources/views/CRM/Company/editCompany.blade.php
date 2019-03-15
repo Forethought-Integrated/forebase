@@ -33,7 +33,7 @@
   </div>
 
       {{-- form--}}
-      <form role="form" id="update-form"action="{{ url('companies'.'/'.$companies->company_id)}}" method="POST">
+      <form role="form" id="update-form"action="{{ asset('companies'.'/'.$companies->company_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

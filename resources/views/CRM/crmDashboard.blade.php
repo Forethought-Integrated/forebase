@@ -25,7 +25,7 @@
  @can('Contacts')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/contact" title="">
+        <a href="{{ asset('/contact')}}" title="">
           <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -37,7 +37,7 @@
   @can('Accounts')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/account" title="">
+        <a href="{{ asset('/account')}}" title="">
           <img src="{{asset("/img/crm_dashboard/Accounts.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -49,7 +49,7 @@
   @can('Leads')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/lead" title="">
+        <a href="{{ asset('/lead')}}" title="">
           <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -59,7 +59,7 @@
   @can('Opportunities')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/opportunity" title="">
+        <a href="{{ asset('/opportunity')}}" title="">
           <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -70,7 +70,7 @@
    @can('Campaigns')   
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/campaign" title="">
+        <a href="{{ asset('/campaign')}}" title="">
           <img src="{{asset("/img/crm_dashboard/Campaigns.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -125,7 +125,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/crm/task" title="">
+        <a href="{{ asset('/crm/task') }}" title="">
           <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -133,7 +133,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/templates" title="">
+        <a href="{{ asset('/templates') }}" title="">
           <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
           <center>Template</center>
         </a>
@@ -142,7 +142,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/templatesgrid" title="">
+        <a href="{{ asset('/templatesgrid') }}" title="">
           <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
           <center>Template Grid</center>
         </a>

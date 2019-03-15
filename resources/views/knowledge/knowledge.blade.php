@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-md-12">
         <!-- <h2>Embed file manager</h2> -->
-        <iframe src="/knowledgemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
+        <iframe src="{{ asset('/knowledgemanager') }}" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
       </div>
     </div>
 

@@ -13,7 +13,7 @@
 
   <h1>
     Contact List
-    <a href="/contact/create" title="">
+    <a href="{{ asset('/contact/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -55,12 +55,12 @@
                     <tr>
                       <td>{{$no++}}</td>
                       <td>{{$contact['contact_type']}}</td>
-                      <td><a href="{{ url('contact'.'/'.$contact['contact_id'])}}">{{$contact['contact_name']}}</a></td> 
+                      <td><a href="{{ asset('contact'.'/'.$contact['contact_id'])}}">{{$contact['contact_name']}}</a></td> 
                       <td>{{$contact['contact_mobileNo']}}</td>
                       <td>{{$contact['contact_landlineNo']}}</td>
                       <td>{{$contact['contact_email']}}</td>
                       <td>
-                       <form action="{{ url('contact'.'/'.$contact['contact_id'])}}" method="post">
+                       <form action="{{ asset('contact'.'/'.$contact['contact_id'])}}" method="post">
                           {{csrf_field()}}
                             <!-- <input name="_method" type="hidden" value="DELETE">
                             <button class="btn remove_btn" type="submit">Delete</button> -->

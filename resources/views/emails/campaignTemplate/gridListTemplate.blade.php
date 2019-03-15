@@ -10,7 +10,7 @@
 
  <h1>
        Template List
-        <a id="editFormField" href="/templatesgrid/{{$data['template']['0']->template_id}}/edit/" title="">
+        <a id="editFormField" href="{{ asset('/templatesgrid/'.$data['template']['0']->template_id)}}/edit/" title="">
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -29,7 +29,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/templates/{{$template->template_id}}/edit/" title="">
+        <a href="{{ asset('/templates/'.$template->template_id) }}/edit/" title="">
           <img src="{{asset("/img/marketing/brandguidelines.jpg")}}" alt="Snow" style="width:100%">
         </a>
         <a href="">{{$template->template_body}}</a>

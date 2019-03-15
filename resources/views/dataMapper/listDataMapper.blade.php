@@ -13,7 +13,7 @@
 
   <h1>
     Data Mapper
-    <a href="/datamapper/create" title="">
+    <a href="{{ asset('/datamapper/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>

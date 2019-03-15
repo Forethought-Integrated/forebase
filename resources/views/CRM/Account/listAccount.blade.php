@@ -13,7 +13,7 @@
 
   <h1>
     Account List
-    <a href="/account/create" title="">
+    <a href="{{ asset('/account/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -55,13 +55,13 @@
                     <tr>
                       {{-- <td>{{$account['account_id']}}</td> --}}
                       <td>{{$no++}}</td>
-                      <td><a href="{{ url('account'.'/'.$account['account_id'])}}">{{$account['account_name']}}</a></td>
+                      <td><a href="{{ asset('account'.'/'.$account['account_id'])}}">{{$account['account_name']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
                       <td>{{$account['account_mobileNo']}}</td>
                       <td>{{$account['account_email']}}</td>
                       <td>{{$account['account_website']}}</td>
       {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['account_id'])}}">Edit</a>
+                        <a class="btn btn-small btn-primary" href="{{ asset('account'.'/'.$data['account_id'])}}">Edit</a>
                       </td>
        --}}            
 

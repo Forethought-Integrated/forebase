@@ -13,7 +13,7 @@
 
   <h1>
      Menu List
-    <a href="/menus/create" title="">
+    <a href="{{ asset('/menus/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -60,7 +60,7 @@
                         <a class="btn btn-small btn-primary" href="{{ url('menu'.'/' .$menus->menu_id)}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('menus'.'/' .$menus->menu_id)}}" method="post">
+                       <form action="{{ asset('menus'.'/' .$menus->menu_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn" type="submit">Delete</button>

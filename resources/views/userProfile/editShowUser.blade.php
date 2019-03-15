@@ -33,7 +33,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/user-profile/{{$users->id}}" method="POST" enctype="multipart/form-data">
+      <form role="form" action="{{ asset('/user-profile/'.$users->id) }}" method="POST" enctype="multipart/form-data">
           {{csrf_field()}}
         @method('PUT')
         <div class="row">

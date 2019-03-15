@@ -52,7 +52,7 @@
 
                   <div class="panel-body">
                     {{-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> --}}
-                      <form class="form-horizontal" method="POST" action="/user">
+                      <form class="form-horizontal" method="POST" action="{{ asset('/user') }}">
                         {{ csrf_field() }}
 
 

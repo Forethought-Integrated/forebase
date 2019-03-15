@@ -11,7 +11,7 @@
   <h1>
     Contact Form
 
-    <a id="editFormField" href="/contact/{{$data['contact']['contact_id']}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/contact/'.$data['contact']['contact_id'])}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
     

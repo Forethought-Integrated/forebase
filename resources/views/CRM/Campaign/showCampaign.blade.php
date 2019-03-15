@@ -10,7 +10,7 @@
 
   <h1>
     Campaignt Form
-        <a id="editFormField" href="/campaign/{{$data['campaign']['campaign_id']}}/edit/" title="">
+        <a id="editFormField" href="{{asset('/campaign/'.$data['campaign']['campaign_id'])}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

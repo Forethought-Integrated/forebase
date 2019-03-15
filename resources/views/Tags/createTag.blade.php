@@ -33,7 +33,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/tags" method="POST">
+      <form role="form" action="{{ asset('/tags') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}
@@ -52,11 +52,22 @@
                       <input type="varchar" class="form-control" id="slug" name="slug" placeholder="Slug">
                 </div>
 
-                {{-- <div class="form-group">
+                <div class="form-group">
                   <label for="type" >Type</label>
-                  <input type="varchar" class="form-control" id="type" name="type" placeholder="Tag type">
+                  <input type="varchar" class="form-control" id="type" name="type" placeholder="Tag type" required>
                 </div>
- --}}
+                {{-- <div class="form-group">
+                  <select id="type" name="type" class="form-control">
+                      <option>Select Name</option>
+                      @foreach ($tag as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->type}}</option>
+                      @endforeach
+                     </select>
+                   </div> --}}
+
+
+
+
 
                 <div class="form-group">
                   <label for="order_column" >Order Column</label>

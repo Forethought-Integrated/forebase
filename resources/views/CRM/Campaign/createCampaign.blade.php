@@ -34,7 +34,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/campaign" method="POST">
+      <form role="form" action="{{ asset('/campaign')}}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

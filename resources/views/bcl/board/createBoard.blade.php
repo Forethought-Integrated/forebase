@@ -32,7 +32,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/boards" method="POST">
+      <form role="form" action="{{ asset('/boards') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

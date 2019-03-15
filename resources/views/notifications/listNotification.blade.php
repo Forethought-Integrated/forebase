@@ -28,7 +28,7 @@
         {{-- <a href="{{$notification->data['url']}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}"> --}}
           @if($notification->type=='App\Notifications\RegisterationNotification')
           <div class="box-body">
-            <a href="{{$notification->data['url']}}"><span class="fa fa-users text-aqua">{{$notification->data['subject']}}</span></a>
+            <a href="{{asset($notification->data['url'])}}"><span class="fa fa-users text-aqua">{{$notification->data['subject']}}</span></a>
           </div>
 
           <div class="pull-right">
@@ -38,7 +38,7 @@
           @if($notification->type=='App\Notifications\TaskNotification')
             {{-- Task --}}
              <div class="box-body">
-             <span class="fa fa-users text-aqua">{{$notification->data['type']}} with Subject: <a href="{{$notification->data['url']}}"> <b><i style="font-size: 15px">{{$notification->data['subject']}}</i></b> </a> has been assigned to you by <a href="{{$notification->data['assignedByUrl']}}">{{$notification->data['assignedBy']}}</a> with due date {{$notification->data['taskEndDate']}}</span>
+             <span class="fa fa-users text-aqua">{{$notification->data['type']}} with Subject: <a href="{{asset($notification->data['url'])}}"> <b><i style="font-size: 15px">{{$notification->data['subject']}}</i></b> </a> has been assigned to you by <a href="{{asset($notification->data['assignedByUrl'])}}">{{$notification->data['assignedBy']}}</a> with due date {{$notification->data['taskEndDate']}}</span>
             </div>
 
             <div class="pull-right">

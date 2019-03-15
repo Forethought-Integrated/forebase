@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" id="update-form" action="{{ url('tags'.'/'.$tag->id )}}" method="POST">
+      <form role="form" id="update-form" action="{{ asset('tags'.'/'.$tag->id )}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -41,14 +41,19 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="color_type" >Name</label>
-                  <input type="text" class="form-control enabelInputField" id="color_type" name="name" value="{{ $tag->name }}" >
+                  <label for="name" >Name</label>
+                  <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{ $tag->name }}" >
                 </div>
                 
 
                 <div class="form-group">
                   <label for="slug" >Slug</label>
                       <input type="text" class="form-control enabelInputField" id="slug" name="slug" value="{{ $tag->slug }}"  >
+                </div>
+
+                 <div class="form-group">
+                  <label for="type" >Type</label>
+                      <input type="varchar" class="form-control enabelInputField" id="type" name="type" value="{{ $tag->type }}"  >
                 </div>
 
                 <div class="form-group">

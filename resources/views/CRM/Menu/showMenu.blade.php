@@ -10,7 +10,7 @@
 
   <h1>
     Menu Detail
-    <a id="editFormField" href="/menus/{{ $menu->menu_id}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/menus/'.$menu->menu_id)}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

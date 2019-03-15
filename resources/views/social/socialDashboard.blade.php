@@ -52,7 +52,7 @@
     {{-- Write Post --}}
     <div class="card">
       <div class="card-body">
-        <form action="/social" method="post">
+        <form action="{{ asset('/social') }}" method="post">
           {{ csrf_field() }}
           <div class="form-group">
             {{-- For Bootstrap wysihtml5 --}}
@@ -89,7 +89,7 @@
                       <div class="parent_div_reaction" style="display: inline;">
                       <div class="div_reaction_on_hover">
                         @foreach($data['notReactionData'] as $reaction )
-                            <form action="/postreaction" method="post" style ="display:inline;" >
+                            <form action="{{ asset('/postreaction') }}" method="post" style ="display:inline;" >
                               {{csrf_field()}}
                               <input type="hidden" name="postID" value="{{$post['postID']}}">
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
@@ -103,7 +103,7 @@
                       </div>
                       {{-- ./div_reaction_on_hover --}}
                       <div class="divReactionHover" style="display: inline;">
-                      <form action="/postreaction" method="post" style ='display:inline;' >
+                      <form action="{{ asset('/postreaction') }}" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           <input type="hidden" name="postID" value="{{$post['postID']}}">
                           <input type="hidden" name="reaction" value="{{$data['notReactionData']['0']->reaction_id}}">
@@ -132,7 +132,7 @@
                       <div class="parent_div_reaction" style="display: inline;">
                       <div class="div_reaction_on_hover">
                         @foreach($data['notReactionData'] as $reaction )
-                            <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
+                            <form action="{{ asset('/postreaction/'.$post['userPostReactionID']) }}" method="post" style ='display:inline;' >
                               {{csrf_field()}}
                               @method('PUT')
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
@@ -146,7 +146,7 @@
                       {{-- ./div_reaction_on_hover --}}
                       {{-- divReactionHover --}}
                       <div class="divReactionHover" style="display: inline;">
-                      <form action="/postreaction/{{$post['userPostReactionID']}}" method="post" style ='display:inline;' >
+                      <form action="{{ asset('/postreaction/'.$post['userPostReactionID']) }}" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           @method('DELETE')
                           <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
@@ -163,7 +163,7 @@
                   <a href="" class="comment">{{-- <i class="fa  fa-commenting">&nbsp;</i> --}}<span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
                   @if(Auth::user()->id == $post['userID'])
                     <a href="#" class="editPost">Edit </a>|
-                    <a href="{{ url('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
+                    <a href="{{ asset('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
                   @endif
                    {{-- Comment --}}
                 <div class="comment_div card">

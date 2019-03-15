@@ -197,7 +197,7 @@
                   @if(Session::has('taskData'))
                   @foreach(Session::get('taskData') as $taskData)
                    <li><!-- Task item -->
-                    <a href="/crm/task/{{$taskData->task_id}}">
+                    <a href="{{ asset('/crm/task/'.$taskData->task_id) }}">
                       <h3>
                         {{$taskData->task_subject}}
                         <small class="pull-right">{{$taskData->task_percentage}}%</small>

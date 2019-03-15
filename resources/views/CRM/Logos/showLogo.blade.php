@@ -10,7 +10,7 @@
 
   <h1>
     Logo Details
-    <a id="editFormField" href="/logos/{{ $logos->logo_id}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/logos/'.$logos->logo_id)}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

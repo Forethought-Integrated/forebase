@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" id="update-form" action="{{ url('colorpalettes'.'/'.$color_palette->color_palette_id )}}" method="POST">
+      <form role="form" id="update-form" action="{{ asset('colorpalettes'.'/'.$color_palette->color_palette_id )}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

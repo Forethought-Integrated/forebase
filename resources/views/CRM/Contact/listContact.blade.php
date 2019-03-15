@@ -13,7 +13,7 @@
 
   <h1>
     Contact List
-    <a href="/contact/create" title="">
+    <a href="{{ asset('/contact/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -71,7 +71,7 @@
                         <a class="btn btn-small btn-primary" href="{{ url('contact'.'/'.$data['contact_id'])}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('contact'.'/'.$contact['contact_id'])}}" method="post">
+                       <form action="{{ asset('contact'.'/'.$contact['contact_id'])}}" method="post">
                           {{csrf_field()}}
                           <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

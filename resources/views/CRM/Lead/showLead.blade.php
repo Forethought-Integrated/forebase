@@ -10,7 +10,7 @@
 
   <h1>
     Lead Form
-    <a id="editFormField" href="/lead/{{$data['lead']['lead_id']}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/lead/'.$data['lead']['lead_id'])}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

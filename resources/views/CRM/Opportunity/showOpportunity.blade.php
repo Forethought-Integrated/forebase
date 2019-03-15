@@ -10,7 +10,7 @@
 
   <h1>
     Opportunity Form
-        <a id="editFormField" href="/opportunity/{{$data['opportunity']['opportunity_id']}}/edit/" title="">
+        <a id="editFormField" href="{{ asset('/opportunity/'.$data['opportunity']['opportunity_id'] )}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

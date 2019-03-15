@@ -34,7 +34,7 @@
 </div>
 <div class="clearfix"></div>
       {{-- form--}}
-      <form role="form" action="/companies" method="POST">
+      <form role="form" action="{{ asset('/companies') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

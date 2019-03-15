@@ -32,11 +32,11 @@
       {{-- form--}}
       @if(empty ($templates->template_created_by))
       default
-      <form role="form" action="{{ url('templates')}}" method="POST">
+      <form role="form" action="{{ asset('templates')}}" method="POST">
         {{csrf_field()}}
       @else
       user created
-       <form role="form" action="{{ url('templates'.'/'.$templates->template_id)}}" method="POST">
+       <form role="form" action="{{ asset('templates'.'/'.$templates->template_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
               

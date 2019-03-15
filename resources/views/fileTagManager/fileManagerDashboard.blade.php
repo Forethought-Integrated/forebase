@@ -22,39 +22,31 @@
 
   <div class="row" style="padding: 25px">
 
- @can('Contacts')
+ {{-- @can('Contacts') --}}
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/file-manager" title="">
-          <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
+        <a href="{{ asset('/file-manager') }}" title="">
+          <img src="{{asset("/img/crm_dashboard/file.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
-  @endcan
+  {{-- @endcan --}}
 
 
 
-  @can('Accounts')
+  {{-- @can('Accounts') --}}
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/tags" title="">
-          <img src="{{asset("/img/crm_dashboard/Accounts.jpg")}}" alt="Snow" style="width:100%">
+        <a href="{{ asset('/tags') }}" title="">
+          <img src="{{asset("/img/crm_dashboard/tag-files.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
     </div>
-  @endcan
+  {{-- @endcan --}}
 
 
 
-  @can('Leads')
-    <div  class="col-md-2">
-      <div class="column col_logo">
-        <a href="/lead" title="">
-          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
-        </a>
-      </div>
-    </div>
-  @endcan
+  
 
  
     

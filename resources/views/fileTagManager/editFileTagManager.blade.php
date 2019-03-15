@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form id="update-form" role="form" action="/file-manager/{{$data['file']['filemanager_id']}}" method="POST" enctype="multipart/form-data">
+      <form id="update-form" role="form" action="{{ asset('/file-manager/'.$data['file']['filemanager_id'])}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         @method('PUT')
         <div class="row">

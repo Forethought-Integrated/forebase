@@ -51,36 +51,17 @@ class TagController extends Controller
 
                 $arr = array('en' => $request->name,);
                 $arr2 = array('en' => $request->slug,);
-
                 $arr_tojson = json_encode($arr);
-                $arr_tojson2 = json_encode($arr);
-
+                $arr_tojson2 = json_encode($arr2);
                 $tags= new Tags;
                 $tags->name=$arr_tojson;
                 $tags->slug=$arr_tojson2;
+                $tags->type=$request->type;
                 $tags->order_column=$request->order_column;
-                $arr_tojson = json_encode($arr);
-
                 $tags->save();
 
                 return redirect('/tags'); 
 
-              // Tags::create([
-                    
-              //    $arr = array(
-              //    'en' => $request->name,
-                        
-              //    $arr_tojson = json_encode($arr)
-              //    $arr = array(
-              //     'en' => $request->slug,
-                     
-              //    $arr_tojson = json_encode($arr)
-              //       'order_column'=> $request->order_column,
-                    
-                   
-                    
-              //   ]);
-              //       return redirect('/tags'); 
     }
 
     /**
@@ -89,12 +70,12 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        
-         $tags = $this->get_singel_data($id);
-        return view('Tags.showTag',['tag'=>$tags]);
-    }
+            public function show($id)
+            {
+                
+                 $tags = $this->get_singel_data($id);
+                return view('Tags.showTag',['tag'=>$tags]);
+            }
 
     /**
      * Show the form for editing the specified resource.

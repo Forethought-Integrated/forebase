@@ -10,7 +10,7 @@
 
   <h1>
     Brand Detail
-    <a id="editFormField" href="/brands/{{ $brand->brand_id}}/edit/" title="">
+    <a id="editFormField" href="{{asset('/brands/'.$brand->brand_id)}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

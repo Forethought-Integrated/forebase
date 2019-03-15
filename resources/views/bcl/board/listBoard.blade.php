@@ -13,7 +13,7 @@
 
   <h1>
     Board List
-    <a href="/boards/create" title="">
+    <a href="{{ asset('/boards/create') }}" title="">
       <i class="fa fa-edit">create</i>
     </a>
   </h1>
@@ -55,7 +55,7 @@
                       <td>{{$data['board_id']}}</td>
                       <td>{{$data['owner_id']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
-                      <td><a href="{{ url('board-detail'.'/'.$data['board_id'])}}">{{$data['board_name']}}</td>
+                      <td><a href="{{ asset('board-detail'.'/'.$data['board_id'])}}">{{$data['board_name']}}</td>
                       <td>{{$data['board_description']}}</td>
                      
       {{--                 <td>

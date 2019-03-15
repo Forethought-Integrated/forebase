@@ -13,7 +13,7 @@
 
   <h1>
   Template  List
-    <a href="/templates/create" title="">
+    <a href="{{ asset('/templates/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -61,7 +61,7 @@
 
                       </td> --}}
                        <td>
-                       <form action="{{ url('/templates'.'/'.$templates->template_id)}}" method="post">
+                       <form action="{{ asset('/templates'.'/'.$templates->template_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn " type="submit">Delete</button>

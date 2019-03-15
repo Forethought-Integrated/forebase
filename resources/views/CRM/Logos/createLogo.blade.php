@@ -33,7 +33,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/logos" method="POST">
+      <form role="form" action="{{ asset('/logos') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

@@ -31,7 +31,7 @@
             </div>
 
       {{-- form--}}
-      <form role="form" action="/lists" method="POST">
+      <form role="form" action="{{ asset('/lists') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

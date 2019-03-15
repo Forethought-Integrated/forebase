@@ -13,7 +13,7 @@
 
   <h1>
     Opportunity List
-    <a href="/opportunity/create" title="">
+    <a href="{{ asset('/opportunity/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>

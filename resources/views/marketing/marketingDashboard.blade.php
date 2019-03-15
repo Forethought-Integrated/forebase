@@ -28,7 +28,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/brands" title="">
+        <a href="{{ asset('/brands') }}" title="">
           <img src="{{asset("/img/marketing/brandguidelines.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -39,7 +39,7 @@
     @can('ColorPalettes')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/colorpalettes" title="">
+        <a href="{{ asset('/colorpalettes') }}" title="">
           <img src="{{asset("/img/marketing/colorpalettes.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -50,7 +50,7 @@
    @can('Logos')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/logos" title="">
+        <a href="{{ asset('/logos') }}" title="">
           <img src="{{asset("/img/marketing/logo.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -61,7 +61,7 @@
     @can('Company')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/companies" title="">
+        <a href="{{ asset('/companies') }}" title="">
           <img src="{{asset("/img/marketing/company.jpg")}}" alt="Snow" style="width:100%">
         </a>
         

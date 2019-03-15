@@ -13,7 +13,7 @@
 
   <h1>
     Tag  List
-    <a href="/tags/create" title="">
+    <a href="{{ asset('/tags/create') }}" title="">
       <i class="fa fa-edit">create</i>
     </a>
   </h1>
@@ -42,6 +42,7 @@
                   <th>Tag ID</th>
                   <th>Name</th>
                   <th>Slug</th>
+                  <th>Type</th>
                   {{-- <th>Type</th> --}}
                   <th>Order Coloumn</th>
                  
@@ -53,17 +54,17 @@
                   @foreach($tags as $tag)
                     <tr> 
                       <td>{{ $tag->id }}</td>
-                      <td><a href="{{ url('tags'.'/'.$tag->id )}}">{{$tag->name}}</a></td>
+                      <td><a href="{{ asset('tags'.'/'.$tag->id )}}">{{$tag->name}}</a></td>
                       
                        <td>{{$tag->slug}}</td>
-                        {{-- <td>{{$tag->type}}</td> --}}
+                        <td>{{$tag->type}}</td>
                         <td>{{$tag->order_column}}</td>
                        
       {{--                 <td>
                         <a class="btn btn-small btn-primary" href="{{ url('companies'.'/' .$companies->company_id )}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ url('tags'.'/' .$tag->id)}}" method="post">
+                       <form action="{{ asset('tags'.'/' .$tag->id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn delete-record" data-recordid="{{$tag->id}}" type="submit">Delete</button>
@@ -77,7 +78,7 @@
                    <th>Tag ID</th>
                   <th>Name</th>
                   <th>Slug</th>
-                  {{-- <th>Type</th> --}}
+                  <th>Type</th>
                   <th>Order Coloumn</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>

@@ -13,7 +13,7 @@
 
   <h1>
    Lead List
-    <a href="/lead/create" title="">
+    <a href="{{ asset('/lead/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -55,7 +55,7 @@
                       <!-- <td>{{$data['lead_id']}}</td> -->
                       <td>{{$no++}}</td>
                       <td>{{$data['lead_service_code']}}</td>
-                      <td><a href="{{ url('lead'.'/'.$data['lead_id'])}}">{{$data['lead_name']}}</a></td>
+                      <td><a href="{{ asset('lead'.'/'.$data['lead_id'])}}">{{$data['lead_name']}}</a></td>
                       <td>{{$data['lead_designation']}}</td> 
                       <td>{{$data['lead_companyName']}}</td>
                       <td>{{$data['lead_mobileNo']}}</td>

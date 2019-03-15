@@ -8,10 +8,10 @@
            <img src="{{url("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <a href="{{ url('users'.'/'.Auth::user()->id)}}">
+          <a href="{{ asset('users'.'/'.Auth::user()->id)}}">
             <p>{{Auth::user()->name}}</p>
           </a>
-          <a href="{{ url('users'.'/'.Auth::user()->id)}}  "><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="{{ asset('users'.'/'.Auth::user()->id)}}  "><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -45,7 +45,7 @@
         {{-- Social --}}
         @can('SocialPost')
         <li>
-          <a href="/social">
+          <a href="{{ asset('/social') }}">
              <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px"> 
             <i class="fa "></i> <span>MasComm</span>
@@ -60,7 +60,7 @@
         {{-- File Manager --}}
         @can('FileManager')
         <li>
-          <a href="/knowledge">
+          <a href="{{ asset('/knowledge') }}">
             <img src="{{asset("/img/sidebar/File_Manager.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style="width: 30px">
             <i class="fa "></i> <span>Files </span>
@@ -75,7 +75,7 @@
         {{-- CRM --}}
         @can('CRM')
         <li>
-          <a href="/crm">
+          <a href="{{ asset('/crm') }}">
             <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>CRM</span>
@@ -91,8 +91,8 @@
         {{-- File Tag Manager --}}
         @can('file-tag-manager')
         <li>
-          <a href="/file-tag-manager">
-            <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
+          <a href="{{ asset('/file-tag-manager') }}">
+            <img src="{{asset("/img/sidebar/fmngr.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
             <i class="fa "></i> <span>File Manager</span>
             <span class="pull-right-container">
             </span>
@@ -116,7 +116,7 @@
         {{-- Brand --}}
         @can('Brand')
         <li>
-          <a href="/marketing">
+          <a href="{{ asset('/marketing') }}">
             <img src="{{asset("/img/sidebar/Brand.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Brand</span>
@@ -132,7 +132,7 @@
         {{-- Admin --}}
         @can('Administration')
         <li>
-          <a href="/administration">
+          <a href="{{ asset('/administration') }}">
             <img src="{{asset("/img/sidebar/Admin.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Admin</span>
@@ -160,7 +160,7 @@
          {{-- end of old helpdesk --}}
         @can('Helpdesk')
         <li>  
-          <a href="/boards">
+          <a href="{{ asset('/boards') }}">
             <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Helpdesk</span>
@@ -176,7 +176,7 @@
 
         {{-- Notification --}}
         <li>
-          <a href="/notification">
+          <a href="{{ asset('/notification') }}">
             <img src="{{asset("/img/sidebar/Notification.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Notification</span>
@@ -190,7 +190,7 @@
         {{--Task start--}}
 
          <li>
-          <a href="/crm/task">
+          <a href="{{ asset('/crm/task') }}">
             <img src="{{asset("/img/sidebar/Task.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Task</span>

@@ -8,6 +8,6 @@ class Tags extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $fillable= ['name', 'slug', 'order_column'];
+    protected $fillable= ['name', 'slug', 'type', 'order_column'];
     
 } 

@@ -1,7 +1,7 @@
 <div class="modal fade" id="fileModal">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <form  id="model-post-form" method="post" action="{{$data['fileUrl']}}" enctype="multipart/form-data">
+    <div class="modal-content"> 
+      <form  id="model-post-form" method="post" action="{{asset($data['fileUrl'])}}" enctype="multipart/form-data">
       {{ csrf_field() }}
         <div class="modal-header">
           <h4 class="modal-title">{{$data['fileModalTitle']}}</h4>

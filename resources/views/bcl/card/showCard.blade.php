@@ -11,7 +11,7 @@
   <h1>
     Card Form
 
-    <a id="editFormField" href="/cards/{{$data['cards']['card_id']}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/cards/'.$data['cards']['card_id']) }}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
     

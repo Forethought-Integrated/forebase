@@ -10,7 +10,7 @@
 
   <h1>
     Template Detail
-    <a id="editFormField" href="/templates/{{$templates->template_id}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/templates/'.$templates->template_id)}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

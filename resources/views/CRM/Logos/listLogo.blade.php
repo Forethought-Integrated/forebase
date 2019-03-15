@@ -13,7 +13,7 @@
 
   <h1>
      Logo List
-    <a href="/logos/create" title="">
+    <a href="{{ asset('/logos/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>

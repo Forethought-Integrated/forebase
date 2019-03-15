@@ -13,7 +13,7 @@
 
   <h1>
    Color Palettes  List
-    <a href="/colorpalettes/create" title="">
+    <a href="{{ asset('/colorpalettes/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -55,7 +55,7 @@
                   @foreach($color_palettes as $color_palette)
                     <tr>
                       <td>{{$color_palette->color_palette_id}}</td>
-                      <td><a href="{{ url('colorpalettes'.'/'.$color_palette->color_palette_id)}}">{{$color_palette->color_type}}</a></td>
+                      <td><a href="{{ asset('colorpalettes'.'/'.$color_palette->color_palette_id)}}">{{$color_palette->color_type}}</a></td>
                       
                        <td>{{$color_palette->color_description}}</td>
                         <td>{{$color_palette->color_cmyk_code}}</td>
@@ -68,7 +68,7 @@
        --}}                <td>
                   
                     
-                     <form action="{{ url('colorpalettes'.'/' .$color_palette->color_palette_id)}}" method="post">
+                     <form action="{{ asset('colorpalettes'.'/' .$color_palette->color_palette_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           {{-- <button class="btn remove_btn " type="submit">Delete</button> --}}

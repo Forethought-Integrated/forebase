@@ -9,7 +9,7 @@
 
 <h1>
     Task Detail
-    <a id="editFormField" href="/crm/task/{{ $task->task_id }}/edit" title="">
+    <a id="editFormField" href="{{ asset('/crm/task/'.$task->task_id) }}/edit" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

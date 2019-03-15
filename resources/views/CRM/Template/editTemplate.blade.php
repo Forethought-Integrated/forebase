@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="{{ url('templates'.'/'.$templates->template_id)}}" method="POST">
+      <form role="form" action="{{ asset('templates'.'/'.$templates->template_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

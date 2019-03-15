@@ -44,7 +44,7 @@
     <div  class="col-md-2">
   
   <div class="column col_logo">
-    <a href="/crm" title="">
+    <a href="{{ asset('/crm') }}" title="">
     <img src="{{asset("/img/admin/apps/CRM.jpg")}}" alt="Snow" style="width:100%">
   </a>
   </div>
@@ -54,7 +54,7 @@
     <div  class="col-md-2">
   
   <div class="column col_logo">
-    <a href="/social" title="">
+    <a href="{{ asset('/social') }}" title="">
       <img src="{{asset("/img/admin/apps/Socials.jpg")}}" alt="Snow" style="width:100%">
     </a>
     
@@ -65,7 +65,7 @@
    <div  class="col-md-2">
   
   <div class="column col_logo">
-    <a href="knowledge" title="">
+    <a href="{{ asset('/knowledge') }}" title="">
     <img src="{{asset("/img/admin/apps/File manager.jpg")}}" alt="Snow" style="width:100%">
     </a>
   </div>

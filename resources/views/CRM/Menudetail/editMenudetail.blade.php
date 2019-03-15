@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="{{ url('menudetails'.'/'.$menu_details->menu_detail_id)}}" method="POST">
+      <form role="form" action="{{ asset('menudetails'.'/'.$menu_details->menu_detail_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

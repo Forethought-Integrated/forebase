@@ -26,12 +26,12 @@
     <!-- Horizontal Form -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Enter Detail</h3>
+        <h3 class="box-title">Enter Detail</h3> 
       </div>
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/file-manager" method="POST" enctype="multipart/form-data">
+      <form role="form" action="{{ asset('/file-manager') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

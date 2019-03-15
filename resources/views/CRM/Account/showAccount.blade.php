@@ -10,7 +10,7 @@
 
   <h1>
     Account Detail
-    <a id="editFormField" href="/account/{{$data['account']['account_id']}}/edit/" title="">
+    <a id="editFormField" href="{{asset('/account/'.$data['account']['account_id'])}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

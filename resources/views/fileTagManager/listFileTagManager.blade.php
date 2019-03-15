@@ -13,7 +13,7 @@
 
   <h1>
     File Tag Manager
-    <a href="/file-manager/create" title="">
+    <a href="{{ asset('/file-manager/create') }}" title="">
       <i class="fa fa-edit">Create</i>
     </a>
   </h1>
@@ -56,7 +56,7 @@
                   @foreach($data['file'] as $elements)
                     <tr>
                       <td>{{$no++}}</td>
-                      <td><a href="{{ url('storage/'.str_replace('public',"",$elements['filemanager_filepath']))}}" target="_blank">{{$elements['filemanager_name']}}</a></td>
+                      <td><a href="{{ asset('storage/'.str_replace('public',"",$elements['filemanager_filepath']))}}" target="_blank">{{$elements['filemanager_name']}}</a></td>
                       <td>{{$elements['filemanager_description']}}</td>
                       {{-- <td>{{$elements->tags()->name}}</td> --}}
                       {{-- <td>{{ --}}

@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" id="update-form" action="{{ url('logos'.'/'.$logos->logo_id)}}" method="POST">
+      <form role="form" id="update-form" action="{{ asset('logos'.'/'.$logos->logo_id)}}" method="POST">
         {{csrf_field()}}
         @method('PUT')
         <div class="row">

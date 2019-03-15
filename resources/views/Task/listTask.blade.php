@@ -11,7 +11,7 @@
 
 <h1>
     Task List 
-    <a href="/crm/task/create" title="">
+    <a href="{{ asset('/crm/task/create') }}" title="">
       <i class="fa fa-edit">create</i>
     </a>
   </h1>
@@ -65,7 +65,7 @@
                     {{-- <td>{{$tasks->task_contact_id}}</td> --}} 
                     {{-- <td>{{$tasks->task_campaign_id}}</td> --}}
                     {{-- <td>{{$tasks->task_id}}</td> --}}
-                    <td><a href="{{ url('/crm/task'.'/'.$tasks->task_id.'/')}}">{{$tasks->task_subject}}</a></td>
+                    <td><a href="{{ asset('/crm/task'.'/'.$tasks->task_id.'/')}}">{{$tasks->task_subject}}</a></td>
                     <td>{{$tasks->task_startdate}}</td>
                     <td>{{$tasks->task_enddate}}</td>
                     <td>{{$tasks->task_assignedto}}</td>

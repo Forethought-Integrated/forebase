@@ -32,7 +32,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-            <form role="form" id="update-form" action="/contact/{{$data['contact']['contact_id']}}" method="POST">
+            <form role="form" id="update-form" action="{{ asset('/contact/'.$data['contact']['contact_id']) }}" method="POST">
         {{ csrf_field() }}
         @method('PUT')
         <div class="row">

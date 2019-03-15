@@ -56,7 +56,7 @@
                     <tr>
                       <!-- <td>{{$data['campaign_id']}}</td> -->
                       <td>{{$no++}}</td>
-                      <td><a href="{{ url('campaign'.'/'.$data['campaign_id'])}}">{{$data['campaign_name']}}</a></td>
+                      <td><a href="{{ asset('campaign'.'/'.$data['campaign_id'])}}">{{$data['campaign_name']}}</a></td>
                       {{-- <td>{{$data['campaign_name']}}</td> --}}
                       <td>{{$data['campaign_type']}}</td>
                       <td>{{$data['campaign_description']}}</td> 

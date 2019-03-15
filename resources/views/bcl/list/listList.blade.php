@@ -13,7 +13,7 @@
 
   <h1>
     List List
-    <a href="/lists/create" title="">
+    <a href="{{ asset('/lists/create') }}" title="">
       <i class="fa fa-edit">create</i>
     </a>
   </h1>
@@ -54,14 +54,14 @@
                   @foreach($data['lists'] as $data)
                     <tr>
                       <td>{{$data['list_id']}}</td>
-                      <td><a href="{{ url('lists'.'/'.$data['list_id'])}}">{{$data['board_id']}}</a></td>
+                      <td><a href="{{ asset('lists'.'/'.$data['list_id'])}}">{{$data['board_id']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
                       <td>{{$data['list_name']}}</td>                      
                       <td>{{$data['list_order']}}</td>                      
                       <td>{{$data['list_archieved']}}</td>
                      
                      <td>
-                       <form action="{{url('lists'.'/'.$data['list_id'])}}" method="post">
+                       <form action="{{asset('lists'.'/'.$data['list_id'])}}" method="post">
                           {{csrf_field()}}
                           @method('DELETE')
                           <button class="btn remove_btn" type="submit">Delete</button>

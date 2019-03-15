@@ -10,7 +10,7 @@
 
   <h1>
     Color Palette Detail
-    <a id="editFormField" href="/colorpalettes/{{ $color_palette->color_palette_id}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/colorpalettes/'.$color_palette->color_palette_id)}}/edit/"title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>

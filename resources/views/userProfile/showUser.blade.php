@@ -11,7 +11,7 @@
   <img src="{{asset("/storage/uploads/avatar/$users->avatar")}}" style="width: 150px; height: 150px;float: left;border-radius: 50%;border-radius: 50%;margin-right: 25px;">
   <h1 style="margin-top: 30px;">{{$users->name}}'s</h1>
     <h3>Profile
-    <a href="/user-profile/{{$users->id}}/edit" title="">
+    <a href="{{ asset('/user-profile/'.$users->id) }}/edit" title="">
       <i class="fa fa-edit"> edit</i>
     </a>
   </h3>

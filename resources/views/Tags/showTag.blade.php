@@ -10,7 +10,7 @@
 
   <h1>
     Tag Detail
-    <a id="editFormField" href="/tags/{{ $tag->id}}/edit/" title="">
+    <a id="editFormField" href="{{ asset('/tags/'. $tag->id) }}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>
@@ -54,8 +54,13 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="type" >Type</label>
+                      <input type="text" class="form-control enabelInputField" id="type" name="type" value="{{ $tag->type}}" disabled>
+                </div>
+
+                <div class="form-group">
                   <label for="order_column" >Order Column</label>
-                  <input type="text" class="form-control enabelInputField" id="order_column" name="order_column" value="{{$tag->order_column}}" disabled>
+                  <input type="int" class="form-control enabelInputField" id="order_column" name="order_column" value="{{$tag->order_column}}" disabled>
                 </div>
 
 

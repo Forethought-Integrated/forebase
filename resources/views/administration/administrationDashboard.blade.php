@@ -28,7 +28,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/permissions" title="">
+        <a href="{{ asset('/permissions')}}" title="">
           <img src="{{asset("/img/administration/permission-&-role.jpg")}}" alt="Snow" style="width:100%">
         </a>
       </div>
@@ -38,7 +38,7 @@
  @can('users')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/users" title="">
+        <a href="{{ asset('/users')}}" title="">
           <img src="{{asset("/img/administration/user.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -50,7 +50,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/roles" title="">
+        <a href="{{ asset('/roles')}}" title="">
           <img src="{{asset("/img/administration/role.jpg")}}" alt="Snow" style="width:100%">
         </a>
       
@@ -61,7 +61,7 @@
   @can('menus')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/menus" title="">
+        <a href="{{ asset('/menus')}}" title="">
           <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -72,7 +72,7 @@
   @can('menudetails')
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/menudetails" title="">
+        <a href="{{asset('/menudetails')}}" title="">
           <img src="{{asset("/img/administration/customize.jpg")}}" alt="Snow" style="width:100%">
         </a>
         
@@ -84,7 +84,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/datamapper" title="">
+        <a href="{{ asset('/datamapper')}}" title="">
           <img src="{{asset("/img/administration/mapper.jpg")}}" alt="Snow" style="width:100%">
         </a>
         

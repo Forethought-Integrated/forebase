@@ -34,7 +34,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="/crm/task" method="POST">
+      <form role="form" action="{{ asset('/crm/task') }}" method="POST">
         {{ csrf_field() }}
         <div class="row">
             {{-- Left Form Field --}}

@@ -13,7 +13,7 @@
 
   <h1>
     Brand  List
-    <a href="/brands/create" title="">
+    <a href="{{ asset('/brands/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
   </h1>
@@ -55,7 +55,7 @@
                   @foreach($brands as $brands)
                     <tr> 
                       <td>{{$brands->brand_id}}</td>
-                      <td><a href="{{ url('brands'.'/'.$brands->brand_id)}}">{!!$brands->brand_persona!!}</a></td>
+                      <td><a href="{{ asset('brands'.'/'.$brands->brand_id)}}">{!!$brands->brand_persona!!}</a></td>
                       
                        <td>{!!$brands->brand_guidelines!!}</td>
                         <td>{!!$brands->brand_color_palette!!}</td>
@@ -63,11 +63,11 @@
                         <!-- <td>{!!$brands->brand_email_signature!!}</td> -->
                        <!--  <td>{!!$brands->brand_disclaimer!!}</td> -->
                      <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('brands-view'.'/'.$brands->brand_id)}}">show</a>
+                        <a class="btn btn-small btn-primary" href="{{ asset('brands-view'.'/'.$brands->brand_id)}}">show</a>
 
                       </td>
                        <td>
-                       <form action="{{ url('brands'.'/' .$brands->brand_id)}}" method="post">
+                       <form action="{{ asset('brands'.'/' .$brands->brand_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           {{-- <button class="btn remove_btn " type="submit">Delete</button> --}}
