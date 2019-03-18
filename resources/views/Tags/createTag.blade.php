@@ -52,14 +52,19 @@
                       <input type="varchar" class="form-control" id="slug" name="slug" placeholder="Slug">
                 </div>
 
-                <div class="form-group">
+                {[!-- <div class="form-group">
                   <label for="type" >Type</label>
                   <input type="varchar" class="form-control" id="type" name="type" placeholder="Tag type" required>
                   @foreach($data['tags'] as $tags)
                         <option value="{{$tags}}">{{$tags}}</option>
                   @endforeach
 
-                </div>
+                </div> --}]
+
+                <div class="form-group">
+                 <label for="type" >Type</label>
+                 <input type="varchar" class="form-control" id="type" name="type" placeholder="Tag type" required>
+               </div>
 
                   
 
