@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Reaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
+
 
 
 
@@ -16,13 +18,15 @@ class ReactionController extends Controller
 
     private $URL;
 
+    private $client;
 
     public function __construct()
     {
         $this->ENV_URL = config('customServices.services.social');
          
         $this->URL=$this->ENV_URL.'reaction';    
-                // $this->middleware('auth');
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);
     }
 
 
@@ -30,8 +34,7 @@ class ReactionController extends Controller
 
     public function index()
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $reaction=$res->getBody();
         $reactionDecode = json_decode($reaction, true);
 
@@ -47,8 +50,7 @@ class ReactionController extends Controller
     {
         return $request->all();
 
-        $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -74,8 +76,7 @@ class ReactionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $client = new Client();
-        $response = $client->request('POST', $this->URL.'/'.$id, [
+        $response = $this->client->request('POST', $this->URL.'/'.$id, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -90,8 +91,7 @@ class ReactionController extends Controller
     {
         // return 'hi delete';
         // PostReaction::destroy($id);
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

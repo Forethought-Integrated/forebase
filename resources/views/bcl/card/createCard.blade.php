@@ -44,33 +44,33 @@
                   <label for="list_name">List Name</label>
                   <input type="text" class="form-control" id="list_name" name="list_name" value="{{$data['list']['list_name']}}" disabled>
                   <input type="hidden" class="form-control" id="list_id" name="list_id" value="{{$data['list']['list_id']}}">
-                  <input type="hidden" class="form-control" id="board_id" name="board_id" value="{{$data['list']['board_id']}}">
+                  <input type="hidden" class="form-control" id="board_id" name="board_id" value="{{$data['list']['board_id']}}" required>
                 </div>
                 
 
                 <div class="form-group">
                   <label for="card_name"> Card Name</label>
 
-                   <input type="text" class="form-control" id="card_name" name="card_name" placeholder="Card Name">
+                   <input type="text" class="form-control" id="card_name" name="card_name" placeholder="Card Name" required>
                 </div>
 
                 <div class="form-group">
                   <label for="card_description" >Description</label>
-                  <input type="varchar" class="form-control" id="card_description" name="card_description" placeholder="Description">
+                  <input type="varchar" class="form-control" id="card_description" name="card_description" placeholder="Description" required>
                 </div>
                    <div class="form-group">
                      <label for="card_order">Order</label>
-                     <input type="varchar" class="form-control" id="card_order" name="card_order" placeholder="order">
+                     <input type="varchar" class="form-control" id="card_order" name="card_order" placeholder="order" required>
                 </div>
 
                  <div class="form-group">
                   <label for="members">Members</label>
-                  <input type="varchar" class="form-control" id="members" name="card_members" placeholder="Members">
+                  <input type="varchar" class="form-control" id="members" name="card_members" placeholder="Members" required>
                 </div>
 
                  <div class="form-group">
                   <label for="archieved">Archieved</label>
-                  <input type="varchar" class="form-control" id="archieved" name="card_archieved" placeholder="Archieved">
+                  <input type="varchar" class="form-control" id="archieved" name="card_archieved" placeholder="Archieved" required>
                 </div>
 
               </div>

@@ -6,6 +6,8 @@ namespace App\Http\Controllers\PostReaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
+
 
 
 
@@ -16,12 +18,16 @@ class PostReactionController extends Controller
 
     private $URL;
 
+    private $client;
+
 
     public function __construct()
     {
         $this->ENV_URL = config('customServices.services.social');
-        $this->URL=$this->ENV_URL.'postreaction';    
-                // $this->middleware('auth');
+        $this->URL=$this->ENV_URL.'postreaction'; 
+
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
     }
 
 
@@ -29,8 +35,7 @@ class PostReactionController extends Controller
 
     public function index()
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $reaction=$res->getBody();
         $reactionDecode = json_decode($reaction, true);
 
@@ -42,8 +47,7 @@ class PostReactionController extends Controller
     public function store(Request $request)
     {
 
-        $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'postID' => $request->postID,
                     'userID' => $request->user()->id,
@@ -68,8 +72,7 @@ class PostReactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'postID' => $request->postID,
                     // 'userID' => $request->user()->id,
@@ -84,8 +87,7 @@ class PostReactionController extends Controller
     {
         // return 'hi delete';
         // PostReaction::destroy($id);
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

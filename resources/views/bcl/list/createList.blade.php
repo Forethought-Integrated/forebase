@@ -41,7 +41,7 @@
                 
                 <div class="form-group">
                   <label for="board_id">Board Name</label>
-                  <input type="hidden" class="form-control" id="board_id" name="board_id" placeholder="Board Id" value="{{$data['boardid']}}">
+                  <input type="hidden" class="form-control" id="board_id" name="board_id" placeholder="Board Id" value="{{$data['boardid']}}" required>
                   <input type="text" class="form-control" id="board_name" name="board_name" placeholder="Board Name" value="{{$data['boardname']}}" disabled>
                 </div>
                
@@ -49,21 +49,21 @@
 
                 <div class="form-group">
                   <label for="list_name" >List Name</label>
-                      <input type="text" class="form-control" id="list_name" name="list_name" placeholder="List Name">
+                      <input type="text" class="form-control" id="list_name" name="list_name" placeholder="List Name" required>
 
                 </div>
 
                
                    <div class="form-group">
                      <label for="order">Order</label>
-                     <input type="varchar" class="form-control" id="order" name="list_order" placeholder="order">
+                     <input type="varchar" class="form-control" id="order" name="list_order" placeholder="order" required>
                 </div>
 
                  
 
                  <div class="form-group">
                   <label for="archieved">Archieved</label>
-                  <input type="varchar" class="form-control" id="archieved" name="archieved" placeholder="Archieved">
+                  <input type="varchar" class="form-control" id="archieved" name="archieved" placeholder="Archieved" required>
                 </div>
 
               </div>

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App; 
+use App\Model\ServiceAuthorization;
+
 
 
 class PostController extends Controller
@@ -18,21 +20,24 @@ class PostController extends Controller
 
     private $URL;
 
+    private $client;
+
 
     public function __construct()
     {
         $this->ENV_URL = config('customServices.services.social');
         
-        $this->URL=$this->ENV_URL.'post';    
-                // $this->middleware('auth');
+        $this->URL=$this->ENV_URL.'post'; 
+
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
     }
 
   
 
     public function index()
     {
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $posts=$res->getBody();
         $postData = json_decode($posts, true);
         // $data = json_decode($posts, true);
@@ -69,8 +74,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'body' => $request->body,
                     'user_id' => $request->user()->id,
@@ -113,8 +117,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->postBodyData,
@@ -138,8 +141,7 @@ class PostController extends Controller
     {
 
 
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
     }
 }

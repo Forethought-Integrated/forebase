@@ -48,14 +48,14 @@
 
                 <div class="form-group">
                   <label for="board_name" >Name</label>
-                      <input type="text" class="form-control" id="board_name" name="board_name" placeholder="Name">
+                      <input type="text" class="form-control" id="board_name" name="board_name" placeholder="Name" required>
                 </div>
 
                 <div class="form-group">
                   <label for="board_description" >Description</label>
-                  <input type="text" class="form-control" id="description" name="board_description" placeholder="Description">
+                  <input type="text" class="form-control" id="description" name="board_description" placeholder="Description" required>
                 </div>
-              </div>
+              </div>s
 
                  <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
