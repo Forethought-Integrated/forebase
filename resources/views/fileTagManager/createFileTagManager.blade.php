@@ -13,7 +13,7 @@
     File Tag Manager
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i>Home</a></li>
     <li class="active">File Tag Manager Form</li>
   </ol>
 
@@ -70,7 +70,7 @@
                       @foreach($data['tag'] as $elements)
                         <option value="{{$elements}}">{{$elements}}</option>
                       @endforeach
-                     
+                      
                   </select>
                 </div>
 

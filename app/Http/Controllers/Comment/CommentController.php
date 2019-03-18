@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Model\ServiceAuthorization;
+
 
 
 class CommentController extends Controller
@@ -15,12 +17,16 @@ class CommentController extends Controller
 
     private $URL;
 
+    private $client;
+
 
     public function __construct()
     {
         $this->ENV_URL = env('API_SOCIAL');
         $this->URL=$this->ENV_URL.'comment';    
                 // $this->middleware('auth');
+         $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','socialapi')->first()->authorizations_token;
+        $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
     }
 
 
@@ -31,8 +37,7 @@ class CommentController extends Controller
         $comments = Comments::latest()->get();
 
 
-        $client = new Client();
-        $res = $client->request('GET', $this->URL);
+        $res = $this->client->request('GET', $this->URL);
         $commentJson=$res->getBody();
         $comment = json_decode($commentJson, true);
         $data['comment']=$comment;
@@ -43,8 +48,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
 
-        $client = new Client();
-        $response = $client->request('POST', $this->URL, [
+        $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'commentBody' => $request->body,
                     'userID' => $request->user()->id,
@@ -66,8 +70,7 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         
-         $client = new Client();
-        $response = $client->request('PUT', $this->URL.'/'.$id, [
+        $response = $this->client->request('PUT', $this->URL.'/'.$id, [
                     'form_params' => [
                     // 'body' => [
                     'body' => $request->commentView,
@@ -86,8 +89,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         // return 'delete';
-        $client = new Client();
-        $res = $client->request('DELETE', $this->URL.'/'.$id);
+        $res = $this->client->request('DELETE', $this->URL.'/'.$id);
         return redirect('/social');
 
         // return response()->json(null, 204);

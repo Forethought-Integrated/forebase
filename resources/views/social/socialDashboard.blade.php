@@ -36,7 +36,7 @@
  
 </h1>
 <ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
   <li class="active">MasComm</li>
 </ol>
 
@@ -162,7 +162,7 @@
                   | 
                   <a href="" class="comment">{{-- <i class="fa  fa-commenting">&nbsp;</i> --}}<span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
                   @if(Auth::user()->id == $post['userID'])
-                    <a href="#" class="editPost">Edit </a>|
+                    <a href="{{asset('/')}}" class="editPost">Edit </a>|
                     <a href="{{ asset('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
                   @endif
                    {{-- Comment --}}
@@ -223,7 +223,7 @@
                     @endforeach
                     {{-- ./Comment Display--}}
                     {{-- Comment Get--}}
-                    <form class="comment_input_box" action="/comment" method="post" {{-- style="display:none" --}}  id="{{'comment_div'.$post['postID']}}">
+                    <form class="comment_input_box" action="{{asset('/comment')}}" method="post" {{-- style="display:none" --}}  id="{{'comment_div'.$post['postID']}}">
                     {{ csrf_field() }}
                       <div class="form-group">
                         <input  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment" style="border-radius: 15px;width: 404px;" />

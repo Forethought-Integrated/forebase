@@ -11,7 +11,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -26,7 +26,7 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -41,7 +41,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -56,7 +56,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -103,7 +103,7 @@
                 <img src="{{asset("/img/default_images/user4-128x128.jpg")}}" alt="user image" class="online">
 
                 <p class="message">
-                  <a href="#" class="name">
+                  <a href="{{asset('/')}}" class="name">
                     <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
                     Mike Doe
                   </a>
@@ -130,7 +130,7 @@
                 <img src="{{asset("/img/default_images/user3-128x128.jpg")}}" alt="user image" class="offline">
 
                 <p class="message">
-                  <a href="#" class="name">
+                  <a href="{{asset('/')}}" class="name">
                     <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
                     Alexander Pierce
                   </a>
@@ -145,7 +145,7 @@
                 <img src="{{asset("/img/default_images/user2-160x160.jpg")}}" alt="user image" class="offline">
 
                 <p class="message">
-                  <a href="#" class="name">
+                  <a href="{{asset('/')}}" class="name">
                     <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:30</small>
                     Susan Doe
                   </a>
@@ -178,11 +178,11 @@
 
               <div class="box-tools pull-right">
                 <ul class="pagination pagination-sm inline">
-                  <li><a href="#">&laquo;</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <li><a href="{{asset('/')}}">&laquo;</a></li>
+                  <li><a href="{{asset('/')}}">1</a></li>
+                  <li><a href="{{asset('/')}}">2</a></li>
+                  <li><a href="{{asset('/')}}">3</a></li>
+                  <li><a href="{{asset('/')}}">&raquo;</a></li>
                 </ul>
               </div>
             </div>
@@ -297,7 +297,7 @@
               <!-- /. tools -->
             </div>
             <div class="box-body">
-              <form action="#" method="post">
+              <form action="{{asset('/')}}" method="post">
                 <div class="form-group">
                   <input type="email" class="form-control" name="emailto" placeholder="Email to:">
                 </div>
@@ -429,10 +429,10 @@
                   <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-bars"></i></button>
                   <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
+                    <li><a href="{{asset('/')}}">Add new event</a></li>
+                    <li><a href="{{asset('/')}}">Clear events</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
+                    <li><a href="{{asset('/')}}">View calendar</a></li>
                   </ul>
                 </div>
                 <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>

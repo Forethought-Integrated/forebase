@@ -26,7 +26,7 @@ class PostReactionController extends Controller
         $this->ENV_URL = config('customServices.services.social');
         $this->URL=$this->ENV_URL.'postreaction'; 
 
-        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','socialapi')->first()->authorizations_token;
         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]);   
     }
 

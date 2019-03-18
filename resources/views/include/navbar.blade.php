@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="/" class="logo">
+  <a href="{{asset('/')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>MD</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -12,7 +12,7 @@
   {{-- Menu --}}
   <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="{{asset('/')}}" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
 
@@ -125,7 +125,7 @@
                   @endforeach --}}
                   @foreach(Auth::user()->notifications as $notification)
                   <li class="{{$notification->read_at ? '' : 'notification'}}">
-                    <a href="{{$notification->data['url']}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}">
+                    <a href="{{asset($notification->data['url'])}}" data-notif-id="{{$notification->id}}" data-notif-link="{{$notification->data['url']}}">
                       <i class="fa fa-users text-aqua"></i> {{$notification->data['subject']}}
                     </a>
                   </li>
@@ -218,7 +218,7 @@
                 </ul>
               </li>
               <li class="footer">
-                <a href="/crm/task/">View all tasks</a>
+                <a href="{{asset('/crm/task/')}}">View all tasks</a>
               </li>
             </ul>
           </li>

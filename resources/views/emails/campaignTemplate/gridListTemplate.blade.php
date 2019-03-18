@@ -14,7 +14,7 @@
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Template</li>
       </ol>
 {{-- {{$data['template']['0']['template_body']}} --}}
@@ -32,7 +32,7 @@
         <a href="{{ asset('/templates/'.$template->template_id) }}/edit/" title="">
           <img src="{{asset("/img/marketing/brandguidelines.jpg")}}" alt="Snow" style="width:100%">
         </a>
-        <a href="">{{$template->template_body}}</a>
+        <a href="{{asset('/')}}">{{$template->template_body}}</a>
         {{-- {{$template['template_body']}} --}}
       </div>
     </div>

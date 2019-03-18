@@ -4,13 +4,13 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div>
-                       <a href="/knowledge">FileManagergit </a>
+                       <a href="{{asset('/knowledge')}}">FileManagergit </a>
                        <br>
-                       <a href="/socialjson">Socialjson</a>
+                       <a href="{{asset('/socialjson')}}">Socialjson</a>
                        <br>
-                       <a href="/permissions">Permissions</a>
+                       <a href="{{asset('/permissions')}}">Permissions</a>
                        <br>
-                       <a href="/socialapp">Social</a>
+                       <a href="{{asset('/socialapp')}}">Social</a>
                        <br>
                        
 
@@ -19,12 +19,12 @@
     
   </b>
     <ul class="dropdown-crm">
-      <li><a href="account">Account</a></li>
-      <li><a href="campaign">Campaign</a></li>
-      <li><a href="contact">Contact</a></li>
-      <li><a href="lead">Lead</a></li>
-      <li><a href="opportunity">Opportunity</a></li>
-      <li><a href="customer">Customer</a></li>
+      <li><a href="{{asset('account')}}">Account</a></li>
+      <li><a href="{{asset('campaign')}}">Campaign</a></li>
+      <li><a href="{{asset('contact')}}">Contact</a></li>
+      <li><a href="{{asset('lead')}}">Lead</a></li>
+      <li><a href="{{asset('opportunity')}}">Opportunity</a></li>
+      <li><a href="{{asset('customer')}}">Customer</a></li>
     </ul>
   </div>
 

@@ -13,7 +13,7 @@
     
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Board Form</li>
   </ol>
 
@@ -55,7 +55,7 @@
                   <label for="board_description" >Description</label>
                   <input type="text" class="form-control" id="description" name="board_description" placeholder="Description" required>
                 </div>
-              </div>s
+              </div>
 
                  <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>

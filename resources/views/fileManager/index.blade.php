@@ -49,7 +49,7 @@
               <i class="fa fa-arrow-left"></i>
               <span class="hidden-xs">{{ trans('laravel-filemanager::lfm.nav-back') }}</span>
             </a>
-            <a class="navbar-brand visible-xs" href="#">{{ trans('laravel-filemanager::lfm.title-panel') }}</a>
+            <a class="navbar-brand visible-xs" href="{{asset('/')}}">{{ trans('laravel-filemanager::lfm.title-panel') }}</a>
           </div>
           <div class="collapse navbar-collapse" id="nav-buttons">
             <ul class="nav navbar-nav navbar-right">
@@ -94,15 +94,15 @@
 
       <ul id="fab">
         <li>
-          <a href="#"></a>
+          <a href="{{asset('/')}}"></a>
           <ul class="hide">
             <li>
-              <a href="#" id="add-folder" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-new') }}">
+              <a href="{{asset('/')}}"id="add-folder" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-new') }}">
                 <i class="fa fa-folder"></i>
               </a>
             </li>
             <li>
-              <a href="#" id="upload" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-upload') }}">
+              <a href="{{asset('/')}}" id="upload" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-upload') }}">
                 <i class="fa fa-upload"></i>
               </a>
             </li>

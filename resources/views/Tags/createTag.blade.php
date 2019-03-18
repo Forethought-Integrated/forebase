@@ -14,7 +14,7 @@
     
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Tag Form</li>
   </ol>
 
@@ -55,17 +55,13 @@
                 <div class="form-group">
                   <label for="type" >Type</label>
                   <input type="varchar" class="form-control" id="type" name="type" placeholder="Tag type" required>
+                  @foreach($data['tags'] as $tags)
+                        <option value="{{$tags}}">{{$tags}}</option>
+                  @endforeach
+
                 </div>
-                {{-- <div class="form-group">
-                  <select id="type" name="type" class="form-control">
-                      <option>Select Name</option>
-                      @foreach ($tag as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->type}}</option>
-                      @endforeach
-                     </select>
-                   </div> --}}
 
-
+                  
 
 
 

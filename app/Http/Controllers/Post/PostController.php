@@ -29,7 +29,7 @@ class PostController extends Controller
         
         $this->URL=$this->ENV_URL.'post'; 
 
-        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','crmapi')->first()->authorizations_token;
+        $token=ServiceAuthorization::select('authorizations_token')->where('authorizations_client','socialapi')->first()->authorizations_token;
         $this->client = new Client(['headers' => ['Authorization' => 'Bearer '.$token]]); 
     }
 
