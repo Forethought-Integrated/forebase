@@ -100,12 +100,12 @@
 
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">{{Auth::user()->unreadNotifications->count()}}</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">{{Auth::user()->unreadNotifications->count()}} unread notifications<span class="pull-right"><a href="/notification-mark-read-all">Mark All As Read</a></span></li>
+              <li class="header">{{Auth::user()->unreadNotifications->count()}} unread notifications<span class="pull-right"><a href="{{asset('/notification-mark-read-all')}}">Mark All As Read</a></span></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -132,7 +132,7 @@
                   @endforeach
                 </ul>
               </li>
-              <li class="footer"><a href="/notification">View all</a></li>
+              <li class="footer"><a href="{{asset('/notification-mark-read-all')}}">View all</a></li>
             </ul>
           </li>
 
@@ -183,7 +183,7 @@
           <!-- Tasks: style can be found in dropdown.less -->
 
           <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">{{Session::get('taskCount')}}</span>
             </a>
@@ -303,7 +303,7 @@
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown">
                 {{-- <img src="{{asset("/storage/uploads/avatar/Auth::user()->avatar")}}" class="img-circle" alt="User Image"> --}}
                 {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}  
 
@@ -357,7 +357,7 @@
 
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="{{asset('/')}}" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>

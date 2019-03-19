@@ -66,17 +66,17 @@
                 </a>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   {{ trans('laravel-filemanager::lfm.nav-sort') }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#" id="list-sort-alphabetic">
+                    <a href="{{asset('/')}}" id="list-sort-alphabetic">
                       <i class="fa fa-sort-alpha-asc"></i> {{ trans('laravel-filemanager::lfm.nav-sort-alphabetic') }}
                     </a>
                   </li>
                   <li>
-                    <a href="#" id="list-sort-time">
+                    <a href="{{asset('/')}}" id="list-sort-time">
                       <i class="fa fa-sort-amount-asc"></i> {{ trans('laravel-filemanager::lfm.nav-sort-time') }}
                     </a>
                   </li>

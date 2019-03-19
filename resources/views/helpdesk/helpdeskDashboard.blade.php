@@ -26,7 +26,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/boards" title="">
+        <a href="{{asset('/boards')}}" title="">
           <img src="{{asset("/img/marketing/brand.png")}}" alt="Snow" style="width:100%">
         </a>
         <strong>Board</strong>
@@ -35,7 +35,7 @@
 
      <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/lists" title="">
+        <a href="{{asset('/lists')}}" title="">
           <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:100%">
         </a>
         <strong>List</strong>
@@ -44,7 +44,7 @@
 
     <div  class="col-md-2">
       <div class="column col_logo">
-        <a href="/cards" title="">
+        <a href="{{asset('/cards')}}" title="">
           <img src="{{asset("/img/marketing/colorpalate.png")}}" alt="Snow" style="width:100%">
         </a>
         <strong>Card</strong>

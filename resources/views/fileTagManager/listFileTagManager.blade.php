@@ -73,7 +73,7 @@
 
                       <td>
                         <li class="dropdown notifications-menu" type="none">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown">
                             <i>Action</i>
                           </a>
                           <ul class="dropdown-menu" style="padding: 0px 30px 0px 0px;left: -6px;min-width: -webkit-fill-available;">
