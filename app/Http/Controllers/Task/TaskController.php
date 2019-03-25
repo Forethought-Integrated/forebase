@@ -24,9 +24,12 @@ class TaskController extends Controller
 
 
 
-    function get_singel_data($idd)
+    function get_singel_data($id)
     {
-        $data = DB::table('tasks')->where('task_id',$idd )->first();
+        $data['task'] = Task::where('task_id',$id )->first();
+        $data['assignedTo'] = User::select('name')->where('id',$data['task']['task_assignedto'])->first()->value('name');
+        $data['assignedBy'] = User::select('name')->where('id',$data['task']['task_assignedto'])->first()->value('name');
+        // $data['assignedBy'] = Task::where('task_id',$id )->first();
         return $data;
     }
     /**
@@ -37,8 +40,13 @@ class TaskController extends Controller
     public function index()
     {
         //
-        $task=DB::table('tasks')->paginate(10);
-        return view('Task.listTask',['task'=>$task]);
+        $data['task']=Task::paginate(1);
+
+        // dd(gettype($task));
+         // $task->withPath('custom/url');
+
+            // return $task->getOptions();
+        return view('Task.listTask',['data'=>$data]);
     }
 
     /**
@@ -53,10 +61,12 @@ class TaskController extends Controller
         // $data['user']=User::select('id','name')->paginate('1');
         // return $this->getUserData('name','vi');
         // return $this->getUserData(Null,Null,5);
-        $data['user']= $this->getUserData('5','name');
         // return $data;
         // $data['user']=User::all();
-        return view('Task.createTask',compact('data'));
+
+        // $data['user']= $this->getUserData('5','name');
+        // return view('Task.createTask',compact('data'));
+        return view('Task.createTask');
     }
 
     /**
@@ -67,7 +77,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // return $request['AssignedTo'];
        $task= Task::create([
             'task_lead_id' => $request['TaskLeadId'],
             'task_contact_id' => $request['TaskContactId'],
@@ -119,10 +129,10 @@ class TaskController extends Controller
         //
                             // get the lead of id 
 
-        $task = $this->get_singel_data($id);
-        
-        // show the view and pass the lead to it
-        return view('Task.showTask',['task'=>$task]);
+        $data = $this->get_singel_data($id);
+        // return $data;
+         // show the view and pass the lead to it
+        return view('Task.showTask',['data'=>$data]);
     }
 
     /**
@@ -131,14 +141,13 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($idd)
+    public function edit($id)
     {
         //
                  // get the lead of id 
-        $task = $this->get_singel_data($idd);
-            
+        $data = $this->get_singel_data($id);
         // show the view and pass the lead to it 
-        return view('Task.editTask',['task'=>$task]);
+        return view('Task.editTask',['data'=>$data]);
        
    
     }

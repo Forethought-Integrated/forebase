@@ -6,7 +6,7 @@
   {{-- <link rel="stylesheet" href="{{asset("bower_components/select2/dist/css/select2.min.css")}}"> --}}
 {{-- <script src="{{asset("admin_lte/bower_components/select2/dist/js/select2.full.min.js")}}"></script> --}}
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 @endsection
@@ -26,6 +26,7 @@
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
+  
     <!-- Horizontal Form -->
     <div class="box box-primary">
             <div class="box-header with-border">
@@ -117,15 +118,14 @@
               <input type="date" class="form-control" id="EndDate" name="EndDate" placeholder="EndDate">
             </div>
   
-  
            
             <div class="form-group">
                     <label>Assigned To</label>
   
                       <select class="form-control select2" name="AssignedTo"{{--  multiple="multiple" --}}>
-                        @foreach($data['user'] as $user)
-                          <option value="{{$user['id']}}">{{$user['name']}}</option>
-                        @endforeach
+                        {{-- @foreach($data['user'] as $user)
+                          <option value="{{$user['id']}}">{{$user['name']}}{{$user['id']}}</option>
+                        @endforeach --}}
                        {{-- {{ $data['user']->links() }} --}}
                        {{-- {{ $data['user']->render() }} --}}
                     </select>

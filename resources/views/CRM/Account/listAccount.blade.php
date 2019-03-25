@@ -7,6 +7,28 @@
 <!-- DataTables -->
   <link rel="stylesheet" href="{{asset("/admin_lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
 
+
+  <style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -29,6 +51,12 @@
 <div class="row">
    {{-- column --}}
   <div class="col-md-12">
+    {{-- <pre>{{print_r($data)}}</pre> --}}
+    {{-- <pre>{{print_r($data['account'])}}</pre> --}}
+    {{-- <pre>{{print_r($data['account']['0'])}}</pre> --}}
+    {{-- {{$data['account']->data['0']->account_name }} --}}
+    {{-- <pre>{{print_r(json_decode($data['account']))}}</pre> --}}
+{{-- {{json_decode($data['account'])->data['0']->account_name}} --}}
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
@@ -37,7 +65,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Account ID</th>
@@ -45,26 +73,19 @@
                   <th>Mobile No</th>
                   <th>Email</th>
                   <th>Website</th>
-                  {{-- <th>Edit</th> --}}
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php $no=1;?>
-                  @foreach($data['account']['data'] as $account)
+                   @foreach($data['account'] as $account)
                     <tr>
-                      {{-- <td>{{$account['account_id']}}</td> --}}
-                      <td>{{$no++}}</td>
+                      {{-- <td>{{$no++}}</td> --}}
+                      <td>{{++$data['s_no']}}</td>
+
                       <td><a href="{{ asset('account'.'/'.$account['account_id'])}}">{{$account['account_name']}}</a></td>
-                      {{-- <td>{{$data['account_name']}}</td> --}}
                       <td>{{$account['account_mobileNo']}}</td>
                       <td>{{$account['account_email']}}</td>
                       <td>{{$account['account_website']}}</td>
-      {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ asset('account'.'/'.$data['account_id'])}}">Edit</a>
-                      </td>
-       --}}            
-
                       <td>
                         <li class="dropdown notifications-menu" type="none">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -79,7 +100,7 @@
                                   <a href="{{asset('/account/'.$account['account_id'].'/edit/')}}">
                                     <i>Edit</i>
                                   </a>
-                                  <a href="{{asset('/account/delete/'.$account['account_id'])}}"<button class=" delete-record" data-recordid="{{$account['account_id']}}" type="submit">Delete</button>
+                                  <a href="{{asset('/account/delete/'.$account['account_id'])}}"><button class=" delete-record" data-recordid="{{$account['account_id']}}" type="submit">Delete</button>
                                     
                                   </a>
                                   <a href="{{asset('/account/contact/create/'.$account['account_id'])}}">
@@ -97,7 +118,7 @@
                         </li>
                       </td>
                     </tr>
-                  @endforeach
+                   @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
@@ -106,14 +127,60 @@
                   <th>Mobile No</th>
                   <th>Email</th>
                   <th>Website</th>
-                  {{-- <th>Edit</th> --}}
                   <th>Action</th>
 
                 </tr>
                 </tfoot>
               </table>
-             
-              
+
+
+              <ul class="pagination pull-right">
+
+                @if($data['pagination']['prev_page_url'])
+                 <li class="paginate_button previous disabled" id="example1_previous"><a href="{{route('acc',['page'=>$data['pagination']['current_page']-1])}}" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+                @else
+                  <li class="paginate_button previous disabled" id="example1_previous"><a aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+                @endif
+                  <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">{{$data['pagination']['current_page']}}</a></li>
+                @if($data['pagination']['next_page_url'])
+                  <li class="paginate_button next" id="example1_next"><a href="{{route('acc',['page'=>$data['pagination']['current_page']+1])}}" aria-controls="example1" data-dt-idx="2" tabindex="0">Next</a></li>
+                @else
+                  <li class="paginate_button next disabled" id="example1_next"><a aria-controls="example1" data-dt-idx="2" tabindex="0">Next</a></li>
+                @endif
+
+              </ul>
+
+
+              {{-- <div class="pagination">
+                <a 
+                  @if($data['pagination']['prev_page_url'])
+                  href="{{route('acc',['page'=>$data['pagination']['current_page']-1])}}"
+                  @else
+                  disabled="disabled"
+                  @endif
+                  >&laquo;</a>
+                <a href="#" class="active">{{$data['pagination']['current_page']}}</a>
+                <a 
+
+                  @if($data['pagination']['next_page_url'])
+                  href="{{route('acc',['page'=>$data['pagination']['current_page']+1])}}"
+                  @else
+                  disabled="disabled"
+                  @endif
+                >&raquo;</a>
+              </div> --}}
+             {{-- 
+             <div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="#">1</a>
+  <a href="#" class="active">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div> --}}
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -152,12 +219,12 @@ $( document ).ready(function() {
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
-      'paging'      : true,
+      'paging'      : false,
       'lengthChange': false,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+      'info'        : false,
+      'autoWidth'   : true,
     })
   })
 </script>

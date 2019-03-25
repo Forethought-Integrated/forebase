@@ -28,3 +28,6 @@ Route::post('details', 'API\UserController@details');
 Route::get('logo/{id}', 'Logo\LogoController@show');
 
 
+Route::get('/file-manager/', 'API\FileTagManager\FileTagManagerController@index');
+Route::post('/file-manager/', 'API\FileTagManager\FileTagManagerController@store');
+

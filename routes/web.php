@@ -70,6 +70,12 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     // CRM---------------------------------------------------------------------------------------
     Route::resource('account','CRM\AccountController');
+    Route::get('/account/','CRM\AccountController@index')->name('acc');
+    
+    // Route::get('/account',function(){
+    //     return 'hi';
+    // })->name('acc');
+    
     Route::get('account/delete/{id}', 'CRM\AccountController@destroy');
     Route::get('account/contact/create/{accountID}','CRM\AccountController@createContactAccount');
     Route::get('account/contact/{accountID}', 'CRM\AccountController@indexAccountContact');

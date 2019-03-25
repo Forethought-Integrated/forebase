@@ -28,6 +28,7 @@
 <div class="row">
    {{-- column --}}
   <div class="col-md-12"> 
+    <pre>{{print_r($data)}}</pre>
     {{-- Box --}}
     <div class="box">
             <div class="box-header">
@@ -57,7 +58,7 @@
                   <?php $no=1;?>
                  <!--  <tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">No data available in table</td></tr>
  -->
-                  @foreach($task as $tasks)
+                  @foreach($data['task'] as $tasks)
                  <tr>
                     <!-- <td>{{$tasks->task_id}}</td> -->
                     <td>{{$no++}}</td>
@@ -103,7 +104,9 @@
                 </tr>
                 </tfoot>
             </table>
-            {{ $task->links() }}
+
+            {{ $data['task']->links() }}
+            {{-- {{ $task->getOptions() }} --}}
            
          </div>
             <!-- /.box-body -->

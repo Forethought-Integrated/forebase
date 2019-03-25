@@ -33,16 +33,129 @@ class AccountController extends Controller
      * @return void
      */
 
-    public function index()
+    public function index(Request $request)
     { 
-        $res = $this->client->request('GET', $this->URL);
-        $accountJson=$res->getBody();
-        $account = json_decode($accountJson, true);
-        $data['account']=$account;
-        $data['fileModalTitle']='File Upload';
-        $data['fileUrl']=url('/account/uploadFile');
-        return view('CRM.Account.listAccount',compact('data'));
+        // $res = $this->client->request('GET', $this->URL);
+        // $accountJson=$res->getBody();
+        // $account = json_decode($accountJson, true);
+        // $data['account']=$account;
+        // $data['fileModalTitle']='File Upload';
+        // $data['fileUrl']=url('/account/uploadFile');
+        // return view('CRM.Account.listAccount',compact('data'));
 
+
+
+
+        // $res = $this->client->request('GET', $this->URL);
+        // $accountJson=$res->getBody();
+        // $account= unserialize($accountJson);
+        // $data['account']=$account;
+        // foreach($data['account'] as $data['account'])
+        // {
+        //     $data['account'] = $this->casttoclass('stdClass', $data['account']);
+        // }   
+        // return view('CRM.Account.listAccount',compact('data'));
+
+        if($request->page)
+        {
+            $res = $this->client->request('GET', $this->URL.'?page='.$request->page);
+            $accountJson=$res->getBody();
+            $account = json_decode($accountJson, true);
+            $data['account']=$account['data'];
+
+            // $data['pagination']['current_page']=$account['data']['current_page'];
+            // $data['pagination']['first_page_url']=$data['account']['first_page_url'];
+            // $data['pagination']['from']=$data['account']['from'];
+            // $data['pagination']['last_page']=$data['account']['last_page'];
+            // $data['pagination']['last_page_url']=$data['account']['last_page_url'];
+            // $data['pagination']['next_page_url']=$data['account']['next_page_url'];
+            // $data['pagination']['path']=$data['account']['path'];
+            // $data['pagination']['per_page']=$data['account']['per_page'];
+            // $data['pagination']['prev_page_url']=$data['account']['prev_page_url'];
+            // $data['pagination']['to']=$data['account']['to'];
+            // $data['pagination']['total']=$data['account']['total'];
+
+
+            $data['pagination']['current_page']=$account['current_page'];
+            $data['pagination']['first_page_url']=$account['first_page_url'];
+            $data['pagination']['from']=$account['from'];
+            $data['pagination']['last_page']=$account['last_page'];
+            $data['pagination']['last_page_url']=$account['last_page_url'];
+            $data['pagination']['next_page_url']=$account['next_page_url'];
+            $data['pagination']['path']=$account['path'];
+            $data['pagination']['per_page']=$account['per_page'];
+            $data['pagination']['prev_page_url']=$account['prev_page_url'];
+            $data['pagination']['to']=$account['to'];
+            $data['pagination']['total']=$account['total'];
+
+            $data['s_no']=$data['pagination']['per_page']*$data['pagination']['current_page'] - $data['pagination']['per_page'];
+            
+
+
+            $data['fileModalTitle']='File Upload';
+            $data['fileUrl']=url('/account/uploadFile');
+
+            return view('CRM.Account.listAccount',compact('data'));
+        }
+        else
+        {
+            $res = $this->client->request('GET', $this->URL);
+            $accountJson=$res->getBody();
+            $account = json_decode($accountJson, true);
+            $data['account']=$account['data'];
+            // return $data;
+
+            // $data['pagination']['current_page']=$account['data']['current_page'];
+            // $data['pagination']['first_page_url']=$data['account']['first_page_url'];
+            // $data['pagination']['from']=$data['account']['from'];
+            // $data['pagination']['last_page']=$data['account']['last_page'];
+            // $data['pagination']['last_page_url']=$data['account']['last_page_url'];
+            // $data['pagination']['next_page_url']=$data['account']['next_page_url'];
+            // $data['pagination']['path']=$data['account']['path'];
+            // $data['pagination']['per_page']=$data['account']['per_page'];
+            // $data['pagination']['prev_page_url']=$data['account']['prev_page_url'];
+            // $data['pagination']['to']=$data['account']['to'];
+            // $data['pagination']['total']=$data['account']['total'];
+
+            // $data['pagination']['per_page']*$data['pagination']['current_page'])-$data['pagination']['per_page'];
+            $data['pagination']['current_page']=$account['current_page'];
+            $data['pagination']['first_page_url']=$account['first_page_url'];
+            $data['pagination']['from']=$account['from'];
+            $data['pagination']['last_page']=$account['last_page'];
+            $data['pagination']['last_page_url']=$account['last_page_url'];
+            $data['pagination']['next_page_url']=$account['next_page_url'];
+            $data['pagination']['path']=$account['path'];
+            $data['pagination']['per_page']=$account['per_page'];
+            $data['pagination']['prev_page_url']=$account['prev_page_url'];
+            $data['pagination']['to']=$account['to'];
+            $data['pagination']['total']=$account['total'];
+            $data['s_no']=$data['pagination']['per_page']*$data['pagination']['current_page'] - $data['pagination']['per_page'];
+
+            $data['fileModalTitle']='File Upload';
+            $data['fileUrl']=url('/account/uploadFile');
+
+            return view('CRM.Account.listAccount',compact('data'));
+        }
+    }
+
+    function casttoclass($class, $object)
+{
+  return unserialize(preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen($class) . ':"' . $class . '"', serialize($object)));
+}
+
+    function fixObject (&$object)
+    {
+      if (!is_object ($object) && gettype ($object) == 'object')
+        return ($object = unserialize (serialize ($object)));
+      return $object;
+    }
+
+    function convert2stdClass($object)
+    {
+        $serializedObj = serialize($object);
+        $stdClassObj = preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen('stdClass') . ':"stdClass"', $serializedObj);
+        
+        return unserialize( $stdClassObj );
     }
 
     public function indexAccountContact($accountid)
