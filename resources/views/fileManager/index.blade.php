@@ -210,5 +210,25 @@
       maxFilesize: ({{ lcfirst(str_singular(request('type') ?: '')) == 'image' ? config('lfm.max_image_size') : config('lfm.max_file_size') }} / 1000)
     }
   </script>
+
+  @can('Folder/File Delete Revoke')
+  {{-- Thumbanail Delete Permission --}}
+   <style type="text/css">
+    .btn-group > ul.dropdown-menu{display: none;}
+    .btn-group .dropdown-toggle{border:0px;background-color: transparent;}
+    .btn-group .dropdown-toggle:after{content:none;}
+    .btn-default.dropdown-toggle{display: none;}
+    button.item_name.btn.folder-item:hover,button.item_name.btn.folder-item:focus{background-color: transparent;border:0px;outline:none;box-shadow: none;}
+    button.item_name.btn.folder-item { 
+    display: block;
+    width: 100%;
+    border: none;
+   }
+   td.actions{display: none;}
+  </style>
+  @endcan
+
+  {{-- ./Thumbanail Delete Permission --}}
+
 </body>
 </html>

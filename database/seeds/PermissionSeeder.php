@@ -143,6 +143,13 @@ class PermissionSeeder extends Seeder
         $permission->guard_name='web';
         $permission->save();
 
+        $permission=new Permission;
+        $permission->name='Folder/File Delete Revoke';
+        $permission->guard_name='web';
+        $permission->save();
+
+
+
         
 
         //end of Admin
