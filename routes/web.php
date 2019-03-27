@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
     //--File Upload & Import TO CSV
     Route::post('/datamapper/uploadFile', 'DataMapper\DataMapperController@importCsv');
     //--./File Upload & Import TO CSV
+    Route::resource('/foldericon','FolderIcon\FolderIconController');
+
+    Route::resource('/UsersDomains','DomainValidation\DomainValidationController');
 
     // ./Administration----------------------------------------------------------------------------
 

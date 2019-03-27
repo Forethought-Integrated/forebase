@@ -29,7 +29,7 @@ class  FileTagManagerController extends Controller
     }
 
 
-    public function create()
+    public function create()    
     {
         $data['tag']=Tag::select('name')->get()->pluck('name');
         $data['dir']=Storage::directories('/public/files/shares/');
