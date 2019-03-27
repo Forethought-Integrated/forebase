@@ -31,7 +31,7 @@
       <!-- /.card-header -->
 
       {{-- form--}}
-      <form role="form" action="{{ asset('UsersDomains'.'/'.$domain->id)}}" method="POST" >
+      <form role="form" action="{{ asset('UsersDomains'.'/'.$domain->domain_id)}}" method="POST" >
         {{csrf_field()}}
         @method('PUT')
         <div class="row">
@@ -44,8 +44,8 @@
                 
 
                 <div class="form-group">
-                  <label for="domain" >Domain</label>
-                      <input type="text" class="form-control enabelInputField" id="domain" name="domain" value="{{ $domain->domain }}" >
+                  <label for="domain_name" >Domain</label>
+                      <input type="text" class="form-control enabelInputField" id="domain" name="domain_name" value="{{ $domain->domain_name}}" >
                 </div>
 
                 

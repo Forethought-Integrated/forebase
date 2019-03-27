@@ -42,8 +42,8 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="domain" >Domain</label>
-                  <input type="varchar" class="form-control" id="domain" name="domain" placeholder="Enter Your Domain"required >
+                  <label for="domain_name" >Domain</label>
+                  <input type="varchar" class="form-control" id="domain" name="domain_name" placeholder="Enter Your Domain"required >
                 </div>
               </div>
                 

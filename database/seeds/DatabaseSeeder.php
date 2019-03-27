@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
          $this->call(RoleHasPermissiontableseeder::class);
          $this->call(ModelHasRoletableseeder::class);
          $this->call(NotificationSeeder::class);
+         $this->call(FolderIconTableSeeder::class);
 
 
          //end of permission seeder

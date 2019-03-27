@@ -10,7 +10,7 @@
 
   <h1>
     User Domain detail
-    <a id="editFormField" href="{{asset('/UsersDomains/'.$domain->id)}}/edit/" title="">
+    <a id="editFormField" href="{{asset('/UsersDomains/'.$domain->domain_id)}}/edit/" title="">
       <i class="fa fa-edit">Edit</i>
     </a>
   </h1>
@@ -44,14 +44,14 @@
               <div class="box-body">
                 
                 <div class="form-group">
-                  <label for="id" >User ID</label>
-                  <input type="int" class="form-control enabelInputField" id="id" name="id" value="{{$domain->id}}" disabled>
+                  <label for="domain_id" >User ID</label>
+                  <input type="int" class="form-control enabelInputField" id="domain_id" name="domain_id" value="{{$domain->domain_id}}" disabled>
                 </div>
                 
 
                 <div class="form-group">
-                  <label for="domain" >User Email</label>
-                      <input type="text" class="form-control enabelInputField" id="domain" name="domain" value="{{$domain->domain}}" disabled>
+                  <label for="domain_name" >Domain</label>
+                      <input type="varchar" class="form-control enabelInputField" id="domain" name="domain_name" value="{{$domain->domain_name}}" disabled>
                 </div>
 
                 
