@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomainValidationTable extends Migration
+class CreateDomainTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDomainValidationTable extends Migration
      */
     public function up()
     {
-        Schema::create('domain_validation', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('domain')->unique();
+        Schema::create('domains', function (Blueprint $table) {
+            $table->increments('domain_id');
+            $table->string('domain_name')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateDomainValidationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domain_validation');
+        Schema::dropIfExists('domain');
     }
 }

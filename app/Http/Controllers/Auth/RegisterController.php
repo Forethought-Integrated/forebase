@@ -13,6 +13,7 @@ use Session;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Notifications\RegisterationNotification;
+use App\Model\Domain;
 
 
 
@@ -31,6 +32,8 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    private $domainValidate;
 
     // Vikram Overiding RegistersUsers Trits Method 14-feb-2019
     // protected function registered(Request $request, $user)
@@ -78,14 +81,48 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    // Sandip For Domain Validation
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email_domain:'  .$data['email'], 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:6', 'confirmed'],
+    //         'g-recaptcha-response'=>'required|recaptcha',
+    //     ]);
+    // }
+    // ./Sandip For Domain Validation
+
+
+    // Sandip & Vikram For Reactha & Domain Validation Using Closures
     protected function validator(array $data)
     {
+        $that=$this;
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email_domain:'  .$data['email'], 'max:255', 'unique:users'],
+            // 'email' => ['required', 'string', 'email_domain:'  .$data['email'], 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'max:255', 'unique:users',
+                function($attribute, $value, $fail) use ($that){
+                        if (!($that->compDomain($that->getDomain($value)))) {
+                            return $fail($attribute.' with invalid domain.');
+                        }
+                    }
+            ],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'g-recaptcha-response'=>'required|recaptcha',
+            // 'g-recaptcha-response'=>'required|recaptcha',
         ]);
+    }
+    // ./Sandip & Vikram For Reactha & Domain Validation Using Closures
+
+    private function compDomain($domain)
+    {
+        return in_array($domain, Domain::select('domain_name')->get()->pluck('domain_name')->toArray());
+    }
+
+    private function getDomain($email)
+    {
+        return substr(strrchr($email, "@"), 1);
     }
 
     /**
@@ -104,6 +141,7 @@ class RegisterController extends Controller
     //     ]);
     // }
 
+    // Vikram For Change Passport Storing Rule because of Permission module (It Already Added in User Model)
     protected function create(array $data)
     {
         $user=User::create([
@@ -117,4 +155,6 @@ class RegisterController extends Controller
 
         return $user;
     }
+    // ./Vikram For Change Passport Storing Rule because of Permission module (It Already Added in User Model)
+
 }

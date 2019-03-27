@@ -31,12 +31,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        // ./Forethought-vikram added for passport   05/dec/18
 
-        Validator::extend('email_domain', function($attribute, $value, $parameters, $validator) {
-        $allowedEmailDomains = ['mastech.com', 'gmail.com'];
-        return in_array( explode('@', $parameters[0])[1] , $allowedEmailDomains);
-        });
+        // Validator::extend('email_domain', function($attribute, $value, $parameters, $validator) {
+        // $allowedEmailDomains = ['mastech.com', 'gmail.com'];
+        // return in_array( explode('@', $parameters[0])[1] , $allowedEmailDomains);
+        // });
 
         // dd(DomainValidation::get()->toArray());
         // $domain=DomainValidation::get()->toArray();
@@ -51,6 +50,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes(); 
         
+        // ./Forethought-vikram added for passport   05/dec/18
 
     }
 }
