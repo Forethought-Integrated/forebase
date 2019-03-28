@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Notifications\TaskNotification;
 use Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 
 use App\Traits\User\UserModelHelper;
 
@@ -126,8 +129,6 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
-                            // get the lead of id 
 
         $data = $this->get_singel_data($id);
         // return $data;
@@ -166,9 +167,6 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($request->all());
         $task->save();
-
-   
-        
         return redirect('/crm/task');
     }
 
@@ -181,8 +179,24 @@ class TaskController extends Controller
     public function destroy($id)
     {
        
-         DB::table('tasks')->where('task_id','=',$id)->delete();
-       
+         $task = Task::findOrFail($id);
+         $task->delete();
          return redirect('/crm/task'); 
     }
+
+
+    public function trashdata()
+    {
+       return 'hi';
+        $data = $this->get_singel_data($id);
+        return view('Task.trashTask',['data'=>$data]);
+       
+    }
+
+    // public function restore()
+    // {
+    //    $task=Task::findOrFail()
+    //    $task->restore();
+    //    return redirect ('/crm/trashdata');
+    // }
 }

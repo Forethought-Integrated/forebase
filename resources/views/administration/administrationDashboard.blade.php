@@ -110,6 +110,25 @@
       </div>
     </div>
 
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="{{ asset('/location')}}" title="">
+          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <label>Location</label>
+        </a>
+      </div>
+    </div>
+
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="{{ asset('/department')}}" title="">
+          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <label>Department</label>
+        </a>
+      </div>
+    </div>
+
+
       
     
     

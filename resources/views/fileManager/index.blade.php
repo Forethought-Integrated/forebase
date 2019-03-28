@@ -211,7 +211,7 @@
     }
   </script>
 
-  @can('Folder/File Delete Revoke')
+  @can(!'Folder/File Delete Revoke')
   {{-- Thumbanail Delete Permission --}}
    <style type="text/css">
     .btn-group > ul.dropdown-menu{display: none;}

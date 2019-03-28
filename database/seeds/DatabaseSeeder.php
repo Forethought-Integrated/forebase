@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // in Working
-
          $this->call(BrandSeeder::class);
          $this->call(CompanySeeder::class);
          $this->call(ColorPaletteSeeder::class);
@@ -30,12 +29,13 @@ class DatabaseSeeder extends Seeder
          $this->call(RoleHasPermissiontableseeder::class);
          $this->call(ModelHasRoletableseeder::class);
          $this->call(NotificationSeeder::class);
-         $this->call(FolderIconTableSeeder::class);
 
 
          //end of permission seeder
-
          $this->call(Service_authorizationTableSeeder::class);
+         //FolderIconTableSeeder
+         $this->call(FolderIconTableSeeder::class);
+
          
 
         // ./in Working

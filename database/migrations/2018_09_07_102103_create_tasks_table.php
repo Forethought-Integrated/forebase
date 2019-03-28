@@ -30,7 +30,8 @@ class CreateTasksTable extends Migration
             $table->string('task_enddate')->nullable();
             $table->string('task_assignedto')->nullable();
             $table->string('task_assignedby')->nullable();
-            $table->string('task_group')->nullable();              
+            $table->string('task_group')->nullable(); 
+            $table->softDeletes();             
             $table->timestamps();
         });
     }

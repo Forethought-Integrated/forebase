@@ -6,24 +6,11 @@
 // Auth::routes(['verify' => 'true']);
 Auth::routes(['verify' => 'true']);
 use GuzzleHttp\Client;
-use App\Model\Task;
 Route::get('/registered-succesfully', function () {
     return view('/auth/registeredView');
     });
 // Route::middleware('auth')->group(function () {
 Route::group(['middleware' => ['auth','verified']], function () {
-   
-    // Route::get('/', function () {
-
-    //     // $taskData=Task::where('task_assignedto',Auth::user()->id)->get()->pluck('task_subject','task_percentage');
-    //     $taskData=Task::where('task_assignedto',Auth::user()->id)->get();
-    //     $taskCount= $taskData->count();
-    //     // return $taskCount;
-    //     Session::put('taskData',$taskData);
-    //     Session::put('taskCount',$taskCount);
-    //     // return $taskData;
-    // return view('/dashboard/dashboard');
-    // });
 
     Route::get('/', 'Home\HomeController@index');
 
@@ -60,6 +47,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::resource('/foldericon','FolderIcon\FolderIconController');
 
     Route::resource('/UsersDomains','DomainValidation\DomainValidationController');
+
+    Route::resource('location', 'Location\LocationController');
+    Route::resource('/department', 'Department\DepartmentController');
 
     // ./Administration----------------------------------------------------------------------------
 
@@ -112,6 +102,12 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/crm/task/{id}/edit', 'Task\TaskController@edit');
     Route::put('/crm/task/{id}/', 'Task\TaskController@update');
     Route::delete('/crm/task/{id}/', 'Task\TaskController@destroy');
+    // Route::get('/crm/task/trash-data','Task\TaskController@trashdata');
+    // Route::get('/crm/task/trash-data/',function(){
+    //     return 'hi';
+    // });
+
+    // Route::get('/crm/trash-data','Task\TaskController@restore');
     //  ./CRM--------------------------------------------------------------------------------------------  
 
     // Marketing
@@ -300,4 +296,4 @@ Route::get('/socialjsond', function () {
 // ./testing
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

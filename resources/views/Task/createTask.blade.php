@@ -68,7 +68,7 @@
  --}}
               <div class="form-group">
                 <label for="inputTaskSubject" >Task Subject</label>
-                <input type="Tell" class="form-control" id="TaskSubject" name="TaskSubject" placeholder="TaskSubject">
+                <input type="Tell" class="form-control" id="TaskSubject" name="TaskSubject" placeholder="TaskSubject" required>
               </div>
            
               <div class="form-group">
@@ -110,12 +110,12 @@
             
             <div class="form-group">
               <label for="inputStartDate" >Start Date</label>
-              <input type="date" class="form-control" id="StartDate" name="StartDate" placeholder="Start Date">
+              <input type="date" class="form-control" id="StartDate" name="StartDate" placeholder="Start Date" required>
             </div>
   
             <div class="form-group">
               <label for="inputEnddate" >End date</label>
-              <input type="date" class="form-control" id="EndDate" name="EndDate" placeholder="EndDate">
+              <input type="date" class="form-control" id="EndDate" name="EndDate" placeholder="EndDate" required>
             </div>
   
            

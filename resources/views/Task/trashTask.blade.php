@@ -11,9 +11,7 @@
 
 <h1>
     Task List 
-    <a href="{{ asset('/crm/task/create') }}" title="">
-      <i class="fa fa-edit">create</i>
-    </a>
+    
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -39,10 +37,7 @@
                 <thead>
                 <tr>
                   <th>Task ID</th>
-                  {{-- <th>Task Lead ID</th> --}}
-                  {{-- <th>Task Contact ID</th> --}}
-                  {{-- <th>Task Campaign ID</th> --}}
-                  {{-- <th>Task ID</th> --}}
+                 
                   <th>Task Subject</th>
                   <th>Task Start Date</th>
                   <th>Task End Date</th>
@@ -61,10 +56,7 @@
                  <tr>
                     <!-- <td>{{$tasks->task_id}}</td> -->
                     <td>{{$no++}}</td>
-                    {{-- <td>{{$tasks->task_lead_id}}</td> --}}
-                    {{-- <td>{{$tasks->task_contact_id}}</td> --}} 
-                    {{-- <td>{{$tasks->task_campaign_id}}</td> --}}
-                    {{-- <td>{{$tasks->task_id}}</td> --}}
+                    
                     <td><a href="{{ asset('/crm/task'.'/'.$tasks->task_id.'/')}}">{{$tasks->task_subject}}</a></td>
                     <td>{{$tasks->task_startdate}}</td>
                     <td>{{$tasks->task_enddate}}</td>
@@ -88,10 +80,6 @@
               <tfoot>
                 <tr>
                  <th>Task ID</th>
-                  {{-- <th>Task Lead ID</th> --}}
-                  {{-- <th>Task Contact ID</th> --}}
-                  {{-- <th>Task Campaign ID</th> --}}
-                  {{-- <th>Task ID</th> --}}
                   <th>Task Subject</th>
                   <th>Task Start Date</th>
                   <th>Task End Date</th>
@@ -105,8 +93,6 @@
             </table>
 
             {{ $data['task']->links() }}
-            {{-- {{ $task->getOptions() }} --}}
-            <td>
                       
            
          </div>
@@ -118,9 +104,6 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
-<!-- <td> -->
-<a class="btn btn-small btn-primary" href="{{ url('/crm/task/trash-data/')}}">Trash-Data</a>
-                  <!-- </td> -->
 
 @endsection
 
