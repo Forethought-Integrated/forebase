@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-// use App\Model\DomainValidation;
 
 // Forethought-vikram added for passport   05/dec/18
 use Laravel\Passport\Passport; 
@@ -30,19 +29,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-
-        // Validator::extend('email_domain', function($attribute, $value, $parameters, $validator) {
-        // $allowedEmailDomains = ['mastech.com', 'gmail.com'];
-        // return in_array( explode('@', $parameters[0])[1] , $allowedEmailDomains);
-        // });
-
-        // dd(DomainValidation::get()->toArray());
-        // $domain=DomainValidation::get()->toArray();
-        // DomainValidation::extend('email_domain', function($attribute, $value, $parameters, $validator) {
-        // $allowedEmailDomains = ['mastech.com', 'gmail.com'];
-        // return in_array( explode('@', $parameters[0])[1] , $allowedEmailDomains);
-        // });
 
         $this->registerPolicies();
 
