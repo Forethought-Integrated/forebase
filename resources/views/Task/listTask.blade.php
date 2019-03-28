@@ -28,7 +28,6 @@
 <div class="row">
    {{-- column --}}
   <div class="col-md-12"> 
-    <pre>{{print_r($data)}}</pre>
     {{-- Box --}}
     <div class="box">
             <div class="box-header">

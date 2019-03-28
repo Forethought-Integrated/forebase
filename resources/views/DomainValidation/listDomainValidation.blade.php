@@ -50,15 +50,15 @@
                 <tbody>
                   @foreach($domains as $domain)
                     <tr>
-                      <td>{{$domain->id}}</td>
-                      <td><a href="{{ url('UsersDomains'.'/'.$domain->id)}}">{{$domain->domain}}</a></td>
+                      <td>{{$domain->domain_id}}</td>
+                      <td><a href="{{ url('UsersDomains'.'/'.$domain->domain_id)}}">{{$domain->domain_name}}</a></td>
                       
                        
       {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('foldericon'.'/'.$foldericon->id)}}">Edit</a>
+                        <a class="btn btn-small btn-primary" href="{{ url('UsersDomains'.'/'.$domain->domain_id)}}">Edit</a>
                       </td>
        --}}                <td>
-                       <form action="{{ asset('UsersDomains'.'/' .$domain->id)}}" method="post">
+                       <form action="{{ asset('UsersDomains'.'/' .$domain->domain_id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn remove_btn" type="submit">Delete</button>

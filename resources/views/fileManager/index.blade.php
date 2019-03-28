@@ -66,17 +66,17 @@
                 </a>
               </li>
               <li class="dropdown">
-                <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   {{ trans('laravel-filemanager::lfm.nav-sort') }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="{{asset('/')}}" id="list-sort-alphabetic">
+                    <a href="#" id="list-sort-alphabetic">
                       <i class="fa fa-sort-alpha-asc"></i> {{ trans('laravel-filemanager::lfm.nav-sort-alphabetic') }}
                     </a>
                   </li>
                   <li>
-                    <a href="{{asset('/')}}" id="list-sort-time">
+                    <a href="#" id="list-sort-time">
                       <i class="fa fa-sort-amount-asc"></i> {{ trans('laravel-filemanager::lfm.nav-sort-time') }}
                     </a>
                   </li>
@@ -94,15 +94,15 @@
 
       <ul id="fab">
         <li>
-          <a href="{{asset('/')}}"></a>
+          <a href="#"></a>
           <ul class="hide">
             <li>
-              <a href="{{asset('/')}}"id="add-folder" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-new') }}">
+              <a href="#"id="add-folder" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-new') }}">
                 <i class="fa fa-folder"></i>
               </a>
             </li>
             <li>
-              <a href="{{asset('/')}}" id="upload" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-upload') }}">
+              <a href="#" id="upload" data-mfb-label="{{ trans('laravel-filemanager::lfm.nav-upload') }}">
                 <i class="fa fa-upload"></i>
               </a>
             </li>

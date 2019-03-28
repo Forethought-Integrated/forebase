@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\DomainValidation;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Model\DomainValidation;
+use App\Model\Domain;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -14,13 +14,13 @@ class DomainValidationController extends Controller
 
          function get_singel_data($id)
         {
-            $data = DB::table('domain_validation')->where('id',$id)->first();
+            $data = DB::table('domains')->where('domain_id',$id)->first();
             return $data;
         }
         public function index()
         {
                
-           $domains=DB::table('domain_validation')->paginate(10);
+           $domains=DB::table('domains')->paginate(10);
 
            return view('DomainValidation.listDomainValidation',['domains'=>$domains]);
         }
@@ -35,11 +35,8 @@ class DomainValidationController extends Controller
         public function store(Request $request)
         {
            
-           
-                DomainValidation::create([
-                        
-                        'domain'=>$request->domain,
-                        
+                Domain::create([
+                        'domain_name'=>$request->domain_name,
                     ]);
                         return redirect('/UsersDomains'); 
         }
@@ -48,7 +45,6 @@ class DomainValidationController extends Controller
         {
              $domains = $this->get_singel_data($id);
                 
-           
             return view('DomainValidation.showDomainValidation',['domain'=>$domains]);
         }
 
@@ -61,7 +57,7 @@ class DomainValidationController extends Controller
 
         public function update(Request $request, $id)
         {
-            $domains = DomainValidation::findOrFail($id);
+            $domains = Domain::findOrFail($id);
             $domains->update($request->all());
             $domains->save();
             return redirect('/UsersDomains');
@@ -70,7 +66,7 @@ class DomainValidationController extends Controller
         public function destroy($id)
         {
            
-             DB::table('domain_validation')->where('id','=',$id)->delete();
+             DB::table('domains')->where('domain_id','=',$id)->delete();
              return redirect('/UsersDomains');
         }
 }
