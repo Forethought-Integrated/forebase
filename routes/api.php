@@ -31,3 +31,11 @@ Route::get('logo/{id}', 'Logo\LogoController@show');
 Route::get('/file-manager/', 'API\FileTagManager\FileTagManagerController@index');
 Route::post('/file-manager/', 'API\FileTagManager\FileTagManagerController@store');
 
+
+Route::get('/user','API\User\UserController@index');
+Route::post('/user','API\User\UserController@store');
+Route::get('/user/{id}','API\User\UserController@show');
+Route::put('/user/{id}','API\User\UserController@update');
+Route::delete('/user/{id}','API\User\UserController@destroy');
+
+
