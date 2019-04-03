@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::resource('location', 'Location\LocationController');
     Route::resource('/department', 'Department\DepartmentController');
+    Route::resource('/team', 'Team\TeamController');
 
     // ./Administration----------------------------------------------------------------------------
 
@@ -167,6 +168,12 @@ Route::group(['middleware' => ['auth','verified']], function () {
        ///for logos
 
     Route::resource('logos','Logo\LogoController');
+
+  //  Route::post('/api/login', 'API\User\UserController@login');
+  //  Route::post('/api/register', 'API\User\UserController@register');
+  //  Route::group(['middleware' => 'auth:api'], function(){
+  // Route::post('/api/details', 'API\User\UserController@details');
+  //  });
 
        ///for company
 
