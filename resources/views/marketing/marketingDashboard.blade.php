@@ -29,7 +29,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/brands') }}" title="">
-          <img src="{{asset("/img/marketing/brandguidelines.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/marketing/brandguidelines.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Brand Guidelines
+          </center>
         </a>
         
       </div>
@@ -40,7 +44,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/colorpalettes') }}" title="">
-          <img src="{{asset("/img/marketing/colorpalettes.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/marketing/colorpalettes.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Color Palettes
+          </center>
         </a>
         
       </div>
@@ -51,9 +59,12 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/logos') }}" title="">
-          <img src="{{asset("/img/marketing/logo.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Logo
+          </center>
         </a>
-        
       </div>
     </div>
     @endcan
@@ -62,7 +73,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/companies') }}" title="">
-          <img src="{{asset("/img/marketing/company.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/marketing/company.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Company
+          </center>
         </a>
         
       </div>
