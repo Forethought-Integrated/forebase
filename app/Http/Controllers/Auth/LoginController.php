@@ -45,6 +45,10 @@ class LoginController extends Controller
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
+        
+        // return $this->guard()->attempt(
+        //     $this->credentials($request), $request->filled('remember')
+        // );
 
         // dd($this->guard()->attempt(
         //     $this->credentials($request), $request->filled('remember')

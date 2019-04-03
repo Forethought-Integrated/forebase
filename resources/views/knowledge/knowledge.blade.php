@@ -5,6 +5,9 @@
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+<style type="text/css">
+	#content .col-md-3 {width: 17%  !important;}
+</style>
 @endsection
 
 @section('ContentHeader(Page_header)')

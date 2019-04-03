@@ -129,6 +129,10 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::resource('/postreaction', 'PostReaction\PostReactionController');
         Route::resource('/reaction', 'Reaction\ReactionController');
 
+        //Starred
+        Route::get('/star/{post_id}/', 'Post\PostController@addStar');
+        Route::get('/starred/{post_id}/', 'Post\PostController@removeStar');
+        //./Starred
     });
     
     // ./Social Blade
