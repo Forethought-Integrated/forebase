@@ -26,7 +26,10 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/file-manager') }}" title="">
-          <img src="{{asset("/img/crm_dashboard/file.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/file_manager/file.jpg")}}" alt="Snow" style="width:80%">
+            <br>
+            </center>
         </a>
       </div>
     </div>
@@ -38,7 +41,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/tags') }}" title="">
-          <img src="{{asset("/img/crm_dashboard/tag-files.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/file_manager/tag-file.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Tag File
+            </center>
         </a>
       </div>
     </div>

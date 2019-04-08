@@ -29,7 +29,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/permissions')}}" title="">
-          <img src="{{asset("/img/administration/permission-&-role.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/permission-&-role.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Permissions
+        </center>
         </a>
       </div>
     </div>
@@ -39,7 +43,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/users')}}" title="">
-          <img src="{{asset("/img/administration/user.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/user.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Users
+        </center>
         </a>
         
       </div>
@@ -51,7 +59,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/roles')}}" title="">
-          <img src="{{asset("/img/administration/role.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/role.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Role
+        </center>
         </a>
       
       </div>
@@ -62,9 +74,12 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/menus')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Menu
+        </center>
         </a>
-        
       </div>
     </div>
   @endcan
@@ -73,9 +88,12 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{asset('/menudetails')}}" title="">
-          <img src="{{asset("/img/administration/customize.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/customized-menu.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Custom Menu
+        </center>
         </a>
-        
       </div>
     </div>
   @endcan
@@ -85,9 +103,12 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/datamapper')}}" title="">
-          <img src="{{asset("/img/administration/mapper.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/mapper.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Data Mapper
+        </center>
         </a>
-        
       </div>
     </div>
     @endcan
@@ -95,17 +116,21 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/foldericon')}}" title="">
-          <img src="{{asset("/img/administration/mapper.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/folder-setting.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Folder Settings
+        </center>
         </a>
-        
       </div>
     </div>
 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/UsersDomains')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
-          <label>User Settings</label>
+          <center>
+          <img src="{{asset("/img/administration/authorised-domains.png")}}" alt="Snow" style="width:80%">
+          Authorized Domain
         </a>
       </div>
     </div>
@@ -113,8 +138,9 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/location')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
-          <label>Location</label>
+          <center>
+          <img src="{{asset("/img/administration/location.png")}}" alt="Snow" style="width:80%">
+          Location
         </a>
       </div>
     </div>
@@ -122,8 +148,9 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/department')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
-          <label>Department</label>
+          <center>
+          <img src="{{asset("/img/administration/department.png")}}" alt="Snow" style="width:80%">
+          Department
         </a>
       </div>
     </div>  
@@ -131,7 +158,8 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/team')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
           <label>Team</label>
         </a>
       </div>

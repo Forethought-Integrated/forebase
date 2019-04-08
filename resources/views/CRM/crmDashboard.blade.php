@@ -26,7 +26,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/contact')}}" title="">
-          <img src="{{asset("/img/crm_dashboard/Contacts.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Contacts.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Contacts
+        </center>
         </a>
       </div>
     </div>
@@ -38,7 +42,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/account')}}" title="">
-          <img src="{{asset("/img/crm_dashboard/Accounts.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Accounts.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Accounts
+        </center>
         </a>
       </div>
     </div>
@@ -50,7 +58,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/lead')}}" title="">
-          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/crm_dashboard/Leads.png")}}" alt="Snow" style="width:80%">
+          <br>
+          Leads
+        </center>
         </a>
       </div>
     </div>
@@ -60,7 +72,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/opportunity')}}" title="">
-          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" style="width:80%">
+              <br>
+              Opportunities
+          </center>
         </a>
       </div>
     </div>
@@ -71,7 +87,11 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/campaign')}}" title="">
-          <img src="{{asset("/img/crm_dashboard/Campaigns.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Campaigns.png")}}" alt="Campaigns" style="width:80%">
+            <br>
+            Campaigns
+          </center>
         </a>
       </div>
     </div>
@@ -86,7 +106,10 @@
 {{--     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menus" title="Menu">
-          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+        <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" 
+        <br>
+        </center>style="width:80%">
         </a>
       </div>
     </div>
@@ -94,7 +117,10 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/menudetails" title="">
-          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+        <img src="{{asset("/img/crm_dashboard/Leads.png")}}" alt="Snow" style="width:80%">
+        <br>
+        </center>
         </a>
       </div>
     </div>
@@ -102,7 +128,10 @@
      <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/colorpalettes" title="">
-          <img src="{{asset("/img/crm_dashboard/Leads.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+        <img src="{{asset("/img/crm_dashboard/Leads.png")}}" alt="Snow" style="width:80%">
+        <br>
+        </center>
         </a>
       </div>
     </div>
@@ -110,7 +139,10 @@
      <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/logos" title="">
-          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+        <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" 
+        <br>
+        </center>style="width:80%">
         </a>
       </div>
     </div>
@@ -118,7 +150,10 @@
      <div  class="col-md-2">
       <div class="column col_logo">
         <a href="/companies" title="">
-          <img src="{{asset("/img/crm_dashboard/Opportunities.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+        <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" 
+        <br>
+        </center>style="width:80%">
         </a>
       </div>
     </div> --}}
@@ -126,15 +161,22 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/crm/task') }}" title="">
-          <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Task.png")}}" alt="Task" style="width:80%">
+            <br>
+            Task
+          </center>
         </a>
       </div>
     </div>
-
+{{-- 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/templates') }}" title="">
-          <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/crm_dashboard/Task.png")}}" alt="Snow" style="width:80%">
+          <br>
+        </center>
           <center>Template</center>
         </a>
       </div>
@@ -143,7 +185,10 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/templatesgrid') }}" title="">
-          <img src="{{asset("/img/crm_dashboard/Task.jpg")}}" alt="Snow" style="width:100%">
+          <center>
+          <img src="{{asset("/img/crm_dashboard/Task.png")}}" alt="Snow" style="width:80%">
+          <br>
+        </center>
           <center>Template Grid</center>
         </a>
       </div>
@@ -151,7 +196,7 @@
 
     
     
-
+ --}}
        
 
 

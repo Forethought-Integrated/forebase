@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/mfb.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/dropzone.min.css') }}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css">
+  {{-- TO Change THumbainel Size Of Filemanager --}}
+  <style type="text/css">
+  .col-md-3 {width: 17%  !important;}
+  </style>
+  {{-- TO Change THumbainel Size Of Filemanager --}}
+
 </head>
 <body>
   <div class="container-fluid" id="wrapper">
@@ -211,7 +217,7 @@
     }
   </script>
 
-  @can(!'Folder/File Delete Revoke')
+  @can('Folder/File Delete Revoke')
   {{-- Thumbanail Delete Permission --}}
    <style type="text/css">
     .btn-group > ul.dropdown-menu{display: none;}
