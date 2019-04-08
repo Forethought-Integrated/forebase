@@ -10,7 +10,7 @@
 
   <h1>
     List Form
-    
+
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,7 +20,7 @@
 
 @endsection
 
-@section('MainContent') 
+@section('MainContent')
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -38,14 +38,14 @@
             <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
-                
+
                 <div class="form-group">
                   <label for="board_id">Board Name</label>
                   <input type="hidden" class="form-control" id="board_id" name="board_id" placeholder="Board Id" value="{{$data['boardid']}}" required>
                   <input type="text" class="form-control" id="board_name" name="board_name" placeholder="Board Name" value="{{$data['boardname']}}" disabled>
                 </div>
-               
-                
+
+
 
                 <div class="form-group">
                   <label for="list_name" >List Name</label>
@@ -53,18 +53,12 @@
 
                 </div>
 
-               
+
                    <div class="form-group">
                      <label for="order">Order</label>
                      <input type="varchar" class="form-control" id="order" name="list_order" placeholder="order" required>
                 </div>
 
-                 
-
-                 <div class="form-group">
-                  <label for="archieved">Archieved</label>
-                  <input type="varchar" class="form-control" id="archieved" name="archieved" placeholder="Archieved" required>
-                </div>
 
               </div>
             </div>
@@ -72,10 +66,10 @@
 
                  <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-               </div> 
+               </div>
 
 
-                
+
       </form>
       {{-- ./Form --}}
     </div>
@@ -88,5 +82,5 @@
 @endsection
 
 @section('bodyScriptUpdate')
- 
+
 @endsection

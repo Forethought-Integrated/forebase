@@ -13,7 +13,7 @@
 @section('ContentHeader(Page_header)') 
 
   <h1>
-     Team List
+     
     <a href="{{ asset('/team/create') }}" title="">
       <i class="fa fa-edit"> create</i>
     </a>
@@ -59,6 +59,8 @@
                       <td>{{$team->team_icon_path}}</td>
                       
                       <td>{{$team->team_description}}</td>
+                      <td>{{$team->user_id}}</td>
+                      <td>{{$team->teams_id}}</td>
                       
                    <td>
                       

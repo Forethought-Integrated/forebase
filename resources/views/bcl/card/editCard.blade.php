@@ -44,12 +44,12 @@
                   <label for="list_id" >List ID</label>
                   <input type="text" class="form-control enabelInputField" id="list_id" name="list_id" value="{{$data['cards']['list_id']}}" disabled>
                 </div>
-                
+
                 <div class="form-group">
                   <label for="name" >Name</label>
                   <input type="text" class="form-control enabelInputField" id="name" name="card_name" value="{{$data['cards']['card_name']}}">
                 </div>
-                
+
 
                 <div class="form-group">
                   <label for="description" >Description</label>
@@ -66,14 +66,17 @@
                     <input type="text" class="form-control enabelInputField" id="members" name="card_members" value="{{$data['cards']['card_members']}}">
                 </div>
 
-                <div class="form-group">
-                  <label for="archieved" >Archieved</label>
-                  <input type="text" class="form-control enabelInputField" id="archieved" name="card_archieved" value="{{$data['cards']['card_archieved']}}">
+
+              <div class="form-group">
+                    <label for="comments">Add  Comments</label>
+                    <textarea  class="form-control textarea " name="card_comment" id="card_comment" rows="5" ><?php echo $data['cards']['card_comment'];?>
+                    </textarea >
                 </div>
               </div>
+
               <div class="box-footer">
           <button type="submit" data-recordid="{{$data['cards']['card_id']}}" type="submit" class="btn btn-primary  update-record">Update</button>
-        </div> 
+        </div>
 
       </form>
       {{-- ./Form --}}
@@ -81,26 +84,45 @@
 {{--  ./Horizonantal Form  --}}
   </div>
   {{--  ./Col  --}}
+  <script>
+  $(function () {
+        // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    });
+
+  });
+</script>
 </div>
 <!-- /.row -->
 
                <script>
                  $( document ).ready(function() {
-                     $('.update-record').click(function(event){ 
-                      event.preventDefault();                                   
-                                          
-                       var url='/boards/'+$(this).data('recordid');                       
-                       $('#modal-default-form').attr('action',url);                             
+                     $('.update-record').click(function(event){
+                      event.preventDefault();
+                       var url='/boards/'+$(this).data('recordid');
+                       $('#modal-default-form').attr('action',url);
                        $('#modal-default').modal('show')
                      });
                    });
                </script>
 
 @endsection
+<script>
+  $(function () {
+        // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    });
+
+  });
+</script>
 
 @section('bodyScriptUpdate')
 
 
 @include('include.modal.updateModal')
- 
+
 @endsection

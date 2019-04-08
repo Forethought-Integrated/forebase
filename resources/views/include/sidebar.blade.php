@@ -47,7 +47,7 @@
         <li>
           <a href="{{ asset('/social') }}">
              <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style="width: 30px"> 
+    style="width: 30px">
             <i class="fa "></i> <span>MasComm</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
@@ -158,8 +158,8 @@
         </li>--}}
          {{-- end of old helpdesk --}}
         @can('Helpdesk')
-        <li>  
-          <a href="{{ asset('/boards') }}">
+        <li>
+          <a href="{{ asset('/Helpdesk') }}">
             <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
     style=" width: 30px">
             <i class="fa "></i> <span>Helpdesk</span>
@@ -169,7 +169,7 @@
           </a>
         </li>
         @endcan
-          
+
         {{-- ./Back --}}
 
 
@@ -219,7 +219,7 @@
 
 
 
-{{-- 
+{{--
         <li>
           <a href="#">
             <i class="fa fa-th"></i> <span>Widgets</span>
@@ -228,7 +228,7 @@
             </span>
           </a>
         </li>
-   
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-share"></i> <span>Multilevel</span>
@@ -264,7 +264,7 @@
         </li>
         <li><a href="#"><i class="fa fa-book"></i>
          <span>Documentation</span></a></li> --}}
-         
+
       </ul>
     </section>
     <!-- /.sidebar -->

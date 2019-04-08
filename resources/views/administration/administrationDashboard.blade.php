@@ -135,6 +135,15 @@
           <label>Team</label>
         </a>
       </div>
+    </div> 
+
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="{{ asset('/user_team')}}" title="">
+          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <label>User Team</label>
+        </a>
+      </div>
     </div>   
 
 

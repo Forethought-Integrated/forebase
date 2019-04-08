@@ -10,7 +10,7 @@
 
   <h1>
     Card Form
-    
+
   </h1>
   <ol class="breadcrumb">
     <li><a href={{asset('/')}}><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,7 +20,7 @@
 
 @endsection
 
-@section('MainContent') 
+@section('MainContent')
 <div class="row">
   <!--  column -->
   <div class="col-md-12">
@@ -39,14 +39,14 @@
             <div class="col-md-12">
               {{-- FormBOXBody --}}
               <div class="box-body">
-                
+
                 <div class="form-group">
                   <label for="list_name">List Name</label>
                   <input type="text" class="form-control" id="list_name" name="list_name" value="{{$data['list']['list_name']}}" disabled>
                   <input type="hidden" class="form-control" id="list_id" name="list_id" value="{{$data['list']['list_id']}}">
                   <input type="hidden" class="form-control" id="board_id" name="board_id" value="{{$data['list']['board_id']}}" required>
                 </div>
-                
+
 
                 <div class="form-group">
                   <label for="card_name"> Card Name</label>
@@ -68,19 +68,20 @@
                   <input type="varchar" class="form-control" id="members" name="card_members" placeholder="Members" required>
                 </div>
 
-                 <div class="form-group">
-                  <label for="archieved">Archieved</label>
-                  <input type="varchar" class="form-control" id="archieved" name="card_archieved" placeholder="Archieved" required>
-                </div>
+                <div class="form-group">
+                    <label for="comments" >Add  Comments</label>
+                    <textarea  class="form-control textarea " name="card_comment" id="card_comment" rows="5" placeholder="Add Comments">
+                    </textarea >
+                  </div>
 
               </div>
 
                  <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-               </div> 
+               </div>
 
 
-                
+
       </form>
       {{-- ./Form --}}
     </div>
@@ -89,9 +90,19 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
+<script>
+  $(function () {
+        // bootstrap WYSIHTML5 - text editor
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    });
+
+  });
+</script>
 
 @endsection
 
 @section('bodyScriptUpdate')
- 
+
 @endsection
