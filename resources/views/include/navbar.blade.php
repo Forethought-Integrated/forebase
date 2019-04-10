@@ -5,7 +5,8 @@
         <span class="logo-mini"><b>MD</b></span>
         <!-- logo for regular state and mobile devices -->
         {{-- <span class="logo-lg"><b>Admin</b>LTE</span> --}}
-        <span class="logo-lg"><b>MASTECH DIGITAL</b></span>
+        <span class="logo-lg"><b>{{ config('app_name', 'MASTECH DIGITAL') }}</b></span>
+
   </a>
 {{-- ./Logo --}}
 
@@ -211,7 +212,7 @@
                     </a>
                   </li>
                   <!-- end task item -->
-                  @endforeach 
+                  @endforeach
                   @else
                     <li class="header">You Have No Task </li>
                   @endif
@@ -305,7 +306,7 @@
           <li class="dropdown user user-menu">
             <a href="{{asset('/')}}" class="dropdown-toggle" data-toggle="dropdown">
                 {{-- <img src="{{asset("/storage/uploads/avatar/Auth::user()->avatar")}}" class="img-circle" alt="User Image"> --}}
-                {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}  
+                {{-- <img src="{{asset("/img/default_images/vikram.jpeg")}}" class="img-circle" alt="User Image"> --}}
 
                 <img src="{{asset("/storage/uploads/avatar/".Auth::user()->avatar)}}" class="img-circle user-image" alt="User Image">
 

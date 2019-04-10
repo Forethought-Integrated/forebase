@@ -1,27 +1,23 @@
 @extends('layouts.adminApp')
 
-@section('title', 'ListAccount')
+@section('title', 'ListMenu')
 
-@section('headAdminScriptUpdate')
+@section('headAdminScriptUpdate') 
 
 <!-- DataTables -->
   <link rel="stylesheet" href="{{asset("/admin_lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css")}}">
 
 @endsection
 
-@section('ContentHeader(Page_header)')
-  <h1>
-    Board List
-    <a href="{{ asset('/boards/create') }}" title="">
-@can('Board create')
-      <i class="fa fa-edit">create</i>
-  @endcan
 
-    </a>
+@section('ContentHeader(Page_header)') 
+
+  <h1>
+    {{$data['team_name']}}
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Helpdesk List</li>
+    <li class="active">Team List</li>
   </ol>
 
 
@@ -32,7 +28,11 @@
    {{-- column --}}
   <div class="col-md-12">
     {{-- Box --}}
-    <div class="box">
+    <!-- <pre>{{print_r($data)}}</pre> -->
+      <a href="{{url('add-user/'.$data['id'].'/')}}" class="btn btn-primary" >Add User</a>
+
+
+          <div class="box">
             <div class="box-header">
               {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
             </div>
@@ -41,74 +41,56 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Board ID</th>
-                  <th>Owner ID</th>
-                  <th>Name</th>
-                  <th>Description</th>
-
-                  {{-- <th>Edit</th> --}}
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>Email</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                 <!-- <pre>{{print_r($data)}}</pre> -->
-                  @foreach($data['boards'] as $data)
-                    <tr>
-                      <td>{{$data['board_id']}}</td>
-                      <td>{{$data['owner_id']}}</a></td>
-                      <td><a href="{{ asset('board-detail'.'/'.$data['board_id'])}}">{{$data['board_name']}}</td>
-                      <td>{{$data['board_description']}}</td>
-
-      {{--                 <td>
-                        <a class="btn btn-small btn-primary" href="{{ url('account'.'/'.$data['board_id'])}}">Edit</a>
-                      </td>
-       --}}                <td>
-                       {{-- <form action="{{url('boards'.'/'.$data['board_id'])}}" method="post">
+                  @foreach($data['user'] as $var)
+                    <tr>  
+                      <td>{{$var['id']}}</td>
+                      <td>{{$var['name']}}</td>
+                      <td>{{$var['email']}}</td>
+                      <td>
+                       <form action="{{ asset('/team-view'.'/'.$data['id'])}}" method="post">
                           {{csrf_field()}}
-                            @method('DELETE') --}}
-                          {{-- <button class="btn remove_btn" type="submit">Delete</button> --}}
-                          <button class="btn remove_btn delete-record" data-recordid="{{$data['board_id']}}" type="submit">Delete</button>
-                        {{-- </form> --}}
+                          <input name="_method" type="hidden" value="DELETE">
+                          <button class="btn remove_btn " type="submit">Delete</button>
+                        </form>
                       </td>
                     </tr>
                   @endforeach
                 </tbody>
-                <tfoot>
                 <tr>
-                   <th>Board ID</th>
-                  <th>Owner ID</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  {{-- <th>Edit</th> --}}
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>Email</th>
                   <th>Delete</th>
                 </tr>
-                </tfoot>
               </table>
-
-
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
     {{-- ./BOx --}}
   </div>
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
-<script>
-$( document ).ready(function() {
-     $('.delete-record').click(function(event){
-      event.preventDefault();
-       // console.log($(this).data('taskid'));
-       var url='/boards/'+$(this).data('recordid');
-       // var url="/boards/"+$data['boardid']+'/'.data('boardid');
 
-       // console.log(url);
-       $('#modal-default-form').attr('action',url);
-       $('#modal-default').modal('show')
-     });
-   });
-</script>
+             <!--  <script>
+                $( document ).ready(function() {
+                     $('.delete-record').click(function(event){ 
+                      event.preventDefault();                            
+                       var url='/team-view/'+$(this).data('recordid');                       
+                       $('#modal-default-form').attr('action',url);                             
+                       $('#modal-default').modal('show')
+                     });
+                   });
+              </script> -->
+
+             
 
 @endsection
 
@@ -132,19 +114,21 @@ $( document ).ready(function() {
   })
 </script>
 {{-- ./Page Script--}}
- <div class="modal fade" id="modal-default">
+
+
+<div class="modal fade" id="modal-default">
           <div class="modal-dialog">
             {{-- <form action="{{route('tasks.destroy','/crm/task/')}}" method="post"> --}}
           <form id="modal-default-form" {{-- action=" --}}" method="post">
                 {{method_field('delete')}}
-                {{csrf_field()}}
+                {{csrf_field()}} 
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
                <center> <h4 class="modal-title">Are you Sure You Want to delete?</h4></center>
               </div>
-
+              
               <div class="modal-footer">
                 <button type="button" class="btn btn-success pull-left" data-dismiss="modal">No, Cancel</button>
                 {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
@@ -156,11 +140,5 @@ $( document ).ready(function() {
         </div>
           <!-- /.modal-dialog -->
   </div>
-
-
-
+ 
 @endsection
-{{-- @section('bodyScriptUpdate')
-  <script src="{{asset("/js/modal/deleteModal.js")}}"></script>
-  @include('include.modal.deleteModal')
-@endsection --}}

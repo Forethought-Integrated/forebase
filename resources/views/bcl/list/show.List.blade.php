@@ -41,10 +41,10 @@
                 <tr>
                   <th>List ID</th>
                   <th>Board ID</th>
-                  <th>Name</th>                  
-                  <th>Order</th>                 
+                  <th>Name</th>
+                  <th>Order</th>
                   <th>Archieved</th>
-                  
+
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
@@ -56,10 +56,10 @@
                       <td>{{$data['list_id']}}</td>
                       <td><a href="{{ asset('lists'.'/'.$data['list_id'])}}">{{$data['board_id']}}</a></td>
                       {{-- <td>{{$data['account_name']}}</td> --}}
-                      <td>{{$data['list_name']}}</td>                      
-                      <td>{{$data['list_order']}}</td>                      
+                      <td>{{$data['list_name']}}</td>
+                      <td>{{$data['list_order']}}</td>
                       <td>{{$data['list_archieved']}}</td>
-                     
+
                      <td>
                        <form action="{{asset('cards'.'/'.$data['card_id'])}}" method="post">
                           {{csrf_field()}}
@@ -74,16 +74,16 @@
                 <tr>
                   <th>List ID</th>
                   <th>Board ID</th>
-                  <th>Name</th>                  
-                  <th>Order</th>                 
+                  <th>Name</th>
+                  <th>Order</th>
                   <th>Archieved</th>
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
                 </tfoot>
               </table>
-             
-              
+
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -116,5 +116,5 @@
   })
 </script>
 {{-- ./Page Script--}}
- 
+
 @endsection

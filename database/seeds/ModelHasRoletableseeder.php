@@ -17,7 +17,6 @@ class ModelHasRoletableseeder extends Seeder
          $model->role_id ='1';
          $model->model_type ='App\User';
          $model->model_id ='1';
-         // $model->timestamps='false';
          $model->save();
     }
 

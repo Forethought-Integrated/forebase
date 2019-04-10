@@ -31,6 +31,8 @@
             <div class="box-header with-border">
                           </div>
       <!-- /.card-header -->
+      <a href="{{url('team-view/'.$team->team_id.'/')}}" class="btn btn-primary" >view</a>
+
 
       {{-- form--}} 
       <form role="form">
@@ -51,15 +53,11 @@
                   <input type="text" class="form-control enabelInputField" id="menu_type" name="team_icon_path" value="{{$team->team_icon_path}}" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="team_description" >Team Name</label>
+                  <label for="team_description">Team Name</label>
                   <input type="text" class="form-control enabelInputField" id="menu_type" name="team_description" value="{{$team->team_description}}" disabled>
                 </div>
                </div>
                 
-
-                
-
-               
 
               </div>
               {{-- ./FormBOXBody --}}
