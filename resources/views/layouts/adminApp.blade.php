@@ -6,7 +6,7 @@
     @yield('headAdminScriptUpdate')
     
 </head>
-<body class="hold-transition skin-blue sidebar-mini" style="font-size: 13px">
+<body class="hold-transition fixed skin-blue sidebar-mini" style="font-size: 13px">
      @if(Session::has('flash_message'))
             <div class="container">      
                 <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>

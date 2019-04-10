@@ -11,6 +11,8 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App; 
 use App\Model\ServiceAuthorization;
 use View;
+use App\Http\Controllers\Social\RichCardController;
+
 
 
 
@@ -96,6 +98,21 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $richCardObj=new RichCardController();
+        $request->body=$richCardObj->parseBody($request->body);
+        // $tagArray=$richCardObj->extract_tags($request->body,'a',null,true);
+        // $hrefArray;
+        // $i=0;
+        // foreach ($tagArray as $tag) {
+        //     $hrefArray[$i]=$tag['contents'];
+        //     $snippet=$richCardObj->urlSnippetString($hrefArray[$i]);
+        //     $snippetString=$snippet->render();
+        //     if(!($snippetString==$hrefArray[$i]))
+        //     {
+        //         $request->body=str_replace($tag['full_tag'], $snippetString, $request->body);
+        //     }
+        //     $i++;
+        // }
         $response = $this->client->request('POST', $this->URL, [
                     'form_params' => [
                     'body' => $request->body,
@@ -161,4 +178,7 @@ class PostController extends Controller
                 "message"=> "Favorite removed",]
             );
     }
+
+
+    
 }

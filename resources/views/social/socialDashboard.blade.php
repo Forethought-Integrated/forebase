@@ -10,10 +10,14 @@ Added This Style And remove "nav-tabs-custom from
   <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
 --}}
+
+{{-- Post Accordian Css Chnages --}}
 <style type="text/css">
   .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     background-color: inherit;
 }
+{{-- ./Post Accordian Css Chnages --}}
+
 </style>
 {{-- ./For Post Tab Background Color --}}
 
@@ -42,10 +46,12 @@ Added This Style And remove "nav-tabs-custom from
     $(".star_link").on("click",function(e){
       e.preventDefault();
         var obj=this;
+        // console.log($(this).parent().parent().parent().attr("id"));
        $.ajax({
                 url: $(this).attr("href"),
                 type:'GET',
                 success:function (result){
+                  // if($(obj).parent().parent().parent().attr("class"))
                 if(($(obj).find('img').attr("class"))==('star_gold_icon'))
                 {
                   $(obj).find('img').attr("src","/img/socialpost_interaction/star/star-grey.png");
@@ -64,12 +70,27 @@ Added This Style And remove "nav-tabs-custom from
 
 
     {{-- Starred Status --}}
-
-
-
   });
 </script>
 {{-- ./Post Starred Funtionality --}}
+
+{{--  --}}
+<style type="text/css">
+  #postRichCardSnippetContainer{
+    border: 1px solid #fff;background-color: whitesmoke;}
+  #postRichCardSnippetBrandName{
+    font-size: 17px ;
+  }
+  #postRichCardSnippetTitle{
+    font-size: 15px ;
+    font-weight: 600 ;
+  }
+  #postRichCardSnippetDescription{
+    font-size: 13px ;
+    font-weight: 400 ;
+    letter-spacing: 1.5px ;
+  }
+</style>
 
 @endsection
 
@@ -89,9 +110,120 @@ Added This Style And remove "nav-tabs-custom from
 
 @section('MainContent')
 
+<script type="text/javascript">
 
+  // $('#url').keypress(function (e) {
+  $(document).ready(function() {
+  $('#url').submit(function(e) {
+        console.log('hi');
+      e.preventDefault();
+
+      $.ajax({
+    url: "https://api.linkpreview.net?key=123456&q=https://www.google.com",
+    // url: "https://api.linkpreview.net?key=123456&q=https://www.groovenexus.com/tete-a-tete-with-rydhm-dee/",
+    type:'GET',
+    success: function(result){
+        console.log(result);
+        console.log(result['description']);
+        console.log(result['image']);
+        console.log(result['title']);
+        var h="<img src=\""+result['image']+"\"></img>";
+        console.log(h);
+        // var reader  = new FileReader();
+        // var abc= reader.readAsDataURL(file);
+        // var abc= reader.readAsDataURL(result['image']);
+        // var abc= reader.readAsText(result['image']);
+
+    //       reader.onload =  function(e){
+    //     console.log('DataURL:', e.target.result);
+    // };
+
+        // reader.onload =  function(){
+        //    var img = new Image();
+        //               img.src = e.target.result;
+        //               img.setAttribute('style', 'width:auto;');
+        //               // console.log('DataURL:', reader.result);
+        //                // $('#img').append(img);
+        // };
+        // var abc= reader.readAsDataURL(result['image']);
+
+        // var abc= reader.readAsText(result['image']);
+
+        $("#urlparse").html("URL Parse" + h);
+        $("#urldiv").html("URL DIV" + h);
+
+
+        // console.log($(this).html(result));
+    }
+});
+
+     // var key = e.which;
+     // if(key == 13)  // the enter key code
+     //  {
+     //    console.log('hi');
+     //    // $('input[name = butAssignProd]').click();
+     //    // return false;  
+     //  }
+  }); 
+  }); 
+
+
+
+
+
+</script>
+
+{{-- <script type="text/javascript">
+  $(document).ready(function() {
+  var img = $('img');
+  var imgg = $('#urlparse');
+img.css('display', 'none');
+
+$('#upload-button').click(function(){
+  $('#my-custom-design-upload').trigger('click');                 
+  return false;
+});
+function readfichier(e) {
+  if(window.FileReader) {
+    var file  = e.target.files[0];
+    var reader = new FileReader();
+    if (file && file.type.match('image.*')) {
+      reader.readAsDataURL(file);
+    } else {
+      img.css('display', 'none');
+      img.attr('src', '');
+    }
+    reader.onloadend = function (e) {
+      imgg.attr('value', 'hi');
+      img.attr('src', reader.result);
+      img.css('display', 'block');
+    }
+  }
+}
+document.getElementById('my-custom-design-upload').addEventListener('change', readfichier, false);
+
+  }); 
+</script>
+
+<div id="upload-button" class="fpd-btn-raised fpd-secondary-bg-color fpd-secondary-text-color">
+  <i class="fpd-icon-file-upload"></i><span>Insérer votre image</span>
+</div>
+<input type="file" id="my-custom-design-upload" class="btn btn-success" style="display:none;" />
+<img src="" height="200" />
+ --}}
+
+{{-- <form id="url" action="" method="GET">
+  <input  type="textarea" name="">
+</form>
+<div id="urldiv"></div>
+<div contentEditable="true" >Type here. You can insert images too
+  <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcQCze-mfukcuvzKk7Ilj2zQ0CS6PbOkq7ZhRInnNd1Yz3TQzU4e&t=1" />
+</div>
+<textarea id="urlparse" rows="4" cols="50">
+At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+</textarea> --}}
 <div class="row">
-  <div class="col-lg-9">
+  <div class="col-lg-8">
     @can('SocialPost Create')
     {{-- Write Post --}}
     <div class="card">
@@ -148,7 +280,8 @@ Added This Style And remove "nav-tabs-custom from
               {!! $post['postBody'] !!}
             </div>
             <div class="info">
-                posted by {{ $post['userName'] }} on {{ $post['createdAt']['date'] }}
+                {{-- posted by {{ $post['userName'] }} on {{ $post['createdAt']['date'] }} --}}
+                posted by {{ $post['userName'] }} on {{  \Carbon\Carbon::parse($post['createdAt']['date'])->toDayDateTimeString() }}
             </div>
             {{-- Reaction --}}
             <div class="interaction">
@@ -207,9 +340,6 @@ Added This Style And remove "nav-tabs-custom from
                               @method('PUT')
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
                               <input type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" class="submit_image">
-
-                              {{-- <input type="submit" name="reactionName" value="{{$reaction->reaction_name}}"> --}}
-
                             </form>
                         @endforeach
                       </div>
@@ -230,7 +360,7 @@ Added This Style And remove "nav-tabs-custom from
                   @endif
                   {{-- ./Reaction --}}
                   | 
-                  <a href="" class="comment">{{-- <i class="fa  fa-commenting">&nbsp;</i> --}}<span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
+                  <a href="" class="comment"><span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
                   @if(Auth::user()->id == $post['userID'])
                     <a href="{{asset('/')}}" class="editPost">Edit </a>|
                     <a href="{{ asset('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
@@ -242,12 +372,7 @@ Added This Style And remove "nav-tabs-custom from
                   @else
                   <a class="star_link" data-postid="{{$post['postID']}}" href="{{asset('/star/'.$post['postID'])}}"><span><img class="star_grey_icon" src="{{asset("/img/socialpost_interaction/star/star-grey.png")}}" width="20" height="auto"></span></a>|
                   @endif
-                   
-                   {{--  <a href="{{asset('/')}}"><span><img src="{{asset("/img/socialpost_interaction/star/star-grey.png")}}" width="20" height="auto"></span></a>|<pre>{{print_r($post)}}</pre><br><pre>{{print_r($post['postBody'])}}</pre>
-                   <br><pre>{{print_r($post['starStatus'])}}</pre> --}}
-
-                   {{-- <br><pre>{{print_r($post->starStatus)}}</pre> --}}
-                                  
+                                                     
                    {{-- Comment --}}
                 <div class="comment_div card">
                   <div class="card-body">
@@ -259,23 +384,14 @@ Added This Style And remove "nav-tabs-custom from
                       
                       <div class="comment_update_child" > 
 
-                        {{-- <a href="" class="comment_editAnchor" data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}">
-                          <img src="{{asset($reaction->reaction_image)}}" width="20" height="auto">
-                        </a> --}}
-
+                   
                         <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block comment_edit_form">
                         {{ csrf_field() }}
                          @method('PUT')
 
                          
-                            
-                            {{-- <div class="comment_view" data-comment="{{$comment['commentID']}}" id="indexComment_div.{{$comment['commentID']}}">{{$comment['commentBody']}}
-                          </div> --}}
-
-                            {{-- <input type="text" name="comment_view" value="{{$comment['commentBody']}}" class="comment_edit"> --}}
                             <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image commentimg" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
 
-                            {{-- <input class="editComment" type="submit" name="editComment" value="edit"> --}}
                         </form>
                         
                         <form  action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block">
@@ -284,24 +400,11 @@ Added This Style And remove "nav-tabs-custom from
                           {{-- <div class="form-group"> --}}
                           <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}" width="15" height="auto">
                           
-                            {{-- <input class="editComment" type="submit" name="editComment" value="delete"> --}}
                           {{-- </div> --}}
                         </form>
                       </div>
                     </div>
 
-                      {{-- Vikram delete Working --}}
-                      {{-- <form action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" style="display:block">
-                      {{ csrf_field() }}
-                       @method('DELETE')
-                        <div class="form-group">
-                          <input type="text" name="comment_view" value="{{$comment['commentBody']}}">
-                          <input class="fa fa-edit editComment" type="submit" name="editComment" value="delete">
-
-                          <input class="editComment" type="submit" name="editComment" value="delete">
-                        </div>
-                      </form> --}}
-                      {{-- Vikram delete Working --}}
 
                     @endforeach
                     {{-- ./Comment Display--}}
@@ -310,7 +413,6 @@ Added This Style And remove "nav-tabs-custom from
                     {{ csrf_field() }}
                       <div class="form-group">
                         <input  class="form-control" name="body" id="{{'comment'.$post['postID']}}" rows="1" placeholder="Comment" style="border-radius: 15px;width: 404px;" />
-                        {{-- <input type="submit" name="send" value="send"> --}}
                         <input type="hidden" name="postID" value="{{$post['postID']}}"> 
                       </div>
                     </form>
@@ -318,15 +420,6 @@ Added This Style And remove "nav-tabs-custom from
                   </div>
                 </div>
                 {{-- ./Comment --}}
-                {{-- @foreach($post['reaction'] as $react)
-                  reactionID{{$react['reactionID']}}<br>
-                  @foreach($react['reactionName'] as $reactBody)
-                    reactionName{{$reactBody['reactionName']}}<br>
-                  @endforeach
-                @endforeach
-                @foreach($post['comment'] as $comment)
-                  CommentBody{{$comment['commentBody']}}<br>
-                @endforeach --}}
           </article>
           {{-- ./article> --}}
         @endforeach
@@ -363,7 +456,7 @@ Added This Style And remove "nav-tabs-custom from
   </div>
         {{-- RightSide Content Video --}}
         <!-- /.col-md-6 -->
-    <div class="col-lg-3">
+    <div class="col-lg-4">
       <div class="card">
         <div class="card-header" style="border-top: 2px solid #007bff;">
           <h5 class="m-0">Videos</h5>
@@ -445,7 +538,13 @@ src="https://www.youtube.com/embed/HGF2a30Pmqs" allow="accelerometer; autoplay; 
     </div>
   </div>
 </div>
-              
+
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{asset("/admin_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
+
+
+{{-- <script src="{{asset("/admin_lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js")}}"></script> --}}
+
   <script>
   $(function () {
         // bootstrap WYSIHTML5 - text editor

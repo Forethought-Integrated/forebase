@@ -9,6 +9,12 @@ use GuzzleHttp\Client;
 Route::get('/registered-succesfully', function () {
     return view('/auth/registeredView');
     });
+
+Route::post('/urlparse', function(){
+    return response()->json('hi');
+});
+
+
 // Route::middleware('auth')->group(function () {
 Route::group(['middleware' => ['auth','verified']], function () {
 

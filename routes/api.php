@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+// use App\Helpers\OpenGraph;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,7 @@ Route::put('/user/{id}','API\User\UserController@update');
 Route::delete('/user/{id}','API\User\UserController@destroy');
 
 
+// https://github.com/shweshi/OpenGraph/blob/master/src/OpenGraph.php
+// https://www.groovenexus.com/tete-a-tete-with-dj-donnaa/
+Route::post('/urlencode/','Social\RichCardController@urlParse');
+Route::post('/url-snippet/','Social\RichCardController@urlSnippet');
