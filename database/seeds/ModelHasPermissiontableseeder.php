@@ -12,6 +12,10 @@ class ModelHasPermissiontableseeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        ModelHasPermission::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         // $model=new ModelHasPermission;
         // $model->permission_id='1';
         // $model->model_type='App\User';

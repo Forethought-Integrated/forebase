@@ -12,8 +12,13 @@ class Usertableseeder extends Seeder
     public function run()
 
     {
-    	$users=new User();
-    	$users->name='Vikram';
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        User::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        $users=new User();
+        $users->name='Vikram';
     	$users->email='vikramforvk@gmail.com';
         // $users->password='$2y$10$oEc/R/VjUcWVe1Mj4ICie.DmtPBJJ/ijBTGSluNOwTn8cBgcmjeKa';
     	$users->password='123456';

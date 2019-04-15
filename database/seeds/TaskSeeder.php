@@ -13,6 +13,10 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Task::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $tasks= new Task;
         $tasks->task_subject='Posts';
         $tasks->task_description='this post is for the Groovenexus';

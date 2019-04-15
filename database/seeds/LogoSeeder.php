@@ -11,6 +11,10 @@ class LogoSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Logo::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $logos=new Logo;
         $logos->primary_logo_url='www.Mastechprimarylogo.com';
         $logos->secondary_logo_url='www.Mastechsecondrylogo.com';

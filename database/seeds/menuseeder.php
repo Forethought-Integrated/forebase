@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Model\MenuDetail;
+
 class menuseeder extends Seeder
 {
     /**
@@ -11,6 +13,10 @@ class menuseeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        MenuDetail::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
          $menu_detail = new \App\MenuDetail();
          $menu_detail->menu_id='1';
          $menu_detail->menu_field_name='social';

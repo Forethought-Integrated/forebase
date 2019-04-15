@@ -10,6 +10,11 @@ class RoleHasPermissiontableseeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
+
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        RoleHasPermission::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
 		$role                = new RoleHasPermission();
 		$role->permission_id = '1';
 		$role->role_id       = '1';

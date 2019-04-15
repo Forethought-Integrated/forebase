@@ -12,6 +12,11 @@ class ColorPaletteSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        ColorPalette::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $colorpalette = new ColorPalette();
         $colorpalette->color_type ='Blue';
         $colorpalette->color_description = 'The Blue color is for the Mastech color which is in the MAS';

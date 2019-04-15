@@ -159,7 +159,7 @@
       <div class="column col_logo">
         <a href="{{ asset('/team')}}" title="">
           <center>
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/team.png")}}" alt="Snow" style="width:80%">
           <label>Team</label>
         </a>
       </div>
@@ -168,7 +168,7 @@
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/user_team')}}" title="">
-          <img src="{{asset("/img/administration/menu.jpg")}}" alt="Snow" style="width:100%">
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
           <label>User Team</label>
         </a>
       </div>

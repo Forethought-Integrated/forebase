@@ -17,29 +17,33 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // in Working
-         $this->call(BrandSeeder::class);
-         $this->call(CompanySeeder::class);
-         $this->call(ColorPaletteSeeder::class);
-         $this->call(LogoSeeder::class);
-        // these are the Permissions Seeder
-
-         $this->call(Usertableseeder::class);
-         $this->call(PermissionSeeder::class);
-         $this->call(Roletableseeder::class); 
-         $this->call(RoleHasPermissiontableseeder::class);
-         $this->call(ModelHasRoletableseeder::class);
-         $this->call(NotificationSeeder::class);
-
-         //end of permission seeder
-         $this->call(Service_authorizationTableSeeder::class);
-         //FolderIconTableSeeder
-         $this->call(FolderIconTableSeeder::class);
+        //Basic Seeding
+        // // these are the Permissions Seeder
+        $this->call(Usertableseeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(Roletableseeder::class); 
+        $this->call(RoleHasPermissiontableseeder::class);
+        $this->call(ModelHasRoletableseeder::class);
+        $this->call(NotificationSeeder::class);
+        $this->call(Service_authorizationTableSeeder::class);
+        //  .//end of permission seeder
+        //./Basic Seeding
+        
+        $this->call(BrandSeeder::class);
+        $this->call(CompanySeeder::class);
+        $this->call(ColorPaletteSeeder::class);
+        $this->call(LogoSeeder::class);
+        //FolderIconTableSeeder
+        $this->call(FolderIconTableSeeder::class);
         // This is for the Team
         $this->call(TeamseederTable::class);
 
          
 
         // ./in Working
+
+        $this->command->info('All table Seeded');
+
 
          // Testing
 

@@ -10,6 +10,10 @@ class FolderIconTableSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        FolderIcon::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
 		$foldericon              = new FolderIcon();
 		$foldericon->folder_name = 'HR';
 		$foldericon->image       = 'HR.png';

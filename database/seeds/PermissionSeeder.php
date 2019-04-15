@@ -11,9 +11,19 @@ class PermissionSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Permission::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // dd(config('customServices.services.social'));
+        // dd(env('APP_PER'));
+        // dd(config('customServices'));
+        // $this->command->info(config('customServices.app_per'));
+
+
 		// Side Bar Start
 		$permission             = new Permission;
-		$permission->name       = env('APP_PER');
+		$permission->name       = config('customServices.app_per');
 		$permission->guard_name = 'web';
 		$permission->save();
 

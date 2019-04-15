@@ -47,7 +47,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::resource('location', 'Location\LocationController');
     Route::resource('/department', 'Department\DepartmentController');
     Route::resource('/team', 'Team\TeamController');
-    Route::get('/team-view/{id}', 'Team\TeamController@view');
+    Route::get('/team-view/{id}', 'Team\TeamController@viewTeamMember');
+    Route::get('/team-add-member/{id}', 'Team\TeamController@addViewTeamMember');
+    Route::post('/team-add-member/{id}', 'Team\TeamController@addTeamMember');
 
     // ./Administration----------------------------------------------------------------------------
 

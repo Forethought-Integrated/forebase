@@ -13,11 +13,15 @@ class ModelHasRoletableseeder extends Seeder
      */
     public function run()
     {
-         $model=new ModelHasRole;
-         $model->role_id ='1';
-         $model->model_type ='App\User';
-         $model->model_id ='1';
-         $model->save();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        ModelHasRole::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        $model=new ModelHasRole;
+        $model->role_id ='1';
+        $model->model_type ='App\User';
+        $model->model_id ='1';
+        $model->save();
     }
 
     // public function run()

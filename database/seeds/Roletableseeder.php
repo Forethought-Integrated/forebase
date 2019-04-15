@@ -18,6 +18,10 @@ class Roletableseeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Role::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
        $role=new Role;
        // $role->id='1';
        $role->name='Admin';

@@ -12,6 +12,11 @@ class TeamseederTable extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Team::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $team=new Team;
         $team->team_name='Developers';
         $team->team_icon_path=('vendor/laravel-filemanager/img/FolderIcons/MainFolders');
