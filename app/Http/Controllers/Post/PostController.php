@@ -10,6 +10,7 @@ use Auth;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\App; 
 use App\Model\ServiceAuthorization;
+use App\Model\Team;
 use View;
 use App\Http\Controllers\Social\RichCardController;
 
@@ -40,9 +41,122 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            // $res = $this->client->request('GET', $this->StarredURL.$request->user()->id);
+        // if($request->ajax())
+        // {
+        //     $res = $this->client->request('GET', $this->URL.'/starred/'.$request->user()->id);
+        //     $posts=$res->getBody();
+        //     $postData = json_decode($posts, true);
+        //     $data['post']=$postData;
+        //       // Get star post id to show star status
+        //     $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
+        //     $posts=$res->getBody();
+        //     $starStatus = json_decode($posts, true);
+        //     // ./Get star post id to show star status
+        //     // Adding star post Status to post data to render on post
+        //     $count=count($data['post']['data']);
+        //     for ($i=0; $i < $count ; $i++) { 
+        //         if(in_array($data['post']['data'][$i]['postID'], $starStatus))
+        //             $data['post']['data'][$i]['starStatus']=1;
+        //         else
+        //             $data['post']['data'][$i]['starStatus']=0;
+
+        //     }
+        //     $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+        //     $data['notReactionData']=$reaction->getData();
+        //     $view = view("include.socialPost.postBody",compact('data'));
+        //     // dd($view->render());
+        //     return $view;
+        // }
+
+        $res = $this->client->request('GET', $this->URL);
+        $posts=$res->getBody();
+        $postData = json_decode($posts, true);
+        $data['post']=$postData;
+        // Get star post id to show star status
+            $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
+            $posts=$res->getBody();
+            $starStatus = json_decode($posts, true);
+        // ./Get star post id to show star status
+        // Adding star post Status to post data to render on post
+        $count=count($data['post']['data']);
+        for ($i=0; $i < $count ; $i++) { 
+            if(in_array($data['post']['data'][$i]['postID'], $starStatus))
+                $data['post']['data'][$i]['starStatus']=1;
+            else
+                $data['post']['data'][$i]['starStatus']=0;
+
+        }
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+        $data['notReactionData']=$reaction->getData();
+        $data['team']=Auth::User()->select('id','name')->with(array('team'=>function($query){
+                     $query->select('team_id','team_name');}))->first();
+        return view('social/socialDashboard',compact('data'));
+    }
+    
+    public function getAllIndex(Request $request)
+    {
+        // if($request->ajax())
+        // {
+        //     $res = $this->client->request('GET', $this->URL.'/starred/'.$request->user()->id);
+        //     $posts=$res->getBody();
+        //     $postData = json_decode($posts, true);
+        //     $data['post']=$postData;
+        //       // Get star post id to show star status
+        //     $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
+        //     $posts=$res->getBody();
+        //     $starStatus = json_decode($posts, true);
+        //     // ./Get star post id to show star status
+        //     // Adding star post Status to post data to render on post
+        //     $count=count($data['post']['data']);
+        //     for ($i=0; $i < $count ; $i++) { 
+        //         if(in_array($data['post']['data'][$i]['postID'], $starStatus))
+        //             $data['post']['data'][$i]['starStatus']=1;
+        //         else
+        //             $data['post']['data'][$i]['starStatus']=0;
+
+        //     }
+        //     $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+        //     $data['notReactionData']=$reaction->getData();
+        //     $view = view("include.socialPost.postBody",compact('data'));
+        //     // dd($view->render());
+        //     return $view;
+        // }
+
+        $res = $this->client->request('GET', $this->URL);
+        $posts=$res->getBody();
+        $postData = json_decode($posts, true);
+        $data['post']=$postData;
+        // Get star post id to show star status
+            $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
+            $posts=$res->getBody();
+            $starStatus = json_decode($posts, true);
+        // ./Get star post id to show star status
+        // Adding star post Status to post data to render on post
+        $count=count($data['post']['data']);
+        for ($i=0; $i < $count ; $i++) { 
+            if(in_array($data['post']['data'][$i]['postID'], $starStatus))
+                $data['post']['data'][$i]['starStatus']=1;
+            else
+                $data['post']['data'][$i]['starStatus']=0;
+
+        }
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+        $data['notReactionData']=$reaction->getData();
+        // $data['team']=Auth::User()->select('id','name')->with(array('team'=>function($query){
+                     // $query->select('team_id','team_name');}))->first();
+         $view = view("include.socialPost.postBody",compact('data'));
+            return $view;
+        // return view('social/socialDashboard',compact('data'));
+    }
+
+    
+
+
+    public function getStarred(Request $request)
+    {
+
+        // if($request->ajax())
+        // {
             $res = $this->client->request('GET', $this->URL.'/starred/'.$request->user()->id);
             $posts=$res->getBody();
             $postData = json_decode($posts, true);
@@ -65,30 +179,9 @@ class PostController extends Controller
             $data['notReactionData']=$reaction->getData();
             $view = view("include.socialPost.postBody",compact('data'));
             return $view;
-        }
-        $res = $this->client->request('GET', $this->URL);
-        $posts=$res->getBody();
-        $postData = json_decode($posts, true);
-        $data['post']=$postData;
-        // Get star post id to show star status
-            $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
-            $posts=$res->getBody();
-            $starStatus = json_decode($posts, true);
-        // ./Get star post id to show star status
-        // Adding star post Status to post data to render on post
-        $count=count($data['post']['data']);
-        for ($i=0; $i < $count ; $i++) { 
-            if(in_array($data['post']['data'][$i]['postID'], $starStatus))
-                $data['post']['data'][$i]['starStatus']=1;
-            else
-                $data['post']['data'][$i]['starStatus']=0;
+        // }
 
-        }
-        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
-        $data['notReactionData']=$reaction->getData();
-        return view('social/socialDashboard',compact('data'));
     }
-
 
     public function create()
     {

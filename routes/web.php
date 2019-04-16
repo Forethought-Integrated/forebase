@@ -126,8 +126,10 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::resource('/comment', 'Comment\CommentController');
         Route::resource('/postreaction', 'PostReaction\PostReactionController');
         Route::resource('/reaction', 'Reaction\ReactionController');
+        Route::get('/social-all/', 'Post\PostController@getAllIndex');
 
         //Starred
+        Route::get('/social-starred/', 'Post\PostController@getStarred');
         Route::get('/star/{post_id}/', 'Post\PostController@addStar');
         Route::get('/starred/{post_id}/', 'Post\PostController@removeStar');
         //./Starred
