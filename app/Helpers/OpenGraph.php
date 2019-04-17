@@ -5,13 +5,14 @@ namespace App;
 /**
  * 
  */
+use DOMDocument;
 class OpenGraph
 {
 	
 	public static function fetch($url, $allMeta = null)
 	// public  function fetch($url, $allMeta = null)
     {
-        $html = $this->curl_get_contents($url);
+        $html = OpenGraph::curl_get_contents($url);
         /**
          * parsing starts here:.
          */
@@ -35,7 +36,7 @@ class OpenGraph
         }
         return $metadata;
     }
-    protected function curl_get_contents($url)
+    protected static function curl_get_contents($url)
     {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_FAILONERROR, 1);

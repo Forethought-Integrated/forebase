@@ -13,7 +13,7 @@
 @section('ContentHeader(Page_header)') 
 
   <h1>
-    {{$data['team_name']}}
+    {{$data['team']['team_name']}}
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,12 +24,13 @@
 @endsection
 
 @section('MainContent')
+{{-- <pre>{{print_r($data['team']->toArray())}}</pre> --}}
 <div class="row">
    {{-- column --}}
   <div class="col-md-12">
     {{-- Box --}}
-    <!-- <pre>{{print_r($data)}}</pre> -->
-      <a href="{{url('add-user/'.$data['id'].'/')}}" class="btn btn-primary" >Add User</a>
+     {{-- <pre>{{print_r($data)}}</pre>  --}}
+      <a href="{{url('team-add-member/'.$data['team']['team_id'].'/')}}" class="btn btn-primary" >Add Member</a>
 
 
           <div class="box">
@@ -38,38 +39,18 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>User Id</th>
-                  <th>User Name</th>
-                  <th>Email</th>
-                  <th>Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                  @foreach($data['user'] as $var)
-                    <tr>  
-                      <td>{{$var['id']}}</td>
-                      <td>{{$var['name']}}</td>
-                      <td>{{$var['email']}}</td>
-                      <td>
-                       <form action="{{ asset('/team-view'.'/'.$data['id'])}}" method="post">
-                          {{csrf_field()}}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button class="btn remove_btn " type="submit">Delete</button>
-                        </form>
-                      </td>
-                    </tr>
-                  @endforeach
-                </tbody>
-                <tr>
-                  <th>User Id</th>
-                  <th>User Name</th>
-                  <th>Email</th>
-                  <th>Delete</th>
-                </tr>
-              </table>
+              <?php $i=1;?>
+               <div class="row">
+                    @foreach ($data['team']['user'] as $user)
+                        <div class='col-sm-2'>
+                            {{$user['name']}}
+                        </div>
+                        @if($i++ %5==0)
+                            </div>
+                            <div class='row'>
+                        @endif
+                    @endforeach
+                </div>
             </div>
             <!-- /.box-body -->
           </div>

@@ -13,6 +13,10 @@ class Service_authorizationTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        ServiceAuthorization::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $service=new ServiceAuthorization();
         $service->authorizations_client='helpdesk';
         $service->authorizations_token='123456';
@@ -25,7 +29,7 @@ class Service_authorizationTableSeeder extends Seeder
 
         $service=new ServiceAuthorization();
         $service->authorizations_client='socialapi';
-        $service->authorizations_token='123456789';
+        $service->authorizations_token='12345678';
         $service->save();
     }
 }

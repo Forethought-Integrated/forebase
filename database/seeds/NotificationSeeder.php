@@ -13,6 +13,11 @@ class NotificationSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Notification::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $notification= new Notification;
         $notification->id='d10544d2-c0df-4f20-b065-012f307d430f';
         $notification->type='App\Notifications\RegisterationNotification';

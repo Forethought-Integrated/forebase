@@ -15,14 +15,16 @@ return [
 	 */
 
 	// 'app_per' => env('APP_PER', 'Administer roles & permissions'),
-	'app_name'  => env('APP_NAME', 'MASTECH DIGITAL'),
-	'app_per'   => env('APP_PER', 'Administer roles & permissions'),
+	'app_name'  => env('APP_NAME', 'Test'),
+	'app_short_name'  => env('APP_SHORTNAME', 'T A'),
+	'app_per'   => env('APP_PER', 'Administrator roles & permissions'),
+	// 'app_per'   => env('APP_PER', 'Administer roles & permissions'),
 	'services'  => [
 		'social'   => env('API_SOCIAL'),
 		'crm'      => env('API_CRMURL'),
 		'helpdesk' => env('API_HELPDESKURL'),
 	],
-	'app_per' => env('APP_TOKEN'),
+	// 'app_per' => env('APP_TOKEN'),
 
 	// APP_PER='Administer roles & permissions'
 	// 'name' => env('APP_NAME', 'Laravel'),

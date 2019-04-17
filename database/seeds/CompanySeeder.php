@@ -12,6 +12,11 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Company::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         $companies=new Company;
         $companies->company_name='The Higher Pitch';
         $companies->company_registration_address='Noida';

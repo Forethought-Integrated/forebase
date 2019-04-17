@@ -92,13 +92,13 @@ class TeamController extends Controller {
 		return redirect()->back();
 	}
 
-	public function view($id) {
+	public function viewTeamMember($id){
 
-		$data = Team::with('user')->find($id);
+		$data['team'] = Team::with('user')->find($id);
 		// $userid=TeamUser::select('user_id')->where('teams_id',$id)->get()->pluck('user_id');
 		// $data=User::whereIn('id',$userid)->get();
 		// return $data;
-		return view('Team.viewTeam', compact('data'));
+		return view('Team.viewTeamMember', compact('data'));
 
 	}
 
@@ -125,4 +125,54 @@ class TeamController extends Controller {
 	// 	// return redirect('/team-view');
 
 	// }
+
+	public function addViewTeamMember($id) {
+		// return $id;
+		$data['user']=User::with('team')->get();
+		// $data['user']=User::get()->team->list('team_id');
+
+		// $data['user']=User::with(array('team'=>function($query){
+  //       				// ($query->select('team_id')->pluck('team_id')->toArray());
+  //       				($query->select('team_id')->get()->values('team_id'));
+  //   					}))->get();
+		
+		$data['currentTeam']=$id;
+		$data['team']=Team::select('team_id','team_name')->find($id);
+		// dd($data['team']);
+		// $data['team']=Team::with('user')->get();
+		return view('Team.listUser',compact('data'));
+	}
+
+	public function addTeamMember(Request $request,$id) {
+		// return $request->member;
+		// return ($request->all());
+		//  count($request->all());
+		// 	$i=0;
+		// $var;
+		// foreach ($request as $key => $value) {
+		// 	$var[$i++]=$value;
+		// }
+		// return $var;
+		$user_id=$request->member;
+		$team=Team::find($id);
+		$team->user()->sync($request->member);
+		// $user=User::find($id);
+		// $user->team()->attach($request->member);
+		// $team->user()->attach($request->member);
+		// return $id;
+		// $data['user']=User::with('team')->get();
+		// $data['user']=User::get()->team->list('team_id');
+
+		// $data['user']=User::with(array('team'=>function($query){
+  //       				// ($query->select('team_id')->pluck('team_id')->toArray());
+  //       				($query->select('team_id')->get()->values('team_id'));
+  //   					}))->get();
+		
+		// $data['currentTeam']=$id;
+		// $data['team']=Team::select('team_id','team_name')->find($id);
+		// dd($data['team']);
+		// $data['team']=Team::with('user')->get();
+		// return view('Team.listUser',compact('data'));
+		return redirect("/team-view/".$id);
+	}
 }

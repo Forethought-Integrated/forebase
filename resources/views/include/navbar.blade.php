@@ -2,10 +2,10 @@
   <!-- Logo -->
   <a href="{{asset('/')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>MD</b></span>
+        <span class="logo-mini"><b>{{config('customServices.app_short_name')}}</b></span>
         <!-- logo for regular state and mobile devices -->
         {{-- <span class="logo-lg"><b>Admin</b>LTE</span> --}}
-        <span class="logo-lg"><b>{{ config('app_name', 'MASTECH DIGITAL') }}</b></span>
+        <span class="logo-lg"><b>{{ config('customServices.app_name') }}</b></span>
 
   </a>
 {{-- ./Logo --}}

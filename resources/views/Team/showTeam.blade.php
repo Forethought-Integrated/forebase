@@ -31,7 +31,7 @@
             <div class="box-header with-border">
                           </div>
       <!-- /.card-header -->
-      <a href="{{url('team-view/'.$team->team_id.'/')}}" class="btn btn-primary" >view</a>
+      <a href="{{url('team-view/'.$team->team_id.'/')}}" class="btn btn-primary">Team Member</a>
 
 
       {{-- form--}} 
