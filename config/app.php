@@ -175,6 +175,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        App\Providers\LocationProvider::class,
+        App\Providers\DepartmentProvider::class,
+
+
 
         // Forethought-vikram added for passport   05/dec/18
         Laravel\Passport\PassportServiceProvider::class,

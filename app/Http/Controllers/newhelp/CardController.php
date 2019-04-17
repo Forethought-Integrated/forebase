@@ -7,6 +7,7 @@ use App\Model\ServiceAuthorization;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
+
 class CardController extends Controller {
 	private $ENV_URL;
 
@@ -48,7 +49,8 @@ class CardController extends Controller {
 	}
 
 	public function store(Request $request) {
-		$response = $this->client->request('POST', $this->URL, [
+		// return $request->all();
+		$response = $this->client->request('POST', $this->URL, [ 
 				'form_params'       => [
 					'list_id'          => $request->list_id,
 					'card_name'        => $request->card_name,
@@ -57,6 +59,7 @@ class CardController extends Controller {
 					'card_members'     => $request->card_members,
 					'card_archieved'   => $request->card_archieved,
 					'card_comment'     => $request->card_comment,
+					'card_date'=>$request->card_date,
 				],
 			]);
 		return redirect("/board-detail/$request->board_id");

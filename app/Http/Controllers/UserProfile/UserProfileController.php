@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Image;
+use DB;
 
 
 //Importing laravel-permission models
@@ -99,6 +100,14 @@ class UserProfileController extends Controller
         // return $request->all();
         $user = User::findOrFail($id);
         $user->update($request->all());
+        DB::update('update users set departmentCode = ? where id = ?',[$request->input('departmentCode')
+
+
+            ,$id]);
+        
+        //$user->update($request->all());
+        $user->save();
+       
 
         if($request->hasFile('avatarFile')){
             // return 'hi';

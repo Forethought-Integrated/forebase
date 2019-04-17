@@ -44,7 +44,7 @@
                 
                 <div class="form-group">
                   <label for="name" >Name</label>
-                  <input type="text" class="form-control enabelInputField" id="name" name="name" value="{{$users->name}}" >
+                  <input type="text" class="form-control enabelInputField" id="names" name="name" value="{{$users->name}}" >
                 </div>
                 
 
@@ -54,9 +54,16 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="gender" >Gender</label>
-                  <input type="text" class="form-control enabelInputField" id="gender" name="gender" value="{{$users->gender}}" >
-                </div>
+                   <label>Gender</label>
+
+                   <select class="form-control" name="gender" id ="gender">
+                    <option >--select--</option>
+                     <option value="Male"> Male</option>
+                     <option value="Female"> Female</option>
+                     
+                    
+                   </select>
+                 </div>
 
 
                 <div class="form-group">
@@ -81,25 +88,58 @@
               <div class="box-body">
                 
 
+                
+                  
+                 
                 <div class="form-group">
-                  <label for="locationCode" >Location Code</label>
-                  <input type="text" class="form-control enabelInputField" id="locationCode" name="locationCode" value="{{$users->locationCode}}" >
-                </div>
+                   <label>Location code</label>
+                   <select class="form-control" name="locationCode">
+                     <option>--select--</option>                              
 
-                <div class="form-group">
-                  <label for="departmentCode" >Department Code</label>
-                  <input type="text" class="form-control enabelInputField" id="departmentCode" name="departmentCode" value="{{$users->departmentCode}}" >
-                </div>
+                  @foreach ($location_array as $data)         
+                  <option  value="{{ $data->location_code }}">{{ $data->location_name }}</option>
+                  @endforeach
 
-                <div class="form-group">
-                  <label for="salutaionCode" >Salutaion Code</label>
-                  <input type="text" class="form-control enabelInputField" id="salutaionCode" name="salutaionCode" value="{{$users->salutationCode}}" >
-                </div>
+                   </select>
+              </div>
+
+
+                     
+
+               <div class="form-group">
+                   <label>Department code</label>
+
+                   <select class="form-control" name="departmentCode">
+                     <option>--select--</option>                                 
+                    
+                  @foreach ($department_array as $data)      
+                  <option  value="{{ $data->department_code }}">{{ $data->department_name }}</option>
+                  @endforeach
+                     
+                   </select>
+              </div>
+
+
+               
+             
+                    <div class="form-group">
+                   <label>Salutation Code</label>
+
+                   <select class="form-control" name="salutationCode" selected="">
+                                <option>--select--</option>
+
+                     <option value='Mr'> Mr</option>
+                     <option value='Mrs'> Mrs</option>
+                     <option value='Miss'> Miss</option>
+                    
+                    
+                   </select>
+                 </div>
 
 
                 <div class="form-group">
                   <label for="designationCode" >Designation Code</label>
-                  <input type="text" class="form-control enabelInputField" id="designationCode" name="designationCode" value="{{$users->designationCode}}" >
+                  <input type="text" class="form-control enabelInputField" id="designationCode" name="designationCode" value="{{$users->designationCode}}">
                 </div>
 
                 <div class="form-group">

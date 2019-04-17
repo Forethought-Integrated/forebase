@@ -74,12 +74,8 @@
                     <textarea  class="form-control textarea " name="card_comment" id="card_comment" rows="5"  disabled><?php echo $data['cards']['card_comment'];?>
                     </textarea>
                 </div>
-
-
               </div>
             </div>
-
-
 
         </div>
 
