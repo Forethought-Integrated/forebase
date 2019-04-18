@@ -4,6 +4,8 @@
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+<link type= "text/css" href="{{ ('/css/custom.css')}}" async>
+
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -11,25 +13,24 @@
 <h1>
   CRM
 </h1>
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
   <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
   <li class="active">CRM</li>
-</ol>
+</ol> -->
 
 @endsection
 
 @section('MainContent')
 
-  <div class="row" style="padding: 25px">
+  <div class="row dashboard">
 
  @can('Contacts')
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/contact')}}" title="">
           <center>
-            <img src="{{asset("/img/crm_dashboard/Contacts.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Contacts
+            <img src="{{asset("/img/crm_dashboard/Contacts.png")}}" alt="Snow" class="img-dashboard">
+           <span class="dashboard-text-lineheight">Contacts</span>
         </center>
         </a>
       </div>
@@ -43,9 +44,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/account')}}" title="">
           <center>
-            <img src="{{asset("/img/crm_dashboard/Accounts.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Accounts
+            <img src="{{asset("/img/crm_dashboard/Accounts.png")}}" alt="Snow" class="img-dashboard">
+            <span class="dashboard-text-lineheight">Accounts</span>
         </center>
         </a>
       </div>
@@ -59,9 +59,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/lead')}}" title="">
           <center>
-          <img src="{{asset("/img/crm_dashboard/Leads.png")}}" alt="Snow" style="width:80%">
-          <br>
-          Leads
+          <img src="{{asset("/img/crm_dashboard/Leads.png")}}" alt="Snow" class="img-dashboard">
+          <span class="dashboard-text-lineheight">Leads</span>
         </center>
         </a>
       </div>
@@ -73,9 +72,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/opportunity')}}" title="">
           <center>
-            <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" style="width:80%">
-              <br>
-              Opportunities
+            <img src="{{asset("/img/crm_dashboard/Opportunities.png")}}" alt="Snow" class="img-dashboard">
+            <span class="dashboard-text-lineheight">Opportunities</span>
           </center>
         </a>
       </div>
@@ -88,9 +86,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/campaign')}}" title="">
           <center>
-            <img src="{{asset("/img/crm_dashboard/Campaigns.png")}}" alt="Campaigns" style="width:80%">
-            <br>
-            Campaigns
+            <img src="{{asset("/img/crm_dashboard/Campaigns.png")}}" alt="Campaigns" class="img-dashboard">
+            <span class="dashboard-text-lineheight"">Campaigns</span>
           </center>
         </a>
       </div>
@@ -162,9 +159,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/crm/task') }}" title="">
           <center>
-            <img src="{{asset("/img/crm_dashboard/Task.png")}}" alt="Task" style="width:80%">
-            <br>
-            Task
+            <img src="{{asset("/img/crm_dashboard/Task.png")}}" alt="Task" class="img-dashboard">
+            <span class="dashboard-text-lineheight">Task</span>
           </center>
         </a>
       </div>

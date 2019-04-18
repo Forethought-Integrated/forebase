@@ -3,6 +3,13 @@
 //     return view('welcome');
 // });
 
+Route::get('/san', function () {
+    return view('sandiplogin');
+});
+Route::get('/sansign', function () {
+    return view('sandipsignup');
+});
+
 Auth::routes(['verify' => 'true']);
 Route::get('/registered-succesfully', function () {
     return view('/auth/registeredView');

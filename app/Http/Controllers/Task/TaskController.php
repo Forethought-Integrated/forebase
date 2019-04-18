@@ -43,7 +43,7 @@ class TaskController extends Controller
     public function index()
     {
         //
-        $data['task']=Task::paginate(1);
+        $data['task']=Task::paginate(10);
 
         // dd(gettype($task));
          // $task->withPath('custom/url');

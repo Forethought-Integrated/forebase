@@ -4,6 +4,8 @@
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+<link type= "text/css" href="{{ ('/css/custom.css')}}" async>
+
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -12,10 +14,10 @@
         Admin
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Admin</li>
-      </ol>
+      </ol> -->
 
 
 @endsection
@@ -24,30 +26,25 @@
 
 @can('permissions')
 
-  <div class="row" style="padding: 25px">
+  <div class="row dashboard">
 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/permissions')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/permission-&-role.png")}}" alt="Snow" style="width:80%">
-          <br>
-          Permissions
-        </center>
+          <img src="{{asset("/img/administration/permission-&-role.png")}}" alt="Snow" class="img-dashboard">
+         <span class="dashboard-text-lineheight">Permissions</span>
         </a>
       </div>
     </div>
 @endcan
 
  @can('users')
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/users')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/user.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/user.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Users
-        </center>
+          <span class="dashboard-text-lineheight">Users</span>
         </a>
         
       </div>
@@ -56,14 +53,12 @@
     
   @can('roles')
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/roles')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/role.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/role.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Role
-        </center>
+         <span class="dashboard-text-lineheight">Role</span>
         </a>
       
       </div>
@@ -71,28 +66,24 @@
    @endcan
       
   @can('menus')
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/menus')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Menu
-        </center>
+          <span class="dashboard-text-lineheight">Menu</span>
         </a>
       </div>
     </div>
   @endcan
 
   @can('menudetails')
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{asset('/menudetails')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/customized-menu.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/customized-menu.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Custom Menu
-        </center>
+         <span class="dashboard-text-lineheight">Custom Menu</span>
         </a>
       </div>
     </div>
@@ -100,76 +91,68 @@
 
   @can('datamapper')
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/datamapper')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/mapper.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/mapper.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Data Mapper
-        </center>
+          <span class="dashboard-text-lineheight">Data Mapper</span>
         </a>
       </div>
     </div>
     @endcan
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/foldericon')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/folder-setting.png")}}" alt="Snow" style="width:80%">
+          <img src="{{asset("/img/administration/folder-setting.png")}}" alt="Snow" class="img-dashboard">
           <br>
-          Folder Settings
-        </center>
+          <span class="dashboard-text-lineheight">Folder Settings</span>
         </a>
       </div>
     </div>
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/UsersDomains')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/authorised-domains.png")}}" alt="Snow" style="width:80%">
-          Authorized Domain
+          <img src="{{asset("/img/administration/authorised-domains.png")}}" alt="Snow" class="img-dashboard">
+         <span class="dashboard-text-lineheight"> AuthorizedDomain</span>
         </a>
       </div>
     </div>
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/location')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/location.png")}}" alt="Snow" style="width:80%">
-          Location
+          <img src="{{asset("/img/administration/location.png")}}" alt="Snow" class="img-dashboard">
+         <span class="dashboard-text-lineheight"> Location</span>
         </a>
       </div>
     </div>
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/department')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/department.png")}}" alt="Snow" style="width:80%">
-          Department
+          <img src="{{asset("/img/administration/department.png")}}" alt="Snow" class="img-dashboard">
+         <span class="dashboard-text-lineheight">Department</span>
         </a>
       </div>
     </div>  
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/team')}}" title="">
-          <center>
-          <img src="{{asset("/img/administration/team.png")}}" alt="Snow" style="width:80%">
-          <label>Team</label>
+          <img src="{{asset("/img/administration/team.png")}}" alt="Snow" class="img-dashboard">
+          <span class="dashboard-text-lineheight">Team</span>
         </a>
       </div>
     </div> 
 
-    <div  class="col-md-2">
+    <div  class="col-md-2 text-center">
       <div class="column col_logo">
         <a href="{{ asset('/user_team')}}" title="">
-          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" style="width:80%">
-          <label>User Team</label>
+          <img src="{{asset("/img/administration/menu.png")}}" alt="Snow" class="img-dashboard">
+          <span class="dashboard-text-lineheight">User Team</span>
         </a>
       </div>
     </div>   

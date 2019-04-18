@@ -16,16 +16,13 @@
 @section('ContentHeader(Page_header)') 
 
   <h1>
-     Add Membber To {{$data['team']['team_name']}}
-     {{-- Add Membber To <pre>{{print_r($data['team'])}}</pre> --}}
+     Add Member To {{$data['team']['team_name']}}
+     {{-- Add Member To <pre>{{print_r($data['team'])}}</pre> --}}
     {{-- <a href="{{ asset('/team/create') }}" title=""> --}}
       {{-- <i class="fa fa-edit"> create</i> --}}
     {{-- </a> --}}
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Team List</li>
-  </ol>
+  
 
 
 @endsection

@@ -137,3 +137,20 @@ background-color: #72afd25c !important;
 /*background: #72afd25c !important;*/
 }
 /*./Vikram*/
+
+/*./sandip this is for dashboard*/
+.dashboard{
+
+    padding: 25px;
+}
+
+.img-dashboard{
+    
+    width:75% !important;
+}
+
+.dashboard-text-lineheight{
+
+line-height:40px;
+
+}
