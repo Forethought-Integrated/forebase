@@ -53,6 +53,36 @@
   @endcan
 
 
+  @can('Accounts')
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="{{ asset('/account')}}" title="">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Accounts-new.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Accounts
+        </center>
+        </a>
+      </div>
+    </div>
+  @endcan
+
+
+  @can('Accounts')
+    <div  class="col-md-2">
+      <div class="column col_logo">
+        <a href="{{ asset('/account')}}" title="">
+          <center>
+            <img src="{{asset("/img/crm_dashboard/Task-new.png")}}" alt="Snow" style="width:80%">
+            <br>
+            Accounts
+        </center>
+        </a>
+      </div>
+    </div>
+  @endcan
+
+
 
   @can('Leads')
     <div  class="col-md-2">

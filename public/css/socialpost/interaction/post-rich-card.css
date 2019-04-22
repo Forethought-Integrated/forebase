@@ -1,0 +1,14 @@
+ #postRichCardSnippetContainer{
+    border: 1px solid #fff;background-color: whitesmoke;}
+  #postRichCardSnippetBrandName{
+    font-size: 17px ;
+  }
+  #postRichCardSnippetTitle{
+    font-size: 15px ;
+    font-weight: 600 ;
+  }
+  #postRichCardSnippetDescription{
+    font-size: 13px ;
+    font-weight: 400 ;
+    letter-spacing: 1.5px ;
+  }

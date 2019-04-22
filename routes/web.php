@@ -133,6 +133,11 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::get('/star/{post_id}/', 'Post\PostController@addStar');
         Route::get('/starred/{post_id}/', 'Post\PostController@removeStar');
         //./Starred
+
+        // TeamPost
+        Route::get('/social-team-post/', 'Post\PostController@getTeamPost');
+        // ./TeamPost
+
     });
     
     // ./Social Blade

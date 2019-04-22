@@ -90,6 +90,7 @@ class PostController extends Controller
         $data['notReactionData']=$reaction->getData();
         $data['team']=Auth::User()->select('id','name')->with(array('team'=>function($query){
                      $query->select('team_id','team_name');}))->first();
+        // return $data;
         return view('social/socialDashboard',compact('data'));
     }
     
@@ -180,6 +181,47 @@ class PostController extends Controller
             $view = view("include.socialPost.postBody",compact('data'));
             return $view;
         // }
+
+    }
+
+
+    public function getTeamPost(Request $request)
+    {
+         
+        $user=$request->user();
+        $userTeam=$user->team;
+        $userTeamId=$userTeam->pluck('team_id');
+        $teamUrl=implode('/', $userTeamId->toArray());
+        $data['team']=$userTeam;
+        // Getting Team Data As per Requested User
+        $res = $this->client->request('GET', $this->ENV_URL.'team-post/'.$request->user()->id.'/'.$teamUrl);
+        $posts=$res->getBody();
+        $postData = json_decode($posts, true);
+        $data['post']=$postData;
+        // ./Getting Team Data As per Requested User
+
+        // Get star post id to show star status
+        $res = $this->client->request('GET', $this->URL.'/star-id/'.$request->user()->id);
+        $posts=$res->getBody();
+        $starStatus = json_decode($posts, true);
+        // ./Get star post id to show star status
+        // Adding star post Status to post data to render on post
+        $count=count($data['post']['data']['post']);
+        for ($i=0; $i < $count ; $i++) { 
+            if(in_array($data['post']['data']['post'][$i]['postID'], $starStatus))
+                $data['post']['data']['post'][$i]['starStatus']=1;
+            else
+                $data['post']['data']['post'][$i]['starStatus']=0;
+
+        }
+        // ./Adding star post Status to post data to render on post
+        // Getiing Reaction 
+        $reaction=App::call('App\Http\Controllers\Reaction\ReactionController@index');
+        $data['notReactionData']=$reaction->getData();
+        // ./Getiing Reaction 
+        $view = view("include.socialPost.postBodyTeam",compact('data'));
+        return $view;
+        // return $data;
 
     }
 

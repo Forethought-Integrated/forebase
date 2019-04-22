@@ -3,7 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/socialpost/interaction/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/socialpost/interaction/post-rich-card.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/socialpost/accordion.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/socialpost/interaction/team-tool-tip.css') }}">
+<script type = "text/javascript" src="{{ asset('/js/social-post/post-star.js') }}" ></script>
+<script type = "text/javascript" src="{{ asset('/js/social-post/all-post.js') }}" ></script>
+<script type = "text/javascript" src="{{ asset('/js/social-post/team-post.js') }}" ></script>
 {{-- For Post Tab Background Color 
 
 Added This Style And remove "nav-tabs-custom from  
@@ -12,104 +18,105 @@ Added This Style And remove "nav-tabs-custom from
 --}}
 
 {{-- Post Accordian Css Changes --}}
-<style type="text/css">
+{{-- <style type="text/css">
   .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     background-color: inherit;
 }
-{{-- ./Post Accordian Css Chnages --}}
 
 </style>
+ --}}{{-- ./Post Accordian Css Chnages --}}
 {{-- ./For Post Tab Background Color --}}
 
 {{-- Post Starred Funtionality --}}
 <script type="text/javascript">
   $(document).ready(function(){
     {{-- Get Starred Post Data --}}
-      $("#starred_tab_link").on("click",function(e){
-      e.preventDefault();
-       $.ajax({
-            url:"/social-starred",
-            type:'GET',
-            success:function (result){
-                    $("#starred").html(result);
-                    },
-            error:function(error){
-              console.log(error);
-            }
-        });
+    //   $("#starred_tab_link").on("click",function(e){
+    //   e.preventDefault();
+    //    $.ajax({
+    //         url:"/social-starred",
+    //         type:'GET',
+    //         success:function (result){
+    //                 $("#starred").html(result);
+    //                 },
+    //         error:function(error){
+    //           console.log(error);
+    //         }
+    //     });
 
-    });
+    // });
 
     {{-- ./Get Starred Post Data --}}
-    {{-- Get All post data at Tab --}}
-    $("#all_tab_link").on("click",function(e){
-      e.preventDefault();
-       $.ajax({
-            url:"/social-all",
-            type:'GET',
-            success:function (result){
-              $("#all_tab").children().children().next().html(result);
-                    },
-            error:function(error){
-              console.log(error);
-            }
-        });
 
-    });  
+    {{-- Get Team Post Data --}}
+    //   $("#team_tab_link").on("click",function(e){
+    //   e.preventDefault();
+    //    $.ajax({
+    //         url:"/social-team-post",
+    //         type:'GET',
+    //         success:function (result){
+    //                 $("#team").html(result);
+    //                 },
+    //         error:function(error){
+    //           console.log(error);
+    //         }
+    //     });
+
+    // });
+
+    {{-- ./Get Team Post Data --}}
+
+    {{-- Get All post data at Tab --}}
+    // $("#all_tab_link").on("click",function(e){
+    //   e.preventDefault();
+    //    $.ajax({
+    //         url:"/social-all",
+    //         type:'GET',
+    //         success:function (result){
+    //           $("#all_tab").children().children().next().html(result);
+    //                 },
+    //         error:function(error){
+    //           console.log(error);
+    //         }
+    //     });
+
+    // });  
     {{-- ./Get All post data at Tab --}}
 
     {{-- Starred Status --}}
-    $(".star_link").on("click",function(e){
-      e.preventDefault();
-        var obj=this;
-       $.ajax({
-                url: $(this).attr("href"),
-                type:'GET',
-                success:function (result){
-                if(($(obj).find('img').attr("class"))==('star_gold_icon'))
-                {
-                  if($(obj).parent().parent().parent().attr("id")=='starred')
-                  {
-                    $($(obj).parent().parent()).remove();
-                  }
-                  else
-                  {
-                    $(obj).find('img').attr("src","/img/socialpost_interaction/star/star-grey.png");
-                    $(obj).find('img').attr("class","star_grey_icon");
-                    $(obj).attr("href","/star/"+$(obj).data("postid"));  
-                  }
-                }
-                else
-                {
-                  $(obj). find('img').attr("src","/img/socialpost_interaction/star/star-gold.png");
-                  $(obj).find('img').attr("class","star_gold_icon");
-                  $(obj).attr("href",'/starred/'+$(obj).data("postid"));
-                }
-              }
-          });
-      });
+    // $(".star_link").on("click",function(e){
+    //   e.preventDefault();
+    //     var obj=this;
+    //    $.ajax({
+    //             url: $(this).attr("href"),
+    //             type:'GET',
+    //             success:function (result){
+    //             if(($(obj).find('img').attr("class"))==('star_gold_icon'))
+    //             {
+    //               if($(obj).parent().parent().parent().attr("id")=='starred')
+    //               {
+    //                 $($(obj).parent().parent()).remove();
+    //               }
+    //               else
+    //               {
+    //                 $(obj).find('img').attr("src","/img/socialpost_interaction/star/star-grey.png");
+    //                 $(obj).find('img').attr("class","star_grey_icon");
+    //                 $(obj).attr("href","/star/"+$(obj).data("postid"));  
+    //               }
+    //             }
+    //             else
+    //             {
+    //               $(obj). find('img').attr("src","/img/socialpost_interaction/star/star-gold.png");
+    //               $(obj).find('img').attr("class","star_gold_icon");
+    //               $(obj).attr("href",'/starred/'+$(obj).data("postid"));
+    //             }
+    //           }
+    //       });
+    //   });
     {{-- Starred Status --}}
   });
 </script>
 {{-- ./Post Starred Funtionality --}}
-
-{{--  --}}
-<style type="text/css">
-  #postRichCardSnippetContainer{
-    border: 1px solid #fff;background-color: whitesmoke;}
-  #postRichCardSnippetBrandName{
-    font-size: 17px ;
-  }
-  #postRichCardSnippetTitle{
-    font-size: 15px ;
-    font-weight: 600 ;
-  }
-  #postRichCardSnippetDescription{
-    font-size: 13px ;
-    font-weight: 400 ;
-    letter-spacing: 1.5px ;
-  }
-</style>
 
 @endsection
 
@@ -156,9 +163,9 @@ Added This Style And remove "nav-tabs-custom from
             <ul class="nav nav-tabs">
               <li id="all_tab_link" class="active"><a href="#all_tab" data-toggle="tab">All</a></li>
               <li id="starred_tab_link"><a  href="#starred" data-toggle="tab">Starred</a></li>
-              @foreach($data['team']['team'] as $team)
-              <li id="team_tab_link"><a  href="#{{$team['team_name']}}" data-toggle="tab">{{$team['team_name']}}</a></li>
-              @endforeach
+              {{-- @foreach($data['team']['team'] as $team) --}}
+              <li id="team_tab_link"><a  href="#team" data-toggle="tab">Team</a></li>
+              {{-- @endforeach --}}
      
             </ul>
             <div class="tab-content">
@@ -190,7 +197,7 @@ Added This Style And remove "nav-tabs-custom from
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
 
                               <input type="image" id="like" name="like" alt="Login"
-                                  src="{{asset($reaction->reaction_image)}}" class="submit_image">
+                                  src="{{asset($reaction->reaction_image)}}">
                             </form>
                         @endforeach
                       </div>
@@ -200,7 +207,7 @@ Added This Style And remove "nav-tabs-custom from
                           {{csrf_field()}}
                           <input type="hidden" name="postID" value="{{$post['postID']}}">
                           <input type="hidden" name="reaction" value="{{$data['notReactionData']['0']->reaction_id}}">
-                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" value="{{$data['notReactionData']['0']->reaction_name}}" src="{{asset("/img/reaction/like.png")}}" class="submit_image" width="22" height="auto" >
+                          <input class="reaction_image unliked" type="image" id="like" name="like" alt="unliked" value="{{$data['notReactionData']['0']->reaction_name}}" src="{{asset("/img/reaction/like.png")}}">
                       </form>
                     </div>
                     {{-- ./divReactionHover --}}
@@ -225,7 +232,7 @@ Added This Style And remove "nav-tabs-custom from
                               {{csrf_field()}}
                               @method('PUT')
                               <input type="hidden" name="reaction" value="{{$reaction->reaction_id}}">
-                              <input type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}" class="submit_image">
+                              <input type="image" id="like" name="like" alt="Login" src="{{asset($reaction->reaction_image)}}">
                             </form>
                         @endforeach
                       </div>
@@ -235,7 +242,7 @@ Added This Style And remove "nav-tabs-custom from
                       <form action="{{ asset('/postreaction/'.$post['userPostReactionID']) }}" method="post" style ='display:inline;' >
                           {{csrf_field()}}
                           @method('DELETE')
-                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}" class="submit_image" width="20" height="auto">
+                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset($post['userReactionImg'])}}"  width="18" height="auto">
                       </form>
                     </div>
                     {{-- ./divReactionHover --}}
@@ -245,15 +252,15 @@ Added This Style And remove "nav-tabs-custom from
                   @endif
                   {{-- ./Reaction --}}
                   | 
-                  <a href="" class="comment"><span><img src="{{asset("/img/comment/comment.png")}}" width="20" height="auto"></span>Comment</a>  |
+                  <a href="" class="comment"><img class="comment-icon" src="{{asset("/img/comment/comment.png")}}"  height="auto">Comment</a>  |
                   @if(Auth::user()->id == $post['userID'])
                     <a href="{{asset('/')}}" class="editPost">Edit </a>|
                     <a href="{{ asset('socialdel'.'/' .$post['postID'])}}">Delete</a> | 
                   @endif
                   @if($post['starStatus'])
-                    <a class="star_link" data-postid="{{$post['postID']}}" href="{{asset('/starred/'.$post['postID'])}}"><span><img class="star_gold_icon" src="{{asset("/img/socialpost_interaction/star/star-gold.png")}}" width="20" height="auto"></span></a>|
+                    <a class="star_link" data-postid="{{$post['postID']}}" href="{{asset('/starred/'.$post['postID'])}}"><img class="star_gold_icon" src="{{asset("/img/socialpost_interaction/star/star-gold.png")}}"></a>|
                   @else
-                  <a class="star_link" data-postid="{{$post['postID']}}" href="{{asset('/star/'.$post['postID'])}}"><span><img class="star_grey_icon" src="{{asset("/img/socialpost_interaction/star/star-grey.png")}}" width="20" height="auto"></span></a>|
+                  <a class="star_link" data-postid="{{$post['postID']}}" href="{{asset('/star/'.$post['postID'])}}"><img class="star_grey_icon" src="{{asset("/img/socialpost_interaction/star/star-grey.png")}}"></a>|
                   @endif
                    {{-- Comment --}}
                 <div class="comment_div card">
@@ -267,12 +274,12 @@ Added This Style And remove "nav-tabs-custom from
                         <form action="{{route('editComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block comment_edit_form">
                         {{ csrf_field() }}
                          @method('PUT')
-                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image commentimg" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}" width="15" height="auto">
+                            <input data-commentID="{{$comment['commentID']}}" data-commentData="{{$comment['commentBody']}}" class="reaction_image commentimg comment-edit-icon" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/edit.png")}}">
                         </form>
                         <form  action="{{route('deleteComment',['id'=>$comment['commentID']])}}" method="post" class="inline_block">
                         {{ csrf_field() }}
                          @method('DELETE')
-                          <input class="reaction_image" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}" width="15" height="auto">
+                          <input class="reaction_image comment-delete-icon" type="image" id="like" name="like" alt="Login" src="{{asset("/img/comment/delete.png")}}">
                         </form>
                       </div>
                     </div>
@@ -303,11 +310,11 @@ Added This Style And remove "nav-tabs-custom from
     <div class="tab-pane" id="starred">
 
     </div>
-    @foreach($data['team']['team'] as $team)
-    <div class="tab-pane" id="{{$team['team_name']}}">
+    {{-- @foreach($data['team']['team'] as $team) --}}
+    <div class="tab-pane" id="team">
 
     </div>
-    @endforeach
+    {{-- @endforeach --}}
 
                 <!-- /.tab-pane -->
       <div class="tab-pane" id="tab_3">

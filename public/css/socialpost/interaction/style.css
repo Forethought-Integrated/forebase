@@ -1,0 +1,26 @@
+.unliked{
+	width:14px;
+	height:auto;
+	padding-bottom: 4px;
+}
+.comment-icon{
+    width: 18px;
+ }
+.comment-edit-icon{
+	width:15px;
+	height:auto;
+	padding-bottom: 4px;
+}
+.comment-delete-icon{
+	width:15px;
+	height:auto;
+	padding-bottom: 4px;
+}
+.star_gold_icon{
+	width:18px;
+	height:auto;
+}
+.star_grey_icon{
+	width:18px;
+	height:auto;
+}
