@@ -9,11 +9,11 @@
 @section('ContentHeader(Page_header)')
 
 
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Helpdesk</li>
       </ol>
-
+ -->
 
 @endsection
 

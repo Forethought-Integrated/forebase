@@ -13,11 +13,7 @@
     Folder Icon Form
     
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Folder Icon Form</li>
-  </ol>
-
+  
 
 @endsection
 

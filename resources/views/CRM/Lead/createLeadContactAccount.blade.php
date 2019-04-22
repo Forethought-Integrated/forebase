@@ -12,10 +12,7 @@
     Lead Form
     
   </h1> 
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Lead Form</li>
-  </ol>
+  
 
 {{-- <pre>{{print_r($data)}}</pre> --}}
 @endsection

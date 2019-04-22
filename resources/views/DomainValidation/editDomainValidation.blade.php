@@ -12,10 +12,7 @@
     User Domain Details
     
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">User Domain Details</li>
-  </ol>
+  
 
 @endsection
 

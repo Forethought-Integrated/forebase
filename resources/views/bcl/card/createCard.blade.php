@@ -3,8 +3,12 @@
 @section('title', 'Dashboard')
 
 @section('headAdminScriptUpdate')
+  <link rel="stylesheet" href="{{asset('admin_lte/bower_components/select2/dist/css/select2.min.css')}}">
+
 
 @endsection
+
+
 
 @section('ContentHeader(Page_header)')
 
@@ -12,10 +16,7 @@
     Card Form
 
   </h1>
-  <ol class="breadcrumb">
-    <li><a href={{asset('/')}}><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Card Form</li>
-  </ol>
+  
 
 
 @endsection
@@ -63,16 +64,32 @@
                      <input type="varchar" class="form-control" id="card_order" name="card_order" placeholder="order" required>
                 </div>
 
-                 <div class="form-group">
+               
+                <!-- <div class="form-group">
+                  <label for="card_members">Members</label>
+                   <select class="form-control select2" style="width: 100%;" name="card_members[]" multiple="multiple" data-placeholder="Select Members">
+                  </select>
+                </div> -->
+
+                <div class="form-group">
                   <label for="members">Members</label>
                   <input type="varchar" class="form-control" id="members" name="card_members" placeholder="Members" required>
                 </div>
 
                 <div class="form-group">
+                  <label for="card_date">Due Date</label>
+                  <input type="datetime-local" class="form-control" id="card_date" name="card_date">
+                </div>
+
+                 <div class="form-group">
                     <label for="comments" >Add  Comments</label>
                     <textarea  class="form-control textarea " name="card_comment" id="card_comment" rows="5" placeholder="Add Comments">
                     </textarea >
                   </div>
+
+
+
+
 
               </div>
 
@@ -90,19 +107,33 @@
   {{--  ./Col  --}}
 </div>
 <!-- /.row -->
-<script>
-  $(function () {
-        // bootstrap WYSIHTML5 - text editor
+ <!-- // bootstrap WYSIHTML5 - text editor -->
 
+<!-- <script>
+  $(function () {
     $('.textarea').wysihtml5({
       toolbar: { fa: true }
     });
-
   });
-</script>
+</script> -->
 
 @endsection
 
 @section('bodyScriptUpdate')
+
+<script src="{{asset('admin_lte/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+ <script type="text/javascript">
+   $(function () {
+    $('.select2').select2({
+        allowClear: true,
+        tags: true,
+        tokenSeparators: [',', ' '],
+          insertTag: function (data, tag) {
+          data.push(tag);
+        }
+      })
+     });
+  // });
+ </script>
 
 @endsection

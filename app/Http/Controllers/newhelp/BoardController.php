@@ -29,6 +29,27 @@ class BoardController extends Controller {
 		$boardJson      = $res->getBody();
 		$board          = json_decode($boardJson, true);
 		$data['boards'] = $board;
+
+		$ownerId;
+		$i=0;
+		foreach($data['boards'] as $board)
+		{
+			$ownerId[$i++]=$board['owner_id'];
+		}
+
+		$ownerMap;
+		$ownerName=User::select('id','name')->whereIn('id',$ownerId)->get();
+		foreach ($ownerName as $ownerName) {
+			$ownerMap[$ownerName['id']]=$ownerName['name'];
+			
+		}
+
+		foreach($data['boards'] as $key => $value)
+		{
+			$data['boards'][$key]['ownerName']=$ownerMap[$data['boards'][$key]['owner_id']];
+		}
+		
+		// return $data;
 		return view('bcl.board.listBoard')->with('data', $data);
 	}
 

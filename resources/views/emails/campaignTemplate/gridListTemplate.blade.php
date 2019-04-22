@@ -13,10 +13,7 @@
         <a id="editFormField" href="{{ asset('/templatesgrid/'.$data['template']['0']->template_id)}}/edit/" title="">
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Template</li>
-      </ol>
+      
 {{-- {{$data['template']['0']['template_body']}} --}}
 {{-- {{print_r($data['template']['0']->template_body)}} --}}
 {{-- <pre>{{print_r($data)}}</pre> --}}

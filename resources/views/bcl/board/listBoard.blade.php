@@ -42,7 +42,7 @@
                 <thead>
                 <tr>
                   <th>Board ID</th>
-                  <th>Owner ID</th>
+                  <th>Created By</th>
                   <th>Name</th>
                   <th>Description</th>
 
@@ -55,7 +55,7 @@
                   @foreach($data['boards'] as $data)
                     <tr>
                       <td>{{$data['board_id']}}</td>
-                      <td>{{$data['owner_id']}}</a></td>
+                      <td>{{$data['ownerName']}}</a></td>
                       <td><a href="{{ asset('board-detail'.'/'.$data['board_id'])}}">{{$data['board_name']}}</td>
                       <td>{{$data['board_description']}}</td>
 
@@ -76,7 +76,7 @@
                 <tfoot>
                 <tr>
                    <th>Board ID</th>
-                  <th>Owner ID</th>
+                  <th>Created By</th>
                   <th>Name</th>
                   <th>Description</th>
                   {{-- <th>Edit</th> --}}

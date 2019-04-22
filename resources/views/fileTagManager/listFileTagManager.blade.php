@@ -17,10 +17,7 @@
       <i class="fa fa-edit">Create</i>
     </a>
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i>Home</a></li>
-    <li class="active">File Tag Manager</li>
-  </ol>
+
 
 
 @endsection

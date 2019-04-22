@@ -12,10 +12,7 @@
     Company Detail
     
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Company Detail</li>
-  </ol>
+  
 
 @endsection
 

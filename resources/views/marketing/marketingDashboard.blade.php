@@ -4,6 +4,8 @@
 
 @section('headAdminScriptUpdate')
 <script language="JavaScript" type="text/javascript" src="{{ asset('/js/app.js')}}" async></script>
+<link type= "text/css" href="{{ ('/css/custom.css')}}" async>
+
 @endsection
 
 @section('ContentHeader(Page_header)')
@@ -12,10 +14,10 @@
         Brand
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
+      <!-- <ol class="breadcrumb">
         <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Brand</li>
-      </ol>
+      </ol> -->
 
 
 @endsection
@@ -24,15 +26,14 @@
 
 @can('BrandGuidelines')
 
-  <div class="row" style="padding: 25px">
+  <div class="row dashboard">
 
     <div  class="col-md-2">
       <div class="column col_logo">
         <a href="{{ asset('/brands') }}" title="">
           <center>
-            <img src="{{asset("/img/marketing/brandguidelines.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Brand Guidelines
+            <img src="{{asset("/img/marketing/brandguidelines.png")}}" alt="Snow" class="img-dashboard">
+            <span class="dashboard-text-lineheight">BrandGuidelines</span>
           </center>
         </a>
         
@@ -45,9 +46,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/colorpalettes') }}" title="">
           <center>
-            <img src="{{asset("/img/marketing/colorpalettes.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Color Palettes
+            <img src="{{asset("/img/marketing/colorpalettes.png")}}" alt="Snow" class="img-dashboard">
+            <span class="dashboard-text-lineheight">Color Palettes</span>
           </center>
         </a>
         
@@ -60,9 +60,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/logos') }}" title="">
           <center>
-            <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Logo
+            <img src="{{asset("/img/marketing/logo.png")}}" alt="Snow" class="img-dashboard">
+           <span class="dashboard-text-lineheight">Logo</span>
           </center>
         </a>
       </div>
@@ -74,9 +73,8 @@
       <div class="column col_logo">
         <a href="{{ asset('/companies') }}" title="">
           <center>
-            <img src="{{asset("/img/marketing/company.png")}}" alt="Snow" style="width:80%">
-            <br>
-            Company
+            <img src="{{asset("/img/marketing/company.png")}}" alt="Snow" class="img-dashboard">
+            <span class="dashboard-text-lineheight">Company</span>
           </center>
         </a>
         

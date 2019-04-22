@@ -10,10 +10,7 @@
   <h1>
     {{$data['board']['board_name']}}
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{asset('/')}}"><i class="fa fa-dashboard"></i>Home</a></li>
-    <li class="active"> Form</li>
-  </ol>
+  
 
 
 @endsection
@@ -70,14 +67,14 @@
               <thead>
                 <tr>
                   <th>Card ID</th>
-                  <th>List ID</th>
+                  <!-- <th>List ID</th> -->
                   <th>Name</th>
                   <!-- <th>Description</th> -->
                   <th>Order</th>
                   <th>Members</th>
                   <th>Comment</th>
-                  <th>Date & Time</th>
-
+                  <th>Due Date</th>
+ 
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>
                 </tr>
@@ -89,14 +86,14 @@
                       @foreach($data['card'] as $card)
                   <tr>
                       <td>{{$card['card_id']}}</td>
-                      <td>{{$card['list_id']}}</a></td>
+                      <!-- <td>{{$card['list_id']}}</a></td> -->
 
                       <td><a href="{{ asset('cards'.'/'.$card['card_id'])}}">{{$card['card_name']}}</td>
                       <!-- <td>{{$card['card_description']}}</td> -->
                       <td>{{$card['card_order']}}</td>
                       <td>{{$card['card_members']}}</td>
                       <td>{!!$card['card_comment']!!}</td>
-                      <td>{{$card['created_at']}}</td>
+                      <td>{{$card['card_date']}}</td>
 
       {{--            <td>
                        <a class="btn btn-small btn-primary" href="{{ url('cards'.'/'.$data['board_id'])}}">Edit</a>
@@ -114,13 +111,13 @@
                 <tfoot>
                 <tr>
                   <th>Card ID</th>
-                  <th>List ID</th>
+                  <!-- <th>List ID</th> -->
                   <th>Name</th>
                   <!-- <th>Description</th> -->
                   <th>Order</th>
                   <th>Members</th>
                   <th>Comment</th>
-                  <th>Date & Time</th>
+                  <th>Due Date</th>
 
                   {{-- <th>Edit</th> --}}
                   <th>Delete</th>

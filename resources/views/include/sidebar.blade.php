@@ -9,7 +9,7 @@
         </div>
         <div class="pull-left info">
           <a href="{{ asset('users'.'/'.Auth::user()->id)}}">
-            <p>{{Auth::user()->name}}</p>
+            <p><strong>{{Auth::user()->name}}</strong></p>
           </a>
           <a href="{{ asset('users'.'/'.Auth::user()->id)}}  "><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -42,92 +42,6 @@
           </ul>
         </li> --}}
 
-        {{-- Social --}}
-        @can('SocialPost')
-        <li>
-          <a href="{{ asset('/social') }}">
-             <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style="width: 30px">
-            <i class="fa "></i> <span>MasComm</span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        @endcan
-        {{-- ./social --}}
-
-        {{-- File Manager --}}
-        @can('FileManager')
-        <li>
-          <a href="{{ asset('/knowledge') }}">
-            <img src="{{asset("/img/sidebar/File_Manager.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style="width: 30px">
-            <i class="fa "></i> <span>Files </span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        @endcan
-        {{-- ./File Manager --}}
-
-        {{-- CRM --}}
-        @can('CRM')
-        <li>
-          <a href="{{ asset('/crm') }}">
-            <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style=" width: 30px">
-            <i class="fa "></i> <span>CRM</span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        @endcan
-        {{-- ./CRM --}}
-
-
-        {{-- File Tag Manager --}}
-        @can('file-tag-manager')
-        <li>
-          <a href="{{ asset('/file-tag-manager') }}">
-            <img src="{{asset("/img/sidebar/fmngr.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
-            <i class="fa "></i> <span>File Manager</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        @endcan
-        {{-- ./File Tag Manager --}}
-
-        {{-- HelpDesk --}}
-        {{--<li>
-          <a href="/under-construction">
-            <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style=" width: 30px">
-            <i class="fa "></i> <span>Marketing Desk</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>--}}
-        {{-- ./HelpDesk --}}
-
-        {{-- Brand --}}
-        @can('Brand')
-        <li>
-          <a href="{{ asset('/marketing') }}">
-            <img src="{{asset("/img/sidebar/Brand.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style=" width: 30px">
-            <i class="fa "></i> <span>Brand</span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        @endcan
-        {{-- ./Brand --}}
-
 
         {{-- Admin --}}
         @can('Administration')
@@ -145,6 +59,121 @@
 
         {{-- ./Admin --}}
 
+         {{-- Brand --}}
+        @can('Brand')
+        <li>
+          <a href="{{ asset('/marketing') }}">
+            <img src="{{asset("/img/sidebar/Brand.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Brand</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{-- ./Brand --}}
+
+        {{-- CRM --}}
+        @can('CRM')
+        <li>
+          <a href="{{ asset('/crm') }}">
+            <img src="{{asset("/img/sidebar/CRM.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>CRM</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{-- ./CRM --}}
+
+
+        {{-- File Manager --}}
+        @can('FileManager')
+        <li>
+          <a href="{{ asset('/knowledge') }}">
+            <img src="{{asset("/img/sidebar/File.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style="width: 30px">
+            <i class="fa "></i> <span>Files </span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{-- ./File Manager --}}
+
+        {{-- File Tag Manager --}}
+        @can('file-tag-manager')
+        <li>
+          <a href="{{ asset('/file-tag-manager') }}">
+            <img src="{{asset("/img/sidebar/fmngr.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3" style=" width: 30px">
+            <i class="fa "></i> <span>File Manager</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{-- ./File Tag Manager --}}
+
+        {{--/.Helpdesk--}}
+
+         @can('Helpdesk')
+        <li>
+          <a href="{{ asset('/Helpdesk') }}">
+            <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Helpdesk</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{--/.Helpdesk--}}
+
+
+        {{-- Social --}}
+        @can('SocialPost')
+        <li>
+          <a href="{{ asset('/social') }}">
+             <img src="{{asset("/img/sidebar/Social.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style="width: 30px">
+            <i class="fa "></i> <span>MasComm</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endcan
+        {{-- ./social --}}
+
+        
+
+       
+
+
+        
+
+        {{-- HelpDesk --}}
+        {{--<li>
+          <a href="/under-construction">
+            <img src="{{asset("/img/sidebar/Help_Desk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
+    style=" width: 30px">
+            <i class="fa "></i> <span>Marketing Desk</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>--}}
+        {{-- ./HelpDesk --}}
+
+       
+
+
+        
+
         {{-- Back --}}
                           {{-- old helpdesk --}}
        {{--  <li>
@@ -157,19 +186,7 @@
           </a>
         </li>--}}
          {{-- end of old helpdesk --}}
-        @can('Helpdesk')
-        <li>
-          <a href="{{ asset('/Helpdesk') }}">
-            <img src="{{asset("/img/sidebar/Helpdesk.png")}}" alt="AdminLTE Logo" class=" img-circle elevation-3"
-    style=" width: 30px">
-            <i class="fa "></i> <span>Helpdesk</span>
-            <span class="pull-right-container">
-              {{-- <small class="label pull-right bg-green">new</small> --}}
-            </span>
-          </a>
-        </li>
-        @endcan
-
+       
         {{-- ./Back --}}
 
 
